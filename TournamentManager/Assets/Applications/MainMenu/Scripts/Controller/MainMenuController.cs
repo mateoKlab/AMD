@@ -19,7 +19,7 @@ public class MainMenuController : Controller<MainMenu>
 
 	public void GoToBattleScene(params object[] args) 
 	{
-		Debug.LogError("Battle");
+		Application.LoadLevel("BattleScene");
 	}
 
 	public void ShowTownPopUp(params object[] args) 
