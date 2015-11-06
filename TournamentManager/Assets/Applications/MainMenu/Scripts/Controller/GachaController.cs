@@ -10,4 +10,8 @@ public class GachaController : Controller
 		app.GetComponent<MainMenuView>().popUpShadeView.gameObject.SetActive(false);
 		app.GetComponent<MainMenuController>().footerController.EnableButtons();
 	}
+
+	public void GenerateRandomCharacter() {
+
+	}
 }

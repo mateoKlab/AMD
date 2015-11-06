@@ -7,4 +7,8 @@ public class GachaView : View
 	public void OnClickCloseButton() {
 		((GachaController)controller).CloseGachaPopUp();
 	}
+
+	public void OnClickRollButton() {
+		((GachaController)controller).GenerateRandomCharacter();
+	}
 }
