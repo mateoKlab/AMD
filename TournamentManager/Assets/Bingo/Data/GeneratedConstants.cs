@@ -17,6 +17,8 @@ public static class Layers
     public static readonly string IgnoreRaycast = "Ignore Raycast";
     public static readonly string Water = "Water";
     public static readonly string UI = "UI";
+    public static readonly string AlliedUnits = "AlliedUnits";
+    public static readonly string EnemyUnits = "EnemyUnits";
 }
 
 public static class SortingLayers
