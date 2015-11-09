@@ -8,6 +8,9 @@ public class MainMenuView : View<MainMenu>
     
     [Inject]
     public QuestView questView { get; private set; }
+
+	[Inject]
+    public EditTeamView editTeamView { get; private set; }
     
     [Inject]
     public GachaView gachaView { get; private set; }

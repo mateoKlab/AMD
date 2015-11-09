@@ -1,11 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 
+// Container class for FighterData XML Serialization.
+[XmlRoot]
+public class FighterDatabase {
+
+	[XmlElement ("Fighter")]
+	public List<FighterData> Fighters;
+}
+
+[XmlRoot]
 public class FighterData {
 
+	[XmlElement]
 	public int HP = 1000;
+
+	[XmlElement]
 	public int ATK = 100;
 
-	// TEST CODE
-	public Color c;
+	[XmlElement]
+	public string name;
 }

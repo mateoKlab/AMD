@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<StageData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Enemies>
+    <FighterData>
+      <HP>1000</HP>
+      <ATK>150</ATK>
+    </FighterData>
+    <FighterData>
+      <HP>2000</HP>
+      <ATK>100</ATK>
+    </FighterData>
+  </Enemies>
+</StageData>
