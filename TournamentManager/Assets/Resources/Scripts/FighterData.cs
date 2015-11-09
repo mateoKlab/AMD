@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 [XmlRoot]
 public class FighterDatabase {
 
-	[XmlElement ("Fighter")]
+	[XmlElement ("Fighters")]
 	public List<FighterData> fighters;
 }
 
@@ -20,6 +20,6 @@ public class FighterData {
 	[XmlElement]
 	public int ATK = 100;
 
-	[XmlElement]
+	[XmlElement ("Name")]
 	public string name;
 }

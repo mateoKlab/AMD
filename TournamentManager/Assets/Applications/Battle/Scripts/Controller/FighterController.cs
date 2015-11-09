@@ -21,21 +21,23 @@ public class FighterController : Controller {
 
 	public Attack Attack ()
 	{
-
-
 		//TODO: Animate, Change State, etc.
 
 		FighterData fighter = ((FighterModel)GetComponent<Model> ()).FighterData;
+
+		StartCoroutine ("AttackAnimation");
 
 		Debug.Log ("ATTACK: " + fighter.ATK.ToString());
 		return new Attack (fighter.ATK, 1.0f, AttackType.Melee, gameObject);
 	}
 
-	// TEMPORARY.
-	void AttackAnimation ()
+	// TEST. Temporary animation until SPINE.
+	IEnumerator AttackAnimation ()
 	{
+		((FighterView)view).SetAttackSprite ();
+		yield return new WaitForSeconds (0.6f);
 
-
+		((FighterView)view).SetIdleSprite ();
 	}
 
 	public void OnReceiveAttack (Attack attack)

@@ -12,4 +12,35 @@ public class QuestModel : Model
     
 	public List<StageData> questList = new List<StageData>();
 	public List<Transform> questPoints = new List<Transform>();
+
+	public override void Awake() 
+	{
+		base.Awake();
+		PopulateQuestList();
+	}
+	
+	private void PopulateQuestList()
+	{
+		// HACK Test code
+		Debug.Log ("PopulateQuestList");
+		
+		foreach (Transform qPoint in GetComponentsInChildren<Transform>())
+		{
+			if (qPoint != transform)
+				questPoints.Add(qPoint);
+		}
+		
+		StageData testData = new StageData();
+		
+		FighterData testFighter1 = new FighterData ();
+		testFighter1.HP = 2000;
+		testFighter1.ATK = 50;
+		
+		testData.enemies.Add (testFighter1);
+		questList.Add(testData);
+		
+		testData.enemies.Add (testFighter1);
+		questList.Add(testData);
+		
+	}
 }

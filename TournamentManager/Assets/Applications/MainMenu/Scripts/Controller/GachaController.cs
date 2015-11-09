@@ -12,10 +12,15 @@ public class GachaController : Controller
 	}
 
 	public void GenerateRandomCharacter() {
-		FighterData gachaCharacter = GameData.Instance.fighterDatabase[(int)Random.Range(0, GameData.Instance.fighterDatabase.Count)];
+
+		Debug.Log ( GameData.Instance.fighterDatabase.Count);
+		FighterData gachaCharacter = GameData.Instance.fighterDatabase[0];//GameData.Instance.fighterDatabase[(int)Random.Range(0, GameData.Instance.fighterDatabase.Count)];
 	
 		GameData.Instance.PlayerData.fightersOwned.Add(gachaCharacter);
 
 		app.GetComponent<MainMenuView>().gachaView.DisplayGachaCharacter(gachaCharacter.name, gachaCharacter.HP, gachaCharacter.ATK);
+
+		GameData.Instance.PlayerData.Save ();
 	}
 }
+

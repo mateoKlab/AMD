@@ -18,9 +18,9 @@ public class GachaView : View
 
 	private void InitializeGachaInterface() 
 	{
-		nameLabel = transform.FindChild("Name Label").GetComponent<Text>();
-		atkLabel = transform.FindChild("ATK Label").GetComponent<Text>();
-		hpLabel = transform.FindChild("HP Label").GetComponent<Text>();
+		nameLabel = transform.FindChild("NameLabel").GetComponent<Text>();
+		atkLabel = transform.FindChild("ATKLabel").GetComponent<Text>();
+		hpLabel = transform.FindChild("HPLabel").GetComponent<Text>();
 		rollButton = transform.FindChild("RollButton").GetComponent<Button>();
 		characterSprite = transform.FindChild("GachaCharacterSprite").GetComponent<RawImage>();
 	}
