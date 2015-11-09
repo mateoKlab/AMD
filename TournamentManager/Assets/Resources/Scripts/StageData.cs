@@ -22,6 +22,9 @@ public class StageData {
 	[XmlElement]
 	public StageType stageType;
 
+	[XmlElement]
+	public string name;
+
 	[XmlArray("Enemies")]
 	[XmlArrayItem("Fighter")]
 	public List<FighterData> enemies = new List<FighterData> ();
