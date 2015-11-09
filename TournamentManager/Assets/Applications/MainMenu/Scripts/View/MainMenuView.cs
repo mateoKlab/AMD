@@ -7,9 +7,9 @@ public class MainMenuView : View<MainMenu>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
-    public QuestView questView { get; private set; }
-
-	[Inject]
+    public EditTeamCloseButtonView editTeamCloseButtonView { get; private set; }
+    
+    [Inject]
     public EditTeamView editTeamView { get; private set; }
     
     [Inject]
@@ -20,6 +20,9 @@ public class MainMenuView : View<MainMenu>
     
     [Inject]
     public PopUpShadeView popUpShadeView { get; private set; }
+    
+    [Inject]
+    public QuestView questView { get; private set; }
     
     [Inject]
     public FooterView footerView { get; private set; }
