@@ -7,6 +7,9 @@ public class MainMenuView : View<MainMenu>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
+    public QuestView questView { get; private set; }
+    
+    [Inject]
     public GachaView gachaView { get; private set; }
     
     [Inject]
