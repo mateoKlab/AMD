@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GachaView : View
 {
+	private Text nameLabel;
 	private Text hpLabel;
 	private Text atkLabel;
 	private Button rollButton;
@@ -15,9 +16,11 @@ public class GachaView : View
 		InitializeGachaInterface();
 	}
 
-	private void InitializeGachaInterface() {
-		atkLabel = transform.FindChild("ATK Label").GetComponent<Text>();
-		hpLabel = transform.FindChild("HP Label").GetComponent<Text>();
+	private void InitializeGachaInterface() 
+	{
+		nameLabel = transform.FindChild("NameLabel").GetComponent<Text>();
+		atkLabel = transform.FindChild("ATKLabel").GetComponent<Text>();
+		hpLabel = transform.FindChild("HPLabel").GetComponent<Text>();
 		rollButton = transform.FindChild("RollButton").GetComponent<Button>();
 		characterSprite = transform.FindChild("GachaCharacterSprite").GetComponent<RawImage>();
 	}
@@ -31,7 +34,8 @@ public class GachaView : View
 		//rollButton.interactable = false;
 	}
 
-	public void DisplayGachaCharacter(int hp, int atk) {
+	public void DisplayGachaCharacter(string name, int hp, int atk) {
+		nameLabel.text = "Name: " + name;
 		hpLabel.text = "HP: " + hp;
 		atkLabel.text = "ATK: " + atk;
 		characterSprite.gameObject.SetActive(true);
