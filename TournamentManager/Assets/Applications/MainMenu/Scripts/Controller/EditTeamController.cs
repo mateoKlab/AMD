@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Bingo;
 
-public class EditTeamController : Controller
+public class EditTeamController : Controller<MainMenu>
 {
 	private Transform activeTeamPanel;
 	private Transform teamPanel;
@@ -14,6 +14,17 @@ public class EditTeamController : Controller
 
 		activeTeamPanel = transform.FindChild("ActiveTeamPanel");
 		teamPanel = transform.FindChild("TeamPanel");
+	}
+
+	public void ShowEditTeam()
+	{
+		gameObject.SetActive(true);
+	}
+
+	public void HideEditTeam()
+	{
+		app.controller.EnableMainMenuItems(true);
+		gameObject.SetActive(false);
 	}
 
 	public void ReturnTroopFromSlotToTeamPanel(GameObject troop) 
