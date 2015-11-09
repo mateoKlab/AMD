@@ -13,7 +13,11 @@ public class GameData : MonoBehaviour {
 	public static GameData Instance {
 		get { 
 			if (!_instance) {
-				_instance = new GameData ();
+				GameObject newObject = new GameObject ();
+				newObject.name = "GameData";
+				newObject.AddComponent<GameData> ();
+
+				_instance = newObject.GetComponent<GameData> ();
 			}
 			return _instance; 
 		}
