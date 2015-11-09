@@ -28,7 +28,7 @@ public class GachaView : View
 
 	public void OnClickRollButton() {
 		((GachaController)controller).GenerateRandomCharacter();
-		rollButton.interactable = false;
+		//rollButton.interactable = false;
 	}
 
 	public void DisplayGachaCharacter(int hp, int atk) {
