@@ -4,6 +4,10 @@ using Bingo;
 
 public class FighterView : View {
 
+	// TEMPORARY. Animation Frames.
+	public Sprite attackSprite;
+	public Sprite idleSprite;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -12,6 +16,18 @@ public class FighterView : View {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	// TEMPORARY.
+	public void SetAttackSprite ()
+	{
+		GetComponent<SpriteRenderer> ().sprite = attackSprite;
+	}
+
+	// TEMPORARY.
+	public void SetIdleSprite ()
+	{
+		GetComponent<SpriteRenderer> ().sprite = idleSprite;
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)
