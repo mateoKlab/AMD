@@ -2,6 +2,7 @@
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
@@ -9,7 +10,7 @@ using System.IO;
 public class PlayerData {
 
 	[XmlElement ("Gold")]
-	public int gold;
+	public int gold = 1000;
 
 	[XmlElement ("Diamonds")]
 	public int diamonds;
@@ -29,6 +30,25 @@ public class PlayerData {
 		}
 
 		AssetDatabase.Refresh();
+	}
 
+	public static PlayerData Load ()
+	{
+		// Do Load.
+		TextAsset textAsset = Resources.Load ("Data/PlayerData") as TextAsset;
+		if (textAsset == null) {
+			Debug.Log ("No Player save file found. Returning default values...");
+			return new PlayerData ();
+		}
+		
+		XmlSerializer ser = new XmlSerializer(typeof(PlayerData));
+		
+		System.IO.StringReader stringReader = new System.IO.StringReader(textAsset.text);
+		StageDatabase stages;
+		
+		using (XmlReader reader = XmlReader.Create(stringReader))
+		{
+			return (PlayerData) ser.Deserialize(reader);
+		}
 	}
 }

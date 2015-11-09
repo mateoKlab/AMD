@@ -1,12 +1,35 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Bingo;
 
 public class BattleController : Controller<Battle>
 {
 	public GameObject FighterPrefab;
 
+	public List<FighterData> enemies = new List<FighterData> ();
 
+	void Start ()
+	{
+		Messenger.AddListener (EventTags.FIGHTER_KILLED, FighterKilled);
+
+	}
+
+	void FighterKilled (params object[] args)
+	{
+		enemies.Remove ((FighterData)args [0]);
+
+		if (enemies.Count == 0) {
+			Debug.Log ("WIN");
+			// TEST...
+
+			GameData.Instance.PlayerData.gold += 1000;
+
+			Application.LoadLevel ("MainMenuScene");
+		}
+
+	}
+		                     
 	// HACK ..TEST CODE.. HACK
 	public void SpawnFighters ()
 	{
@@ -29,8 +52,9 @@ public class BattleController : Controller<Battle>
 		StageData testData = new StageData ();
 
 		FighterData testFighter1 = new FighterData ();
-		testFighter1.HP = 2000;
+		testFighter1.HP = 1000;
 		testFighter1.ATK = 50;
+		testFighter1.name = "Kalaban";
 
 //		FighterData testFighter2 = new FighterData ();
 //		testFighter2.HP = 2000;
@@ -65,5 +89,9 @@ public class BattleController : Controller<Battle>
 		defendingUnit.OnReceiveAttack (attackingUnit.Attack ());
 	}
 
+	public void OnBackButtonClicked ()
+	{
+		Application.LoadLevel("MainMenuScene");
+	}
 }
 
