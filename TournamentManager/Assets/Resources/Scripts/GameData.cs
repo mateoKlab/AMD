@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
@@ -9,10 +10,10 @@ using System.Text;
 
 public class GameData : MonoBehaviour {
 	
-	public PlayerData PlayerData = new PlayerData ();
+	public PlayerData PlayerData;
 
 	public List<FighterData> fighterDatabase = new List<FighterData> ();
-	public Dictionary<StageType, StageData> stageDatabase = new Dictionary<StageType, StageData> ();
+	public Dictionary<StageType, Dictionary<string, StageData>> stageDatabase;
 
 	private bool firstInstance = false;
 	
@@ -49,24 +50,11 @@ public class GameData : MonoBehaviour {
 		// Create TEST Database.
 		SaveTestData ();	
 
-		LoadPlayerData ();
+		PlayerData = PlayerData.Load ();
 		LoadDatabase ();
 	}
 
-	void LoadPlayerData ()
-	{
-		// Do Load.
-		XmlSerializer ser = new XmlSerializer(typeof(PlayerData));
-		
-		TextAsset textAsset = Resources.Load ("Data/PlayerData") as TextAsset;
-		System.IO.StringReader stringReader = new System.IO.StringReader(textAsset.text);
-		StageDatabase stages;
-		
-		using (XmlReader reader = XmlReader.Create(stringReader))
-		{
-			PlayerData = (PlayerData) ser.Deserialize(reader);
-		}
-	}
+
 
 	public void Save ()
 	{
@@ -87,20 +75,35 @@ public class GameData : MonoBehaviour {
 		
 		StageData testStage1 = new StageData ();
 		testStage1.stageType = StageType.Tournament;
+		testStage1.name = "Tournament 1";
 		testStage1.enemies.Add (testEnemy1);
 		testStage1.enemies.Add (testEnemy2);
 
 		StageData testStage2 = new StageData ();
+		testStage2.stageType = StageType.Quest;
+		testStage2.name = "Test Quest 1";
 		testStage2.enemies.Add (testEnemy1);
 		testStage2.enemies.Add (testEnemy2);
-		testStage2.enemies.Add (testEnemy2);
+
+		StageData testStage3 = new StageData ();
+		testStage3.stageType = StageType.Quest;
+		testStage3.name = "Test Quest 2";
+		testStage3.enemies.Add (testEnemy1);
+		testStage3.enemies.Add (testEnemy2);
+
+		StageData testStage4 = new StageData ();
+		testStage4.stageType = StageType.Quest;
+		testStage4.name = "Test Quest 3";
+		testStage4.enemies.Add (testEnemy1);
+		testStage4.enemies.Add (testEnemy2);
 
 		StageDatabase stageDatabase = new StageDatabase ();
-		testStage1.stageType = StageType.Event;
 
 		stageDatabase.stages = new List<StageData> ();
 		stageDatabase.stages.Add (testStage1);
 		stageDatabase.stages.Add (testStage2);
+		stageDatabase.stages.Add (testStage3);
+		stageDatabase.stages.Add (testStage4);
 		
 		XmlSerializer xmls = new XmlSerializer(typeof(StageDatabase));
 		
@@ -143,6 +146,13 @@ public class GameData : MonoBehaviour {
 
 	public void LoadDatabase()
 	{
+
+		// Initialize stage Database dictionary.
+		stageDatabase = new Dictionary<StageType, Dictionary<string, StageData>> ();
+		foreach (StageType stageType in Enum.GetValues (typeof(StageType))) {
+			stageDatabase.Add(stageType, new Dictionary<string, StageData>());
+		}
+
 		// Load Stage data.
 		XmlSerializer ser = new XmlSerializer(typeof(StageDatabase));
 
@@ -156,7 +166,7 @@ public class GameData : MonoBehaviour {
 		}
 
 		foreach (StageData stage in stages.stages) {
-			stageDatabase.Add (stage.stageType, stage);
+			stageDatabase[stage.stageType].Add(stage.name, stage);
 		}
 
 		ser = new XmlSerializer(typeof(FighterDatabase));
@@ -170,8 +180,5 @@ public class GameData : MonoBehaviour {
 		}
 
 		fighterDatabase = fighters.fighters;
-
-		Debug.Log ("STAGE: " + stageDatabase[0].stageType.ToString ());
-		Debug.Log ("FIGHTER: " + fighterDatabase[0].name);
 	}
 }

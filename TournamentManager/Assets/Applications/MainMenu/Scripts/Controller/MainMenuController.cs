@@ -23,6 +23,9 @@ public class MainMenuController : Controller<MainMenu>
     [Inject]
     public FooterController footerController { get; private set; }
     
+    [Inject]
+    public HeaderController headerController { get; private set; }
+    
     //////// END MVCCodeEditor GENERATED CODE ////////
 
 	public void GoToBattleScene(params object[] args) 

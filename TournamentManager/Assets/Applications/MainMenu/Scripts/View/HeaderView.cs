@@ -11,7 +11,7 @@ public class HeaderView : View
 		base.Awake();
 		InitializeHeader();
 	}
-	
+
 	private void InitializeHeader() 
 	{
 		goldLabel = transform.FindChild("GoldLabel").GetComponent<Text>();

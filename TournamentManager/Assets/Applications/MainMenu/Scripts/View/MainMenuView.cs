@@ -27,6 +27,9 @@ public class MainMenuView : View<MainMenu>
     [Inject]
     public FooterView footerView { get; private set; }
     
+    [Inject]
+    public HeaderView headerView { get; private set; }
+    
     //////// END MVCCodeEditor GENERATED CODE ////////
     
 	public void OnClickBattleButton() {

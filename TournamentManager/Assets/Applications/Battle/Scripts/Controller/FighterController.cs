@@ -43,12 +43,10 @@ public class FighterController : Controller {
 	public void OnReceiveAttack (Attack attack)
 	{
 		// TODO: STUFF.
-		// Calculate amount of knockback.
-		// Calculate damage based on armor, if any.
 		// Calculate skill effects, evade, block, etc.
-		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
 
-		GetComponent<Rigidbody2D> ().AddForce (new Vector2 (5.0f * -moveDirection, 5.0f), ForceMode2D.Impulse);
+		ReceiveDamage (attack);
+		ReceiveKnockback (attack.knockback);
 
 		//TEST
 		OnGroundExit ();
@@ -70,4 +68,26 @@ public class FighterController : Controller {
 		((FighterModel)model).onGround = false;
 	}
 
+
+	private void ReceiveDamage (Attack attack)
+	{
+		FighterData fighter = ((FighterModel)model).FighterData;
+		// Temporary Damage computation. TODO: Apply armor damage reduction effects.
+		fighter.HP -= attack.damage;
+
+		if (fighter.HP <= 0) {
+			Debug.Log (fighter.name + " died.");
+			Messenger.Send (EventTags.FIGHTER_KILLED, fighter);
+
+			// TEST.
+			Destroy (gameObject);
+		}
+	}
+
+	private void ReceiveKnockback (float knockback)
+	{
+		// Temporary konckback. TODO: Apply knockback resistance/amount.
+		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
+		GetComponent<Rigidbody2D> ().AddForce (new Vector2 (5.0f * -moveDirection, 5.0f), ForceMode2D.Impulse);
+	}
 }

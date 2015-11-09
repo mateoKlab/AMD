@@ -10,7 +10,7 @@ public class QuestModel : Model
     
     //////// END MVCCodeEditor GENERATED CODE ////////
     
-	public List<StageData> questList = new List<StageData>();
+	public Dictionary<string, StageData> questDictionary;
 	public List<Transform> questPoints = new List<Transform>();
 
 	public override void Awake() 
@@ -21,26 +21,15 @@ public class QuestModel : Model
 	
 	private void PopulateQuestList()
 	{
-		// HACK Test code
-		Debug.Log ("PopulateQuestList");
+
+		Dictionary<StageType, Dictionary<string, StageData>> stageDatabaseClone = GameData.Instance.stageDatabase;
+		questDictionary = stageDatabaseClone[StageType.Quest];
 		
 		foreach (Transform qPoint in GetComponentsInChildren<Transform>())
 		{
 			if (qPoint != transform)
 				questPoints.Add(qPoint);
 		}
-		
-		StageData testData = new StageData();
-		
-		FighterData testFighter1 = new FighterData ();
-		testFighter1.HP = 2000;
-		testFighter1.ATK = 50;
-		
-		testData.enemies.Add (testFighter1);
-		questList.Add(testData);
-		
-		testData.enemies.Add (testFighter1);
-		questList.Add(testData);
 		
 	}
 }

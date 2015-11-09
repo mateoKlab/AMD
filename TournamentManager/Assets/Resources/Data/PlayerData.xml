@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<PlayerData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Gold>800</Gold>
+  <Diamonds>0</Diamonds>
+  <FightersOwned>
+    <Fighter>
+      <HP>1337</HP>
+      <ATK>128</ATK>
+    </Fighter>
+    <Fighter>
+      <HP>1016</HP>
+      <ATK>141</ATK>
+    </Fighter>
+    <Fighter>
+      <HP>1142</HP>
+      <ATK>106</ATK>
+    </Fighter>
+    <Fighter>
+      <HP>1233</HP>
+      <ATK>190</ATK>
+    </Fighter>
+    <Fighter>
+      <HP>1043</HP>
+      <ATK>184</ATK>
+    </Fighter>
+    <Fighter>
+      <HP>1000</HP>
+      <ATK>150</ATK>
+      <Name>AJ</Name>
+    </Fighter>
+    <Fighter>
+      <HP>1000</HP>
+      <ATK>150</ATK>
+      <Name>AJ</Name>
+    </Fighter>
+    <Fighter>
+      <HP>1500</HP>
+      <ATK>100</ATK>
+      <Name>Matt</Name>
+    </Fighter>
+  </FightersOwned>
+</PlayerData>
