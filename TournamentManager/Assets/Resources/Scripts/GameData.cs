@@ -11,7 +11,8 @@ public class GameData : MonoBehaviour {
 	
 	public PlayerData PlayerData = new PlayerData ();
 
-	public List<FighterData> FighterDatabase;
+	public List<FighterData> fighterDatabase = new List<FighterData> ();
+	public Dictionary<StageType, StageData> stageDatabase = new Dictionary<StageType, StageData> ();
 
 	private bool firstInstance = false;
 	
@@ -44,25 +45,21 @@ public class GameData : MonoBehaviour {
 		} else {
 			firstInstance = true;
 		}
-		
-		// TEST CODE: Save TEST DATA
-		SaveTestData ();
-	
-		LoadTestData ();
+
+		// Create TEST Database.
+		SaveTestData ();	
+
+		LoadDatabase ();
 	}
 
 	void Load ()
 	{
-
-
-
-		// Load Fighters data.
+		// Do Load.
 	}
 
 	public void Save ()
 	{
-
-	
+		// Do Save.
 	}
 
 
@@ -77,15 +74,28 @@ public class GameData : MonoBehaviour {
 		testEnemy2.HP = 2000;
 		testEnemy2.ATK = 100;
 		
-		StageData testData = new StageData ();
-		testData.enemies.Add (testEnemy1);
-		testData.enemies.Add (testEnemy2);
+		StageData testStage1 = new StageData ();
+		testStage1.stageType = StageType.Tournament;
+		testStage1.enemies.Add (testEnemy1);
+		testStage1.enemies.Add (testEnemy2);
+
+		StageData testStage2 = new StageData ();
+		testStage2.enemies.Add (testEnemy1);
+		testStage2.enemies.Add (testEnemy2);
+		testStage2.enemies.Add (testEnemy2);
+
+		StageDatabase stageDatabase = new StageDatabase ();
+		testStage1.stageType = StageType.Event;
+
+		stageDatabase.stages = new List<StageData> ();
+		stageDatabase.stages.Add (testStage1);
+		stageDatabase.stages.Add (testStage2);
 		
-		XmlSerializer xmls = new XmlSerializer(typeof(StageData));
+		XmlSerializer xmls = new XmlSerializer(typeof(StageDatabase));
 		
 		using(var stream = new FileStream(Application.dataPath + "/Resources/Data/StageDatabase.xml", FileMode.OpenOrCreate))
 		{
-			xmls.Serialize(stream, testData);
+			xmls.Serialize(stream, stageDatabase);
 		}
 
 		FighterData testFighter1 = new FighterData ();
@@ -104,11 +114,11 @@ public class GameData : MonoBehaviour {
 		testFighter2.name = "Matt";
 
 		FighterDatabase fighterDatabase = new FighterDatabase ();
-		fighterDatabase.Fighters = new List<FighterData> ();
+		fighterDatabase.fighters = new List<FighterData> ();
 
-		fighterDatabase.Fighters.Add (testFighter1);
-		fighterDatabase.Fighters.Add (testFighter2);
-		fighterDatabase.Fighters.Add (testFighter3);
+		fighterDatabase.fighters.Add (testFighter1);
+		fighterDatabase.fighters.Add (testFighter2);
+		fighterDatabase.fighters.Add (testFighter3);
 
 		xmls = new XmlSerializer(typeof(FighterDatabase));
 		using(var stream = new FileStream(Application.dataPath + "/Resources/Data/FighterDatabase.xml", FileMode.OpenOrCreate))
@@ -120,18 +130,37 @@ public class GameData : MonoBehaviour {
 		AssetDatabase.Refresh();
 	}
 
-	public void LoadTestData()
+	public void LoadDatabase()
 	{
 		// Load Stage data.
-		XmlSerializer ser = new XmlSerializer(typeof(StageData));
-		StageData stageData;
-		
+		XmlSerializer ser = new XmlSerializer(typeof(StageDatabase));
+
 		TextAsset textAsset = Resources.Load ("Data/StageDatabase") as TextAsset;
 		System.IO.StringReader stringReader = new System.IO.StringReader(textAsset.text);
-		
+		StageDatabase stages;
+
 		using (XmlReader reader = XmlReader.Create(stringReader))
 		{
-			stageData = (StageData) ser.Deserialize(reader);
+			stages = (StageDatabase) ser.Deserialize(reader);
 		}
+
+		foreach (StageData stage in stages.stages) {
+			stageDatabase.Add (stage.stageType, stage);
+		}
+
+		ser = new XmlSerializer(typeof(FighterDatabase));
+		textAsset = Resources.Load ("Data/FighterDatabase") as TextAsset;
+		stringReader = new System.IO.StringReader(textAsset.text);
+		FighterDatabase fighters;
+
+		using (XmlReader reader = XmlReader.Create(stringReader))
+		{
+			fighters = (FighterDatabase) ser.Deserialize(reader);
+		}
+
+		fighterDatabase = fighters.fighters;
+
+		Debug.Log ("STAGE: " + stageDatabase[0].stageType.ToString ());
+		Debug.Log ("FIGHTER: " + fighterDatabase[0].name);
 	}
 }
