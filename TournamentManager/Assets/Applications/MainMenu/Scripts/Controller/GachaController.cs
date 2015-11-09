@@ -18,5 +18,7 @@ public class GachaController : Controller
 		GameData.Instance.PlayerData.fightersOwned.Add(gachaCharacter);
 
 		app.GetComponent<MainMenuView>().gachaView.DisplayGachaCharacter(gachaCharacter.HP, gachaCharacter.ATK);
+
+		GameData.Instance.PlayerData.Save ();
 	}
 }

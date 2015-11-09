@@ -49,12 +49,23 @@ public class GameData : MonoBehaviour {
 		// Create TEST Database.
 		SaveTestData ();	
 
+		LoadPlayerData ();
 		LoadDatabase ();
 	}
 
-	void Load ()
+	void LoadPlayerData ()
 	{
 		// Do Load.
+		XmlSerializer ser = new XmlSerializer(typeof(PlayerData));
+		
+		TextAsset textAsset = Resources.Load ("Data/PlayerData") as TextAsset;
+		System.IO.StringReader stringReader = new System.IO.StringReader(textAsset.text);
+		StageDatabase stages;
+		
+		using (XmlReader reader = XmlReader.Create(stringReader))
+		{
+			PlayerData = (PlayerData) ser.Deserialize(reader);
+		}
 	}
 
 	public void Save ()
