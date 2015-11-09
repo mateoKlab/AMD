@@ -11,7 +11,7 @@ public class GameData : MonoBehaviour {
 	
 	public PlayerData PlayerData = new PlayerData ();
 
-	public List<FighterData> Fighters;
+	public List<FighterData> FighterDatabase;
 
 	private bool firstInstance = false;
 	
