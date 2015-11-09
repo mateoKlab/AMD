@@ -9,22 +9,25 @@ public class FighterController : Controller {
 	
 	}
 
-	void Update() 
+	void FixedUpdate() 
 	{
 		if (!((FighterModel)model).onGround) {
 			return;
 		}
 
 		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
-		transform.position = new Vector3 (transform.position.x + (0.035f * moveDirection) , transform.position.y, transform.position.z);
+		transform.position = new Vector3 (transform.position.x + (0.05f * moveDirection) , transform.position.y, transform.position.z);
 	}
 
 	public Attack Attack ()
 	{
+
+
 		//TODO: Animate, Change State, etc.
 
 		FighterData fighter = ((FighterModel)GetComponent<Model> ()).FighterData;
 
+		Debug.Log ("ATTACK: " + fighter.ATK.ToString());
 		return new Attack (fighter.ATK, 1.0f, AttackType.Melee, gameObject);
 	}
 
@@ -43,7 +46,7 @@ public class FighterController : Controller {
 		// Calculate skill effects, evade, block, etc.
 		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
 
-		GetComponent<Rigidbody2D> ().AddForce (new Vector2 (6.0f * -moveDirection, 3.0f), ForceMode2D.Impulse);
+		GetComponent<Rigidbody2D> ().AddForce (new Vector2 (5.0f * -moveDirection, 5.0f), ForceMode2D.Impulse);
 
 		//TEST
 		OnGroundExit ();
