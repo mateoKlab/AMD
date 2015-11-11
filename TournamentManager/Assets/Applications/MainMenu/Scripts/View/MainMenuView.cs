@@ -7,6 +7,9 @@ public class MainMenuView : View<MainMenu>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
+    public TournamentView tournamentView { get; private set; }
+    
+    [Inject]
     public EditTeamCloseButtonView editTeamCloseButtonView { get; private set; }
     
     [Inject]
@@ -34,6 +37,10 @@ public class MainMenuView : View<MainMenu>
     
 	public void OnClickBattleButton() {
 		((MainMenuController)controller).GoToBattleScene();
+	}
+
+	public void OnClickTournamentButton() {
+		((MainMenuController)controller).ShowTournamentPopUp();
 	}
 
 	public void OnClickTownButton() {

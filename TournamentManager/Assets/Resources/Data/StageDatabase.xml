@@ -2,6 +2,7 @@
 <StageDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Stages>
     <stageType>Tournament</stageType>
+    <id>tournament_001</id>
     <name>Tournament 1</name>
     <Enemies>
       <Fighter>
@@ -16,6 +17,7 @@
   </Stages>
   <Stages>
     <stageType>Quest</stageType>
+    <id>quest_001</id>
     <name>Test Quest 1</name>
     <Enemies>
       <Fighter>
@@ -30,6 +32,7 @@
   </Stages>
   <Stages>
     <stageType>Quest</stageType>
+    <id>quest_002</id>
     <name>Test Quest 2</name>
     <Enemies>
       <Fighter>
@@ -44,7 +47,83 @@
   </Stages>
   <Stages>
     <stageType>Quest</stageType>
+    <id>quest_003</id>
     <name>Test Quest 3</name>
+    <Enemies>
+      <Fighter>
+        <HP>1000</HP>
+        <ATK>150</ATK>
+      </Fighter>
+      <Fighter>
+        <HP>2000</HP>
+        <ATK>100</ATK>
+      </Fighter>
+    </Enemies>
+  </Stages>
+  <Stages>
+    <stageType>Tournament</stageType>
+    <id>tournament_002</id>
+    <name>Tournament 2</name>
+    <Enemies>
+      <Fighter>
+        <HP>1000</HP>
+        <ATK>150</ATK>
+      </Fighter>
+      <Fighter>
+        <HP>2000</HP>
+        <ATK>100</ATK>
+      </Fighter>
+    </Enemies>
+  </Stages>
+  <Stages>
+    <stageType>Tournament</stageType>
+    <id>tournament_003</id>
+    <name>Tournament 3</name>
+    <Enemies>
+      <Fighter>
+        <HP>1000</HP>
+        <ATK>150</ATK>
+      </Fighter>
+      <Fighter>
+        <HP>2000</HP>
+        <ATK>100</ATK>
+      </Fighter>
+    </Enemies>
+  </Stages>
+  <Stages>
+    <stageType>Tournament</stageType>
+    <id>tournament_004</id>
+    <name>Tournament 4</name>
+    <Enemies>
+      <Fighter>
+        <HP>1000</HP>
+        <ATK>150</ATK>
+      </Fighter>
+      <Fighter>
+        <HP>2000</HP>
+        <ATK>100</ATK>
+      </Fighter>
+    </Enemies>
+  </Stages>
+  <Stages>
+    <stageType>Tournament</stageType>
+    <id>tournament_005</id>
+    <name>Tournament 5</name>
+    <Enemies>
+      <Fighter>
+        <HP>1000</HP>
+        <ATK>150</ATK>
+      </Fighter>
+      <Fighter>
+        <HP>2000</HP>
+        <ATK>100</ATK>
+      </Fighter>
+    </Enemies>
+  </Stages>
+  <Stages>
+    <stageType>Tournament</stageType>
+    <id>tournament_006</id>
+    <name>Tournament 6</name>
     <Enemies>
       <Fighter>
         <HP>1000</HP>
