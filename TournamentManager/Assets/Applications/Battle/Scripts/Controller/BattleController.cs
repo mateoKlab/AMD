@@ -8,7 +8,7 @@ public class BattleController : Controller<Battle>
 	public GameObject FighterPrefab;
 
 	public List<FighterData> enemies = new List<FighterData> ();
-
+	
 	void Start ()
 	{
 		Messenger.AddListener (EventTags.FIGHTER_KILLED, FighterKilled);
@@ -24,6 +24,9 @@ public class BattleController : Controller<Battle>
 			// TEST...
 
 			GameData.Instance.PlayerData.gold += 1000;
+			GameData.Instance.PlayerData.rank++;
+	
+			Debug.LogError("Rank: " + GameData.Instance.PlayerData.rank);
 
 			Application.LoadLevel ("MainMenuScene");
 		}

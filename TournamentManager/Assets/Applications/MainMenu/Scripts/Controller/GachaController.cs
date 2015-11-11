@@ -12,6 +12,11 @@ public class GachaController : Controller
 	}
 
 	public void GenerateRandomCharacter() {
+		if (GameData.Instance.PlayerData.gold < 100) 
+		{
+			Debug.LogError ("Not enough gold.");
+			return;
+		}
 		FighterData gachaCharacter = GameData.Instance.fighterDatabase[(int)Random.Range(0, GameData.Instance.fighterDatabase.Count)];
 	
 		GameData.Instance.PlayerData.fightersOwned.Add(gachaCharacter);
