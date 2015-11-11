@@ -15,8 +15,11 @@ public class PlayerData {
 	[XmlElement ("Diamonds")]
 	public int diamonds;
 
-	[XmlElement ("Rank")]
-	public int rank;
+	[XmlElement ("TournamentProgress")]
+	public int tournamentProgress;
+
+	[XmlElement ("TournamentMatchCount")]
+	public int tournamentMatchCount;
 
 	[XmlArray("FightersOwned")]
 	[XmlArrayItem("Fighter")]

@@ -22,15 +22,22 @@ public class BattleController : Controller<Battle>
 		if (enemies.Count == 0) {
 			Debug.Log ("WIN");
 			// TEST...
-
+		
 			GameData.Instance.PlayerData.gold += 1000;
-			GameData.Instance.PlayerData.rank++;
-	
-			Debug.LogError("Rank: " + GameData.Instance.PlayerData.rank);
+
+			if(GameData.Instance.PlayerData.tournamentProgress == GameData.Instance.PlayerData.unlockedStages.Count - 1 
+			   && GameData.Instance.currentStage.id == GameData.Instance.PlayerData.unlockedStages[GameData.Instance.PlayerData.unlockedStages.Count - 1]
+			   && GameData.Instance.PlayerData.tournamentProgress < GameData.Instance.PlayerData.tournamentMatchCount - 1)
+				GameData.Instance.PlayerData.tournamentProgress++;
 
 			Application.LoadLevel ("MainMenuScene");
 		}
 
+	}
+
+	void OnDestroy ()
+	{
+		Messenger.RemoveListener (EventTags.FIGHTER_KILLED, FighterKilled);
 	}
 		                     
 	// HACK ..TEST CODE.. HACK
@@ -55,7 +62,7 @@ public class BattleController : Controller<Battle>
 		StageData testData = new StageData ();
 
 		FighterData testFighter1 = new FighterData ();
-		testFighter1.HP = 1000;
+		testFighter1.HP = 200;
 		testFighter1.ATK = 50;
 		testFighter1.name = "Kalaban";
 

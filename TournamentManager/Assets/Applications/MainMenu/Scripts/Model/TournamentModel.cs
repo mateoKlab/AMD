@@ -7,6 +7,8 @@ public class TournamentModel : Model
 {
 	public Dictionary<string, StageData> tournamentMatchDictionary;
 	public List<StageData> tournamentMatchList = new List<StageData>();
+	public int matchCount;
+
 	public override void Awake() 
 	{
 		base.Awake();
@@ -23,7 +25,9 @@ public class TournamentModel : Model
 			tournamentMatchList.Add(sData);
 		}
 
-		for (int i = 0; i <= GameData.Instance.PlayerData.rank; i++) {
+		GameData.Instance.PlayerData.tournamentMatchCount = tournamentMatchList.Count;
+
+		for (int i = 0; i <= GameData.Instance.PlayerData.tournamentProgress; i++) {
 			if (!GameData.Instance.PlayerData.unlockedStages.Contains(tournamentMatchList[i].id))
 			{
 				GameData.Instance.PlayerData.unlockedStages.Add(tournamentMatchList[i].id);
