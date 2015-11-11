@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using Bingo;
 using UnityEngine.UI;
@@ -19,6 +19,6 @@ public class HeaderView : View
 	}
 
 	public void UpdateGoldValue() {
-		goldLabel.text = "GOLD: " + GameData.Instance.PlayerData.gold;
+		goldLabel.text = "GOLD: " + GameData.instance.playerData.gold;
 	}
 }

@@ -9,17 +9,21 @@ using System.IO;
 using System.Text;
 
 public class GameData : MonoBehaviour {
-	
-	public PlayerData PlayerData;
+
+	public const int MAX_ACTIVE_FIGHTERS = 5;
+
+	public PlayerData playerData;
 
 	public List<FighterData> fighterDatabase = new List<FighterData> ();
 	public Dictionary<StageType, Dictionary<string, StageData>> stageDatabase;
+
+	public FighterData[] activeFighters = new FighterData[GameData.MAX_ACTIVE_FIGHTERS];
 
 	private bool firstInstance = false;
 	
 	// Singleton instance. _instance will be set on Awake().
 	private static GameData _instance;
-	public static GameData Instance {
+	public static GameData instance {
 		get { 
 			if (!_instance) {
 				GameObject newObject = new GameObject ();
@@ -50,8 +54,9 @@ public class GameData : MonoBehaviour {
 		// Create TEST Database.
 		SaveTestData ();	
 
-		PlayerData = PlayerData.Load ();
+		playerData = PlayerData.Load ();
 		LoadDatabase ();
+		LoadActiveFighters();
 	}
 
 
@@ -198,4 +203,34 @@ public class GameData : MonoBehaviour {
 
 		fighterDatabase = fighters.fighters;
 	}
+
+	#region Player Data Manipulation
+
+	public void SavePlayerData()
+	{
+		playerData.Save();
+	}
+
+	public void LoadActiveFighters()
+	{
+		for(int i = 0; i < playerData.fightersOwned.Count; i++)
+		{
+			if(playerData.fightersOwned[i].activeTroopIndex > -1)
+			{
+				activeFighters[playerData.fightersOwned[i].activeTroopIndex] = playerData.fightersOwned[i];
+			}
+		}
+	}
+
+	public List<FighterData> GetFightersOwned()
+	{
+		return playerData.fightersOwned;
+	}
+
+	public FighterData[] GetActiveFighters()
+	{
+		return activeFighters;
+	}
+
+	#endregion
 }

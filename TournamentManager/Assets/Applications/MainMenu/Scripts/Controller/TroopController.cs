@@ -17,9 +17,9 @@ public class TroopController : Controller
 	
 	void Start() {
 		canvasGroup = GetComponent<CanvasGroup>();
-		gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
-		editTeamController = transform.parent.parent.GetComponent<EditTeamController>();
+		editTeamController = GameObject.Find("EditTeam").GetComponent<EditTeamController>();
 		teamPanel = GameObject.Find("TeamPanel").transform;
+		gridLayoutGroup = teamPanel.GetComponent<GridLayoutGroup>();
 	}
 
 	public void SetTroop(FighterData fighterData)

@@ -28,6 +28,7 @@ public class TroopView : View<MainMenu>, IPointerEnterHandler, IBeginDragHandler
 	// This event is called when a troop is dropped over another troop.
 	public void OnDrop (PointerEventData eventData)
 	{
-		((TroopController)controller).OnDrop(eventData.selectedObject);
+		if(eventData.selectedObject != null)
+			((TroopController)controller).OnDrop(eventData.selectedObject);
 	}
 }

@@ -23,6 +23,9 @@ public class ActiveTeamSlotController : Controller
 	public void SetTroopOnSlot(GameObject selectedTroop) {
 		if(!isSlotOccupied())
 		{
+			if(selectedTroop.GetComponent<TroopController>() == null)
+				return;
+
 			troopOnSlot = selectedTroop.GetComponent<TroopController>();
 			troopOnSlot.SetActiveTroopIndex(slotIndex);
 			selectedTroop.transform.SetParent(transform);

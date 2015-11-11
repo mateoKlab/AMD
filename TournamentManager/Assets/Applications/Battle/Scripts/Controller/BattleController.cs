@@ -23,7 +23,7 @@ public class BattleController : Controller<Battle>
 			Debug.Log ("WIN");
 			// TEST...
 
-			GameData.Instance.PlayerData.gold += 1000;
+			GameData.instance.playerData.gold += 1000;
 
 			Application.LoadLevel ("MainMenuScene");
 		}
@@ -35,7 +35,7 @@ public class BattleController : Controller<Battle>
 	{
 		Vector3 startPos = new Vector3 (-5f, -1f, 0f);
 
-		foreach (FighterData fighter in GameData.Instance.PlayerData.fightersOwned) {
+		foreach (FighterData fighter in GameData.instance.playerData.fightersOwned) {
 
 			GameObject newFighter = Instantiate (FighterPrefab);
 			newFighter.SetActive (true);

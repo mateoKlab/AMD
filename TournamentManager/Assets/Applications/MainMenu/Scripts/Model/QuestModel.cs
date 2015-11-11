@@ -22,7 +22,7 @@ public class QuestModel : Model
 	private void PopulateQuestList()
 	{
 
-		Dictionary<StageType, Dictionary<string, StageData>> stageDatabaseClone = GameData.Instance.stageDatabase;
+		Dictionary<StageType, Dictionary<string, StageData>> stageDatabaseClone = GameData.instance.stageDatabase;
 		questDictionary = stageDatabaseClone[StageType.Quest];
 		
 		foreach (Transform qPoint in GetComponentsInChildren<Transform>())
