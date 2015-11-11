@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class QuestView : View
 {
-	public void OnClickQuestPoint(string stageName) {
-		((QuestController)controller).GoToQuest(((QuestModel)model).questDictionary[stageName]);
+	public void OnClickQuestPoint(string stageID) {
+		((QuestController)controller).GoToQuest(((QuestModel)model).questDictionary[stageID]);
 	}
 }

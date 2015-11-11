@@ -1,6 +1,6 @@
 // ----- AUTO GENERATED CODE ----- //
-public enum EventTags
+public enum MainMenuEvents
 {
-    FIGHTER_KILLED,
+    START_BATTLE,
     DEFAULT
 }

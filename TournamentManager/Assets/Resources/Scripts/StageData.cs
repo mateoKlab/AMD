@@ -23,6 +23,9 @@ public class StageData {
 	public StageType stageType;
 
 	[XmlElement]
+	public string id;
+
+	[XmlElement]
 	public string name;
 
 	[XmlArray("Enemies")]

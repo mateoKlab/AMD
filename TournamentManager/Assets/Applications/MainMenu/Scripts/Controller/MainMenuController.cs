@@ -9,6 +9,9 @@ public class MainMenuController : Controller<MainMenu>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
+    public TournamentController tournamentController { get; private set; }
+    
+    [Inject]
     public EditTeamController editTeamController { get; private set; }
     
     [Inject]
@@ -28,12 +31,25 @@ public class MainMenuController : Controller<MainMenu>
     
     //////// END MVCCodeEditor GENERATED CODE ////////
 
+	public override void Awake()
+	{
+		base.Awake ();
+		
+		Messenger.AddListener(MainMenuEvents.START_BATTLE, GoToBattleScene);
+	}
+
+
 	public void GoToBattleScene(params object[] args) 
 	{
 		Application.LoadLevel("BattleScene");
 	}
 
-
+	public void ShowTournamentPopUp(params object[] args) 
+	{
+		footerController.DisableButtons();
+		app.view.popUpShadeView.gameObject.SetActive(true);
+		app.view.tournamentView.gameObject.SetActive(true);
+	}
 
 	public void ShowTownPopUp(params object[] args) 
 	{

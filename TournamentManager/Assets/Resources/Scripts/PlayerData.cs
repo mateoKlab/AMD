@@ -15,10 +15,15 @@ public class PlayerData {
 	[XmlElement ("Diamonds")]
 	public int diamonds;
 
+	[XmlElement ("Rank")]
+	public int rank;
+
 	[XmlArray("FightersOwned")]
 	[XmlArrayItem("Fighter")]
 	public List<FighterData> fightersOwned = new List<FighterData> ();
 
+	[XmlArrayItem("UnlockedStages")]
+	public List<string> unlockedStages = new List<string> ();
 
 	public void Save ()
 	{

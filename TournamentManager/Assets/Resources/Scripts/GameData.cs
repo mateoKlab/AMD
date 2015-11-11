@@ -16,11 +16,14 @@ public class GameData : MonoBehaviour {
 
 	public List<FighterData> fighterDatabase = new List<FighterData> ();
 	public Dictionary<StageType, Dictionary<string, StageData>> stageDatabase;
-
+	
 	public FighterData[] activeFighters = new FighterData[GameData.MAX_ACTIVE_FIGHTERS];
 
+	// For test purposes only -AJ
+	public StageData currentStage;
+
 	private bool firstInstance = false;
-	
+
 	// Singleton instance. _instance will be set on Awake().
 	private static GameData _instance;
 	public static GameData instance {
@@ -80,27 +83,66 @@ public class GameData : MonoBehaviour {
 		
 		StageData testStage1 = new StageData ();
 		testStage1.stageType = StageType.Tournament;
+		testStage1.id = "tournament_001";
 		testStage1.name = "Tournament 1";
 		testStage1.enemies.Add (testEnemy1);
 		testStage1.enemies.Add (testEnemy2);
 
 		StageData testStage2 = new StageData ();
 		testStage2.stageType = StageType.Quest;
+		testStage2.id = "quest_001";
 		testStage2.name = "Test Quest 1";
 		testStage2.enemies.Add (testEnemy1);
 		testStage2.enemies.Add (testEnemy2);
 
 		StageData testStage3 = new StageData ();
 		testStage3.stageType = StageType.Quest;
+		testStage3.id = "quest_002";
 		testStage3.name = "Test Quest 2";
 		testStage3.enemies.Add (testEnemy1);
 		testStage3.enemies.Add (testEnemy2);
 
 		StageData testStage4 = new StageData ();
 		testStage4.stageType = StageType.Quest;
+		testStage4.id = "quest_003";
 		testStage4.name = "Test Quest 3";
 		testStage4.enemies.Add (testEnemy1);
 		testStage4.enemies.Add (testEnemy2);
+
+		StageData testStage5 = new StageData ();
+		testStage5.stageType = StageType.Tournament;
+		testStage5.id = "tournament_002";
+		testStage5.name = "Tournament 2";
+		testStage5.enemies.Add (testEnemy1);
+		testStage5.enemies.Add (testEnemy2);
+
+		StageData testStage6 = new StageData ();
+		testStage6.stageType = StageType.Tournament;
+		testStage6.id = "tournament_003";
+		testStage6.name = "Tournament 3";
+		testStage6.enemies.Add (testEnemy1);
+		testStage6.enemies.Add (testEnemy2);
+
+		StageData testStage7 = new StageData ();
+		testStage7.stageType = StageType.Tournament;
+		testStage7.id = "tournament_004";
+		testStage7.name = "Tournament 4";
+		testStage7.enemies.Add (testEnemy1);
+		testStage7.enemies.Add (testEnemy2);
+
+		StageData testStage8 = new StageData ();
+		testStage8.stageType = StageType.Tournament;
+		testStage8.id = "tournament_005";
+		testStage8.name = "Tournament 5";
+		testStage8.enemies.Add (testEnemy1);
+		testStage8.enemies.Add (testEnemy2);
+
+		StageData testStage9 = new StageData ();
+		testStage9.stageType = StageType.Tournament;
+		testStage9.id = "tournament_006";
+		testStage9.name = "Tournament 6";
+		testStage9.enemies.Add (testEnemy1);
+		testStage9.enemies.Add (testEnemy2);
 
 		StageDatabase stageDatabase = new StageDatabase ();
 
@@ -109,6 +151,11 @@ public class GameData : MonoBehaviour {
 		stageDatabase.stages.Add (testStage2);
 		stageDatabase.stages.Add (testStage3);
 		stageDatabase.stages.Add (testStage4);
+		stageDatabase.stages.Add (testStage5);
+		stageDatabase.stages.Add (testStage6);
+		stageDatabase.stages.Add (testStage7);
+		stageDatabase.stages.Add (testStage8);
+		stageDatabase.stages.Add (testStage9);
 		
 		XmlSerializer xmls = new XmlSerializer(typeof(StageDatabase));
 		
