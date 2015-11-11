@@ -1,15 +1,31 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Bingo;
 
 public class EditTeamController : Controller<MainMenu>
 {
+    // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
+    
+    [Inject]
+    public TroopDetailsController troopDetailsController { get; private set; }
+    
+    //////// END MVCCodeEditor GENERATED CODE ////////
+    
 	private EditTeamModel model;
 
 	private Transform activeTeamPanel;
 	private Transform teamPanel;
 	private GameObject troopPrefab;
+
+	private PlayerData _playerData;
+	private PlayerData playerData
+	{
+		get
+		{
+			return (_playerData ?? (_playerData = GameData.Instance.PlayerData));
+		}
+	}
 
 	public override void Awake ()
 	{
@@ -19,19 +35,16 @@ public class EditTeamController : Controller<MainMenu>
 
 		activeTeamPanel = transform.FindChild("ActiveTeamPanel");
 		teamPanel = transform.FindChild("TeamPanel");
+
+		model.activeTeamSlots = activeTeamPanel.GetComponentsInChildren<ActiveTeamSlotController>();
 	}
 
-	void Start() {
-		troopPrefab = Resources.Load("Prefabs/Troop") as GameObject;
-
-		List<FighterData> fighters = GameData.Instance.PlayerData.fightersOwned;
-		for(int i = 0; i < fighters.Count; i++)
+	void OnEnable() {
+		if(model.troops.Count != playerData.fightersOwned.Count)
 		{
-			GameObject go = Instantiate(troopPrefab);
-			go.transform.SetParent(teamPanel);
-			TroopController tc = go.GetComponent<TroopController>();
-			model.troops.Add(tc);
-			tc.SetTroop(fighters[i]);
+			DeleteAllTroops();
+			StartCoroutine("LoadTroops");
+			MoveActiveTroopsToActiveSlots();
 		}
 	}
 
@@ -43,9 +56,58 @@ public class EditTeamController : Controller<MainMenu>
 
 	public void HideEditTeam()
 	{
+		playerData.Save();
 		Input.multiTouchEnabled = true;
 		app.controller.EnableMainMenuItems(true);
 		gameObject.SetActive(false);
+	}
+
+	public IEnumerator LoadTroops()
+	{
+		troopPrefab = Resources.Load("Prefabs/Troop") as GameObject;
+		
+		List<FighterData> fighters = playerData.fightersOwned;
+		for(int i = 0; i < fighters.Count; i++)
+		{
+			GameObject go = Instantiate(troopPrefab);
+			go.transform.SetParent(teamPanel);
+			TroopController tc = go.GetComponent<TroopController>();
+			model.troops.Add(tc);
+			tc.SetTroop(fighters[i]);
+		}
+
+		yield return new WaitForEndOfFrame();
+		ShowTroopDetails(fighters[0]);
+	}
+
+	public void DeleteAllTroops()
+	{
+		// TODO refactor this shit, too slow and too expensive
+		// Destroy troops on TeamPanel
+		TroopController[] currentTroops = teamPanel.GetComponentsInChildren<TroopController>();
+		for(int i = 0; i < currentTroops.Length; i++)
+		{
+			DestroyObject(currentTroops[i].gameObject);
+		}
+		// Destroy troops on ActiveTeamPanel
+		for(int i = 0; i < model.activeTeamSlots.Length; i++)
+		{
+			if(model.activeTeamSlots[i].transform.childCount > 0)
+			{
+				DestroyObject(model.activeTeamSlots[i].transform.GetChild(0).gameObject);
+			}
+		}
+	}
+
+	public void MoveActiveTroopsToActiveSlots()
+	{
+		for(int i = 0; i < model.troops.Count; i++)
+		{
+			if(model.troops[i].GetTroop().activeTroopIndex > -1)
+			{
+				model.GetActiveTeamSlot(model.troops[i].GetTroop().activeTroopIndex).SetTroopOnSlot(model.troops[i].gameObject);
+			}
+		}
 	}
 
 	public void ReturnTroopFromSlotToTeamPanel(GameObject troop) 
@@ -54,9 +116,9 @@ public class EditTeamController : Controller<MainMenu>
 		troop.transform.SetAsLastSibling();
 	}
 
-	public bool CheckIfTroopChildOfTeamPanel(GameObject troop) 
+	public void ShowTroopDetails(FighterData fighter)
 	{
-		return teamPanel.IsChildOf(teamPanel);
+		troopDetailsController.SetTroopDetails(fighter);
 	}
 
 }

@@ -115,17 +115,32 @@ public class GameData : MonoBehaviour {
 		FighterData testFighter1 = new FighterData ();
 		testFighter1.HP = 1000;
 		testFighter1.ATK = 150;
+		testFighter1.activeTroopIndex = -1;
 		testFighter1.name = "AJ";
 
 		FighterData testFighter2 = new FighterData ();
 		testFighter2.HP = 2000;
 		testFighter2.ATK = 100;
 		testFighter2.name = "Dave";
+		testFighter2.activeTroopIndex = -1;
 
 		FighterData testFighter3 = new FighterData ();
-		testFighter2.HP = 1500;
-		testFighter2.ATK = 100;
-		testFighter2.name = "Matt";
+		testFighter3.HP = 1500;
+		testFighter3.ATK = 100;
+		testFighter3.name = "Matt";
+		testFighter3.activeTroopIndex = -1;
+
+		FighterData testFighter4 = new FighterData ();
+		testFighter4.HP = 1500;
+		testFighter4.ATK = 150;
+		testFighter4.name = "Rence";
+		testFighter4.activeTroopIndex = -1;
+
+		FighterData testFighter5 = new FighterData ();
+		testFighter5.HP = 3000;
+		testFighter5.ATK = 300;
+		testFighter5.name = "Jeff";
+		testFighter5.activeTroopIndex = -1;
 
 		FighterDatabase fighterDatabase = new FighterDatabase ();
 		fighterDatabase.fighters = new List<FighterData> ();
@@ -133,6 +148,8 @@ public class GameData : MonoBehaviour {
 		fighterDatabase.fighters.Add (testFighter1);
 		fighterDatabase.fighters.Add (testFighter2);
 		fighterDatabase.fighters.Add (testFighter3);
+		fighterDatabase.fighters.Add (testFighter4);
+		fighterDatabase.fighters.Add (testFighter5);
 
 		xmls = new XmlSerializer(typeof(FighterDatabase));
 		using(var stream = new FileStream(Application.dataPath + "/Resources/Data/FighterDatabase.xml", FileMode.OpenOrCreate))

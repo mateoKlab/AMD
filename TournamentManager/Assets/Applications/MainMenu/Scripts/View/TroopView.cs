@@ -3,11 +3,11 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using Bingo;
 
-public class TroopView : View<MainMenu>, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class TroopView : View<MainMenu>, IPointerEnterHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
-	public void OnPointerClick (PointerEventData eventData)
+	public void OnPointerEnter (PointerEventData eventData)
 	{
-		((TroopController)controller).OnClick();
+		((TroopController)controller).OnPointerEnter();
 	}
 
 	public void OnBeginDrag(PointerEventData eventData)

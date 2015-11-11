@@ -22,4 +22,7 @@ public class FighterData {
 
 	[XmlElement ("Name")]
 	public string name;
+
+	[XmlElement ("ActiveIndex")]
+	public int activeTroopIndex = -1;
 }
