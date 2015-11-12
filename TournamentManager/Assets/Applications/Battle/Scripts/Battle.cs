@@ -6,8 +6,21 @@ public class Battle : BaseApplication<BattleModel, BattleView, BattleController>
 {
     void Awake ()
 	{
+
+		// TEMP..
 		GetComponent<BattleController> ().SpawnFighters ();
 
+	}
+
+
+	public void Send (EventTags eventTag, params object[] args) 
+	{
+		Messenger.Send (eventTag, args);
+	}
+
+	public void AddListener (EventTags eventTag, Messenger.MessageDelegate callback) 
+	{
+		Messenger.AddListener (eventTag, callback);
 	}
 }
 

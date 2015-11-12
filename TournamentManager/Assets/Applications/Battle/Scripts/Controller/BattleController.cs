@@ -12,27 +12,34 @@ public class BattleController : Controller<Battle>
 	void Start ()
 	{
 		Messenger.AddListener (EventTags.FIGHTER_KILLED, FighterKilled);
-
 	}
 
 	void FighterKilled (params object[] args)
 	{
+		Debug.Log (((FighterData)args [0]).name + " KILLED");
 		enemies.Remove ((FighterData)args [0]);
 
 		if (enemies.Count == 0) {
 			Debug.Log ("WIN");
 			// TEST...
 
+			//TODO: Show WIN popup. Send WIN event.		
 			GameData.instance.playerData.gold += 1000;
-			GameData.instance.playerData.rank++;
-	
-			Debug.LogError("Rank: " + GameData.instance.playerData.rank);
 
+			if(GameData.instance.playerData.tournamentProgress == GameData.instance.playerData.unlockedStages.Count - 1 
+			   && GameData.instance.currentStage.id == GameData.instance.playerData.unlockedStages[GameData.instance.playerData.unlockedStages.Count - 1]
+			   && GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount - 1)
+				GameData.instance.playerData.tournamentProgress++;
 			Application.LoadLevel ("MainMenuScene");
 		}
 
 	}
-		                     
+
+	void OnDestroy ()
+	{
+		Messenger.RemoveListener (EventTags.FIGHTER_KILLED, FighterKilled);
+	}
+			                     
 	// HACK ..TEST CODE.. HACK
 	public void SpawnFighters ()
 	{
@@ -55,7 +62,7 @@ public class BattleController : Controller<Battle>
 		StageData testData = new StageData ();
 
 		FighterData testFighter1 = new FighterData ();
-		testFighter1.HP = 1000;
+		testFighter1.HP = 200;
 		testFighter1.ATK = 50;
 		testFighter1.name = "Kalaban";
 

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System;
 using System.Collections;
@@ -91,21 +91,21 @@ public class GameData : MonoBehaviour {
 		testStage1.enemies.Add (testEnemy2);
 
 		StageData testStage2 = new StageData ();
-		testStage2.stageType = StageType.Quest;
+		testStage2.stageType = StageType.Mission;
 		testStage2.id = "quest_001";
 		testStage2.name = "Test Quest 1";
 		testStage2.enemies.Add (testEnemy1);
 		testStage2.enemies.Add (testEnemy2);
 
 		StageData testStage3 = new StageData ();
-		testStage3.stageType = StageType.Quest;
+		testStage3.stageType = StageType.Mission;
 		testStage3.id = "quest_002";
 		testStage3.name = "Test Quest 2";
 		testStage3.enemies.Add (testEnemy1);
 		testStage3.enemies.Add (testEnemy2);
 
 		StageData testStage4 = new StageData ();
-		testStage4.stageType = StageType.Quest;
+		testStage4.stageType = StageType.Mission;
 		testStage4.id = "quest_003";
 		testStage4.name = "Test Quest 3";
 		testStage4.enemies.Add (testEnemy1);

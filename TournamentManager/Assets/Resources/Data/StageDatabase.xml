@@ -8,55 +8,87 @@
       <Fighter>
         <HP>1000</HP>
         <ATK>150</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
       <Fighter>
         <HP>2000</HP>
         <ATK>100</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
     </Enemies>
   </Stages>
   <Stages>
-    <stageType>Quest</stageType>
+    <stageType>Mission</stageType>
     <id>quest_001</id>
     <name>Test Quest 1</name>
     <Enemies>
       <Fighter>
         <HP>1000</HP>
         <ATK>150</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
       <Fighter>
         <HP>2000</HP>
         <ATK>100</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
     </Enemies>
   </Stages>
   <Stages>
-    <stageType>Quest</stageType>
+    <stageType>Mission</stageType>
     <id>quest_002</id>
     <name>Test Quest 2</name>
     <Enemies>
       <Fighter>
         <HP>1000</HP>
         <ATK>150</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
       <Fighter>
         <HP>2000</HP>
         <ATK>100</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
     </Enemies>
   </Stages>
   <Stages>
-    <stageType>Quest</stageType>
+    <stageType>Mission</stageType>
     <id>quest_003</id>
     <name>Test Quest 3</name>
     <Enemies>
       <Fighter>
         <HP>1000</HP>
         <ATK>150</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
       <Fighter>
         <HP>2000</HP>
         <ATK>100</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
     </Enemies>
   </Stages>
@@ -68,10 +100,18 @@
       <Fighter>
         <HP>1000</HP>
         <ATK>150</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
       <Fighter>
         <HP>2000</HP>
         <ATK>100</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
     </Enemies>
   </Stages>
@@ -83,10 +123,18 @@
       <Fighter>
         <HP>1000</HP>
         <ATK>150</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
       <Fighter>
         <HP>2000</HP>
         <ATK>100</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
     </Enemies>
   </Stages>
@@ -98,10 +146,18 @@
       <Fighter>
         <HP>1000</HP>
         <ATK>150</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
       <Fighter>
         <HP>2000</HP>
         <ATK>100</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
     </Enemies>
   </Stages>
@@ -113,10 +169,18 @@
       <Fighter>
         <HP>1000</HP>
         <ATK>150</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
       <Fighter>
         <HP>2000</HP>
         <ATK>100</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
     </Enemies>
   </Stages>
@@ -128,10 +192,18 @@
       <Fighter>
         <HP>1000</HP>
         <ATK>150</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
       <Fighter>
         <HP>2000</HP>
         <ATK>100</ATK>
+        <Name>Juan</Name>
+        <Class>Warrior</Class>
+        <Weight>2</Weight>
+        <ActiveIndex>-1</ActiveIndex>
       </Fighter>
     </Enemies>
   </Stages>
