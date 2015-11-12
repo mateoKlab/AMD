@@ -26,11 +26,12 @@ public class BattleController : Controller<Battle>
 		
 			GameData.instance.playerData.gold += 1000;
 
-			if(GameData.instance.playerData.tournamentProgress == GameData.instance.playerData.unlockedStages.Count - 1 
-			   && GameData.instance.currentStage.id == GameData.instance.playerData.unlockedStages[GameData.instance.playerData.unlockedStages.Count - 1]
-			   && GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount - 1)
+//			if(GameData.instance.playerData.tournamentProgress == GameData.instance.playerData.unlockedStages.Count - 1 
+//			   && GameData.instance.currentStage.id == GameData.instance.playerData.unlockedStages[GameData.instance.playerData.unlockedStages.Count - 1]
+//			   && GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount - 1)
+//				GameData.instance.playerData.tournamentProgress++;
+			if (GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount)
 				GameData.instance.playerData.tournamentProgress++;
-
 			Application.LoadLevel ("MainMenuScene");
 		}
 

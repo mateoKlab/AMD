@@ -16,9 +16,12 @@ public class TournamentElementController : Controller
 	}
 
 	public void CheckIfStageIsUnlocked() {
-		if (GameData.instance.playerData.unlockedStages.Contains(((TournamentElementModel)model).stageData.id) && GameData.instance.playerData.tournamentProgress == GameData.instance.playerData.unlockedStages.IndexOf(((TournamentElementModel)model).stageData.id)) {
+//		if (GameData.instance.playerData.unlockedStages.Contains(((TournamentElementModel)model).stageData.id) && GameData.instance.playerData.tournamentProgress == GameData.instance.playerData.unlockedStages.IndexOf(((TournamentElementModel)model).stageData.id)) {
+//			((TournamentElementView)view).fightButton.interactable = true;
+//		}
+
+		if (GameData.instance.playerData.tournamentProgress == app.model.GetComponentInChildren<TournamentModel>().tournamentMatchList.IndexOf(((TournamentElementModel)model).stageData))
 			((TournamentElementView)view).fightButton.interactable = true;
-		}
 	}
 
 
