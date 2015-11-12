@@ -7,6 +7,9 @@ public class MainMenuModel : Model<MainMenu>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
+    public TournamentModel tournamentModel { get; private set; }
+    
+    [Inject]
     public EditTeamModel editTeamModel { get; private set; }
     
     [Inject]
@@ -16,7 +19,10 @@ public class MainMenuModel : Model<MainMenu>
     public TownModel townModel { get; private set; }
     
     [Inject]
-    public QuestModel questModel { get; private set; }
+    public MissionModel missionModel { get; private set; }
+    
+    [Inject]
+    public HeaderModel headerModel { get; private set; }
     
     //////// END MVCCodeEditor GENERATED CODE ////////
     

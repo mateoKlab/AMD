@@ -17,19 +17,29 @@ public class TroopController : Controller
 	
 	void Start() {
 		canvasGroup = GetComponent<CanvasGroup>();
-		gridLayoutGroup = transform.parent.GetComponent<GridLayoutGroup>();
-		editTeamController = transform.parent.parent.GetComponent<EditTeamController>();
-		teamPanel = editTeamController.transform.FindChild("TeamPanel");
+		editTeamController = GameObject.Find("EditTeam").GetComponent<EditTeamController>();
+		teamPanel = GameObject.Find("TeamPanel").transform;
+		gridLayoutGroup = teamPanel.GetComponent<GridLayoutGroup>();
 	}
 
 	public void SetTroop(FighterData fighterData)
 	{
-		((TroopModel)model).SetFighterData(fighterData);
+		((TroopModel)model).fighterData = fighterData;
 	}
 
-	public void OnClick()
+	public FighterData GetTroop()
 	{
-		// TODO When clicked, update stats on display window
+		return ((TroopModel)model).fighterData;
+	}
+
+	public void SetActiveTroopIndex(int index)
+	{
+		((TroopModel)model).activeTroopIndex = index;
+	}
+
+	public void OnPointerEnter()
+	{
+		editTeamController.ShowTroopDetails(((TroopModel)model).fighterData);
 	}
 
 	public void OnBeginDrag()
@@ -41,6 +51,9 @@ public class TroopController : Controller
 		siblingIndex = transform.GetSiblingIndex();
 		transform.SetParent(editTeamController.transform, true);
 		transform.SetAsLastSibling();
+
+		// Set troop as inactive as soon as it was dragged
+		((TroopModel)model).activeTroopIndex = -1;
 	}
 
 	public void OnEndDrag() 

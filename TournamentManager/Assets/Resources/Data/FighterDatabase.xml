@@ -4,14 +4,40 @@
     <HP>1000</HP>
     <ATK>150</ATK>
     <Name>AJ</Name>
+    <Class>Warrior</Class>
+    <Weight>2</Weight>
+    <ActiveIndex>-1</ActiveIndex>
+  </Fighters>
+  <Fighters>
+    <HP>2000</HP>
+    <ATK>100</ATK>
+    <Name>Dave</Name>
+    <Class>Warrior</Class>
+    <Weight>2</Weight>
+    <ActiveIndex>-1</ActiveIndex>
   </Fighters>
   <Fighters>
     <HP>1500</HP>
     <ATK>100</ATK>
     <Name>Matt</Name>
+    <Class>Warrior</Class>
+    <Weight>2</Weight>
+    <ActiveIndex>-1</ActiveIndex>
   </Fighters>
   <Fighters>
-    <HP>1000</HP>
-    <ATK>100</ATK>
+    <HP>1500</HP>
+    <ATK>150</ATK>
+    <Name>Rence</Name>
+    <Class>Warrior</Class>
+    <Weight>2</Weight>
+    <ActiveIndex>-1</ActiveIndex>
+  </Fighters>
+  <Fighters>
+    <HP>3000</HP>
+    <ATK>300</ATK>
+    <Name>Jeff</Name>
+    <Class>Warrior</Class>
+    <Weight>2</Weight>
+    <ActiveIndex>-1</ActiveIndex>
   </Fighters>
 </FighterDatabase>

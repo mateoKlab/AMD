@@ -8,7 +8,7 @@ public class BattleController : Controller<Battle>
 	public GameObject FighterPrefab;
 
 	public List<FighterData> enemies = new List<FighterData> ();
-
+	
 	void Start ()
 	{
 		Messenger.AddListener (EventTags.FIGHTER_KILLED, FighterKilled);
@@ -23,9 +23,13 @@ public class BattleController : Controller<Battle>
 			Debug.Log ("WIN");
 			// TEST...
 
-			//TODO: Show WIN popup. Send WIN event.
-			GameData.Instance.PlayerData.gold += 1000;
+			//TODO: Show WIN popup. Send WIN event.		
+			GameData.instance.playerData.gold += 1000;
 
+			if(GameData.instance.playerData.tournamentProgress == GameData.instance.playerData.unlockedStages.Count - 1 
+			   && GameData.instance.currentStage.id == GameData.instance.playerData.unlockedStages[GameData.instance.playerData.unlockedStages.Count - 1]
+			   && GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount - 1)
+				GameData.instance.playerData.tournamentProgress++;
 			Application.LoadLevel ("MainMenuScene");
 		}
 
@@ -35,14 +39,13 @@ public class BattleController : Controller<Battle>
 	{
 		Messenger.RemoveListener (EventTags.FIGHTER_KILLED, FighterKilled);
 	}
-
-		                     
+			                     
 	// HACK ..TEST CODE.. HACK
 	public void SpawnFighters ()
 	{
 		Vector3 startPos = new Vector3 (-5f, -1f, 0f);
 
-		foreach (FighterData fighter in GameData.Instance.PlayerData.fightersOwned) {
+		foreach (FighterData fighter in GameData.instance.playerData.fightersOwned) {
 
 			GameObject newFighter = Instantiate (FighterPrefab);
 			newFighter.SetActive (true);

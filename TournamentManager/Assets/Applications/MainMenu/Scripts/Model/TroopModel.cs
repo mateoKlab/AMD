@@ -4,13 +4,8 @@ using Bingo;
 
 public class TroopModel : Model
 {
-	private FighterData fighterData;
-
-	public void SetFighterData(FighterData fighterData)
-	{
-		this.fighterData = fighterData;
-	}
-
+	public FighterData fighterData;
+	
 	public string name 
 	{
 		get 
@@ -32,6 +27,18 @@ public class TroopModel : Model
 		get
 		{
 			return fighterData.ATK;
+		}
+	}
+
+	public int activeTroopIndex
+	{
+		get
+		{
+			return fighterData.activeTroopIndex;
+		}
+		set
+		{
+			fighterData.activeTroopIndex = value;
 		}
 	}
 }
