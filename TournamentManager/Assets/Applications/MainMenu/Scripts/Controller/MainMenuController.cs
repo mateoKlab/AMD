@@ -12,6 +12,9 @@ public class MainMenuController : Controller<MainMenu>
     public TournamentController tournamentController { get; private set; }
     
     [Inject]
+    public TroopDetailsController troopDetailsController { get; private set; }
+    
+    [Inject]
     public EditTeamController editTeamController { get; private set; }
     
     [Inject]
@@ -21,7 +24,7 @@ public class MainMenuController : Controller<MainMenu>
     public TownController townController { get; private set; }
     
     [Inject]
-    public QuestController questController { get; private set; }
+    public MissionController missionController { get; private set; }
     
     [Inject]
     public FooterController footerController { get; private set; }

@@ -21,5 +21,14 @@ public class FighterData {
 	public int ATK = 100;
 
 	[XmlElement ("Name")]
-	public string name;
+	public string name = "Juan";
+
+	[XmlElement ("Class")]
+	public string fighterClass = "Warrior";
+
+	[XmlElement ("Weight")]
+	public int weight = 2;
+
+	[XmlElement ("ActiveIndex")]
+	public int activeTroopIndex = -1;
 }

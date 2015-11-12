@@ -18,19 +18,19 @@ public class TournamentModel : Model
 	private void PopulateMatchesList()
 	{
 		
-		Dictionary<StageType, Dictionary<string, StageData>> stageDatabaseClone = GameData.Instance.stageDatabase;
+		Dictionary<StageType, Dictionary<string, StageData>> stageDatabaseClone = GameData.instance.stageDatabase;
 		tournamentMatchDictionary = stageDatabaseClone[StageType.Tournament];
 
 		foreach (StageData sData in tournamentMatchDictionary.Values) {
 			tournamentMatchList.Add(sData);
 		}
+		
+		GameData.instance.playerData.tournamentMatchCount = tournamentMatchList.Count;
 
-		GameData.Instance.PlayerData.tournamentMatchCount = tournamentMatchList.Count;
-
-		for (int i = 0; i <= GameData.Instance.PlayerData.tournamentProgress; i++) {
-			if (!GameData.Instance.PlayerData.unlockedStages.Contains(tournamentMatchList[i].id))
+		for (int i = 0; i <= GameData.instance.playerData.tournamentProgress; i++) {
+			if (!GameData.instance.playerData.unlockedStages.Contains(tournamentMatchList[i].id))
 			{
-				GameData.Instance.PlayerData.unlockedStages.Add(tournamentMatchList[i].id);
+				GameData.instance.playerData.unlockedStages.Add(tournamentMatchList[i].id);
 			}
 		}
 

@@ -11,7 +11,7 @@ public class EditTeamOverlayView : View<MainMenu>, IDropHandler
 	{
 		base.Awake();
 
-		editTeamController = transform.parent.GetComponent<EditTeamController>();
+		editTeamController = GameObject.Find("EditTeam").GetComponent<EditTeamController>();
 	}
 
 	#region IDropHandler implementation
@@ -19,7 +19,8 @@ public class EditTeamOverlayView : View<MainMenu>, IDropHandler
 	public void OnDrop (PointerEventData eventData)
 	{
 		//Debug.LogError("EditTeamView OnDrop");
-		editTeamController.ReturnTroopFromSlotToTeamPanel(eventData.selectedObject);
+		if(eventData.selectedObject != null)
+			editTeamController.ReturnTroopFromSlotToTeamPanel(eventData.selectedObject);
 	}
 	
 	#endregion

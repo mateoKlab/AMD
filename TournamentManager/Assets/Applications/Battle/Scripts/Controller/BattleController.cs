@@ -22,13 +22,14 @@ public class BattleController : Controller<Battle>
 		if (enemies.Count == 0) {
 			Debug.Log ("WIN");
 			// TEST...
-		
-			GameData.Instance.PlayerData.gold += 1000;
 
-			if(GameData.Instance.PlayerData.tournamentProgress == GameData.Instance.PlayerData.unlockedStages.Count - 1 
-			   && GameData.Instance.currentStage.id == GameData.Instance.PlayerData.unlockedStages[GameData.Instance.PlayerData.unlockedStages.Count - 1]
-			   && GameData.Instance.PlayerData.tournamentProgress < GameData.Instance.PlayerData.tournamentMatchCount - 1)
-				GameData.Instance.PlayerData.tournamentProgress++;
+		
+			GameData.instance.playerData.gold += 1000;
+
+			if(GameData.instance.playerData.tournamentProgress == GameData.instance.playerData.unlockedStages.Count - 1 
+			   && GameData.instance.currentStage.id == GameData.instance.playerData.unlockedStages[GameData.instance.playerData.unlockedStages.Count - 1]
+			   && GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount - 1)
+				GameData.instance.playerData.tournamentProgress++;
 
 			Application.LoadLevel ("MainMenuScene");
 		}
@@ -45,7 +46,7 @@ public class BattleController : Controller<Battle>
 	{
 		Vector3 startPos = new Vector3 (-5f, -1f, 0f);
 
-		foreach (FighterData fighter in GameData.Instance.PlayerData.fightersOwned) {
+		foreach (FighterData fighter in GameData.instance.playerData.fightersOwned) {
 
 			GameObject newFighter = Instantiate (FighterPrefab);
 			newFighter.SetActive (true);

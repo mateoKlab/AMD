@@ -22,7 +22,7 @@ public class TournamentView : View
 	}
 
 	public void OnClickTournamentButton(string id) {
-		GameData.Instance.currentStage = ((TournamentModel)model).tournamentMatchDictionary[id];
+		GameData.instance.currentStage = ((TournamentModel)model).tournamentMatchDictionary[id];
 		((TournamentController)controller).GoToBattleScene();
 	}
 
@@ -40,7 +40,7 @@ public class TournamentView : View
 		}
 
 		tournamentElement = Instantiate(Resources.Load("Prefabs/TournamentElement_Self", typeof(GameObject))) as GameObject;
-		elementsList.Insert(((TournamentModel)model).tournamentMatchList.Count - GameData.Instance.PlayerData.tournamentProgress, tournamentElement);
+		elementsList.Insert(((TournamentModel)model).tournamentMatchList.Count - GameData.instance.playerData.tournamentProgress, tournamentElement);
 		
 		for (int i = 0; i < elementsList.Count; i++) {
 			elementsList[i].transform.SetParent(content.transform, false);

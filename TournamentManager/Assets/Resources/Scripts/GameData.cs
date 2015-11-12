@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System;
 using System.Collections;
@@ -9,11 +9,15 @@ using System.IO;
 using System.Text;
 
 public class GameData : MonoBehaviour {
-	
-	public PlayerData PlayerData;
+
+	public const int MAX_ACTIVE_FIGHTERS = 5;
+
+	public PlayerData playerData;
 
 	public List<FighterData> fighterDatabase = new List<FighterData> ();
 	public Dictionary<StageType, Dictionary<string, StageData>> stageDatabase;
+	
+	public FighterData[] activeFighters = new FighterData[GameData.MAX_ACTIVE_FIGHTERS];
 
 	// For test purposes only -AJ
 	public StageData currentStage;
@@ -22,7 +26,7 @@ public class GameData : MonoBehaviour {
 
 	// Singleton instance. _instance will be set on Awake().
 	private static GameData _instance;
-	public static GameData Instance {
+	public static GameData instance {
 		get { 
 			if (!_instance) {
 				GameObject newObject = new GameObject ();
@@ -53,8 +57,9 @@ public class GameData : MonoBehaviour {
 		// Create TEST Database.
 		SaveTestData ();	
 
-		PlayerData = PlayerData.Load ();
+		playerData = PlayerData.Load ();
 		LoadDatabase ();
+		LoadActiveFighters();
 	}
 
 
@@ -84,21 +89,21 @@ public class GameData : MonoBehaviour {
 		testStage1.enemies.Add (testEnemy2);
 
 		StageData testStage2 = new StageData ();
-		testStage2.stageType = StageType.Quest;
+		testStage2.stageType = StageType.Mission;
 		testStage2.id = "quest_001";
 		testStage2.name = "Test Quest 1";
 		testStage2.enemies.Add (testEnemy1);
 		testStage2.enemies.Add (testEnemy2);
 
 		StageData testStage3 = new StageData ();
-		testStage3.stageType = StageType.Quest;
+		testStage3.stageType = StageType.Mission;
 		testStage3.id = "quest_002";
 		testStage3.name = "Test Quest 2";
 		testStage3.enemies.Add (testEnemy1);
 		testStage3.enemies.Add (testEnemy2);
 
 		StageData testStage4 = new StageData ();
-		testStage4.stageType = StageType.Quest;
+		testStage4.stageType = StageType.Mission;
 		testStage4.id = "quest_003";
 		testStage4.name = "Test Quest 3";
 		testStage4.enemies.Add (testEnemy1);
@@ -162,17 +167,32 @@ public class GameData : MonoBehaviour {
 		FighterData testFighter1 = new FighterData ();
 		testFighter1.HP = 1000;
 		testFighter1.ATK = 150;
+		testFighter1.activeTroopIndex = -1;
 		testFighter1.name = "AJ";
 
 		FighterData testFighter2 = new FighterData ();
 		testFighter2.HP = 2000;
 		testFighter2.ATK = 100;
 		testFighter2.name = "Dave";
+		testFighter2.activeTroopIndex = -1;
 
 		FighterData testFighter3 = new FighterData ();
-		testFighter2.HP = 1500;
-		testFighter2.ATK = 100;
-		testFighter2.name = "Matt";
+		testFighter3.HP = 1500;
+		testFighter3.ATK = 100;
+		testFighter3.name = "Matt";
+		testFighter3.activeTroopIndex = -1;
+
+		FighterData testFighter4 = new FighterData ();
+		testFighter4.HP = 1500;
+		testFighter4.ATK = 150;
+		testFighter4.name = "Rence";
+		testFighter4.activeTroopIndex = -1;
+
+		FighterData testFighter5 = new FighterData ();
+		testFighter5.HP = 3000;
+		testFighter5.ATK = 300;
+		testFighter5.name = "Jeff";
+		testFighter5.activeTroopIndex = -1;
 
 		FighterDatabase fighterDatabase = new FighterDatabase ();
 		fighterDatabase.fighters = new List<FighterData> ();
@@ -180,6 +200,8 @@ public class GameData : MonoBehaviour {
 		fighterDatabase.fighters.Add (testFighter1);
 		fighterDatabase.fighters.Add (testFighter2);
 		fighterDatabase.fighters.Add (testFighter3);
+		fighterDatabase.fighters.Add (testFighter4);
+		fighterDatabase.fighters.Add (testFighter5);
 
 		xmls = new XmlSerializer(typeof(FighterDatabase));
 		using(var stream = new FileStream(Application.dataPath + "/Resources/Data/FighterDatabase.xml", FileMode.OpenOrCreate))
@@ -228,4 +250,34 @@ public class GameData : MonoBehaviour {
 
 		fighterDatabase = fighters.fighters;
 	}
+
+	#region Player Data Manipulation
+
+	public void SavePlayerData()
+	{
+		playerData.Save();
+	}
+
+	public void LoadActiveFighters()
+	{
+		for(int i = 0; i < playerData.fightersOwned.Count; i++)
+		{
+			if(playerData.fightersOwned[i].activeTroopIndex > -1)
+			{
+				activeFighters[playerData.fightersOwned[i].activeTroopIndex] = playerData.fightersOwned[i];
+			}
+		}
+	}
+
+	public List<FighterData> GetFightersOwned()
+	{
+		return playerData.fightersOwned;
+	}
+
+	public FighterData[] GetActiveFighters()
+	{
+		return activeFighters;
+	}
+
+	#endregion
 }
