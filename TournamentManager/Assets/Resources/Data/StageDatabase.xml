@@ -24,7 +24,7 @@
     </Enemies>
   </Stages>
   <Stages>
-    <stageType>Quest</stageType>
+    <stageType>Mission</stageType>
     <id>quest_001</id>
     <name>Test Quest 1</name>
     <Enemies>
@@ -47,7 +47,7 @@
     </Enemies>
   </Stages>
   <Stages>
-    <stageType>Quest</stageType>
+    <stageType>Mission</stageType>
     <id>quest_002</id>
     <name>Test Quest 2</name>
     <Enemies>
@@ -70,7 +70,7 @@
     </Enemies>
   </Stages>
   <Stages>
-    <stageType>Quest</stageType>
+    <stageType>Mission</stageType>
     <id>quest_003</id>
     <name>Test Quest 3</name>
     <Enemies>

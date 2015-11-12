@@ -4,31 +4,31 @@ using Bingo;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class QuestModel : Model
+public class MissionModel : Model
 {
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     //////// END MVCCodeEditor GENERATED CODE ////////
     
-	public Dictionary<string, StageData> questDictionary;
-	public List<Transform> questPoints = new List<Transform>();
+	public Dictionary<string, StageData> missionDictionary;
+	public List<Transform> missionPoints = new List<Transform>();
 
 	public override void Awake() 
 	{
 		base.Awake();
-		PopulateQuestList();
+		PopulateMissionList();
 	}
 	
-	private void PopulateQuestList()
+	private void PopulateMissionList()
 	{
 
 		Dictionary<StageType, Dictionary<string, StageData>> stageDatabaseClone = GameData.instance.stageDatabase;
-		questDictionary = stageDatabaseClone[StageType.Quest];
+		missionDictionary = stageDatabaseClone[StageType.Mission];
 		
-		foreach (Transform qPoint in GetComponentsInChildren<Transform>())
+		foreach (Transform mPoint in GetComponentsInChildren<Transform>())
 		{
-			if (qPoint != transform)
-				questPoints.Add(qPoint);
+			if (mPoint != transform)
+				missionPoints.Add(mPoint);
 		}
 		
 	}

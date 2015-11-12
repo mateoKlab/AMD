@@ -19,7 +19,7 @@ public class MainMenuModel : Model<MainMenu>
     public TownModel townModel { get; private set; }
     
     [Inject]
-    public QuestModel questModel { get; private set; }
+    public MissionModel missionModel { get; private set; }
     
     [Inject]
     public HeaderModel headerModel { get; private set; }
