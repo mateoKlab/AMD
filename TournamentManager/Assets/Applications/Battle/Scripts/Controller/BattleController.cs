@@ -26,9 +26,11 @@ public class BattleController : Controller<Battle>
 			//TODO: Show WIN popup. Send WIN event.		
 			GameData.instance.playerData.gold += 1000;
 
-			if(GameData.instance.playerData.tournamentProgress == GameData.instance.playerData.unlockedStages.Count - 1 
-			   && GameData.instance.currentStage.id == GameData.instance.playerData.unlockedStages[GameData.instance.playerData.unlockedStages.Count - 1]
-			   && GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount - 1)
+//			if(GameData.instance.playerData.tournamentProgress == GameData.instance.playerData.unlockedStages.Count - 1 
+//			   && GameData.instance.currentStage.id == GameData.instance.playerData.unlockedStages[GameData.instance.playerData.unlockedStages.Count - 1]
+//			   && GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount - 1)
+//				GameData.instance.playerData.tournamentProgress++;
+			if (GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount)
 				GameData.instance.playerData.tournamentProgress++;
 			Application.LoadLevel ("MainMenuScene");
 		}
@@ -37,7 +39,7 @@ public class BattleController : Controller<Battle>
 
 	void OnDestroy ()
 	{
-		Messenger.RemoveListener (EventTags.FIGHTER_KILLED, FighterKilled);
+//		Messenger.RemoveListener (EventTags.FIGHTER_KILLED, FighterKilled);
 	}
 			                     
 	// HACK ..TEST CODE.. HACK
@@ -56,30 +58,19 @@ public class BattleController : Controller<Battle>
 
 			newFighter.transform.position = startPos;
 
-			startPos = new Vector3 (-5f - 1f, 1f, 0f);
+			startPos = new Vector3 (startPos.x -1f, - 1f, 0f);
 		}
 
-		StageData testData = new StageData ();
+		startPos = new Vector3 (4f, -1f, 0f);
 
-		FighterData testFighter1 = new FighterData ();
-		testFighter1.HP = 200;
-		testFighter1.ATK = 50;
-		testFighter1.name = "Kalaban";
+		StageData currentStage = GameData.instance.currentStage;
+		foreach (FighterData fighter in currentStage.enemies) {
+			enemies.Add (fighter);
 
-//		FighterData testFighter2 = new FighterData ();
-//		testFighter2.HP = 2000;
-//		testFighter2.ATK = 50;
-
-		testData.enemies.Add (testFighter1);
-//		testData.enemies.Add (testFighter2);
-
-		startPos = new Vector3 (5f, 1f, 0f);
-
-		foreach (FighterData fighter in testData.enemies) {
 			GameObject newFighter = Instantiate (FighterPrefab);
 			newFighter.layer = LayerMask.NameToLayer("EnemyUnits");
 			newFighter.SetActive (true);
-
+			
 			
 			newFighter.GetComponent <FighterModel> ().fighterData = fighter;
 			newFighter.GetComponent <FighterModel> ().allegiance = FighterModel.FighterAlliegiance.Enemy;
@@ -87,7 +78,7 @@ public class BattleController : Controller<Battle>
 			newFighter.transform.position = startPos;
 			newFighter.transform.rotation = Quaternion.Euler(0,180f,0);
 
-			startPos = new Vector3 (5f + 1f, 1f, 0f);
+			startPos = new Vector3 (startPos.x + 1.2f, -1f, 0f);
 		}
 	}
 

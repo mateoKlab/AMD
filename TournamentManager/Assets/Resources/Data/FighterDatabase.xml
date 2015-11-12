@@ -1,41 +1,46 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <FighterDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Fighters>
+    <ID>Default_ID</ID>
+    <Name>AJ</Name>
     <HP>1000</HP>
     <ATK>150</ATK>
-    <Name>AJ</Name>
     <Class>Warrior</Class>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
   <Fighters>
+    <ID>Default_ID</ID>
+    <Name>Dave</Name>
     <HP>2000</HP>
     <ATK>100</ATK>
-    <Name>Dave</Name>
     <Class>Warrior</Class>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
   <Fighters>
+    <ID>Default_ID</ID>
+    <Name>Matt</Name>
     <HP>1500</HP>
     <ATK>100</ATK>
-    <Name>Matt</Name>
     <Class>Warrior</Class>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
   <Fighters>
+    <ID>Default_ID</ID>
+    <Name>Rence</Name>
     <HP>1500</HP>
     <ATK>150</ATK>
-    <Name>Rence</Name>
     <Class>Warrior</Class>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
   <Fighters>
+    <ID>Default_ID</ID>
+    <Name>Jeff</Name>
     <HP>3000</HP>
     <ATK>300</ATK>
-    <Name>Jeff</Name>
     <Class>Warrior</Class>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
