@@ -12,18 +12,18 @@ public class BattleController : Controller<Battle>
 	void Start ()
 	{
 		Messenger.AddListener (EventTags.FIGHTER_KILLED, FighterKilled);
-
 	}
 
 	void FighterKilled (params object[] args)
 	{
+		Debug.Log (((FighterData)args [0]).name + " KILLED");
 		enemies.Remove ((FighterData)args [0]);
 
 		if (enemies.Count == 0) {
 			Debug.Log ("WIN");
 			// TEST...
 
-		
+			//TODO: Show WIN popup. Send WIN event.		
 			GameData.instance.playerData.gold += 1000;
 
 //			if(GameData.instance.playerData.tournamentProgress == GameData.instance.playerData.unlockedStages.Count - 1 
@@ -41,7 +41,7 @@ public class BattleController : Controller<Battle>
 	{
 		Messenger.RemoveListener (EventTags.FIGHTER_KILLED, FighterKilled);
 	}
-		                     
+			                     
 	// HACK ..TEST CODE.. HACK
 	public void SpawnFighters ()
 	{
@@ -53,7 +53,7 @@ public class BattleController : Controller<Battle>
 			newFighter.SetActive (true);
 
 
-			newFighter.GetComponent <FighterModel> ().FighterData = fighter;
+			newFighter.GetComponent <FighterModel> ().fighterData = fighter;
 			newFighter.GetComponent <FighterModel> ().allegiance = FighterModel.FighterAlliegiance.Ally;
 
 			newFighter.transform.position = startPos;
@@ -83,7 +83,7 @@ public class BattleController : Controller<Battle>
 			newFighter.SetActive (true);
 
 			
-			newFighter.GetComponent <FighterModel> ().FighterData = fighter;
+			newFighter.GetComponent <FighterModel> ().fighterData = fighter;
 			newFighter.GetComponent <FighterModel> ().allegiance = FighterModel.FighterAlliegiance.Enemy;
 
 			newFighter.transform.position = startPos;

@@ -23,7 +23,7 @@ public class FighterController : Controller {
 	{
 		//TODO: Animate, Change State, etc.
 
-		FighterData fighter = ((FighterModel)GetComponent<Model> ()).FighterData;
+		FighterData fighter = ((FighterModel)GetComponent<Model> ()).fighterData;
 
 		StartCoroutine ("AttackAnimation");
 
@@ -71,13 +71,16 @@ public class FighterController : Controller {
 
 	private void ReceiveDamage (Attack attack)
 	{
-		FighterData fighter = ((FighterModel)model).FighterData;
-		// Temporary Damage computation. TODO: Apply armor damage reduction effects.
-		fighter.HP -= attack.damage;
+		Debug.Log (((FighterModel)model).fighterData.name + " received damage");
 
-		if (fighter.HP <= 0) {
-			Debug.Log (fighter.name + " died.");
-			Messenger.Send (EventTags.FIGHTER_KILLED, fighter);
+		FighterData defender = ((FighterModel)model).fighterData;
+		FighterData attacker = attack.attackOrigin.GetComponent <FighterModel> ().fighterData;
+		// Temporary Damage computation. TODO: Apply armor damage reduction effects.
+		defender.HP -= attack.damage;
+
+		if (defender.HP <= 0) {
+			Debug.Log (defender.name + " died.");
+			Messenger.Send (EventTags.FIGHTER_KILLED, defender, attacker);
 
 			// TEST.
 			Destroy (gameObject);

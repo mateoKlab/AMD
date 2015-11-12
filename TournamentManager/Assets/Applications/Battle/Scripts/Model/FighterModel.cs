@@ -4,7 +4,7 @@ using Bingo;
 
 public class FighterModel : Model {
 
-	public FighterData FighterData;
+	public FighterData fighterData;
 	public bool onGround;
 
 
