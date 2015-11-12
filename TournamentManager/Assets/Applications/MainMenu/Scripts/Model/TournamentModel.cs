@@ -27,12 +27,12 @@ public class TournamentModel : Model
 		
 		GameData.instance.playerData.tournamentMatchCount = tournamentMatchList.Count;
 
-		for (int i = 0; i <= GameData.instance.playerData.tournamentProgress; i++) {
-			if (!GameData.instance.playerData.unlockedStages.Contains(tournamentMatchList[i].id))
-			{
-				GameData.instance.playerData.unlockedStages.Add(tournamentMatchList[i].id);
-			}
-		}
+//		for (int i = 0; i <= GameData.instance.playerData.tournamentProgress; i++) {
+//			if (!GameData.instance.playerData.unlockedStages.Contains(tournamentMatchList[i].id))
+//			{
+//				GameData.instance.playerData.unlockedStages.Add(tournamentMatchList[i].id);
+//			}
+//		}
 
 
 	}
