@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using Bingo;
 
@@ -23,7 +23,7 @@ public class FighterController : Controller {
 	{
 		//TODO: Animate, Change State, etc.
 
-		FighterData fighter = ((FighterModel)GetComponent<Model> ()).FighterData;
+		FighterData fighter = ((FighterModel)GetComponent<Model> ()).fighterData;
 
 		StartCoroutine ("AttackAnimation");
 
@@ -71,7 +71,7 @@ public class FighterController : Controller {
 
 	private void ReceiveDamage (Attack attack)
 	{
-		FighterData fighter = ((FighterModel)model).FighterData;
+		FighterData fighter = ((FighterModel)model).fighterData;
 		// Temporary Damage computation. TODO: Apply armor damage reduction effects.
 		fighter.HP -= attack.damage;
 

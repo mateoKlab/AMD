@@ -78,6 +78,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 		for(int i = 0; i < fighters.Count; i++)
 		{
 			GameObject go = Instantiate(troopPrefab);
+			go.AddComponent<FighterModel>();
 			go.transform.SetParent(teamPanel);
 			TroopController tc = go.GetComponent<TroopController>();
 			model.troops.Add(tc);

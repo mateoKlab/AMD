@@ -16,8 +16,10 @@ public class GameData : MonoBehaviour {
 
 	public List<FighterData> fighterDatabase = new List<FighterData> ();
 	public Dictionary<StageType, Dictionary<string, StageData>> stageDatabase;
-	
+
+	// Team management
 	public FighterData[] activeFighters = new FighterData[GameData.MAX_ACTIVE_FIGHTERS];
+	public int currentTeamCapacity;
 
 	// For test purposes only -AJ
 	public StageData currentStage;
@@ -262,9 +264,10 @@ public class GameData : MonoBehaviour {
 	{
 		for(int i = 0; i < playerData.fightersOwned.Count; i++)
 		{
-			if(playerData.fightersOwned[i].activeTroopIndex > -1)
+			if(playerData.fightersOwned[i].activeTroopIndex > -1 && isWithinTroopCapacity(playerData.fightersOwned[i].cost))
 			{
 				activeFighters[playerData.fightersOwned[i].activeTroopIndex] = playerData.fightersOwned[i];
+				currentTeamCapacity += playerData.fightersOwned[i].cost;
 			}
 		}
 	}
@@ -277,6 +280,11 @@ public class GameData : MonoBehaviour {
 	public FighterData[] GetActiveFighters()
 	{
 		return activeFighters;
+	}
+
+	public bool isWithinTroopCapacity(int troopCost)
+	{
+		return ((currentTeamCapacity + troopCost) <= playerData.troopCapacity);
 	}
 
 	#endregion

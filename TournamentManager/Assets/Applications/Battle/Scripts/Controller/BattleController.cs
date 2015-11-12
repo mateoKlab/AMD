@@ -44,7 +44,7 @@ public class BattleController : Controller<Battle>
 			newFighter.SetActive (true);
 
 
-			newFighter.GetComponent <FighterModel> ().FighterData = fighter;
+			newFighter.GetComponent <FighterModel> ().fighterData = fighter;
 			newFighter.GetComponent <FighterModel> ().allegiance = FighterModel.FighterAlliegiance.Ally;
 
 			newFighter.transform.position = startPos;
@@ -74,7 +74,7 @@ public class BattleController : Controller<Battle>
 			newFighter.SetActive (true);
 
 			
-			newFighter.GetComponent <FighterModel> ().FighterData = fighter;
+			newFighter.GetComponent <FighterModel> ().fighterData = fighter;
 			newFighter.GetComponent <FighterModel> ().allegiance = FighterModel.FighterAlliegiance.Enemy;
 
 			newFighter.transform.position = startPos;

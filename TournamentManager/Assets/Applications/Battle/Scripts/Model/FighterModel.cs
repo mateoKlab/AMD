@@ -4,7 +4,7 @@ using Bingo;
 
 public class FighterModel : Model {
 
-	public FighterData FighterData;
+	public FighterData fighterData;
 	public bool onGround;
 
 
@@ -15,14 +15,39 @@ public class FighterModel : Model {
 		Enemy = -1
 	}
 
-
-	// Use this for initialization
-	void Start () {
-	
+	public string name 
+	{
+		get 
+		{
+			return fighterData.name;
+		}
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	public int healthPoints 
+	{
+		get
+		{
+			return fighterData.HP;
+		}
+	}
 	
+	public int attack
+	{
+		get
+		{
+			return fighterData.ATK;
+		}
+	}
+	
+	public int activeTroopIndex
+	{
+		get
+		{
+			return fighterData.activeTroopIndex;
+		}
+		set
+		{
+			fighterData.activeTroopIndex = value;
+		}
 	}
 }
