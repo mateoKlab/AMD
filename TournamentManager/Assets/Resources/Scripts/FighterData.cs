@@ -11,6 +11,13 @@ public class FighterDatabase {
 	public List<FighterData> fighters;
 }
 
+public enum FighterElement {
+	Fire,
+	Water,
+	Lightning,
+	Earth
+}
+
 [XmlRoot]
 public class FighterData {
 
@@ -25,6 +32,9 @@ public class FighterData {
 
 	[XmlElement ("Class")]
 	public string fighterClass = "Warrior";
+
+	[XmlElement ("Element")]
+	public FighterElement fighterElement;
 
 	[XmlElement ("Weight")]
 	public int weight = 2;

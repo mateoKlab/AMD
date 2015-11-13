@@ -55,7 +55,7 @@ public class GameData : MonoBehaviour {
 		}
 
 		// Create TEST Database.
-		SaveTestData ();	
+//		SaveTestData ();	
 
 		playerData = PlayerData.Load ();
 		LoadDatabase ();

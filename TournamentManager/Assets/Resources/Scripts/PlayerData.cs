@@ -25,9 +25,6 @@ public class PlayerData {
 	[XmlArrayItem("Fighter")]
 	public List<FighterData> fightersOwned = new List<FighterData> ();
 
-	//[XmlArrayItem("UnlockedStages")]
-	//public List<string> unlockedStages = new List<string> ();
-
 	public void Save ()
 	{
 		XmlSerializer xmls = new XmlSerializer(typeof(PlayerData));

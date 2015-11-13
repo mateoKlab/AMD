@@ -7,9 +7,6 @@ public class MainMenuView : View<MainMenu>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
-    public TournamentView tournamentView { get; private set; }
-    
-    [Inject]
     public TroopDetailsView troopDetailsView { get; private set; }
     
     [Inject]
@@ -19,16 +16,19 @@ public class MainMenuView : View<MainMenu>
     public EditTeamView editTeamView { get; private set; }
     
     [Inject]
+    public TournamentView tournamentView { get; private set; }
+    
+    [Inject]
     public GachaView gachaView { get; private set; }
     
     [Inject]
     public TownView townView { get; private set; }
     
     [Inject]
-    public PopUpShadeView popUpShadeView { get; private set; }
+    public MissionView missionView { get; private set; }
     
     [Inject]
-    public MissionView missionView { get; private set; }
+    public PopUpShadeView popUpShadeView { get; private set; }
     
     [Inject]
     public FooterView footerView { get; private set; }
