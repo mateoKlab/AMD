@@ -19,7 +19,7 @@ public class GameData : MonoBehaviour {
 
 	// Team management
 	public FighterData[] activeFighters = new FighterData[GameData.MAX_ACTIVE_FIGHTERS];
-	public int currentTeamCost;
+	public int currentPartyCost;
 
 	// For test purposes only -AJ
 	public StageData currentStage;
@@ -119,11 +119,11 @@ public class GameData : MonoBehaviour {
 		{
 			if(playerData.fightersOwned[i].activeTroopIndex > -1)
 			{
-				if(IsWithinTroopCapacity(playerData.fightersOwned[i].cost))
+				if(IsWithinPartyCapacity(playerData.fightersOwned[i].cost))
 				{
 					// Add active troop to active fighters and add its cost to team capacity
 					activeFighters[playerData.fightersOwned[i].activeTroopIndex] = playerData.fightersOwned[i];
-					currentTeamCost += playerData.fightersOwned[i].cost;
+					currentPartyCost += playerData.fightersOwned[i].cost;
 				}
 				else
 				{
@@ -146,14 +146,14 @@ public class GameData : MonoBehaviour {
 		return activeFighters;
 	}
 
-	public int GetTeamCapacity()
+	public int GetPartyCapacity()
 	{
-		return playerData.teamCapacity;
+		return playerData.partyCapacity;
 	}
 
-	public bool IsWithinTroopCapacity(int troopCost)
+	public bool IsWithinPartyCapacity(int troopCost)
 	{
-		return ((currentTeamCost + troopCost) <= playerData.teamCapacity);
+		return ((currentPartyCost + troopCost) <= playerData.partyCapacity);
 	}
 
 	#endregion

@@ -11,7 +11,7 @@ public class EditTeamView : View
 	{
 		base.Awake ();
 
-		teamCost = transform.Find("TeamCost").GetComponent<Text>();
+		teamCost = transform.Find("PartyCost").GetComponent<Text>();
 	}
 
 	public void SetCost(int cost, int capacity)

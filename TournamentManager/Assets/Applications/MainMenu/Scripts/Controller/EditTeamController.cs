@@ -69,7 +69,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 		yield return StartCoroutine("LoadTroops");
 		MoveActiveTroopsToActiveSlots();
 		yield return new WaitForEndOfFrame();
-		view.SetCost(GetTeamCost(), gameData.GetTeamCapacity());
+		view.SetCost(GetPartyCost(), gameData.GetPartyCapacity());
 	}
 
 	private void DeleteAllTroops()
@@ -143,16 +143,16 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 	public void AddTroopOnTeam(int index, FighterData troop)
 	{
 		model.activeTroops[index] = troop;
-		view.SetCost(GetTeamCost(), gameData.GetTeamCapacity());
+		view.SetCost(GetPartyCost(), gameData.GetPartyCapacity());
 	}
 
 	public void RemoveTroopOnTeam(int index)
 	{
 		model.activeTroops[index] = null;
-		view.SetCost(GetTeamCost(), gameData.GetTeamCapacity());
+		view.SetCost(GetPartyCost(), gameData.GetPartyCapacity());
 	}
 
-	public int GetTeamCost()
+	public int GetPartyCost()
 	{
 		int cost = 0;
 		for(int i = 0; i < model.activeTroops.Length; i++)
@@ -165,8 +165,8 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 		return cost;
 	}
 
-	public bool IsWithinTroopCapacity(int troopCost)
+	public bool IsWithinPartyCapacity(int troopCost)
 	{
-		return ((GetTeamCost() + troopCost) <= gameData.GetTeamCapacity());
+		return ((GetPartyCost() + troopCost) <= gameData.GetPartyCapacity());
 	}
 }

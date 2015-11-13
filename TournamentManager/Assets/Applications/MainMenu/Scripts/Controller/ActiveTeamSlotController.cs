@@ -39,7 +39,7 @@ public class ActiveTeamSlotController : Controller
 				return;
 
 			troopOnSlot = selectedTroop.GetComponent<TroopController>();
-			if(!editTeamController.IsWithinTroopCapacity(troopOnSlot.GetTroopCost()))
+			if(!editTeamController.IsWithinPartyCapacity(troopOnSlot.GetTroopCost()))
 				return;
 
 			troopOnSlot.SetTroopActive(slotIndex);
