@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class GachaView : View
 {
-	private Text nameLabel;
-	private Text hpLabel;
-	private Text atkLabel;
-	private Button rollButton;
-	private RawImage characterSprite;
+	public Text nameLabel;
+	public Text classLabel;
+	public Text hpLabel;
+	public Text atkLabel;
+	public Text elementLabel;
+	public Button rollButton;
+	public RawImage characterSprite;
+	private string spritePath = "Sprites/GachaSprites/";
 
 	public override void Awake() {
 		base.Awake();
@@ -18,14 +21,18 @@ public class GachaView : View
 
 	private void InitializeGachaInterface() 
 	{
+		characterSprite = transform.FindChild("CharacterSprite").GetComponent<RawImage>();
 		nameLabel = transform.FindChild("NameLabel").GetComponent<Text>();
-		atkLabel = transform.FindChild("ATKLabel").GetComponent<Text>();
+		classLabel = transform.FindChild("ClassLabel").GetComponent<Text>();
 		hpLabel = transform.FindChild("HPLabel").GetComponent<Text>();
+		atkLabel = transform.FindChild("ATKLabel").GetComponent<Text>();
+		elementLabel = transform.FindChild("ElementLabel").GetComponent<Text>();
 		rollButton = transform.FindChild("RollButton").GetComponent<Button>();
-		characterSprite = transform.FindChild("GachaCharacterSprite").GetComponent<RawImage>();
+		characterSprite.texture = Resources.Load(spritePath + "Default") as Texture;
 	}
 
 	public void OnClickCloseButton() {
+		ResetDisplayValues();
 		((GachaController)controller).CloseGachaPopUp();
 	}
 
@@ -34,10 +41,21 @@ public class GachaView : View
 		//rollButton.interactable = false;
 	}
 
-	public void DisplayGachaCharacter(string name, int hp, int atk) {
-		nameLabel.text = "Name: " + name;
-		hpLabel.text = "HP: " + hp;
-		atkLabel.text = "ATK: " + atk;
-		characterSprite.gameObject.SetActive(true);
+	public void DisplayGachaCharacter(FighterData fData) {
+		nameLabel.text = "Name: " + fData.name;
+		hpLabel.text = "HP: " + fData.HP;
+		atkLabel.text = "ATK: " + fData.ATK;
+		classLabel.text = "Class: " + fData.fighterClass;
+		elementLabel.text = "Element: " + fData.fighterElement;
+		characterSprite.texture = Resources.Load(spritePath + fData.fighterElement) as Texture;
+	}
+
+	public void ResetDisplayValues() {
+		nameLabel.text = "";
+		hpLabel.text = "";
+		atkLabel.text = "";
+		classLabel.text = "";
+		elementLabel.text = "";
+		characterSprite.texture = Resources.Load(spritePath + "Default") as Texture;
 	}
 }
