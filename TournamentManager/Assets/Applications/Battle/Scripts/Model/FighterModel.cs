@@ -50,4 +50,12 @@ public class FighterModel : Model {
 			fighterData.activeTroopIndex = value;
 		}
 	}
+
+	public int cost
+	{
+		get
+		{
+			return fighterData.cost;
+		}
+	}
 }

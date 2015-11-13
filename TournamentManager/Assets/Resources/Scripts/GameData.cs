@@ -19,7 +19,7 @@ public class GameData : MonoBehaviour {
 
 	// Team management
 	public FighterData[] activeFighters = new FighterData[GameData.MAX_ACTIVE_FIGHTERS];
-	public int currentTeamCapacity;
+	public int currentTeamCost;
 
 	// For test purposes only -AJ
 	public StageData currentStage;
@@ -117,10 +117,21 @@ public class GameData : MonoBehaviour {
 	{
 		for(int i = 0; i < playerData.fightersOwned.Count; i++)
 		{
-			if(playerData.fightersOwned[i].activeTroopIndex > -1 && isWithinTroopCapacity(playerData.fightersOwned[i].cost))
+			if(playerData.fightersOwned[i].activeTroopIndex > -1)
 			{
-				activeFighters[playerData.fightersOwned[i].activeTroopIndex] = playerData.fightersOwned[i];
-				currentTeamCapacity += playerData.fightersOwned[i].cost;
+				if(IsWithinTroopCapacity(playerData.fightersOwned[i].cost))
+				{
+					// Add active troop to active fighters and add its cost to team capacity
+					activeFighters[playerData.fightersOwned[i].activeTroopIndex] = playerData.fightersOwned[i];
+					currentTeamCost += playerData.fightersOwned[i].cost;
+				}
+				else
+				{
+					// Just in case there was an error in saving the active troops, if the troop is active 
+					// and adding it to active troops will exceed the current troop capacity,
+					// set that troop as incactive
+					playerData.fightersOwned[i].activeTroopIndex = -1;
+				}
 			}
 		}
 	}
@@ -135,9 +146,14 @@ public class GameData : MonoBehaviour {
 		return activeFighters;
 	}
 
-	public bool isWithinTroopCapacity(int troopCost)
+	public int GetTeamCapacity()
 	{
-		return ((currentTeamCapacity + troopCost) <= playerData.troopCapacity);
+		return playerData.teamCapacity;
+	}
+
+	public bool IsWithinTroopCapacity(int troopCost)
+	{
+		return ((currentTeamCost + troopCost) <= playerData.teamCapacity);
 	}
 
 	#endregion

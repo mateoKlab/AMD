@@ -7,6 +7,18 @@ public class ActiveTeamSlotController : Controller
 	public int slotIndex;
 	private TroopController troopOnSlot;
 
+	private EditTeamController _editTeamController;
+	protected EditTeamController editTeamController
+	{
+		get
+		{
+			if(_editTeamController == null)
+				_editTeamController = GameObject.Find("EditTeam").GetComponent<EditTeamController>();
+
+			return _editTeamController;
+		}
+	}
+
 	public override void Awake ()
 	{
 		base.Awake ();
@@ -27,10 +39,12 @@ public class ActiveTeamSlotController : Controller
 				return;
 
 			troopOnSlot = selectedTroop.GetComponent<TroopController>();
-			troopOnSlot.SetActiveTroopIndex(slotIndex);
+			if(!editTeamController.IsWithinTroopCapacity(troopOnSlot.GetTroopCost()))
+				return;
+
+			troopOnSlot.SetTroopActive(slotIndex);
 			selectedTroop.transform.SetParent(transform);
 			selectedTroop.transform.localPosition = Vector2.zero;
-			//Debug.LogError("SetTroopOnSlot");
 		}
 	}
 

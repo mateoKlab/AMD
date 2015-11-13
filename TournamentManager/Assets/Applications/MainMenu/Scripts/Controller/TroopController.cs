@@ -14,17 +14,25 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
 	private EditTeamController editTeamController;
 	private Transform teamPanel;
 	private int siblingIndex;
-	
-	void Start() {
+
+	public override void Awake()
+	{
+		base.Awake();
+
 		canvasGroup = GetComponent<CanvasGroup>();
 		editTeamController = GameObject.Find("EditTeam").GetComponent<EditTeamController>();
 		teamPanel = GameObject.Find("TeamPanel").transform;
 		gridLayoutGroup = teamPanel.GetComponent<GridLayoutGroup>();
 	}
 
+	void Start() {
+
+	}
+
 	public void SetTroop(FighterData fighterData)
 	{
 		model.fighterData = fighterData;
+		view.SetIcon(fighterData.normalIcon);
 	}
 
 	public FighterData GetTroop()
@@ -32,9 +40,15 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
 		return model.fighterData;
 	}
 
-	public void SetActiveTroopIndex(int index)
+	public void SetTroopActive(int slotIndex)
 	{
-		model.activeTroopIndex = index;
+		model.activeTroopIndex = slotIndex;
+		editTeamController.AddTroopOnTeam(model.activeTroopIndex, model.fighterData);
+	}
+
+	public int GetTroopCost()
+	{
+		return model.cost;
 	}
 
 	public void OnPointerEnter()
@@ -53,6 +67,8 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
 		transform.SetAsLastSibling();
 
 		// Set troop as inactive as soon as it was dragged
+		if(model.activeTroopIndex > -1)
+			editTeamController.RemoveTroopOnTeam(model.activeTroopIndex);
 		model.activeTroopIndex = -1;
 	}
 
@@ -75,13 +91,11 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
 		}
 		
 		gridLayoutGroup.enabled = true;
-		//Debug.LogError("TroopController OnEndDrag");
 	}
 
 	// If a troop being dragged is dropped over this troop, return that troop to team panel
 	public void OnDrop(GameObject selectedObject) 
 	{
-		//Debug.LogError("EditTeamView OnDrop");
 		editTeamController.ReturnTroopFromSlotToTeamPanel(selectedObject);
 	}
 }
