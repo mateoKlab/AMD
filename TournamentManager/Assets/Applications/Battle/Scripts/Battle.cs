@@ -4,7 +4,7 @@ using Bingo;
 
 public class Battle : BaseApplication<BattleModel, BattleView, BattleController>
 {
-    void Awake ()
+    void Start ()
 	{
 
 		// TEMP..

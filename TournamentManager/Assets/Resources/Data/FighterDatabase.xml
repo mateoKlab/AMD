@@ -15,7 +15,7 @@
     <Name>Dave</Name>
     <HP>2000</HP>
     <ATK>100</ATK>
-    <Class>Warrior</Class>
+    <Class>Knight</Class>
     <Element>Water</Element>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
@@ -25,7 +25,7 @@
     <Name>Matt</Name>
     <HP>1500</HP>
     <ATK>100</ATK>
-    <Class>Warrior</Class>
+    <Class>Magician</Class>
     <Element>Lightning</Element>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
@@ -35,7 +35,7 @@
     <Name>Rence</Name>
     <HP>1500</HP>
     <ATK>150</ATK>
-    <Class>Warrior</Class>
+    <Class>Archer</Class>
     <Element>Earth</Element>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
@@ -45,7 +45,7 @@
     <Name>Jeff</Name>
     <HP>3000</HP>
     <ATK>300</ATK>
-    <Class>Warrior</Class>
+    <Class>Thief</Class>
     <Element>Fire</Element>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>

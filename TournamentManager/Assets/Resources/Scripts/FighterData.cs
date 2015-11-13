@@ -24,6 +24,9 @@ public class FighterData {
 	[XmlElement]
 	public int HP = 1000;
 
+	[XmlElement ("MaxHP")]
+	public int maxHP = 1000;
+
 	[XmlElement]
 	public int ATK = 100;
 
@@ -41,4 +44,29 @@ public class FighterData {
 
 	[XmlElement ("ActiveIndex")]
 	public int activeTroopIndex = -1;
+
+	[XmlIgnore]
+	private Sprite[] _sprites;
+	[XmlIgnore]
+	public Sprite[] sprites
+	{
+		get
+		{
+			if(_sprites == null || _sprites.Length == 0)
+			{
+				_sprites = Resources.LoadAll<Sprite>("Sprites/Classes/" + fighterClass);
+			}
+
+			return _sprites;
+		}
+	}
+
+	[XmlIgnore]
+	public Sprite normalIcon
+	{
+		get
+		{
+			return sprites[0];
+		}
+	}
 }

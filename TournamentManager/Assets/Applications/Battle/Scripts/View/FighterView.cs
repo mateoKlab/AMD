@@ -21,13 +21,13 @@ public class FighterView : View {
 	// TEMPORARY.
 	public void SetAttackSprite ()
 	{
-		GetComponent<SpriteRenderer> ().sprite = attackSprite;
+//		GetComponent<SpriteRenderer> ().sprite = attackSprite;
 	}
 
 	// TEMPORARY.
 	public void SetIdleSprite ()
 	{
-		GetComponent<SpriteRenderer> ().sprite = idleSprite;
+//		GetComponent<SpriteRenderer> ().sprite = idleSprite;
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)

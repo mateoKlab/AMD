@@ -17,15 +17,6 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 	private Transform teamPanel;
 	private GameObject troopPrefab;
 
-	private PlayerData _playerData;
-	protected PlayerData playerData
-	{
-		get
-		{
-			return (_playerData ?? (_playerData = GameData.instance.playerData));
-		}
-	}
-
 	private GameData _gameData;
 	protected GameData gameData
 	{
@@ -47,7 +38,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 	void OnEnable() 
 	{
 		if(model.troops.Count != gameData.GetFightersOwned().Count)
-			LoadAllTroops();
+			StartCoroutine("LoadAllTroops");
 	}
 
 	public void ShowEditTeam()
@@ -58,35 +49,27 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 
 	public void HideEditTeam()
 	{
-		gameData.SavePlayerData();
+		SaveTeam();
 		Input.multiTouchEnabled = true;
 		app.controller.EnableMainMenuItems(true);
 		gameObject.SetActive(false);
 	}
 
-	private void LoadAllTroops()
+	private void SaveTeam()
 	{
-		DeleteAllTroops();
-		troopPrefab = Resources.Load("Prefabs/Troop") as GameObject;
-		StartCoroutine("LoadTroops");
-		MoveActiveTroopsToActiveSlots();
+		gameData.SavePlayerData();
+		gameData.activeFighters = model.activeTroops;
 	}
 
-	private IEnumerator LoadTroops()
+	private IEnumerator LoadAllTroops()
 	{
-		List<FighterData> fighters = gameData.GetFightersOwned();
-		for(int i = 0; i < fighters.Count; i++)
-		{
-			GameObject go = Instantiate(troopPrefab);
-			go.AddComponent<FighterModel>();
-			go.transform.SetParent(teamPanel);
-			TroopController tc = go.GetComponent<TroopController>();
-			model.troops.Add(tc);
-			tc.SetTroop(fighters[i]);
-		}
-
+		DeleteAllTroops();
 		yield return new WaitForEndOfFrame();
-		ShowTroopDetails(fighters[0]);
+		troopPrefab = Resources.Load("Prefabs/Troop") as GameObject;
+		yield return StartCoroutine("LoadTroops");
+		MoveActiveTroopsToActiveSlots();
+		yield return new WaitForEndOfFrame();
+		view.SetCost(GetPartyCost(), gameData.GetPartyCapacity());
 	}
 
 	private void DeleteAllTroops()
@@ -106,8 +89,31 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 				DestroyObject(model.activeTeamSlots[i].transform.GetChild(0).gameObject);
 			}
 		}
+
+		model.troops.Clear();
+		for(int i = 0; i < model.activeTroops.Length; i++)
+		{
+			model.activeTroops[i] = null;
+		}
 	}
 
+	private IEnumerator LoadTroops()
+	{
+		List<FighterData> fighters = gameData.GetFightersOwned();
+		for(int i = 0; i < fighters.Count; i++)
+		{
+			GameObject go = Instantiate(troopPrefab);
+			go.AddComponent<FighterModel>();
+			go.transform.SetParent(teamPanel);
+			TroopController tc = go.GetComponent<TroopController>();
+			model.troops.Add(tc);
+			tc.SetTroop(fighters[i]);
+		}
+
+		yield return new WaitForEndOfFrame();
+		ShowTroopDetails(fighters[0]);
+	}
+	
 	private void MoveActiveTroopsToActiveSlots()
 	{
 		for(int i = 0; i < model.troops.Count; i++)
@@ -115,6 +121,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 			if(model.troops[i].GetTroop().activeTroopIndex > -1)
 			{
 				model.GetActiveTeamSlot(model.troops[i].GetTroop().activeTroopIndex).SetTroopOnSlot(model.troops[i].gameObject);
+				AddTroopOnTeam(model.troops[i].GetTroop().activeTroopIndex, model.troops[i].GetTroop());
 			}
 		}
 	}
@@ -133,4 +140,33 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 		troopDetailsController.SetTroopDetails(fighter);
 	}
 
+	public void AddTroopOnTeam(int index, FighterData troop)
+	{
+		model.activeTroops[index] = troop;
+		view.SetCost(GetPartyCost(), gameData.GetPartyCapacity());
+	}
+
+	public void RemoveTroopOnTeam(int index)
+	{
+		model.activeTroops[index] = null;
+		view.SetCost(GetPartyCost(), gameData.GetPartyCapacity());
+	}
+
+	public int GetPartyCost()
+	{
+		int cost = 0;
+		for(int i = 0; i < model.activeTroops.Length; i++)
+		{
+			if(model.activeTroops[i] != null)
+			{
+				cost += model.activeTroops[i].cost;
+			}
+		}
+		return cost;
+	}
+
+	public bool IsWithinPartyCapacity(int troopCost)
+	{
+		return ((GetPartyCost() + troopCost) <= gameData.GetPartyCapacity());
+	}
 }
