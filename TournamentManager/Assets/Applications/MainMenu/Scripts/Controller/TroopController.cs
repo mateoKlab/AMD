@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using Bingo;
 
-public class TroopController : Controller
+public class TroopController : Controller<MainMenu, FighterModel, TroopView>
 {
 	public bool isAnActiveTroop;
 	
@@ -24,22 +24,22 @@ public class TroopController : Controller
 
 	public void SetTroop(FighterData fighterData)
 	{
-		((TroopModel)model).fighterData = fighterData;
+		model.fighterData = fighterData;
 	}
 
 	public FighterData GetTroop()
 	{
-		return ((TroopModel)model).fighterData;
+		return model.fighterData;
 	}
 
 	public void SetActiveTroopIndex(int index)
 	{
-		((TroopModel)model).activeTroopIndex = index;
+		model.activeTroopIndex = index;
 	}
 
 	public void OnPointerEnter()
 	{
-		editTeamController.ShowTroopDetails(((TroopModel)model).fighterData);
+		editTeamController.ShowTroopDetails(model.fighterData);
 	}
 
 	public void OnBeginDrag()
@@ -53,7 +53,7 @@ public class TroopController : Controller
 		transform.SetAsLastSibling();
 
 		// Set troop as inactive as soon as it was dragged
-		((TroopModel)model).activeTroopIndex = -1;
+		model.activeTroopIndex = -1;
 	}
 
 	public void OnEndDrag() 

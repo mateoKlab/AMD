@@ -24,6 +24,9 @@ public class PlayerData {
 	[XmlArray("FightersOwned")]
 	[XmlArrayItem("Fighter")]
 	public List<FighterData> fightersOwned = new List<FighterData> ();
+	
+	[XmlElement("TroopCapacity")]
+	public int troopCapacity = 10;
 
 	public void Save ()
 	{

@@ -36,8 +36,8 @@ public class FighterData {
 	[XmlElement ("Element")]
 	public FighterElement fighterElement;
 
-	[XmlElement ("Weight")]
-	public int weight = 2;
+	[XmlElement ("Cost")]
+	public int cost = 2;
 
 	[XmlElement ("ActiveIndex")]
 	public int activeTroopIndex = -1;
