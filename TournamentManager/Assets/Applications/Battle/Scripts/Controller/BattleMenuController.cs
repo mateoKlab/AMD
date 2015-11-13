@@ -16,6 +16,12 @@ public class BattleMenuController : Controller
 		Messenger.AddListener (EventTags.FIGHTER_RECEIVED_DAMAGE, OnFighterReceivedDamage);
 	}
 
+	void OnDestroy ()
+	{
+		(model as BattleMenuModel).OnFightersSet -= SetFighters;
+		Messenger.RemoveListener (EventTags.FIGHTER_RECEIVED_DAMAGE, OnFighterReceivedDamage);
+	}
+
 	public void SetFighters (List<FighterData> fighters)
 	{
 		DisableMenuItems ();
@@ -26,7 +32,6 @@ public class BattleMenuController : Controller
 			menuItemDictionary.Add (fighters[i], menuItems[i]);
 		}
 	}
-
 
 	void OnFighterReceivedDamage (params object[] args)
 	{	

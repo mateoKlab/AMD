@@ -73,6 +73,7 @@ public class FighterController : Controller {
 
 		Messenger.Send (EventTags.FIGHTER_RECEIVED_DAMAGE, attack.damage, this.gameObject);
 
+		// TODO: Move to model. Use delegate.
 		if ((model as FighterModel).fighterData.HP <= 0) {
 			Messenger.Send (EventTags.FIGHTER_KILLED, this.gameObject, attack.attackOrigin);
 		}
