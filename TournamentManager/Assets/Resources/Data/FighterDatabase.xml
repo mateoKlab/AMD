@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <FighterDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Fighters>
+  	<SpriteName>knight_fire</SpriteName>
     <ID>Default_ID</ID>
     <Name>AJ</Name>
     <HP>1000</HP>
@@ -11,6 +12,7 @@
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
   <Fighters>
+ 	<SpriteName>mage_water</SpriteName>
     <ID>Default_ID</ID>
     <Name>Dave</Name>
     <HP>2000</HP>
@@ -21,6 +23,7 @@
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
   <Fighters>
+   <SpriteName>knight_water</SpriteName>
     <ID>Default_ID</ID>
     <Name>Matt</Name>
     <HP>1500</HP>
@@ -31,6 +34,7 @@
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
   <Fighters>
+ 	<SpriteName>mage_earth</SpriteName>
     <ID>Default_ID</ID>
     <Name>Rence</Name>
     <HP>1500</HP>
@@ -41,6 +45,7 @@
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
   <Fighters>
+	<SpriteName>knight_earth</SpriteName>
     <ID>Default_ID</ID>
     <Name>Jeff</Name>
     <HP>3000</HP>

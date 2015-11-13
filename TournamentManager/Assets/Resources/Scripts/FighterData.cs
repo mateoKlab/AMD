@@ -18,8 +18,17 @@ public enum FighterElement {
 	Earth
 }
 
+public enum FighterAttackType {
+	Melee,
+	Ranged
+}
+
 [XmlRoot]
 public class FighterData {
+
+	//TEMPORARY. default to knight.
+	[XmlElement ("SpriteName")]
+	public string spriteName = "knight_fire";
 
 	[XmlElement]
 	public int HP = 1000;
