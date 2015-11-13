@@ -26,7 +26,7 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
 	}
 
 	void Start() {
-
+		transform.localScale = Vector3.one;
 	}
 
 	public void SetTroop(FighterData fighterData)
