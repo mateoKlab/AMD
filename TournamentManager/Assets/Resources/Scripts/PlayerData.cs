@@ -25,11 +25,11 @@ public class PlayerData {
 	[XmlArrayItem("Fighter")]
 	public List<FighterData> fightersOwned = new List<FighterData> ();
 	
-	[XmlElement("TroopCapacity")]
-	public int troopCapacity = 10;
+	[XmlElement("PartyCapacity")]
+	public int partyCapacity = 10;
 
-	//[XmlArrayItem("UnlockedStages")]
-	//public List<string> unlockedStages = new List<string> ();
+	[XmlElement("TeamCapacity")]
+	public int teamCapacity = 50;
 
 	public void Save ()
 	{

@@ -48,12 +48,10 @@ public class BattleController : Controller<Battle>
 			//TODO: Show WIN popup. Send WIN event.		
 			//(model as BattleModel).currentStage.
 
-//			if(GameData.instance.playerData.tournamentProgress == GameData.instance.playerData.unlockedStages.Count - 1 
-//			   && GameData.instance.currentStage.id == GameData.instance.playerData.unlockedStages[GameData.instance.playerData.unlockedStages.Count - 1]
-//			   && GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount - 1)
-//				GameData.instance.playerData.tournamentProgress++;
 			if (GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount)
+			{
 				GameData.instance.playerData.tournamentProgress++;
+			}
 			Application.LoadLevel ("MainMenuScene");
 		} else if (allies.Count == 0) {
 			Debug.Log ("LOSE");

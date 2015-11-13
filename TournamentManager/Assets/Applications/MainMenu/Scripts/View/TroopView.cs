@@ -1,10 +1,25 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 using Bingo;
 
 public class TroopView : View<MainMenu>, IPointerEnterHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
+	private Image icon;
+
+	public override void Awake ()
+	{
+		base.Awake ();
+
+		icon = gameObject.GetComponent<Image>();
+	}
+
+	public void SetIcon(Sprite icon)
+	{
+		this.icon.sprite = icon;
+	}
+
 	public void OnPointerEnter (PointerEventData eventData)
 	{
 		((TroopController)controller).OnPointerEnter();

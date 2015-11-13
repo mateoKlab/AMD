@@ -6,6 +6,7 @@ using Bingo;
 public class EditTeamModel : Model
 {
 	public List<TroopController> troops;
+	public FighterData[] activeTroops = new FighterData[GameData.MAX_ACTIVE_FIGHTERS];
 
 	public ActiveTeamSlotController[] activeTeamSlots;
 

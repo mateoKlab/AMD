@@ -11,6 +11,13 @@ public class FighterDatabase {
 	public List<FighterData> fighters;
 }
 
+public enum FighterElement {
+	Fire,
+	Water,
+	Lightning,
+	Earth
+}
+
 [XmlRoot]
 public class FighterData {
 
@@ -29,9 +36,37 @@ public class FighterData {
 	[XmlElement ("Class")]
 	public string fighterClass = "Warrior";
 
+	[XmlElement ("Element")]
+	public FighterElement fighterElement;
+
 	[XmlElement ("Cost")]
 	public int cost = 2;
 
 	[XmlElement ("ActiveIndex")]
 	public int activeTroopIndex = -1;
+
+	[XmlIgnore]
+	private Sprite[] _sprites;
+	[XmlIgnore]
+	public Sprite[] sprites
+	{
+		get
+		{
+			if(_sprites == null || _sprites.Length == 0)
+			{
+				_sprites = Resources.LoadAll<Sprite>("Sprites/Classes/" + fighterClass);
+			}
+
+			return _sprites;
+		}
+	}
+
+	[XmlIgnore]
+	public Sprite normalIcon
+	{
+		get
+		{
+			return sprites[0];
+		}
+	}
 }
