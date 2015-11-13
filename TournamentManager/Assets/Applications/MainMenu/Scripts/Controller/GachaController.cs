@@ -21,7 +21,7 @@ public class GachaController : Controller
 	
 		GameData.instance.playerData.fightersOwned.Add(gachaCharacter);
 
-		app.GetComponent<MainMenuView>().gachaView.DisplayGachaCharacter(gachaCharacter.name, gachaCharacter.HP, gachaCharacter.ATK);
+		app.GetComponent<MainMenuView>().gachaView.DisplayGachaCharacter(gachaCharacter);
 		GameData.instance.playerData.gold -= 100;
 		app.GetComponent<MainMenuView>().headerView.UpdateGoldValue();
 		GameData.instance.playerData.Save ();
