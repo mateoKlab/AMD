@@ -12,17 +12,17 @@ public class TournamentElementController : Controller
 	public void SetStageData(StageData sData) {
 		((TournamentElementModel)model).stageData = sData;
 		((TournamentElementView)view).nameLabel.text = sData.name;
-		//((TournamentElementView)view).fightButton.
 	}
 
 	public void CheckIfStageIsUnlocked() {
-//		if (GameData.instance.playerData.unlockedStages.Contains(((TournamentElementModel)model).stageData.id) && GameData.instance.playerData.tournamentProgress == GameData.instance.playerData.unlockedStages.IndexOf(((TournamentElementModel)model).stageData.id)) {
-//			((TournamentElementView)view).fightButton.interactable = true;
-//		}
-
 		if (GameData.instance.playerData.tournamentProgress == app.model.GetComponentInChildren<TournamentModel>().tournamentMatchList.IndexOf(((TournamentElementModel)model).stageData))
+		{	
 			((TournamentElementView)view).fightButton.interactable = true;
+		}
 	}
 
-
+	public void StartTournamentMatch() {
+		GameData.instance.currentStage =  ((TournamentElementModel)model).stageData;
+		Messenger.Send(MainMenuEvents.START_BATTLE, ((TournamentElementModel)model).stageData.id);
+	}
 }

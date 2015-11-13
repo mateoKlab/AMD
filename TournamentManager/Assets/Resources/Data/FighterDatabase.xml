@@ -6,6 +6,7 @@
     <HP>1000</HP>
     <ATK>150</ATK>
     <Class>Warrior</Class>
+    <Element>Fire</Element>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
@@ -15,6 +16,7 @@
     <HP>2000</HP>
     <ATK>100</ATK>
     <Class>Warrior</Class>
+    <Element>Water</Element>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
@@ -24,6 +26,7 @@
     <HP>1500</HP>
     <ATK>100</ATK>
     <Class>Warrior</Class>
+    <Element>Lightning</Element>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
@@ -33,6 +36,7 @@
     <HP>1500</HP>
     <ATK>150</ATK>
     <Class>Warrior</Class>
+    <Element>Earth</Element>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
@@ -42,6 +46,7 @@
     <HP>3000</HP>
     <ATK>300</ATK>
     <Class>Warrior</Class>
+    <Element>Fire</Element>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>

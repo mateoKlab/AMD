@@ -6,12 +6,10 @@ using UnityEngine.UI;
 
 public class MissionModel : Model
 {
-    // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
-    
-    //////// END MVCCodeEditor GENERATED CODE ////////
     
 	public Dictionary<string, StageData> missionDictionary;
-	public List<Transform> missionPoints = new List<Transform>();
+	public List<StageData> missionPointDataList = new List<StageData>();
+	public List<MissionPointModel> missionPointModelsList = new List<MissionPointModel>(); 
 
 	public override void Awake() 
 	{
@@ -25,11 +23,18 @@ public class MissionModel : Model
 		Dictionary<StageType, Dictionary<string, StageData>> stageDatabaseClone = GameData.instance.stageDatabase;
 		missionDictionary = stageDatabaseClone[StageType.Mission];
 		
-		foreach (Transform mPoint in GetComponentsInChildren<Transform>())
+		foreach (StageData mData in missionDictionary.Values)
 		{
-			if (mPoint != transform)
-				missionPoints.Add(mPoint);
+			missionPointDataList.Add(mData);
 		}
-		
+
+		foreach (MissionPointModel mPointModel in app.GetComponentsInChildren<MissionPointModel>()) {
+			missionPointModelsList.Add(mPointModel);
+		}
+
+		for(int i = 0; i < missionPointModelsList.Count; i++) {
+			missionPointModelsList[i].SetStageData(missionPointDataList[i]);
+		}
 	}
+	
 }
