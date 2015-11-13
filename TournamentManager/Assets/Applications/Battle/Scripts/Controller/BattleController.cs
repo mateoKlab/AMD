@@ -70,7 +70,7 @@ public class BattleController : Controller<Battle>
 	public void SpawnFighters ()
 	{
 		// TEST spawn positions.
-		Vector3 startPos = new Vector3 (-5f, -1f, 0f);
+		Vector3 startPos = new Vector3 (-5f, -1f, -1f);
 
 		foreach (FighterData fighter in GameData.instance.playerData.fightersOwned) {
 			GameObject newFighter = Instantiate (FighterPrefab);
@@ -83,10 +83,10 @@ public class BattleController : Controller<Battle>
 
 			newFighter.transform.position = startPos;
 
-			startPos = new Vector3 (startPos.x -1f, - 1f, 0f);
+			startPos = new Vector3 (startPos.x -1f, - 1f, -1f);
 		}
 
-		startPos = new Vector3 (4f, -1f, 0f);
+		startPos = new Vector3 (4f, -1f, -1f);
 
 		StageData currentStage = GameData.instance.currentStage;
 		foreach (FighterData fighter in currentStage.enemies) {
@@ -104,7 +104,7 @@ public class BattleController : Controller<Battle>
 			newFighter.transform.position = startPos;
 			newFighter.transform.rotation = Quaternion.Euler(0,180f,0);
 
-			startPos = new Vector3 (startPos.x + 1.2f, -1f, 0f);
+			startPos = new Vector3 (startPos.x + 1.2f, -1f, -1f);
 		}
 
 		// Set UI.
