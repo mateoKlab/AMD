@@ -5,31 +5,58 @@ using Bingo;
 
 public class BattleController : Controller<Battle>
 {
+    // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
+    
+    [Inject]
+    public BattleMenuController battleMenuController { get; private set; }
+    
+    //////// END MVCCodeEditor GENERATED CODE ////////
+    
 	public GameObject FighterPrefab;
 
-	public List<FighterData> enemies = new List<FighterData> ();
+	public List<GameObject> allies = new List<GameObject> ();
+	public List<GameObject> enemies = new List<GameObject> ();
 	
 	void Start ()
 	{
 		Messenger.AddListener (EventTags.FIGHTER_KILLED, FighterKilled);
 	}
 
+
+	// Called when a Fighter is killed.
+		// args[0]: typeof:GameObject  desc: The fighter killed.
+		// args[1]: typeof:GameObject  desc: The attacker.
 	void FighterKilled (params object[] args)
 	{
-		Debug.Log (((FighterData)args [0]).name + " KILLED");
-		enemies.Remove ((FighterData)args [0]);
+		GameObject defender = (GameObject)args [0];
+		GameObject attacker = (GameObject)args [1];
+
+		if (defender.GetComponent<FighterModel> ().allegiance == FighterModel.FighterAlliegiance.Ally) {
+			allies.Remove (defender);
+		} else {
+			enemies.Remove (defender);
+		}
+
+		// TODO: pooling
+		Destroy (defender);
+
+		// TODO: Give XP to attacker.
 
 		if (enemies.Count == 0) {
 			Debug.Log ("WIN");
-			// TEST...
 
 			//TODO: Show WIN popup. Send WIN event.		
-			GameData.instance.playerData.gold += 1000;
+			//(model as BattleModel).currentStage.
 
 			if (GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount)
 			{
 				GameData.instance.playerData.tournamentProgress++;
 			}
+			Application.LoadLevel ("MainMenuScene");
+		} else if (allies.Count == 0) {
+			Debug.Log ("LOSE");
+			// TODO: Apply injuries, etc.
+
 			Application.LoadLevel ("MainMenuScene");
 		}
 
@@ -40,14 +67,14 @@ public class BattleController : Controller<Battle>
 //		Messenger.RemoveListener (EventTags.FIGHTER_KILLED, FighterKilled);
 	}
 			                     
-	// HACK ..TEST CODE.. HACK
 	public void SpawnFighters ()
 	{
+		// TEST spawn positions.
 		Vector3 startPos = new Vector3 (-5f, -1f, 0f);
 
 		foreach (FighterData fighter in GameData.instance.playerData.fightersOwned) {
-
 			GameObject newFighter = Instantiate (FighterPrefab);
+			allies.Add (newFighter);
 			newFighter.SetActive (true);
 
 
@@ -63,9 +90,10 @@ public class BattleController : Controller<Battle>
 
 		StageData currentStage = GameData.instance.currentStage;
 		foreach (FighterData fighter in currentStage.enemies) {
-			enemies.Add (fighter);
 
 			GameObject newFighter = Instantiate (FighterPrefab);
+			enemies.Add (newFighter);
+
 			newFighter.layer = LayerMask.NameToLayer("EnemyUnits");
 			newFighter.SetActive (true);
 			
@@ -78,14 +106,23 @@ public class BattleController : Controller<Battle>
 
 			startPos = new Vector3 (startPos.x + 1.2f, -1f, 0f);
 		}
+
+		// Set UI.
+		List<FighterData> fighters = new List<FighterData> ();
+		foreach (GameObject fighter in allies) {
+			fighters.Add (fighter.GetComponent<FighterModel> ().fighterData);
+		}
+
+		battleMenuController.SetFighters (fighters);
 	}
 
 	public void OnUnitAttack (GameObject attacker, GameObject defender)
 	{
 		FighterController attackingUnit = ((FighterController)attacker.GetComponent<FighterController> ());
 		FighterController defendingUnit = ((FighterController)defender.GetComponent<FighterController> ());
-
+		
 		defendingUnit.OnReceiveAttack (attackingUnit.Attack ());
+
 	}
 
 	public void OnBackButtonClicked ()

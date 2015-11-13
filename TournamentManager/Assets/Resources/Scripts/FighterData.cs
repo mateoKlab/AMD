@@ -24,6 +24,9 @@ public class FighterData {
 	[XmlElement]
 	public int HP = 1000;
 
+	[XmlElement ("MaxHP")]
+	public int maxHP = 1000;
+
 	[XmlElement]
 	public int ATK = 100;
 
