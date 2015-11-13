@@ -9,13 +9,13 @@ public class MainMenuController : Controller<MainMenu>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
-    public TournamentController tournamentController { get; private set; }
-    
-    [Inject]
     public TroopDetailsController troopDetailsController { get; private set; }
     
     [Inject]
     public EditTeamController editTeamController { get; private set; }
+    
+    [Inject]
+    public TournamentController tournamentController { get; private set; }
     
     [Inject]
     public GachaController gachaController { get; private set; }

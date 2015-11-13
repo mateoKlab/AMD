@@ -28,9 +28,6 @@ public class PlayerData {
 	[XmlElement("TeamCapacity")]
 	public int teamCapacity = 10;
 
-	//[XmlArrayItem("UnlockedStages")]
-	//public List<string> unlockedStages = new List<string> ();
-
 	public void Save ()
 	{
 		XmlSerializer xmls = new XmlSerializer(typeof(PlayerData));
