@@ -27,11 +27,10 @@ public class FighterController : Controller {
 
 		StartCoroutine ("AttackAnimation");
 
-		Debug.Log ("ATTACK: " + fighter.ATK.ToString());
 		return new Attack (fighter.ATK, 1.0f, AttackType.Melee, gameObject);
 	}
 
-	// TEST. Temporary animation until SPINE.
+	// TEST. Temporary animation until SPINE animations.
 	IEnumerator AttackAnimation ()
 	{
 		((FighterView)view).SetAttackSprite ();
@@ -62,28 +61,20 @@ public class FighterController : Controller {
 		((FighterModel)model).onGround = true;
 	}
 
-
 	public void OnGroundExit ()
 	{
 		((FighterModel)model).onGround = false;
 	}
 
-
 	private void ReceiveDamage (Attack attack)
 	{
-		Debug.Log (((FighterModel)model).fighterData.name + " received damage");
+		// Temporary. TODO: Apply armor damage reduction effects.
+		(model as FighterModel).fighterData.HP -= attack.damage;
 
-		FighterData defender = ((FighterModel)model).fighterData;
-		FighterData attacker = attack.attackOrigin.GetComponent <FighterModel> ().fighterData;
-		// Temporary Damage computation. TODO: Apply armor damage reduction effects.
-		defender.HP -= attack.damage;
+		Messenger.Send (EventTags.FIGHTER_RECEIVED_DAMAGE, attack.damage, this.gameObject);
 
-		if (defender.HP <= 0) {
-			Debug.Log (defender.name + " died.");
-			Messenger.Send (EventTags.FIGHTER_KILLED, defender, attacker);
-
-			// TEST.
-			Destroy (gameObject);
+		if ((model as FighterModel).fighterData.HP <= 0) {
+			Messenger.Send (EventTags.FIGHTER_KILLED, this.gameObject, attack.attackOrigin);
 		}
 	}
 
