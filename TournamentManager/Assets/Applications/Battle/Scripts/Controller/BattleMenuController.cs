@@ -16,6 +16,12 @@ public class BattleMenuController : Controller
 		Messenger.AddListener (EventTags.FIGHTER_RECEIVED_DAMAGE, OnFighterReceivedDamage);
 	}
 
+	void OnDestroy ()
+	{
+		(model as BattleMenuModel).OnFightersSet -= SetFighters;
+		Messenger.RemoveListener (EventTags.FIGHTER_RECEIVED_DAMAGE, OnFighterReceivedDamage);
+	}
+
 	public void SetFighters (List<FighterData> fighters)
 	{
 		DisableMenuItems ();
@@ -27,12 +33,11 @@ public class BattleMenuController : Controller
 		}
 	}
 
-
 	void OnFighterReceivedDamage (params object[] args)
 	{	
 		FighterModel fighter = ((GameObject)args [1]).GetComponent<FighterModel> ();
 
-		if (fighter.allegiance == FighterModel.FighterAlliegiance.Ally) {
+		if (fighter.allegiance == FighterAlliegiance.Ally) {
 			menuItemDictionary [fighter.fighterData].UpdateValues ();
 		}
 	}

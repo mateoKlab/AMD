@@ -156,5 +156,16 @@ public class GameData : MonoBehaviour {
 		return ((currentPartyCost + troopCost) <= playerData.partyCapacity);
 	}
 
+	// Return true if fighter successfully added to team, else return false
+	public bool AddFighter(FighterData fighter)
+	{
+		if(playerData.fightersOwned.Count >= playerData.teamCapacity)
+			return false;
+
+		playerData.fightersOwned.Add(fighter);
+
+		return true;
+	}
+
 	#endregion
 }

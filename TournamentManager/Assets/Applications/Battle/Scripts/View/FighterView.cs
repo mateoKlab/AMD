@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using Bingo;
 
@@ -8,16 +9,8 @@ public class FighterView : View {
 	public Sprite attackSprite;
 	public Sprite idleSprite;
 
-	// Use this for initialization
-	void Start () {
+	public Action<GameObject> OnCollideWithEnemy;
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	// TEMPORARY.
 	public void SetAttackSprite ()
 	{
@@ -40,7 +33,7 @@ public class FighterView : View {
 		}
 
 		if (coll.gameObject.tag == Tags.Units) {
-			((FighterController)controller).OnCollideWithEnemy(coll);
+			OnCollideWithEnemy(coll.gameObject);
 		}
 
 	}
