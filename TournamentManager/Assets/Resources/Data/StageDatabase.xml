@@ -70,7 +70,7 @@
     <Enemies>
       <Fighter>
         <ID>Default_ID</ID>
-        <Name>Default</Name>
+        <Name>1</Name>
         <HP>1000</HP>
         <ATK>100</ATK>
         <level>1</level>
@@ -79,7 +79,7 @@
       </Fighter>
       <Fighter>
         <ID>Default_ID</ID>
-        <Name>Default</Name>
+        <Name>2</Name>
         <HP>1000</HP>
         <ATK>100</ATK>
         <level>1</level>
@@ -88,7 +88,7 @@
       </Fighter>
       <Fighter>
         <ID>Default_ID</ID>
-        <Name>Default</Name>
+        <Name>3</Name>
         <HP>1000</HP>
         <ATK>100</ATK>
         <level>1</level>
@@ -97,7 +97,7 @@
       </Fighter>
       <Fighter>
         <ID>Default_ID</ID>
-        <Name>Default</Name>
+        <Name>4</Name>
         <HP>1000</HP>
         <ATK>100</ATK>
         <level>1</level>
@@ -106,7 +106,7 @@
       </Fighter>
       <Fighter>
         <ID>Default_ID</ID>
-        <Name>Default</Name>
+        <Name>5</Name>
         <HP>1000</HP>
         <ATK>100</ATK>
         <level>1</level>

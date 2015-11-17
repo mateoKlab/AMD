@@ -6,10 +6,8 @@ public class Battle : BaseApplication<BattleModel, BattleView, BattleController>
 {
     void Start ()
 	{
-
 		// TEMP..
 		GetComponent<BattleController> ().SpawnFighters ();
-
 	}
 
 

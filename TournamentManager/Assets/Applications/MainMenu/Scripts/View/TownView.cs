@@ -4,7 +4,8 @@ using Bingo;
 
 public class TownView : View
 {
-	public void OnClickCloseButton() {
+	public void OnClickCloseButton() 
+	{
 		((TownController)controller).CloseTownPopUp();
 	}
 }

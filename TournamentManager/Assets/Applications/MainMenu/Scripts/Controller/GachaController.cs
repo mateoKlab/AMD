@@ -18,13 +18,20 @@ public class GachaController : Controller
 			return;
 		}
 		FighterData gachaCharacter = GameData.instance.fighterDatabase[(int)Random.Range(0, GameData.instance.fighterDatabase.Count)];
-	
-		GameData.instance.playerData.fightersOwned.Add(gachaCharacter);
 
-		app.GetComponent<MainMenuView>().gachaView.DisplayGachaCharacter(gachaCharacter);
-		GameData.instance.playerData.gold -= 100;
-		app.GetComponent<MainMenuView>().headerView.UpdateGoldValue();
-		GameData.instance.playerData.Save ();
+		bool isSuccessfullyAdded = GameData.instance.AddFighter(gachaCharacter);
+		if(isSuccessfullyAdded)
+		{
+			app.GetComponent<MainMenuView>().gachaView.DisplayGachaCharacter(gachaCharacter);
+			GameData.instance.playerData.gold -= 100;
+			app.GetComponent<MainMenuView>().headerView.UpdateGoldValue();
+			GameData.instance.playerData.Save ();
+		}
+		else
+		{
+			//TODO Popup something here
+			Debug.LogError("Failed to add, team already full!");
+		}
 	}
 }
 
