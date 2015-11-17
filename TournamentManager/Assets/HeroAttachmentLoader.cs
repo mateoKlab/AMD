@@ -5,7 +5,7 @@ using Spine;
 public class HeroAttachmentLoader : MonoBehaviour {
 
 	public enum SetType {
-		White, Red, Green, Blue
+		Red, Blue, White, Green
 	}
 	public static HeroAttachmentLoader instance;
 	public List<string> redSet = new List<string>();
