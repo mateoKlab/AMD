@@ -38,7 +38,7 @@ public class ProjectileManager : MonoBehaviour {
 		_instance = this;
 		
 		// Keep object alive between scenes.
-		DontDestroyOnLoad (gameObject);
+		//DontDestroyOnLoad (gameObject);
 		
 		// If there is more than 1 of this object, destroy the second instance.
 		if (!firstInstance && FindObjectsOfType (typeof(GameData)).Length > 1) {

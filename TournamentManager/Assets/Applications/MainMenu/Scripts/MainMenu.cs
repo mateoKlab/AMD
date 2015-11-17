@@ -4,6 +4,6 @@ using Bingo;
 
 public class MainMenu : BaseApplication<MainMenuModel, MainMenuView, MainMenuController>
 {
-    
+
 }
 

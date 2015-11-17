@@ -2,17 +2,11 @@ using UnityEngine;
 using System.Collections;
 using Bingo;
 
-public class GachaController : Controller
+public class GachaController : Controller <MainMenu, GachaModel, GachaView>
 {
-	public void CloseGachaPopUp(params object[] args) 
-	{
-		gameObject.SetActive(false);
-		app.GetComponent<MainMenuView>().popUpShadeView.gameObject.SetActive(false);
-		app.GetComponent<MainMenuController>().footerController.EnableButtons();
-	}
 
 	public void GenerateRandomCharacter() {
-		if (GameData.instance.playerData.gold < 100) 
+		if (GameData.instance.playerData.gold < model.rollCost)
 		{
 			Debug.LogError ("Not enough gold.");
 			return;
@@ -22,15 +16,23 @@ public class GachaController : Controller
 		bool isSuccessfullyAdded = GameData.instance.AddFighter(gachaCharacter);
 		if(isSuccessfullyAdded)
 		{
-			app.GetComponent<MainMenuView>().gachaView.DisplayGachaCharacter(gachaCharacter);
-			GameData.instance.playerData.gold -= 100;
-			app.GetComponent<MainMenuView>().headerView.UpdateGoldValue();
+			app.view.gachaView.DisplayGachaCharacter(gachaCharacter);
+			GameData.instance.playerData.gold -= model.rollCost;
+			app.view.headerView.UpdateGoldValue();
 			GameData.instance.playerData.Save ();
+			CheckGold();
 		}
 		else
 		{
 			//TODO Popup something here
 			Debug.LogError("Failed to add, team already full!");
+		}
+	}
+
+	public void CheckGold() {
+		if (GameData.instance.playerData.gold < model.rollCost)
+		{
+			view.rollButton.interactable = false;
 		}
 	}
 }

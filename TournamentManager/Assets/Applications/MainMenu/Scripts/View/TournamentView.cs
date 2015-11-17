@@ -18,7 +18,7 @@ public class TournamentView : View
 	}
 
 	public void OnClickCloseButton() {
-		((TournamentController)controller).CloseTournamentPopUp();
+		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
 	}
 
 	public void OnClickTournamentButton(string id) {

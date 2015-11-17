@@ -9,13 +9,13 @@ public class TournamentModel : Model
 	public List<StageData> tournamentMatchList = new List<StageData>();
 	//public int matchCount;
 
-	public override void Awake() 
-	{
-		base.Awake();
-		PopulateMatchesList();
-	}
+//	public override void Awake() 
+//	{
+//		base.Awake();
+//		PopulateMatchesList();
+//	}
 	
-	private void PopulateMatchesList()
+	public void Start()
 	{
 		
 		Dictionary<StageType, Dictionary<string, StageData>> stageDatabaseClone = GameData.instance.stageDatabase;

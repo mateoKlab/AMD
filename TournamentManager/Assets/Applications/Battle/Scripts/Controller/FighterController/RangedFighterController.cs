@@ -26,6 +26,7 @@ public class RangedFighterController : FighterController
 	{
 		nextAttackAllowed = Time.time + cooldown;
 
-		(app.controller as BattleController).OnRangedAttack (gameObject);
+		//(app.controller as BattleController).OnRangedAttack (gameObject);
+		((BattleController)app.controller).OnRangedAttack (gameObject);
 	}
 }
