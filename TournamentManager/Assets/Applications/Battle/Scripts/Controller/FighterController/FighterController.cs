@@ -2,76 +2,88 @@
 using System.Collections;
 using Bingo;
 
-public class FighterController : Controller {
+public class FighterController : Controller
+{
 
-	// Use this for initialization
-	public virtual void Start () {
-		(view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
-	}
+    // Use this for initialization
+    public virtual void Start()
+    {
+        (view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
 
-	void OnDestroy () {
-		(view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
-	}
+        SetSprite();
+    }
 
-	public Attack GetAttackData ()
-	{
-		FighterData fighter = ((FighterModel)GetComponent<Model> ()).fighterData;
+    void OnDestroy()
+    {
+        (view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
+    }
 
-		return new Attack (fighter.ATK, 1.0f, AttackType.Melee, gameObject);
-	}
+    public void SetSprite()
+    {
+        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+        sr.sprite = ((FighterModel) model).fighterData.normalIcon;
+    }
 
-	// TEST. Temporary animation until SPINE animations.
-	IEnumerator AttackAnimation ()
-	{
-		((FighterView)view).SetAttackSprite ();
-		yield return new WaitForSeconds (0.6f);
+    public Attack GetAttackData()
+    {
+        FighterData fighter = ((FighterModel) GetComponent<Model>()).fighterData;
 
-		((FighterView)view).SetIdleSprite ();
-	}
+        return new Attack(fighter.ATK, 1.0f, AttackType.Melee, gameObject);
+    }
 
-	public void OnReceiveAttack (Attack attack)
-	{
-		// TODO: Calculate skill effects, evade, block, etc.
+    // TEST. Temporary animation until SPINE animations.
+    IEnumerator AttackAnimation()
+    {
+        ((FighterView) view).SetAttackSprite();
+        yield return new WaitForSeconds(0.6f);
 
-		ReceiveDamage (attack);
-		ReceiveKnockback (attack.knockback);
+        ((FighterView) view).SetIdleSprite();
+    }
 
-		// HACK.
+    public void OnReceiveAttack(Attack attack)
+    {
+        // TODO: Calculate skill effects, evade, block, etc.
+
+        ReceiveDamage(attack);
+        ReceiveKnockback(attack.knockback);
+
+        // HACK.
 //		OnGroundExit ();
-	}
+    }
 
-	public void OnCollideWithEnemy (GameObject enemy)
-	{
-		((BattleController)app.controller).OnUnitAttack (gameObject, enemy);
-	}
+    public void OnCollideWithEnemy(GameObject enemy)
+    {
+        ((BattleController) app.controller).OnUnitAttack(gameObject, enemy);
+    }
 	
-	public void OnGroundEnter ()
-	{
-		((FighterModel)model).onGround = true;
-	}
+    public void OnGroundEnter()
+    {
+        ((FighterModel) model).onGround = true;
+    }
 
-	public void OnGroundExit ()
-	{
-		((FighterModel)model).onGround = false;
-	}
+    public void OnGroundExit()
+    {
+        ((FighterModel) model).onGround = false;
+    }
 
-	private void ReceiveDamage (Attack attack)
-	{
-		// Temporary. TODO: Apply armor damage reduction effects.
-		(model as FighterModel).fighterData.HP -= attack.damage;
+    private void ReceiveDamage(Attack attack)
+    {
+        // Temporary. TODO: Apply armor damage reduction effects.
+        (model as FighterModel).fighterData.HP -= attack.damage;
 
-		Messenger.Send (EventTags.FIGHTER_RECEIVED_DAMAGE, attack.damage, this.gameObject);
+        Messenger.Send(EventTags.FIGHTER_RECEIVED_DAMAGE, attack.damage, this.gameObject);
 
-		// TODO: Move to model. Use delegate.
-		if ((model as FighterModel).fighterData.HP <= 0) {
-			Messenger.Send (EventTags.FIGHTER_KILLED, this.gameObject, attack.attackOrigin);
-		}
-	}
+        // TODO: Move to model. Use delegate.
+        if ((model as FighterModel).fighterData.HP <= 0)
+        {
+            Messenger.Send(EventTags.FIGHTER_KILLED, this.gameObject, attack.attackOrigin);
+        }
+    }
 
-	private void ReceiveKnockback (float knockback)
-	{
-		// Temporary konckback. TODO: Apply knockback resistance/amount.
-		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
-		GetComponent<Rigidbody2D> ().AddForce (new Vector2 (5.0f * -moveDirection, 5.0f), ForceMode2D.Impulse);
-	}
+    private void ReceiveKnockback(float knockback)
+    {
+        // Temporary konckback. TODO: Apply knockback resistance/amount.
+        int moveDirection = (int) ((FighterModel) GetComponent<Model>()).allegiance;
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(5.0f * -moveDirection, 5.0f), ForceMode2D.Impulse);
+    }
 }
