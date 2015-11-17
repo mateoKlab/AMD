@@ -6,6 +6,6 @@ public class TownView : View
 {
 	public void OnClickCloseButton() 
 	{
-		((TownController)controller).CloseTownPopUp();
+		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
 	}
 }

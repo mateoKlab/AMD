@@ -27,6 +27,11 @@ public class FacilityView : View
 		costLabel.text = ((FacilityModel)model).cost.ToString();
 	}
 
+	public void OnEnable() 
+	{
+		((FacilityController)controller).CheckGold();
+	}
+
 	public void OnClickBuildButton() 
 	{
 		((FacilityController)controller).StartBuildingTownFacility();

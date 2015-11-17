@@ -33,7 +33,7 @@ public class GachaView : View
 
 	public void OnClickCloseButton() {
 		ResetDisplayValues();
-		((GachaController)controller).CloseGachaPopUp();
+		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
 	}
 
 	public void OnClickRollButton() {
@@ -57,5 +57,10 @@ public class GachaView : View
 		classLabel.text = "";
 		elementLabel.text = "";
 		characterSprite.texture = Resources.Load(spritePath + "Default") as Texture;
+	}
+
+	public void OnEnable() 
+	{
+		((GachaController)controller).CheckGold();
 	}
 }

@@ -28,7 +28,7 @@ public class MissionModel : Model
 			missionPointDataList.Add(mData);
 		}
 
-		foreach (MissionPointModel mPointModel in app.GetComponentsInChildren<MissionPointModel>()) {
+		foreach (MissionPointModel mPointModel in transform.root.GetComponentsInChildren<MissionPointModel>()) {
 			missionPointModelsList.Add(mPointModel);
 		}
 

@@ -39,38 +39,36 @@ public class MainMenuController : Controller<MainMenu>
         base.Awake();
 		
         Messenger.AddListener(MainMenuEvents.START_BATTLE, GoToBattleScene);
+        Messenger.AddListener(MainMenuEvents.CLOSE_POPUP, ClosePopUp);
     }
 
     public void GoToBattleScene(params object[] args)
     {
         Application.LoadLevel("BattleScene");
     }
-
-    public void ShowTournamentPopUp(params object[] args)
-    {
-        footerController.DisableButtons();
-        app.view.popUpShadeView.gameObject.SetActive(true);
-        app.view.tournamentView.gameObject.SetActive(true);
-    }
-
-    public void ShowTownPopUp(params object[] args)
-    {
-        footerController.DisableButtons();
-        app.view.popUpShadeView.gameObject.SetActive(true);
-        app.view.townView.gameObject.SetActive(true);
-    }
-
+    
     public void ShowStablePopUp(params object[] args)
     {
         EnableMainMenuItems(false);
         editTeamController.ShowEditTeam();
     }
 
+    public void ShowTournamentPopUp(params object[] args)
+    {
+        footerController.DisableButtons();
+        GetComponent<MainMenuView>().tournamentView.gameObject.SetActive(true);
+    }
+
+    public void ShowTownPopUp(params object[] args)
+    {
+        footerController.DisableButtons();
+        GetComponent<MainMenuView>().townView.gameObject.SetActive(true);
+    }
+
     public void ShowGachaPopUp(params object[] args)
     {
         footerController.DisableButtons();
-        app.view.popUpShadeView.gameObject.SetActive(true);
-        app.view.gachaView.gameObject.SetActive(true);
+        GetComponent<MainMenuView>().gachaView.gameObject.SetActive(true);
     }
 
     public void EnableMainMenuItems(bool enabled)
@@ -83,7 +81,13 @@ public class MainMenuController : Controller<MainMenu>
         {
             footerController.DisableButtons();
         }
-        app.view.popUpShadeView.gameObject.SetActive(false);
+    }
+
+    public void ClosePopUp(params object[] args)
+    {
+        GameObject popUp = args[0] as GameObject;
+        popUp.SetActive(false);
+        EnableMainMenuItems(true);
     }
 }
 

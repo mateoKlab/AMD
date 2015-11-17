@@ -3,97 +3,84 @@ using System.Collections;
 using System.Collections.Generic;
 
 // Temporary?
-public enum ProjectileType
-{
+public enum ProjectileType {
 
-    Fireball,
-    Arrow
+	Fireball,
+	Arrow
 }
 
-public class ProjectileManager : MonoBehaviour
-{
+public class ProjectileManager : MonoBehaviour {
 
-    public GameObject projectilePrefab;
+	public GameObject projectilePrefab;
 
-    public int cacheSize;
+	public int cacheSize;
 
-    private List<GameObject> projectileCache = new List<GameObject>();
-    private bool firstInstance = false;
+	private List<GameObject> projectileCache = new List<GameObject> ();
+	private bool firstInstance = false;
 
-    private static ProjectileManager _instance;
-    public static ProjectileManager instance
-    {
-        get
-        { 
-            if (!_instance)
-            {
-                GameObject newObject = new GameObject();
-                newObject.name = "GameData";
-                newObject.AddComponent<ProjectileManager>();
+	private static ProjectileManager _instance;
+	public static ProjectileManager instance {
+		get { 
+			if (!_instance) {
+				GameObject newObject = new GameObject ();
+				newObject.name = "GameData";
+				newObject.AddComponent<ProjectileManager> ();
 
-                _instance = newObject.GetComponent<ProjectileManager>();
-            }
-            return _instance; 
-        }
-        private set { }
-    }
+				_instance = newObject.GetComponent<ProjectileManager> ();
+			}
+			return _instance; 
+		}
+		private set { }
+	}
 	
-    void Awake()
-    {
- _instance = this;
+	void Awake()
+	{
+		_instance = this;
 		
-        // Keep object alive between scenes.
-        //DontDestroyOnLoad (gameObject);
+		// Keep object alive between scenes.
+		//DontDestroyOnLoad (gameObject);
 		
-        // If there is more than 1 of this object, destroy the second instance.
-        if (!firstInstance && FindObjectsOfType(typeof(GameData)).Length > 1)
-        {
-            DestroyImmediate(gameObject);
-        }
-        else
-        {
-            firstInstance = true;
-        }
-    }
+		// If there is more than 1 of this object, destroy the second instance.
+		if (!firstInstance && FindObjectsOfType (typeof(GameData)).Length > 1) {
+			DestroyImmediate (gameObject);
+		} else {
+			firstInstance = true;
+		}
+	}
 
-    // Use this for initialization
-    void Start()
-    {
-        for (int i = 0; i < cacheSize; i++)
-        {
-            GameObject newProjectile = GameObject.Instantiate(projectilePrefab);
+	// Use this for initialization
+	void Start () {
+		for (int i = 0; i < cacheSize ; i++) {
+			GameObject newProjectile = GameObject.Instantiate (projectilePrefab);
 
-            projectileCache.Add(newProjectile);
-        }
-    }
+			projectileCache.Add (newProjectile);
+		}
+	}
 	
-    public GameObject GetProjectile(GameObject attacker, ProjectileType type)
-    {
-        if (projectileCache.Count > 0)
-        {
-            GameObject projectile = projectileCache[0];
+	public GameObject GetProjectile (GameObject attacker, ProjectileType type)
+	{
+		if (projectileCache.Count > 0) {
+			GameObject projectile = projectileCache [0];
 
-            // Must call SetActive first to call Awake ().
-            projectile.SetActive(true);
+			// Must call SetActive first to call Awake ().
+			projectile.SetActive (true);
 
-            projectile.GetComponent<ProjectileController>().OnDestroyProjectile += OnDestroyProjectile;
-            projectile.GetComponent<ProjectileModel>().fighter = attacker;
+			projectile.GetComponent<ProjectileController> ().OnDestroyProjectile += OnDestroyProjectile;
+			projectile.GetComponent<ProjectileModel> ().fighter = attacker;
 
-            projectileCache.RemoveAt(0);
+			projectileCache.RemoveAt (0);
 
-            return projectile;
-        }
-        else
-        {
-            GameObject newProjectile = GameObject.Instantiate(projectilePrefab);
-            newProjectile.GetComponent<ProjectileModel>().fighter = attacker;
-            return newProjectile;
-        }
-    }
+			return projectile;
+		} else {
+			GameObject newProjectile = GameObject.Instantiate (projectilePrefab);
+			newProjectile.GetComponent<ProjectileModel> ().fighter = attacker;
+			return newProjectile;
+		}
+	}
 
-    void OnDestroyProjectile(GameObject projectile)
-    {
-        projectile.SetActive(false);
-        projectileCache.Add(projectile);
-    }
+	void OnDestroyProjectile (GameObject projectile)
+	{
+		projectile.SetActive (false);
+		projectileCache.Add (projectile);
+	}
 }
