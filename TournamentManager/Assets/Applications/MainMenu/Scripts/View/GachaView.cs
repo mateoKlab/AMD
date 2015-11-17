@@ -2,6 +2,7 @@
 using System.Collections;
 using Bingo;
 using UnityEngine.UI;
+using Spine;
 
 public class GachaView : View
 {
@@ -13,6 +14,7 @@ public class GachaView : View
 	public Button rollButton;
 	public RawImage characterSprite;
 	private string spritePath = "Sprites/GachaSprites/";
+	public SkeletonRenderer skeletonRenderer;
 
 	public override void Awake() {
 		base.Awake();
@@ -21,14 +23,15 @@ public class GachaView : View
 
 	private void InitializeGachaInterface() 
 	{
-		characterSprite = transform.FindChild("CharacterSprite").GetComponent<RawImage>();
+		//characterSprite = transform.FindChild("CharacterSprite").GetComponent<RawImage>();
+		skeletonRenderer = transform.FindChild("CharacterSprite").GetComponent<SkeletonRenderer>();
 		nameLabel = transform.FindChild("NameLabel").GetComponent<Text>();
 		classLabel = transform.FindChild("ClassLabel").GetComponent<Text>();
 		hpLabel = transform.FindChild("HPLabel").GetComponent<Text>();
 		atkLabel = transform.FindChild("ATKLabel").GetComponent<Text>();
 		elementLabel = transform.FindChild("ElementLabel").GetComponent<Text>();
 		rollButton = transform.FindChild("RollButton").GetComponent<Button>();
-		characterSprite.texture = Resources.Load(spritePath + "Default") as Texture;
+		//characterSprite.texture = Resources.Load(spritePath + "Default") as Texture;
 	}
 
 	public void OnClickCloseButton() {
@@ -47,7 +50,10 @@ public class GachaView : View
 		atkLabel.text = "ATK: " + fData.ATK;
 		classLabel.text = "Class: " + fData.fighterClass;
 		elementLabel.text = "Element: " + fData.fighterElement;
-		characterSprite.texture = Resources.Load(spritePath + fData.fighterElement) as Texture;
+		skeletonRenderer.GetComponent<HeroAttachmentLoader>().setType = (HeroAttachmentLoader.SetType)fData.fighterElement;
+		skeletonRenderer.GetComponent<HeroAttachmentLoader>().ChangeSet();
+		skeletonRenderer.GetComponent<MeshRenderer>().enabled = true;
+		//characterSprite.texture = Resources.Load(spritePath + fData.fighterElement) as Texture;
 	}
 
 	public void ResetDisplayValues() {
@@ -56,7 +62,8 @@ public class GachaView : View
 		atkLabel.text = "";
 		classLabel.text = "";
 		elementLabel.text = "";
-		characterSprite.texture = Resources.Load(spritePath + "Default") as Texture;
+		skeletonRenderer.GetComponent<MeshRenderer>().enabled = false;
+		//characterSprite.texture = Resources.Load(spritePath + "Default") as Texture;
 	}
 
 	public void OnEnable() 
