@@ -14,6 +14,8 @@ public class BattleMenuItemController : Controller
 	public void SetFighter (FighterData fighter)
 	{
 		(model as BattleMenuItemModel).fighterData = fighter;
+		(model as BattleMenuItemModel).fighterData.HP = (model as BattleMenuItemModel).fighterData.maxHP;
+		UpdateValues();
 	}
 
 	public void SetActive (bool active)

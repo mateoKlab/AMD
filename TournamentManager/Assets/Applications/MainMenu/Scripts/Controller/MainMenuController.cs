@@ -63,7 +63,6 @@ public class MainMenuController : Controller<MainMenu>
 
 	public void ShowStablePopUp(params object[] args)
 	{
-		Debug.LogError("Stable");
 		EnableMainMenuItems(false);
 		editTeamController.ShowEditTeam();
 	}

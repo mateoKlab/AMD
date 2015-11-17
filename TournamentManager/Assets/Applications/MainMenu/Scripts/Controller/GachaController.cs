@@ -18,8 +18,7 @@ public class GachaController : Controller
 			return;
 		}
 		FighterData gachaCharacter = GameData.instance.fighterDatabase[(int)Random.Range(0, GameData.instance.fighterDatabase.Count)];
-		
-		//GameData.instance.playerData.fightersOwned.Add(gachaCharacter);
+
 		bool isSuccessfullyAdded = GameData.instance.AddFighter(gachaCharacter);
 		if(isSuccessfullyAdded)
 		{
