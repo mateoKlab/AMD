@@ -28,9 +28,6 @@ public class MainMenuView : View<MainMenu>
     public MissionView missionView { get; private set; }
     
     [Inject]
-    public PopUpShadeView popUpShadeView { get; private set; }
-    
-    [Inject]
     public FooterView footerView { get; private set; }
     
     [Inject]

@@ -4,5 +4,5 @@ using Bingo;
 
 public class GachaModel : Model
 {
-
+	public int rollCost = 100;
 }
