@@ -5,27 +5,17 @@ using Bingo;
 public class FighterController : Controller {
 
 	// Use this for initialization
-	void Start () {
-	
+	public virtual void Start () {
+		(view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
 	}
 
-	void FixedUpdate() 
-	{
-		if (!((FighterModel)model).onGround) {
-			return;
-		}
-
-		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
-		transform.position = new Vector3 (transform.position.x + (0.05f * moveDirection) , transform.position.y, transform.position.z);
+	void OnDestroy () {
+		(view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
 	}
 
-	public Attack Attack ()
+	public Attack GetAttackData ()
 	{
-		//TODO: Animate, Change State, etc.
-
 		FighterData fighter = ((FighterModel)GetComponent<Model> ()).fighterData;
-
-		StartCoroutine ("AttackAnimation");
 
 		return new Attack (fighter.ATK, 1.0f, AttackType.Melee, gameObject);
 	}
@@ -41,21 +31,20 @@ public class FighterController : Controller {
 
 	public void OnReceiveAttack (Attack attack)
 	{
-		// TODO: STUFF.
-		// Calculate skill effects, evade, block, etc.
+		// TODO: Calculate skill effects, evade, block, etc.
 
 		ReceiveDamage (attack);
 		ReceiveKnockback (attack.knockback);
 
-		//TEST
-		OnGroundExit ();
+		// HACK.
+//		OnGroundExit ();
 	}
 
-	public void OnCollideWithEnemy (Collision2D coll)
+	public void OnCollideWithEnemy (GameObject enemy)
 	{
-		((BattleController)app.controller).OnUnitAttack (gameObject, coll.gameObject);
+		((BattleController)app.controller).OnUnitAttack (gameObject, enemy);
 	}
-
+	
 	public void OnGroundEnter ()
 	{
 		((FighterModel)model).onGround = true;

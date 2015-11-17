@@ -1,0 +1,27 @@
+﻿using UnityEngine;
+using System.Collections;
+using Bingo;
+
+public class MeleeFighterController : FighterController
+{
+	void FixedUpdate() 
+	{
+		// TEMPORARY.
+		if (!((FighterModel)model).onGround) {
+			return;
+		}
+		
+		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
+		transform.position = new Vector3 (transform.position.x + (0.01f * moveDirection) , transform.position.y, transform.position.z);
+	}
+
+	public void OnGroundEnter ()
+	{
+		((FighterModel)model).onGround = true;
+	}
+	
+	public void OnGroundExit ()
+	{
+		((FighterModel)model).onGround = false;
+	}
+}

@@ -6,6 +6,7 @@
     <Name>AJ</Name>
     <HP>1000</HP>
     <ATK>150</ATK>
+    <isRanged>true</isRanged>
     <Class>Warrior</Class>
     <Element>Fire</Element>
     <Weight>2</Weight>
@@ -17,6 +18,7 @@
     <Name>Dave</Name>
     <HP>2000</HP>
     <ATK>100</ATK>
+    <isRanged>true</isRanged>
     <Class>Knight</Class>
     <Element>Water</Element>
     <Weight>2</Weight>
@@ -28,6 +30,7 @@
     <Name>Matt</Name>
     <HP>1500</HP>
     <ATK>100</ATK>
+    <isRanged>true</isRanged>
     <Class>Magician</Class>
     <Element>Lightning</Element>
     <Weight>2</Weight>
@@ -39,6 +42,7 @@
     <Name>Rence</Name>
     <HP>1500</HP>
     <ATK>150</ATK>
+    <isRanged>true</isRanged>
     <Class>Archer</Class>
     <Element>Earth</Element>
     <Weight>2</Weight>
@@ -50,6 +54,7 @@
     <Name>Jeff</Name>
     <HP>3000</HP>
     <ATK>300</ATK>
+    <isRanged>true</isRanged>
     <Class>Thief</Class>
     <Element>Fire</Element>
     <Weight>2</Weight>

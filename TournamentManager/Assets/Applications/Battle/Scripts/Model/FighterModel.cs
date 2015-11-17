@@ -2,18 +2,30 @@
 using System.Collections;
 using Bingo;
 
+public enum FighterAlliegiance {
+	Ally = 1,
+	Enemy = -1
+}
+
 public class FighterModel : Model {
 
-	public FighterData fighterData;
 	public bool onGround;
 
+	public bool isRanged;
+
+
+	private FighterData _fighterData;
+
+	public FighterData fighterData {
+		get { return _fighterData; }
+		set {
+			_fighterData = value;
+
+			isRanged = _fighterData.isRanged;
+		}
+	}
 
 	public FighterAlliegiance allegiance;
-
-	public enum FighterAlliegiance {
-		Ally = 1,
-		Enemy = -1
-	}
 
 	public string name 
 	{

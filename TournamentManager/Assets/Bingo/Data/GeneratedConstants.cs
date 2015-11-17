@@ -21,10 +21,15 @@ public static class Layers
     public static readonly string UI = "UI";
     public static readonly string AlliedUnits = "AlliedUnits";
     public static readonly string EnemyUnits = "EnemyUnits";
+    public static readonly string AlliedProjectile = "AlliedProjectile";
+    public static readonly string EnemyProjectile = "EnemyProjectile";
+    public static readonly string SceneCollider = "SceneCollider";
 }
 
 public static class SortingLayers
 {
     public static readonly string Default = "Default";
+    public static readonly string Units = "Units";
+    public static readonly string UI = "UI";
 }
 

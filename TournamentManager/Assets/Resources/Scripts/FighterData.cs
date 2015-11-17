@@ -26,6 +26,9 @@ public enum FighterAttackType {
 [XmlRoot]
 public class FighterData {
 
+
+//	public string id = "DEFAULT_ID";
+
 	//TEMPORARY. default to knight.
 	[XmlElement ("SpriteName")]
 	public string spriteName = "knight_fire";
@@ -38,6 +41,9 @@ public class FighterData {
 
 	[XmlElement]
 	public int ATK = 100;
+
+	[XmlElement]
+	public bool isRanged = false;
 
 	[XmlElement ("Name")]
 	public string name = "Juan";
