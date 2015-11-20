@@ -5,86 +5,96 @@ using System.Xml.Serialization;
 
 // Container class for FighterData XML Serialization.
 [XmlRoot]
-public class FighterDatabase {
+public class FighterDatabase
+{
 
-	[XmlElement ("Fighters")]
-	public List<FighterData> fighters;
+    [XmlElement ("Fighters")]
+    public List<FighterData>
+        fighters;
 }
 
-public enum FighterElement {
-	Fire,
-	Water,
-	Lightning,
-	Earth
+public enum FighterElement
+{
+    Fire,
+    Water,
+    Lightning,
+    Earth
 }
 
-public enum FighterAttackType {
-	Melee,
-	Ranged
+public enum FighterAttackType
+{
+    Melee,
+    Ranged
 }
 
 [XmlRoot]
-public class FighterData {
+public class FighterData
+{
+    //TEMPORARY. default to knight.
+    [XmlElement ("SpriteName")]
+    public string
+        spriteName = "knight_fire";
 
+    [XmlElement]
+    public int
+        HP = 1000;
 
-//	public string id = "DEFAULT_ID";
+    [XmlElement ("MaxHP")]
+    public int
+        maxHP = 1000;
 
-	//TEMPORARY. default to knight.
-	[XmlElement ("SpriteName")]
-	public string spriteName = "knight_fire";
+    [XmlElement]
+    public int
+        ATK = 100;
 
-	[XmlElement]
-	public int HP = 1000;
+    [XmlElement]
+    public bool
+        isRanged = false;
 
-	[XmlElement ("MaxHP")]
-	public int maxHP = 1000;
+    [XmlElement ("Name")]
+    public string
+        name = "Juan";
 
-	[XmlElement]
-	public int ATK = 100;
+    [XmlElement ("Class")]
+    public string
+        fighterClass = "Warrior";
 
-	[XmlElement]
-	public float movespeed = 50f;
+    [XmlElement ("Element")]
+    public FighterElement
+        fighterElement;
 
-	[XmlElement]
-	public bool isRanged = false;
+    [XmlElement ("Cost")]
+    public int
+        cost = 2;
 
-	[XmlElement ("Name")]
-	public string name = "Juan";
+    [XmlElement ("ActiveIndex")]
+    public int
+        activeTroopIndex = -1;
 
-	[XmlElement ("Class")]
-	public string fighterClass = "Warrior";
+    [XmlIgnore]
+    private Sprite[]
+        _sprites;
+    [XmlIgnore]
+    public Sprite[] sprites
+    {
+        get
+        {
+            if (_sprites == null || _sprites.Length == 0)
+            {
+                _sprites = Resources.LoadAll<Sprite>("Sprites/Classes/" + fighterClass);
+            }
 
-	[XmlElement ("Element")]
-	public FighterElement fighterElement;
+            return _sprites;
+        }
+    }
 
-	[XmlElement ("Cost")]
-	public int cost = 2;
-
-	[XmlElement ("ActiveIndex")]
-	public int activeTroopIndex = -1;
-
-	[XmlIgnore]
-	private Sprite[] _sprites;
-	[XmlIgnore]
-	public Sprite[] sprites
-	{
-		get
-		{
-			if(_sprites == null || _sprites.Length == 0)
-			{
-				_sprites = Resources.LoadAll<Sprite>("Sprites/Classes/" + fighterClass);
-			}
-
-			return _sprites;
-		}
-	}
-
-	[XmlIgnore]
-	public Sprite normalIcon
-	{
-		get
-		{
-			return sprites[0];
-		}
-	}
+    [XmlIgnore]
+    public Sprite normalIcon
+    {
+        get
+        {
+            //return sprites[0];
+            return Resources.Load<Sprite>("Sprites/" + spriteName);
+        }
+    }
 }

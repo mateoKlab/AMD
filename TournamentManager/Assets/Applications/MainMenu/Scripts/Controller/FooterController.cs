@@ -7,13 +7,16 @@ using System.Collections.Generic;
 public class FooterController : Controller
 {
 
-	private List<Button> buttonList = new List<Button>();
+	public List<Button> buttonList = new List<Button>();
 
-	void Awake() {
+	public override void Awake() {
 		base.Awake();
-
+		buttonList.Clear();
 		foreach (Button b in GetComponentsInChildren<Button>()) {
-			buttonList.Add(b);
+			if (!buttonList.Contains(b))
+			{
+				buttonList.Add(b);
+			}
 		}
 	}
 
@@ -26,8 +29,10 @@ public class FooterController : Controller
 
 	public void EnableButtons() {
 		for (int  i = 0; i < buttonList.Count; i++) {
-			buttonList[i].interactable = true;
-			buttonList[i].GetComponentInChildren<Text>().color = Color.white;
+			if (buttonList[i] != null) {
+				buttonList[i].interactable = true;
+				buttonList[i].GetComponentInChildren<Text>().color = Color.white;
+			}
 		}
 	}
 

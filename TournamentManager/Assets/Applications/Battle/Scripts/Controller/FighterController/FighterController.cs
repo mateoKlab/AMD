@@ -2,12 +2,15 @@
 using System.Collections;
 using Bingo;
 
-public class FighterController : Controller {
+public class FighterController : Controller
+{
 
 	// Use this for initialization
 	public virtual void Awake () {
 		(model as FighterModel).OnFighterDataSet += OnFighterDataSet;
 		(view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
+
+		SetSprite();
 	}
 
 	void OnDestroy () {
@@ -15,32 +18,52 @@ public class FighterController : Controller {
 		(view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
 	}
 
-	public Attack GetAttackData ()
-	{
-		FighterData fighter = ((FighterModel)GetComponent<Model> ()).fighterData;
+//    // Use this for initialization
+//    public virtual void Start()
+//    {
+//        (view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
+//
+//        SetSprite();
+//    }
+// badc5a012dd44499e87c3f4e99d03ad5
 
-		return new Attack (fighter.ATK, 1.0f, AttackType.Melee, gameObject);
-	}
+    void OnDestroy()
+    {
+        (view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
+    }
 
-	// TEST. Temporary animation until SPINE animations.
-	IEnumerator AttackAnimation ()
-	{
-		((FighterView)view).SetAttackSprite ();
-		yield return new WaitForSeconds (0.6f);
+    public void SetSprite()
+    {
+        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+        sr.sprite = ((FighterModel) model).fighterData.normalIcon;
+    }
 
-		((FighterView)view).SetIdleSprite ();
-	}
+    public Attack GetAttackData()
+    {
+        FighterData fighter = ((FighterModel) GetComponent<Model>()).fighterData;
 
-	public void OnReceiveAttack (Attack attack)
-	{
-		// TODO: Calculate skill effects, evade, block, etc.
+        return new Attack(fighter.ATK, 1.0f, AttackType.Melee, gameObject);
+    }
 
-		ReceiveDamage (attack);
-		ReceiveKnockback (attack.knockback);
+    // TEST. Temporary animation until SPINE animations.
+    IEnumerator AttackAnimation()
+    {
+        ((FighterView) view).SetAttackSprite();
+        yield return new WaitForSeconds(0.6f);
 
-		// HACK.
+        ((FighterView) view).SetIdleSprite();
+    }
+
+    public void OnReceiveAttack(Attack attack)
+    {
+        // TODO: Calculate skill effects, evade, block, etc.
+
+        ReceiveDamage(attack);
+        ReceiveKnockback(attack.knockback);
+
+        // HACK.
 //		OnGroundExit ();
-	}
+    }
 
 	public void OnGroundEnter ()
 	{

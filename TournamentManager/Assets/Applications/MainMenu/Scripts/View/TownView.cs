@@ -4,7 +4,8 @@ using Bingo;
 
 public class TownView : View
 {
-	public void OnClickCloseButton() {
-		((TownController)controller).CloseTownPopUp();
+	public void OnClickCloseButton() 
+	{
+		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
 	}
 }

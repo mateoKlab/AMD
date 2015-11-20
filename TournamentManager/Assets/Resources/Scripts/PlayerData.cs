@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
@@ -7,59 +7,118 @@ using System.Xml.Serialization;
 using System.IO;
 
 [XmlRoot]
-public class PlayerData {
+public class PlayerData
+{
 
-	[XmlElement ("Gold")]
-	public int gold = 1000;
+    [XmlElement ("Gold")]
+    public int
+        gold = 1000;
 
-	[XmlElement ("Diamonds")]
-	public int diamonds;
+    [XmlElement ("Diamonds")]
+    public int
+        diamonds;
 
-	[XmlElement ("TournamentProgress")]
-	public int tournamentProgress;
+    [XmlElement ("TournamentProgress")]
+    public int
+        tournamentProgress;
 
-	[XmlElement ("TournamentMatchCount")]
-	public int tournamentMatchCount;
+    [XmlElement ("TournamentMatchCount")]
+    public int
+        tournamentMatchCount;
 
-	[XmlArray("FightersOwned")]
-	[XmlArrayItem("Fighter")]
-	public List<FighterData> fightersOwned = new List<FighterData> ();
+    [XmlArray("FightersOwned")]
+    [XmlArrayItem("Fighter")]
+    public List<FighterData>
+        fightersOwned = new List<FighterData>();
 	
-	[XmlElement("PartyCapacity")]
-	public int partyCapacity = 10;
+    [XmlElement("PartyCapacity")]
+    public int
+        partyCapacity = 20;
 
-	[XmlElement("TeamCapacity")]
-	public int teamCapacity = 50;
+    [XmlElement("TeamCapacity")]
+    public int
+        teamCapacity = 50;
 
-	public void Save ()
-	{
-		XmlSerializer xmls = new XmlSerializer(typeof(PlayerData));
+    public void Save()
+    {
+        XmlSerializer xmls = new XmlSerializer(typeof(PlayerData));
 
-		using(var stream = new FileStream(Application.dataPath + "/Resources/Data/PlayerData.xml", FileMode.OpenOrCreate))
-		{
-			xmls.Serialize(stream, this);
-		}
+        #if UNITY_EDITOR || UNITY_IOS
+        using (var stream = new FileStream(Application.dataPath + "/Resources/Data/PlayerData.xml", FileMode.OpenOrCreate))
+        {
+            xmls.Serialize(stream, this);
+        }
+        #elif UNITY_ANDROID
+        string filePath = GetPath("PlayerData.xml");
+        using (var stream = System.IO.File.CreateText(filePath))
+        {
+            xmls.Serialize(stream, this);
+            stream.Close();
+        }
+        #endif
 
-		AssetDatabase.Refresh();
-	}
+        //AssetDatabase.Refresh();
+    }
 
-	public static PlayerData Load ()
-	{
+    public static PlayerData Load()
+    {
 
-		XmlSerializer ser = new XmlSerializer(typeof(PlayerData));
+        XmlSerializer ser = new XmlSerializer(typeof(PlayerData));
 
-		TextAsset textAsset = Resources.Load ("Data/PlayerData") as TextAsset;
-		System.IO.StringReader stringReader;
+        #if UNITY_EDITOR || UNITY_IOS
+        TextAsset textAsset = Resources.Load("Data/PlayerData") as TextAsset;
+        System.IO.StringReader stringReader;
 		
-		if (textAsset == null) {
-			Debug.Log ("No Player save file found. Returning default values...");
-			return new PlayerData ();
-		} else {
-			stringReader = new System.IO.StringReader(textAsset.text);
-			using (XmlReader reader = XmlReader.Create(stringReader))
-			{
-				return (PlayerData) ser.Deserialize(reader);
-			}
-		}
-	}
+        if (textAsset == null)
+        {
+            Debug.Log("No Player save file found. Returning default values...");
+            return new PlayerData();
+        }
+        else
+        {
+            stringReader = new System.IO.StringReader(textAsset.text);
+            using (XmlReader reader = XmlReader.Create(stringReader))
+            {
+                return (PlayerData) ser.Deserialize(reader);
+            }
+        }
+        #elif UNITY_ANDROID
+        string filePath = GetPath("PlayerData.xml");
+        if (System.IO.File.Exists(filePath))
+        {
+            using (XmlReader reader = XmlReader.Create(filePath))
+            {
+                return (PlayerData) ser.Deserialize(reader);
+            }
+        }
+        else
+        {
+            Debug.Log("No Player save file found. Returning default values...");
+            return new PlayerData();
+        }
+        #endif
+    }
+
+    // Retrieve relative path depending on platform
+    private static string GetPath(string fileName)
+    {
+        #if UNITY_EDITOR
+        return Application.dataPath + "/Resources/Data/" + fileName;
+        #elif UNITY_ANDROID
+        return Application.persistentDataPath+fileName;
+        #elif UNITY_IPHONE
+        return Application.persistentDataPath+"/"+fileName;
+        #else
+        return Application.dataPath +"/"+ fileName;
+        #endif
+    }
+
+    public void InitFirstCharacter()
+    {
+        // Create default character
+        FighterData gachaCharacter = GameData.instance.fighterDatabase[0];
+        gachaCharacter.activeTroopIndex = 0;	// Automatically make that character active
+        fightersOwned.Add(gachaCharacter);
+        Save();
+    }
 }

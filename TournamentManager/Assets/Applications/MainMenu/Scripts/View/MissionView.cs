@@ -21,7 +21,7 @@ public class MissionView : View
 
 	public void OnClickCloseButton() 
 	{
-		((MissionController)controller).CloseMissionPopUp();
+		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
 	}
 
 	public void OnClickFightButton() 

@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Text;
 
 public class GameData : MonoBehaviour {
 
-	public const int MAX_ACTIVE_FIGHTERS = 5;
+	public const int MAX_ACTIVE_FIGHTERS = 6;
 
 	public PlayerData playerData;
 
@@ -56,8 +56,8 @@ public class GameData : MonoBehaviour {
 			firstInstance = true;
 		}
 
-		playerData = PlayerData.Load ();
 		LoadDatabase ();
+		playerData = PlayerData.Load ();
 		LoadActiveFighters();
 	}
 
@@ -113,6 +113,9 @@ public class GameData : MonoBehaviour {
 
 	public void LoadActiveFighters()
 	{
+		if(playerData.fightersOwned.Count == 0)
+			playerData.InitFirstCharacter();
+
 		for(int i = 0; i < playerData.fightersOwned.Count; i++)
 		{
 			if(playerData.fightersOwned[i].activeTroopIndex > -1)
@@ -160,6 +163,7 @@ public class GameData : MonoBehaviour {
 		if(playerData.fightersOwned.Count >= playerData.teamCapacity)
 			return false;
 
+		fighter.activeTroopIndex = -1;
 		playerData.fightersOwned.Add(fighter);
 
 		return true;
