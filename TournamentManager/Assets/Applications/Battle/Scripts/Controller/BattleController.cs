@@ -138,7 +138,10 @@ public class BattleController : Controller<Battle>
         if (fighterData.isRanged)
         {
             newFighter = Instantiate(rangedFighterPrefab);
-        }
+
+			// TEST code.
+			fighterData.spriteName = "mage_water";
+		}
         else
         {
             newFighter = Instantiate(meleeFighterPrefab);
@@ -147,6 +150,9 @@ public class BattleController : Controller<Battle>
         FighterModel fighterModel = newFighter.GetComponent <FighterModel>();
         fighterModel.fighterData = fighterData;
         fighterModel.allegiance = allegiance;
+
+		// TEST.
+		fighterModel.fighterData.HP = fighterModel.fighterData.maxHP;
 
         if (allegiance == FighterAlliegiance.Ally)
         {

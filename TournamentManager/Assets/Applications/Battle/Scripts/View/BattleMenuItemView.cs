@@ -7,6 +7,12 @@ public class BattleMenuItemView : View
 {
 	public Text fighterName;
 	public Image hpSlider;
+	public Image deathIcon;
+
+	void Start ()
+	{
+
+	}
 
 	public void UpdateValues ()
 	{
@@ -21,5 +27,10 @@ public class BattleMenuItemView : View
 
 		// TODO: Animate.. Gradually decrease fill amount.
 		hpSlider.fillAmount = hpFill;
+	}
+
+	public void ShowDeathIcon (bool enabled)
+	{
+		deathIcon.gameObject.SetActive (enabled);
 	}
 }

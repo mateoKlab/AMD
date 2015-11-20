@@ -30,6 +30,11 @@ public class BattleMenuItemController : Controller
 		(view as BattleMenuItemView).UpdateValues ();
 	}
 
+	public void ShowDeathIcon (bool enabled)
+	{
+		(view as BattleMenuItemView).ShowDeathIcon (enabled);
+	}
+
 	void OnFighterSet ()
 	{
 		gameObject.SetActive (true);
