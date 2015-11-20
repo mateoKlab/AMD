@@ -27,11 +27,6 @@ public class FighterController : Controller
 //    }
 // badc5a012dd44499e87c3f4e99d03ad5
 
-    void OnDestroy()
-    {
-        (view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
-    }
-
     public void SetSprite()
     {
         SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();

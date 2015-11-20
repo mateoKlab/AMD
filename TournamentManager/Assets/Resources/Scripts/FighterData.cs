@@ -8,7 +8,8 @@ using System.Xml.Serialization;
 public class FighterDatabase
 {
 
-    [XmlElement ("Fighters")]
+   [XmlArray("Fighters")]
+   [XmlArrayItem("Fighter")]
     public List<FighterData>
         fighters;
 }
