@@ -95,12 +95,12 @@ public class BattleController : Controller<Battle>
 		}
 
 		// Set UI.
-		List<FighterData> fighters = new List<FighterData> ();
-		foreach (GameObject fighter in allies) {
-			fighters.Add (fighter.GetComponent<FighterModel> ().fighterData);
-		}
+//		List<FighterData> fighters = new List<FighterData> ();
+//		foreach (GameObject fighter in allies) {
+//			fighters.Add (fighter.GetComponent<FighterModel> ().fighterData);
+//		}
 
-		battleMenuController.SetFighters (fighters);
+		battleMenuController.SetFighters (allies);
 	}
 
 	public void OnUnitAttack (GameObject attacker, GameObject defender)
@@ -114,7 +114,8 @@ public class BattleController : Controller<Battle>
 	public void OnRangedAttack (GameObject attacker)
 	{
 		GameObject newProjectile = ProjectileManager.instance.GetProjectile (attacker, ProjectileType.Fireball); // Type = Temporary.
-		newProjectile.transform.position = attacker.transform.position;
+		Vector3 attackerPosition = attacker.transform.position;
+		newProjectile.transform.position = new Vector3 (attackerPosition.x + 0.2f, attackerPosition.y, attackerPosition.z);
 	}
 
 	public void OnBackButtonClicked ()
@@ -133,6 +134,9 @@ public class BattleController : Controller<Battle>
 			newFighter = Instantiate (meleeFighterPrefab);
 		}
 
+		// Call first to so that Awake () and Start () can run.
+		newFighter.SetActive (true);
+
 		FighterModel fighterModel = newFighter.GetComponent <FighterModel> ();
 		fighterModel.fighterData  = fighterData;
 		fighterModel.allegiance   = allegiance;
@@ -144,7 +148,6 @@ public class BattleController : Controller<Battle>
 			newFighter.layer = LayerMask.NameToLayer ("EnemyUnits");
 		}
 
-		newFighter.SetActive (true);
 
 		return newFighter;
 	}

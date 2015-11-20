@@ -7,11 +7,11 @@ using Bingo;
 
 public class BattleMenuModel : Model
 {
-	public Action<List<FighterData>> OnFightersSet;
+	public Action<List<GameObject>> OnFightersSet;
 
-	private List<FighterData> _fighters;
+	private List<GameObject> _fighters;
 	
-	public List<FighterData> fighters {
+	public List<GameObject> fighters {
 		get { return _fighters; }
 		
 		set {

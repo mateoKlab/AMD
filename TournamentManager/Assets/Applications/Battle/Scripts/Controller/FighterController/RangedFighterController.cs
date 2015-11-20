@@ -9,9 +9,9 @@ public class RangedFighterController : FighterController
 
 	private bool isOnCooldown = true;
 
-	void Start ()
+	void Awake ()
 	{
-		base.Start ();
+		base.Awake ();
 		nextAttackAllowed = Time.time;
 	}
 

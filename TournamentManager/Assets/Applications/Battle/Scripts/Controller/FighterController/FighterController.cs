@@ -5,11 +5,13 @@ using Bingo;
 public class FighterController : Controller {
 
 	// Use this for initialization
-	public virtual void Start () {
+	public virtual void Awake () {
+		(model as FighterModel).OnFighterDataSet += OnFighterDataSet;
 		(view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
 	}
 
 	void OnDestroy () {
+		(model as FighterModel).OnFighterDataSet -= OnFighterDataSet;
 		(view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
 	}
 
@@ -40,11 +42,6 @@ public class FighterController : Controller {
 //		OnGroundExit ();
 	}
 
-	public void OnCollideWithEnemy (GameObject enemy)
-	{
-		((BattleController)app.controller).OnUnitAttack (gameObject, enemy);
-	}
-	
 	public void OnGroundEnter ()
 	{
 		((FighterModel)model).onGround = true;
@@ -53,6 +50,16 @@ public class FighterController : Controller {
 	public void OnGroundExit ()
 	{
 		((FighterModel)model).onGround = false;
+	}
+
+	private void OnCollideWithEnemy (GameObject enemy)
+	{
+		((BattleController)app.controller).OnUnitAttack (gameObject, enemy);
+	}
+
+	private void OnFighterDataSet ()
+	{
+		(view as FighterView).SetSprite ();
 	}
 
 	private void ReceiveDamage (Attack attack)

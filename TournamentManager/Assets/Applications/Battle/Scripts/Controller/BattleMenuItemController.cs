@@ -11,9 +11,9 @@ public class BattleMenuItemController : Controller
 		(model as BattleMenuItemModel).OnFighterSet += OnFighterSet;
 	}
 
-	public void SetFighter (FighterData fighter)
+	public void SetFighter (GameObject fighter)
 	{
-		(model as BattleMenuItemModel).fighterData = fighter;
+		(model as BattleMenuItemModel).fighter = fighter;
 	}
 
 	public void SetActive (bool active)
@@ -26,7 +26,7 @@ public class BattleMenuItemController : Controller
 		(view as BattleMenuItemView).UpdateValues ();
 	}
 
-	void OnFighterSet (FighterData fighter)
+	void OnFighterSet ()
 	{
 		gameObject.SetActive (true);
 		(view as BattleMenuItemView).UpdateValues ();

@@ -8,7 +8,7 @@ public class BattleMenuController : Controller
 {
 	public List<BattleMenuItemController> menuItems;
 
-	private Dictionary<FighterData, BattleMenuItemController> menuItemDictionary;
+	private Dictionary<GameObject, BattleMenuItemController> menuItemDictionary;
 
 	void Start ()
 	{
@@ -22,10 +22,10 @@ public class BattleMenuController : Controller
 		Messenger.RemoveListener (EventTags.FIGHTER_RECEIVED_DAMAGE, OnFighterReceivedDamage);
 	}
 
-	public void SetFighters (List<FighterData> fighters)
+	public void SetFighters (List<GameObject> fighters)
 	{
 		DisableMenuItems ();
-		menuItemDictionary = new Dictionary<FighterData, BattleMenuItemController> ();
+		menuItemDictionary = new Dictionary<GameObject, BattleMenuItemController> ();
 
 		for (int i = 0; i < fighters.Count; i++) {
 			menuItems[i].SetFighter (fighters[i]);
@@ -38,7 +38,7 @@ public class BattleMenuController : Controller
 		FighterModel fighter = ((GameObject)args [1]).GetComponent<FighterModel> ();
 
 		if (fighter.allegiance == FighterAlliegiance.Ally) {
-			menuItemDictionary [fighter.fighterData].UpdateValues ();
+			menuItemDictionary [fighter.gameObject].UpdateValues ();
 		}
 	}
 

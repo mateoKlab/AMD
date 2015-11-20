@@ -8,9 +8,9 @@ public class FighterView : View {
 	// TEMPORARY. Animation Frames.
 	public Sprite attackSprite;
 	public Sprite idleSprite;
-
-	public Action<GameObject> OnCollideWithEnemy;
 	
+	public Action<GameObject> OnCollideWithEnemy;
+
 	// TEMPORARY.
 	public void SetAttackSprite ()
 	{
@@ -21,6 +21,14 @@ public class FighterView : View {
 	public void SetIdleSprite ()
 	{
 //		GetComponent<SpriteRenderer> ().sprite = idleSprite;
+	}
+
+	public void SetSprite ()
+	{
+		SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer> ();
+		string spriteName = (model as FighterModel).fighterData.spriteName;
+
+		spriteRenderer.sprite = Resources.Load ("Sprites/" + spriteName, typeof(Sprite)) as Sprite;
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)

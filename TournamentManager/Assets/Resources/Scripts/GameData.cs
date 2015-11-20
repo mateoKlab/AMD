@@ -61,8 +61,6 @@ public class GameData : MonoBehaviour {
 		LoadActiveFighters();
 	}
 
-
-
 	public void Save ()
 	{
 		// Do Save.

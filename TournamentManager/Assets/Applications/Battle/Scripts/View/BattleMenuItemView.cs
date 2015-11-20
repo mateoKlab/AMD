@@ -10,10 +10,12 @@ public class BattleMenuItemView : View
 
 	public void UpdateValues ()
 	{
-		fighterName.text = (model as BattleMenuItemModel).fighterData.name;
+		FighterData fighterData = (model as BattleMenuItemModel).fighter.GetComponent <FighterModel> ().fighterData;
 
-		int currentHP = (model as BattleMenuItemModel).fighterData.HP;
-		int maxHP	  = (model as BattleMenuItemModel).fighterData.maxHP;
+		fighterName.text = fighterData.name;
+
+		int currentHP = fighterData.HP;
+		int maxHP	  = fighterData.maxHP;
 
 		float hpFill = (float)currentHP / (float)maxHP;
 

@@ -5,34 +5,37 @@
     <ID>Default_ID</ID>
     <Name>AJ</Name>
     <HP>1000</HP>
+    <MaxHP>1000</MaxHP>
     <ATK>150</ATK>
-    <isRanged>true</isRanged>
+    <isRanged>false</isRanged>
     <Class>Warrior</Class>
     <Element>Fire</Element>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
   <Fighters>
- 	<SpriteName>mage_water</SpriteName>
+ 	<SpriteName>knight_water</SpriteName>
     <ID>Default_ID</ID>
     <Name>Dave</Name>
     <HP>2000</HP>
+    <MaxHP>2000</MaxHP>
     <ATK>100</ATK>
-    <isRanged>true</isRanged>
+    <isRanged>false</isRanged>
     <Class>Knight</Class>
     <Element>Water</Element>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
   <Fighters>
-   <SpriteName>knight_water</SpriteName>
+   <SpriteName>mage_water</SpriteName>
     <ID>Default_ID</ID>
     <Name>Matt</Name>
     <HP>1500</HP>
+    <MaxHP>1500</MaxHP>
     <ATK>100</ATK>
     <isRanged>true</isRanged>
     <Class>Magician</Class>
-    <Element>Lightning</Element>
+    <Element>Water</Element>
     <Weight>2</Weight>
     <ActiveIndex>-1</ActiveIndex>
   </Fighters>
@@ -41,6 +44,7 @@
     <ID>Default_ID</ID>
     <Name>Rence</Name>
     <HP>1500</HP>
+    <MaxHP>1500</MaxHP>
     <ATK>150</ATK>
     <isRanged>true</isRanged>
     <Class>Archer</Class>
@@ -53,8 +57,9 @@
     <ID>Default_ID</ID>
     <Name>Jeff</Name>
     <HP>3000</HP>
+    <MaxHP>3000</MaxHP>
     <ATK>300</ATK>
-    <isRanged>true</isRanged>
+    <isRanged>false</isRanged>
     <Class>Thief</Class>
     <Element>Fire</Element>
     <Weight>2</Weight>

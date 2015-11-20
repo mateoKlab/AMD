@@ -43,6 +43,9 @@ public class FighterData {
 	public int ATK = 100;
 
 	[XmlElement]
+	public float movespeed = 50f;
+
+	[XmlElement]
 	public bool isRanged = false;
 
 	[XmlElement ("Name")]
