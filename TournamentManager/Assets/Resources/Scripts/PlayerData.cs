@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-//using UnityEditor;
+using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
@@ -44,10 +44,17 @@ public class PlayerData
         XmlSerializer xmls = new XmlSerializer(typeof(PlayerData));
 
         #if UNITY_EDITOR || UNITY_IOS
-        using (var stream = new FileStream(Application.dataPath + "/Resources/Data/PlayerData.xml", FileMode.OpenOrCreate))
-        {
-            xmls.Serialize(stream, this);
-        }
+		using(StringWriter sww = new StringWriter())
+		using(XmlWriter writer = XmlWriter.Create(sww))
+		{
+			xmls.Serialize(writer, this);
+
+			// Using XmlDocument guarantees a properly formatted xml file.
+			XmlDocument xdoc = new XmlDocument();
+			xdoc.LoadXml(sww.ToString());
+			xdoc.Save(Application.dataPath + "/Resources/Data/PlayerData.xml");
+		}
+
         #elif UNITY_ANDROID
         string filePath = GetPath("PlayerData.xml");
         using (var stream = System.IO.File.CreateText(filePath))
@@ -57,7 +64,7 @@ public class PlayerData
         }
         #endif
 
-        //AssetDatabase.Refresh();
+        AssetDatabase.Refresh();
     }
 
     public static PlayerData Load()

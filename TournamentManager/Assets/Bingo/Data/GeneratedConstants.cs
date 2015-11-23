@@ -31,5 +31,6 @@ public static class SortingLayers
     public static readonly string Default = "Default";
     public static readonly string Units = "Units";
     public static readonly string UI = "UI";
+    public static readonly string Projectiles = "Projectiles";
 }
 

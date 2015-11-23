@@ -84,8 +84,9 @@ public class BattleController : Controller<Battle>
         
         foreach (FighterData fighter in GameData.instance.GetActiveFighters())
         {
-            if (fighter == null)
+            if (fighter == null) {
                 continue;
+			}
 
             newFighter = SpawnFighter(fighter, FighterAlliegiance.Ally);
             newFighter.transform.position = startPos;
@@ -106,14 +107,8 @@ public class BattleController : Controller<Battle>
             startPos = new Vector3(startPos.x + 1.2f, -1f, -1f);
         }
 
-        // Set UI.
-        List<FighterData> fighters = new List<FighterData>();
-        foreach (GameObject fighter in allies)
-        {
-            fighters.Add(fighter.GetComponent<FighterModel>().fighterData);
-        }
 
-        battleMenuController.SetFighters(fighters);
+        battleMenuController.SetFighters(allies);
     }
 
     public void OnUnitAttack(GameObject attacker, GameObject defender)
@@ -143,7 +138,10 @@ public class BattleController : Controller<Battle>
         if (fighterData.isRanged)
         {
             newFighter = Instantiate(rangedFighterPrefab);
-        }
+
+			// TEST code.
+			fighterData.spriteName = "mage_water";
+		}
         else
         {
             newFighter = Instantiate(meleeFighterPrefab);
@@ -152,6 +150,9 @@ public class BattleController : Controller<Battle>
         FighterModel fighterModel = newFighter.GetComponent <FighterModel>();
         fighterModel.fighterData = fighterData;
         fighterModel.allegiance = allegiance;
+
+		// TEST.
+		fighterModel.fighterData.HP = fighterModel.fighterData.maxHP;
 
         if (allegiance == FighterAlliegiance.Ally)
         {

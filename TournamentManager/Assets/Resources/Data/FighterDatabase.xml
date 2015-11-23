@@ -1,63 +1,70 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <FighterDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Fighters>
+<Fighters>
+  <Fighter>
   	<SpriteName>knight_fire</SpriteName>
     <ID>Default_ID</ID>
     <Name>AJ</Name>
     <HP>1000</HP>
+    <MaxHP>1000</MaxHP>
     <ATK>150</ATK>
     <isRanged>false</isRanged>
-    <Class>Knight</Class>
+    <Class>Warrior</Class>
     <Element>Fire</Element>
-    <Weight>2</Weight>
+    <Cost>2</Cost>
     <ActiveIndex>-1</ActiveIndex>
-  </Fighters>
-  <Fighters>
- 	<SpriteName>mage_water</SpriteName>
+  </Fighter>
+  <Fighter>
+ 	<SpriteName>knight_water</SpriteName>
     <ID>Default_ID</ID>
     <Name>Dave</Name>
     <HP>2000</HP>
-    <ATK>100</ATK>
-    <isRanged>true</isRanged>
-    <Class>Mage</Class>
-    <Element>Water</Element>
-    <Weight>2</Weight>
-    <ActiveIndex>-1</ActiveIndex>
-  </Fighters>
-  <Fighters>
-   <SpriteName>knight_water</SpriteName>
-    <ID>Default_ID</ID>
-    <Name>Matt</Name>
-    <HP>1500</HP>
+    <MaxHP>2000</MaxHP>
     <ATK>100</ATK>
     <isRanged>false</isRanged>
     <Class>Knight</Class>
     <Element>Water</Element>
-    <Weight>2</Weight>
+    <Cost>2</Cost>
     <ActiveIndex>-1</ActiveIndex>
-  </Fighters>
-  <Fighters>
+  </Fighter>
+  <Fighter>
+   <SpriteName>mage_water</SpriteName>
+    <ID>Default_ID</ID>
+    <Name>Matt</Name>
+    <HP>1500</HP>
+    <MaxHP>1500</MaxHP>
+    <ATK>100</ATK>
+    <isRanged>true</isRanged>
+    <Class>Magician</Class>
+    <Element>Water</Element>
+    <Cost>2</Cost>
+    <ActiveIndex>-1</ActiveIndex>
+  </Fighter>
+  <Fighter>
  	<SpriteName>mage_earth</SpriteName>
     <ID>Default_ID</ID>
     <Name>Rence</Name>
     <HP>1500</HP>
+    <MaxHP>1500</MaxHP>
     <ATK>150</ATK>
     <isRanged>true</isRanged>
-    <Class>Mage</Class>
+    <Class>Archer</Class>
     <Element>Earth</Element>
-    <Weight>2</Weight>
+    <Cost>2</Cost>
     <ActiveIndex>-1</ActiveIndex>
-  </Fighters>
-  <Fighters>
+  </Fighter>
+  <Fighter>
 	<SpriteName>knight_earth</SpriteName>
     <ID>Default_ID</ID>
     <Name>Jeff</Name>
     <HP>3000</HP>
+    <MaxHP>3000</MaxHP>
     <ATK>300</ATK>
     <isRanged>false</isRanged>
-    <Class>Knight</Class>
-    <Element>Earth</Element>
-    <Weight>2</Weight>
+    <Class>Thief</Class>
+    <Element>Fire</Element>
+    <Cost>2</Cost>
     <ActiveIndex>-1</ActiveIndex>
+  </Fighter>
   </Fighters>
 </FighterDatabase>

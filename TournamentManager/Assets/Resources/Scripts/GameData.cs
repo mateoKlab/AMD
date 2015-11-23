@@ -61,8 +61,6 @@ public class GameData : MonoBehaviour {
 		LoadActiveFighters();
 	}
 
-
-
 	public void Save ()
 	{
 		// Do Save.
@@ -93,6 +91,7 @@ public class GameData : MonoBehaviour {
 			stageDatabase[stage.stageType].Add(stage.name, stage);
 		}
 
+		// TEMPORARY DATABASE.
 		ser = new XmlSerializer(typeof(FighterDatabase));
 		textAsset = Resources.Load ("Data/FighterDatabase") as TextAsset;
 		stringReader = new System.IO.StringReader(textAsset.text);

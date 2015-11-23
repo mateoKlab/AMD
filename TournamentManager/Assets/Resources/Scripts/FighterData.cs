@@ -8,7 +8,8 @@ using System.Xml.Serialization;
 public class FighterDatabase
 {
 
-    [XmlElement ("Fighters")]
+   [XmlArray("Fighters")]
+   [XmlArrayItem("Fighter")]
     public List<FighterData>
         fighters;
 }
@@ -30,10 +31,6 @@ public enum FighterAttackType
 [XmlRoot]
 public class FighterData
 {
-
-
-//	public string id = "DEFAULT_ID";
-
     //TEMPORARY. default to knight.
     [XmlElement ("SpriteName")]
     public string

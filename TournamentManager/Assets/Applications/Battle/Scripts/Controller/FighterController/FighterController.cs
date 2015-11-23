@@ -5,18 +5,27 @@ using Bingo;
 public class FighterController : Controller
 {
 
-    // Use this for initialization
-    public virtual void Start()
-    {
-        (view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
+	// Use this for initialization
+	public virtual void Awake () {
+		(model as FighterModel).OnFighterDataSet += OnFighterDataSet;
+		(view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
 
-        SetSprite();
-    }
+		SetSprite();
+	}
 
-    void OnDestroy()
-    {
-        (view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
-    }
+	void OnDestroy () {
+		(model as FighterModel).OnFighterDataSet -= OnFighterDataSet;
+		(view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
+	}
+
+//    // Use this for initialization
+//    public virtual void Start()
+//    {
+//        (view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
+//
+//        SetSprite();
+//    }
+// badc5a012dd44499e87c3f4e99d03ad5
 
     public void SetSprite()
     {
@@ -51,39 +60,43 @@ public class FighterController : Controller
 //		OnGroundExit ();
     }
 
-    public void OnCollideWithEnemy(GameObject enemy)
-    {
-        ((BattleController) app.controller).OnUnitAttack(gameObject, enemy);
-    }
-	
-    public void OnGroundEnter()
-    {
-        ((FighterModel) model).onGround = true;
-    }
+	public void OnGroundEnter ()
+	{
+		((FighterModel)model).onGround = true;
+	}
 
-    public void OnGroundExit()
-    {
-        ((FighterModel) model).onGround = false;
-    }
+	public void OnGroundExit ()
+	{
+		((FighterModel)model).onGround = false;
+	}
 
-    private void ReceiveDamage(Attack attack)
-    {
-        // Temporary. TODO: Apply armor damage reduction effects.
-        (model as FighterModel).fighterData.HP -= attack.damage;
+	private void OnCollideWithEnemy (GameObject enemy)
+	{
+		((BattleController)app.controller).OnUnitAttack (gameObject, enemy);
+	}
 
-        Messenger.Send(EventTags.FIGHTER_RECEIVED_DAMAGE, attack.damage, this.gameObject);
+	private void OnFighterDataSet ()
+	{
+		(view as FighterView).SetSprite ();
+	}
 
-        // TODO: Move to model. Use delegate.
-        if ((model as FighterModel).fighterData.HP <= 0)
-        {
-            Messenger.Send(EventTags.FIGHTER_KILLED, this.gameObject, attack.attackOrigin);
-        }
-    }
+	private void ReceiveDamage (Attack attack)
+	{
+		// Temporary. TODO: Apply armor damage reduction effects.
+		(model as FighterModel).fighterData.HP -= attack.damage;
 
-    private void ReceiveKnockback(float knockback)
-    {
-        // Temporary konckback. TODO: Apply knockback resistance/amount.
-        int moveDirection = (int) ((FighterModel) GetComponent<Model>()).allegiance;
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(5.0f * -moveDirection, 5.0f), ForceMode2D.Impulse);
-    }
+		Messenger.Send (EventTags.FIGHTER_RECEIVED_DAMAGE, attack.damage, this.gameObject);
+
+		// TODO: Move to model. Use delegate.
+		if ((model as FighterModel).fighterData.HP <= 0) {
+			Messenger.Send (EventTags.FIGHTER_KILLED, this.gameObject, attack.attackOrigin);
+		}
+	}
+
+	private void ReceiveKnockback (float knockback)
+	{
+		// Temporary konckback. TODO: Apply knockback resistance/amount.
+		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
+		GetComponent<Rigidbody2D> ().AddForce (new Vector2 (5.0f * -moveDirection, 5.0f), ForceMode2D.Impulse);
+	}
 }

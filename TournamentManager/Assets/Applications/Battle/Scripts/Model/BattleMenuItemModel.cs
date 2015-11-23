@@ -5,18 +5,18 @@ using Bingo;
 
 public class BattleMenuItemModel : Model
 {
-	public Action <FighterData> OnFighterSet;
+	public Action OnFighterSet;
 
-	private FighterData _fighterData;
+	private GameObject _fighter;
 
-	public FighterData fighterData {
-		get { return _fighterData; }
+	public GameObject fighter {
+		get { return _fighter; }
 
 		set {
-			_fighterData = value;
+			_fighter = value;
 
 			if (OnFighterSet != null) {
-				OnFighterSet (_fighterData);
+				OnFighterSet ();
 			}
 		}
 	}

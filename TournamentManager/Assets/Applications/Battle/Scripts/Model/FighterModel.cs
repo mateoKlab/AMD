@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using Bingo;
 
@@ -8,6 +9,8 @@ public enum FighterAlliegiance {
 }
 
 public class FighterModel : Model {
+
+	public Action OnFighterDataSet;
 
 	public bool onGround;
 
@@ -22,6 +25,9 @@ public class FighterModel : Model {
 			_fighterData = value;
 
 			isRanged = _fighterData.isRanged;
+			if (OnFighterDataSet != null) {
+				OnFighterDataSet ();
+			}
 		}
 	}
 
