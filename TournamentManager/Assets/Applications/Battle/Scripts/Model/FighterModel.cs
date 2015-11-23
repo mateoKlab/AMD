@@ -22,6 +22,7 @@ public class FighterModel : Model {
 	public FighterData fighterData {
 		get { return _fighterData; }
 		set {
+
 			_fighterData = value;
 
 			isRanged = _fighterData.isRanged;

@@ -5,9 +5,7 @@ using Bingo;
 
 public class FighterView : View {
 
-	// TEMPORARY. Animation Frames.
-	public Sprite attackSprite;
-	public Sprite idleSprite;
+	public FighterSpriteController fighterSprite;
 	
 	public Action<GameObject> OnCollideWithEnemy;
 
@@ -24,11 +22,13 @@ public class FighterView : View {
 	}
 
 	public void SetSprite ()
-	{
-		SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer> ();
-		string spriteName = (model as FighterModel).fighterData.spriteName;
+	{	
+		SpriteBuilder.instance.BuildSprite (fighterSprite);
 
-		spriteRenderer.sprite = Resources.Load ("Sprites/" + spriteName, typeof(Sprite)) as Sprite;
+//		SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer> ();
+//		string spriteName = (model as FighterModel).fighterData.spriteName;
+//
+//		spriteRenderer.sprite = Resources.Load ("Sprites/" + spriteName, typeof(Sprite)) as Sprite;
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)

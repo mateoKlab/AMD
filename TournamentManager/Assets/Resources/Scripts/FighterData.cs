@@ -22,6 +22,13 @@ public enum FighterElement
     Earth
 }
 
+public enum FighterClass
+{
+	Warrior,
+	Mage,
+	Archer
+}
+
 public enum FighterAttackType
 {
     Melee,

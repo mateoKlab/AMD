@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Effect : MonoBehaviour {
+public class Modifier : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
+	bool inEffect = false;
+
+
 	// Update is called once per frame
 	void Update () {
 	

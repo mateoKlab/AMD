@@ -10,22 +10,14 @@ public class FighterController : Controller
 		(model as FighterModel).OnFighterDataSet += OnFighterDataSet;
 		(view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
 
-		SetSprite();
+		// comment out for now. (crashing)
+//		SetSprite();
 	}
 
 	void OnDestroy () {
 		(model as FighterModel).OnFighterDataSet -= OnFighterDataSet;
 		(view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
 	}
-
-//    // Use this for initialization
-//    public virtual void Start()
-//    {
-//        (view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
-//
-//        SetSprite();
-//    }
-// badc5a012dd44499e87c3f4e99d03ad5
 
     public void SetSprite()
     {
@@ -37,7 +29,7 @@ public class FighterController : Controller
     {
         FighterData fighter = ((FighterModel) GetComponent<Model>()).fighterData;
 
-        return new Attack(fighter.ATK, 1.0f, AttackType.Melee, gameObject);
+		return new Attack(fighter.ATK, 1.0f, AttackType.Melee, gameObject);
     }
 
     // TEST. Temporary animation until SPINE animations.

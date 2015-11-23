@@ -140,7 +140,7 @@ public class BattleController : Controller<Battle>
             newFighter = Instantiate(rangedFighterPrefab);
 
 			// TEST code.
-			fighterData.spriteName = "mage_water";
+//			fighterData.spriteName = "mage_water";
 		}
         else
         {
