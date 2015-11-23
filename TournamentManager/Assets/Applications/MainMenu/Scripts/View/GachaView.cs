@@ -12,9 +12,8 @@ public class GachaView : View
 	public Text atkLabel;
 	public Text elementLabel;
 	public Button rollButton;
-	public RawImage characterSprite;
-	private string spritePath = "Sprites/GachaSprites/";
-	public SkeletonRenderer skeletonRenderer;
+
+	public GameObject characterSprite;
 
 	public override void Awake() {
 		base.Awake();
@@ -23,15 +22,12 @@ public class GachaView : View
 
 	private void InitializeGachaInterface() 
 	{
-		//characterSprite = transform.FindChild("CharacterSprite").GetComponent<RawImage>();
-		skeletonRenderer = transform.FindChild("CharacterSprite").GetComponent<SkeletonRenderer>();
 		nameLabel = transform.FindChild("NameLabel").GetComponent<Text>();
 		classLabel = transform.FindChild("ClassLabel").GetComponent<Text>();
 		hpLabel = transform.FindChild("HPLabel").GetComponent<Text>();
 		atkLabel = transform.FindChild("ATKLabel").GetComponent<Text>();
 		elementLabel = transform.FindChild("ElementLabel").GetComponent<Text>();
 		rollButton = transform.FindChild("RollButton").GetComponent<Button>();
-		//characterSprite.texture = Resources.Load(spritePath + "Default") as Texture;
 	}
 
 	public void OnClickCloseButton() {
@@ -50,10 +46,9 @@ public class GachaView : View
 		atkLabel.text = "ATK: " + fData.ATK;
 		classLabel.text = "Class: " + fData.fighterClass;
 		elementLabel.text = "Element: " + fData.fighterElement;
-		skeletonRenderer.GetComponent<HeroAttachmentLoader>().setType = (HeroAttachmentLoader.SetType)fData.fighterElement;
-		skeletonRenderer.GetComponent<HeroAttachmentLoader>().ChangeSet();
-		skeletonRenderer.GetComponent<MeshRenderer>().enabled = true;
-		//characterSprite.texture = Resources.Load(spritePath + fData.fighterElement) as Texture;
+
+		characterSprite.SetActive (true);
+		SpriteBuilder.instance.BuildSprite (characterSprite.GetComponent <FighterSpriteController> ());
 	}
 
 	public void ResetDisplayValues() {
@@ -62,8 +57,8 @@ public class GachaView : View
 		atkLabel.text = "";
 		classLabel.text = "";
 		elementLabel.text = "";
-		skeletonRenderer.GetComponent<MeshRenderer>().enabled = false;
-		//characterSprite.texture = Resources.Load(spritePath + "Default") as Texture;
+
+		characterSprite.SetActive (false);
 	}
 
 	public void OnEnable() 
