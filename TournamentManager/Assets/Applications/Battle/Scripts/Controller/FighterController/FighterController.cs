@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using Bingo;
 
 public class FighterController : Controller
 {
-
 	// Use this for initialization
 	public virtual void Awake () {
 		(model as FighterModel).OnFighterDataSet += OnFighterDataSet;
@@ -32,14 +32,17 @@ public class FighterController : Controller
 		return new Attack(fighter.ATK, 1.0f, AttackType.Melee, gameObject);
     }
 
-    // TEST. Temporary animation until SPINE animations.
-    IEnumerator AttackAnimation()
+    // Temporary...?
+    IEnumerator Attack (GameObject enemy)
     {
-        ((FighterView) view).SetAttackSprite();
-        yield return new WaitForSeconds(0.6f);
+		(view as FighterView).AnimateAttack ();
 
-        ((FighterView) view).SetIdleSprite();
-    }
+        yield return new WaitForSeconds(0.45f); // Temporary, use actual animation timing.
+
+		((BattleController)app.controller).OnUnitAttack (gameObject, enemy);
+
+		(view as FighterView).AnimateRun ();
+	}
 
     public void OnReceiveAttack(Attack attack)
     {
@@ -64,7 +67,8 @@ public class FighterController : Controller
 
 	private void OnCollideWithEnemy (GameObject enemy)
 	{
-		((BattleController)app.controller).OnUnitAttack (gameObject, enemy);
+//		((BattleController)app.controller).OnUnitAttack (gameObject, enemy);
+		StartCoroutine ("Attack", enemy);
 	}
 
 	private void OnFighterDataSet ()
@@ -89,6 +93,11 @@ public class FighterController : Controller
 	{
 		// Temporary konckback. TODO: Apply knockback resistance/amount.
 		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
-		GetComponent<Rigidbody2D> ().AddForce (new Vector2 (5.0f * -moveDirection, 5.0f), ForceMode2D.Impulse);
+
+		Rigidbody2D rigidBody = GetComponent<Rigidbody2D> ();
+
+		if (Math.Abs (rigidBody.velocity.x) < 1.0f) {
+			rigidBody.AddForce (new Vector2 (8.0f * -moveDirection, 1.0f), ForceMode2D.Impulse);
+		}
 	}
 }

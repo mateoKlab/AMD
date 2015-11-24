@@ -9,26 +9,22 @@ public class FighterView : View {
 	
 	public Action<GameObject> OnCollideWithEnemy;
 
-	// TEMPORARY.
-	public void SetAttackSprite ()
+
+	// Temporary
+	public void AnimateAttack ()
 	{
-//		GetComponent<SpriteRenderer> ().sprite = attackSprite;
+		fighterSprite.GetComponent<Animator> ().SetTrigger ("Attack");
 	}
 
-	// TEMPORARY.
-	public void SetIdleSprite ()
+	// Temporary
+	public void AnimateRun ()
 	{
-//		GetComponent<SpriteRenderer> ().sprite = idleSprite;
+		fighterSprite.GetComponent<Animator> ().SetTrigger ("Run");
 	}
 
 	public void SetSprite ()
 	{	
 		SpriteBuilder.instance.BuildSprite (fighterSprite);
-
-//		SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer> ();
-//		string spriteName = (model as FighterModel).fighterData.spriteName;
-//
-//		spriteRenderer.sprite = Resources.Load ("Sprites/" + spriteName, typeof(Sprite)) as Sprite;
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)

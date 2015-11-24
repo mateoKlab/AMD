@@ -114,9 +114,13 @@ public class BattleController : Controller<Battle>
     public void OnUnitAttack(GameObject attacker, GameObject defender)
     {
         FighterController attackingUnit = ((FighterController) attacker.GetComponent<FighterController>());
-        FighterController defendingUnit = ((FighterController) defender.GetComponent<FighterController>());
+
+		// Check if the defending unit is still alive. (Attacks may land at the same time).
+		if (defender != null) {
+			FighterController defendingUnit = ((FighterController)defender.GetComponent<FighterController> ());
 		
-        defendingUnit.OnReceiveAttack(attackingUnit.GetAttackData());
+			defendingUnit.OnReceiveAttack (attackingUnit.GetAttackData ());
+		}
     }
 
     public void OnRangedAttack(GameObject attacker)
