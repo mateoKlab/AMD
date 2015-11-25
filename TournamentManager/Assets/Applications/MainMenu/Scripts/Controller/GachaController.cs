@@ -11,8 +11,9 @@ public class GachaController : Controller <MainMenu, GachaModel, GachaView>
 			Debug.LogError ("Not enough gold.");
 			return;
 		}
-		FighterData gachaCharacter = new FighterData();//GameData.instance.fighterDatabase[(int)Random.Range(0, GameData.instance.fighterDatabase.Count)];
+		FighterData gachaCharacter = new FighterData();
 
+        gachaCharacter.id = GUIDGenerator.NewGuid();
 		gachaCharacter.name = model.namePool[(int)Random.Range(0, model.namePool.Count)];
 		gachaCharacter.fighterElement = (FighterElement)Random.Range(0, 4);
 		gachaCharacter.HP = (int)Random.Range(5, 15) * 100; 

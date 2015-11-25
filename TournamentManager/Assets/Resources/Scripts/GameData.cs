@@ -18,7 +18,7 @@ public class GameData : MonoBehaviour {
 	public Dictionary<StageType, Dictionary<string, StageData>> stageDatabase;
 
 	// Team management
-	public FighterData[] activeFighters = new FighterData[GameData.MAX_ACTIVE_FIGHTERS];
+	public FighterData[] activeParty = new FighterData[GameData.MAX_ACTIVE_FIGHTERS];
 	public int currentPartyCost;
 
 	// For test purposes only -AJ
@@ -58,7 +58,8 @@ public class GameData : MonoBehaviour {
 
 		LoadDatabase ();
 		playerData = PlayerData.Load ();
-		LoadActiveFighters();
+		//LoadActiveFighters();
+        LoadActiveParty();
 	}
 
 	public void Save ()
@@ -112,10 +113,11 @@ public class GameData : MonoBehaviour {
 		playerData.Save();
 	}
 
+    /*
 	public void LoadActiveFighters()
 	{
 		if(playerData.fightersOwned.Count == 0)
-			playerData.InitFirstCharacter();
+            InitFirstFighter();
 
 		for(int i = 0; i < playerData.fightersOwned.Count; i++)
 		{
@@ -124,7 +126,7 @@ public class GameData : MonoBehaviour {
 				if(IsWithinPartyCapacity(playerData.fightersOwned[i].cost))
 				{
 					// Add active troop to active fighters and add its cost to team capacity
-					activeFighters[playerData.fightersOwned[i].activeTroopIndex] = playerData.fightersOwned[i];
+					activeParty[playerData.fightersOwned[i].activeTroopIndex] = playerData.fightersOwned[i];
 					currentPartyCost += playerData.fightersOwned[i].cost;
 				}
 				else
@@ -137,15 +139,16 @@ public class GameData : MonoBehaviour {
 			}
 		}
 	}
+    */   
 
 	public List<FighterData> GetFightersOwned()
 	{
 		return playerData.fightersOwned;
 	}
 
-	public FighterData[] GetActiveFighters()
+	public FighterData[] GetActiveParty()
 	{
-		return activeFighters;
+		return activeParty;
 	}
 
 	public int GetPartyCapacity()
@@ -164,11 +167,102 @@ public class GameData : MonoBehaviour {
 		if(playerData.fightersOwned.Count >= playerData.teamCapacity)
 			return false;
 
-		fighter.activeTroopIndex = -1;
+//		fighter.activeTroopIndex = -1;
 		playerData.fightersOwned.Add(fighter);
 
 		return true;
 	}
+
+    public FighterData GetFighterByID(string id)
+    {
+        for(int i = 0; i < playerData.fightersOwned.Count; i++)
+        {
+           if(playerData.fightersOwned[i].id == id)
+                return playerData.fightersOwned[i];
+        }
+
+        return null;
+    }
+
+    public bool CheckIfFighterActive(FighterData fd)
+    {
+        for(int i = 0; i < activeParty.Length; i++)
+        {
+            if(activeParty[i] != null && activeParty[i].id == fd.id)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public int GetActiveFighterIndexOnParty(FighterData fd)
+    {
+        for(int i = 0; i < activeParty.Length; i++)
+        {
+            if(activeParty[i] != null && activeParty[i].id == fd.id)
+            {
+                return i;
+            }
+        }
+        
+        return -1;
+    }
+
+    public void SetFighterOnActiveParty(FighterData fighter, int indexOnParty) 
+    {
+        if(indexOnParty > -1 && indexOnParty < playerData.activePartyIDs.Length)
+        {
+            if(fighter == null)
+            {
+                activeParty[indexOnParty] = null;
+                playerData.activePartyIDs[indexOnParty] = "";
+            }
+            else
+            {
+                activeParty[indexOnParty] = fighter;
+                playerData.activePartyIDs[indexOnParty] = fighter.id;
+                //Debug.Log("Added fighter " + playerData.activePartyIDs[indexOnParty] + " to party");
+            }
+        }
+        else
+        {
+            Debug.LogError("Index out of bounds, failed to set fighter on party");
+        }
+    }
+
+    public void LoadActiveParty()
+    {
+        if(playerData.fightersOwned.Count == 0)
+        {
+            InitFirstFighter();
+        }
+
+        for(int i = 0; i < activeParty.Length; i++)
+        {
+            activeParty[i] = null;
+
+            if(!string.IsNullOrEmpty(playerData.activePartyIDs[i]))
+            {
+                FighterData fd = GetFighterByID(playerData.activePartyIDs[i]);
+                if(fd != null)
+                {
+                    activeParty[i] = fd;
+                }
+            }
+        }
+    }
+
+    public void InitFirstFighter()
+    {
+        // Create default character
+        FighterData fd = fighterDatabase[0];
+        fd.id = GUIDGenerator.NewGuid();
+        AddFighter(fd);
+        SetFighterOnActiveParty(fd, 0);
+        playerData.Save();
+    }
 
 	#endregion
 }

@@ -26,6 +26,10 @@ public class PlayerData
     public int
         tournamentMatchCount;
 
+    [XmlArray("ActiveParty")]
+    [XmlArrayItem("ActiveFighter")]
+    public string[] activePartyIDs = new string[GameData.MAX_ACTIVE_FIGHTERS] {"", "", "", "", "", ""};
+
     [XmlArray("FightersOwned")]
     [XmlArrayItem("Fighter")]
     public List<FighterData>
@@ -118,14 +122,5 @@ public class PlayerData
         #else
         return Application.dataPath +"/"+ fileName;
         #endif
-    }
-
-    public void InitFirstCharacter()
-    {
-        // Create default character
-        FighterData gachaCharacter = GameData.instance.fighterDatabase[0];
-        gachaCharacter.activeTroopIndex = 0;	// Automatically make that character active
-        fightersOwned.Add(gachaCharacter);
-        Save();
     }
 }

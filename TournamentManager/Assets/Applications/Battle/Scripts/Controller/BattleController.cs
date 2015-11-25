@@ -82,7 +82,7 @@ public class BattleController : Controller<Battle>
         // TEST spawn positions. TODO: positioning code.
         Vector3 startPos = new Vector3(-3f, -1f, -1f);
         
-        foreach (FighterData fighter in GameData.instance.GetActiveFighters())
+        foreach (FighterData fighter in GameData.instance.GetActiveParty())
         {
             if (fighter == null) {
                 continue;
