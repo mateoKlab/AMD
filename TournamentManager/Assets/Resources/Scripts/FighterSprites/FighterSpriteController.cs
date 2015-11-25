@@ -12,10 +12,4 @@ public class FighterSpriteController : MonoBehaviour {
 		Mage,
 		Archer
 	}
-
-
-	void Test ()
-	{
-
-	}
 }

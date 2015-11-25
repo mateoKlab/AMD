@@ -10,7 +10,7 @@ public class FighterController : Controller
 		(model as FighterModel).OnFighterDataSet += OnFighterDataSet;
 		(view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
 
-		// comment out for now. (crashing)
+		// comment out for now. (crashing due to changes.)
 //		SetSprite();
 	}
 
@@ -31,18 +31,6 @@ public class FighterController : Controller
 
 		return new Attack(fighter.ATK, 1.0f, AttackType.Melee, gameObject);
     }
-
-    // Temporary...?
-    IEnumerator Attack (GameObject enemy)
-    {
-		(view as FighterView).AnimateAttack ();
-
-        yield return new WaitForSeconds(0.45f); // Temporary, use actual animation timing.
-
-		((BattleController)app.controller).OnUnitAttack (gameObject, enemy);
-
-		(view as FighterView).AnimateRun ();
-	}
 
     public void OnReceiveAttack(Attack attack)
     {
@@ -67,8 +55,7 @@ public class FighterController : Controller
 
 	private void OnCollideWithEnemy (GameObject enemy)
 	{
-//		((BattleController)app.controller).OnUnitAttack (gameObject, enemy);
-		StartCoroutine ("Attack", enemy);
+		((BattleController)app.controller).OnUnitAttack (gameObject, enemy);
 	}
 
 	private void OnFighterDataSet ()
@@ -82,6 +69,8 @@ public class FighterController : Controller
 		(model as FighterModel).fighterData.HP -= attack.damage;
 
 		Messenger.Send (EventTags.FIGHTER_RECEIVED_DAMAGE, attack.damage, this.gameObject);
+
+//		(view as FighterView).fighterSprite.GetComponent<Animator> ().SetTrigger ("Hit");
 
 		// TODO: Move to model. Use delegate.
 		if ((model as FighterModel).fighterData.HP <= 0) {
@@ -97,7 +86,7 @@ public class FighterController : Controller
 		Rigidbody2D rigidBody = GetComponent<Rigidbody2D> ();
 
 		if (Math.Abs (rigidBody.velocity.x) < 1.0f) {
-			rigidBody.AddForce (new Vector2 (8.0f * -moveDirection, 1.0f), ForceMode2D.Impulse);
+			rigidBody.AddForce (new Vector2 (9.0f * -moveDirection, 1.0f), ForceMode2D.Impulse);
 		}
 	}
 }

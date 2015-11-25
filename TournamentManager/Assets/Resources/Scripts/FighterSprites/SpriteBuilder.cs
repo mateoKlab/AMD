@@ -47,22 +47,15 @@ public class SpriteBuilder : MonoBehaviour {
 		spriteDatabase = SpriteDatabase.LoadDatabase ();
 	}
 
-	public void DoStuff ()
-	{
-
-	}
-
-	void Test ()
-	{
-		GameObject testObject = GameObject.Instantiate (WarriorPrefab);
-		BuildSprite (testObject.GetComponent <FighterSpriteController> ());
-	}
-
 	public void BuildSprite (FighterSpriteController spriteController)
 	{
 		Sprite newSprite;
 
 		foreach (FighterSpriteAttachment attachment in spriteController.spriteAttachments) {
+			if (attachment.type == FighterSpriteAttachment.AttachmentType.Static) {
+				continue;
+			}
+
 			List<string> spritePool = spriteDatabase[spriteController.baseType][attachment.type];
 
 			int randomSprite = UnityEngine.Random.Range (0, spritePool.Count);
