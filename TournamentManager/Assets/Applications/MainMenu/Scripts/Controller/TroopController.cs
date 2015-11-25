@@ -36,15 +36,14 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
         view.SetIcon(fighterData.normalIcon);
     }
 
-    public FighterData GetTroop()
+    public FighterData GetFighter()
     {
         return model.fighterData;
     }
 
     public void SetTroopActive(int slotIndex)
     {
-        model.activeTroopIndex = slotIndex;
-        editTeamController.AddTroopOnTeam(model.activeTroopIndex, model.fighterData);
+        editTeamController.AddTroopOnTeam(slotIndex, model.fighterData);
     }
 
     public int GetTroopCost()
@@ -66,12 +65,14 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
         gridLayoutGroup.enabled = false;
         siblingIndex = transform.GetSiblingIndex();
         transform.SetParent(editTeamController.transform, true);
+        ((RectTransform)transform).position = new Vector3(((RectTransform)transform).position.x, ((RectTransform)transform).position.y, 0);
         transform.SetAsLastSibling();
 
         // Set troop as inactive as soon as it was dragged
-        if (model.activeTroopIndex > -1)
-            editTeamController.RemoveTroopOnTeam(model.activeTroopIndex);
-        model.activeTroopIndex = -1;
+        if (editTeamController.IsTroopActive(model.fighterData))
+        {
+            editTeamController.RemoveTroopOnTeam(model.fighterData);
+        }
     }
 
     public void OnEndDrag()
@@ -81,6 +82,7 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
         if (transform.parent == editTeamController.transform)
         {
             transform.SetParent(startParent);
+            ((RectTransform)transform).localPosition = Vector3.zero;
         }
 
         if (startParent == teamPanel)

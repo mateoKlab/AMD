@@ -29,16 +29,4 @@ public class TroopModel : Model
 			return fighterData.ATK;
 		}
 	}
-
-	public int activeTroopIndex
-	{
-		get
-		{
-			return fighterData.activeTroopIndex;
-		}
-		set
-		{
-			fighterData.activeTroopIndex = value;
-		}
-	}
 }
