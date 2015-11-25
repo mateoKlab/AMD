@@ -7,7 +7,8 @@ public class FighterSpriteAttachment : MonoBehaviour {
 		Head,
 		Weapon,
 		Mantle,
-		Body
+		Body,
+		Static
 	}
 
 	public AttachmentType type;	

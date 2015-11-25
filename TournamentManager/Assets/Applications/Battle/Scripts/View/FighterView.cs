@@ -10,21 +10,25 @@ public class FighterView : View {
 	public Action<GameObject> OnCollideWithEnemy;
 
 
-	// Temporary
+	// Temporary. TODO: Move to controller.
 	public void AnimateAttack ()
 	{
 		fighterSprite.GetComponent<Animator> ().SetTrigger ("Attack");
 	}
 
-	// Temporary
-	public void AnimateRun ()
-	{
-		fighterSprite.GetComponent<Animator> ().SetTrigger ("Run");
-	}
-
 	public void SetSprite ()
 	{	
 		SpriteBuilder.instance.BuildSprite (fighterSprite);
+
+	
+	}
+
+	void OnTriggerEnter2D (Collider2D other)
+	{
+		//Test
+		if (other.gameObject.tag == Tags.Units) {
+			AnimateAttack ();
+		}
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)
