@@ -266,11 +266,11 @@ public class GameData : MonoBehaviour {
     public void InitFirstFighter()
     {
         // Create default character
-        FighterData fd = fighterDatabase[0];
-        fd.id = GUIDGenerator.NewGuid();
-        AddFighter(fd);
-        SetFighterOnActiveParty(fd, 0);
-        playerData.Save();
+//        FighterData fd = fighterDatabase[0];
+//        fd.id = GUIDGenerator.NewGuid();
+//        AddFighter(fd);
+//        SetFighterOnActiveParty(fd, 0);
+//        playerData.Save();
     }
 
 	#endregion

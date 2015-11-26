@@ -15,9 +15,11 @@ public class TournamentModel : Model
 //		PopulateMatchesList();
 //	}
 	
-	public void Start()
+	public void Awake()
 	{
-		
+
+		Debug.Log ("TOURNY MODEL START");
+
 		Dictionary<StageType, Dictionary<string, StageData>> stageDatabaseClone = GameData.instance.stageDatabase;
 		tournamentMatchDictionary = stageDatabaseClone[StageType.Tournament];
 
