@@ -145,7 +145,6 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
             return;
 
         troop.transform.SetParent(teamPanel);
-        ((RectTransform)troop.transform).localPosition = Vector3.zero;
         troop.transform.SetAsLastSibling();
     }
 

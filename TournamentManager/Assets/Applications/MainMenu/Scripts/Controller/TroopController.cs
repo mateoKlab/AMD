@@ -33,7 +33,7 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
     public void SetTroop(FighterData fighterData)
     {
         model.fighterData = fighterData;
-        view.SetIcon(fighterData.normalIcon);
+        view.SetIcon();
     }
 
     public FighterData GetFighter()
@@ -65,7 +65,6 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
         gridLayoutGroup.enabled = false;
         siblingIndex = transform.GetSiblingIndex();
         transform.SetParent(editTeamController.transform, true);
-        ((RectTransform)transform).position = new Vector3(((RectTransform)transform).position.x, ((RectTransform)transform).position.y, 0);
         transform.SetAsLastSibling();
 
         // Set troop as inactive as soon as it was dragged
@@ -82,7 +81,6 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
         if (transform.parent == editTeamController.transform)
         {
             transform.SetParent(startParent);
-            ((RectTransform)transform).localPosition = Vector3.zero;
         }
 
         if (startParent == teamPanel)

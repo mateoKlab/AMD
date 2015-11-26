@@ -80,7 +80,7 @@ public class BattleController : Controller<Battle>
         GameObject newFighter;
 
         // TEST spawn positions. TODO: positioning code.
-        Vector3 startPos = new Vector3(-3f, -1f, -1f);
+        Vector3 startPos = new Vector3(-2f, -1f, -1f);
         
         foreach (FighterData fighter in GameData.instance.GetActiveParty())
         {
@@ -94,14 +94,14 @@ public class BattleController : Controller<Battle>
 			newFighter.transform.position = startPos;
         }
 
-        startPos = new Vector3(3f, -1f, -1f);
+        startPos = new Vector3(2f, -1f, -1f);
 
         StageData currentStage = GameData.instance.currentStage;
         foreach (FighterData fighter in currentStage.enemies)
         {
             newFighter = SpawnFighter(fighter, FighterAlliegiance.Enemy);
 
-			startPos = new Vector3(startPos.x + 1.2f, -1f, newFighter.transform.position.z);
+			startPos = new Vector3(startPos.x + 1f, -1f, newFighter.transform.position.z);
 			newFighter.transform.position = startPos;
         }
 
