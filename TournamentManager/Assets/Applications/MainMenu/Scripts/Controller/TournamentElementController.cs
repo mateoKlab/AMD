@@ -10,6 +10,8 @@ public class TournamentElementController : Controller <MainMenu, TournamentEleme
 	}
 
 	public void SetStageData(StageData sData) {
+
+		Debug.Log ("SET STAGE DATA");
 		model.stageData = sData;
 		view.nameLabel.text = sData.name;
 	}

@@ -87,7 +87,7 @@ public class PlayerData
 
     public static PlayerData Load()
     {
-
+		Debug.Log ("LOADING");
         XmlSerializer ser = new XmlSerializer(typeof(PlayerData));
 
         #if UNITY_EDITOR || UNITY_IOS
