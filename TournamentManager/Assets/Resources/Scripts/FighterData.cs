@@ -22,6 +22,7 @@ public enum FighterElement
     Earth
 }
 
+[XmlRoot ("Class")]
 public enum FighterClass
 {
 	Warrior,
@@ -67,8 +68,8 @@ public class FighterData
         name = "Juan";
 
     [XmlElement ("Class")]
-    public string
-        fighterClass = "Warrior";
+	public FighterClass
+        fighterClass = FighterClass.Warrior;
 
     [XmlElement ("Element")]
     public FighterElement
@@ -77,6 +78,9 @@ public class FighterData
     [XmlElement ("Cost")]
     public int
         cost = 2;
+
+	// TODO: Put initializations into constructor.
+	public FighterSkinData skinData = new FighterSkinData ();
 
     [XmlIgnore]
     public Sprite normalIcon

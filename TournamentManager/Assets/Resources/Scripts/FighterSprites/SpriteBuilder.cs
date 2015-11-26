@@ -49,19 +49,45 @@ public class SpriteBuilder : MonoBehaviour {
 
 	public void BuildSprite (FighterSpriteController spriteController)
 	{
-		Sprite newSprite;
-
-		foreach (FighterSpriteAttachment attachment in spriteController.spriteAttachments) {
-			if (attachment.type == FighterSpriteAttachment.AttachmentType.Static) {
-				continue;
-			}
-
-			List<string> spritePool = spriteDatabase[spriteController.baseType][attachment.type];
-
-			int randomSprite = UnityEngine.Random.Range (0, spritePool.Count);
-
-			newSprite = Resources.Load ("Sprites/UnitSprites/" + attachment.type.ToString() + "/" + spritePool[randomSprite], typeof(Sprite)) as Sprite;
-			attachment.gameObject.GetComponent<SpriteRenderer> ().sprite = newSprite;
-		}
+//		Sprite newSprite;
+//
+//		foreach (FighterSpriteAttachment attachment in spriteController.spriteAttachments) {
+//			if (attachment.type == FighterSpriteAttachment.AttachmentType.Static) {
+//				continue;
+//			}
+//
+//			List<string> spritePool = spriteDatabase[spriteController.baseType][attachment.type];
+//
+//			int randomSprite = UnityEngine.Random.Range (0, spritePool.Count);
+//
+//			newSprite = Resources.Load ("Sprites/UnitSprites/" + attachment.type.ToString() + "/" + spritePool[randomSprite], typeof(Sprite)) as Sprite;
+//			attachment.gameObject.GetComponent<SpriteRenderer> ().sprite = newSprite;
+//		}
 	}
+
+	public void SetSprites (FighterSpriteController spriteController)
+	{
+		
+
+	}
+
+//	public FighterSkinData BuildSprite (FighterSpriteController spriteController)
+//	{
+//		FighterSkinData newSkin = new FighterSkinData ();
+//
+//		Sprite newSprite;
+//		
+//		foreach (FighterSpriteAttachment attachment in spriteController.spriteAttachments) {
+//			if (attachment.type == FighterSpriteAttachment.AttachmentType.Static) {
+//				continue;
+//			}
+//			
+//			List<string> spritePool = spriteDatabase[spriteController.baseType][attachment.type];
+//			
+//			int randomSprite = UnityEngine.Random.Range (0, spritePool.Count);
+//			
+//			newSprite = Resources.Load ("Sprites/UnitSprites/" + attachment.type.ToString() + "/" + spritePool[randomSprite], typeof(Sprite)) as Sprite;
+//			attachment.gameObject.GetComponent<SpriteRenderer> ().sprite = newSprite;
+//		}
+//	}
 }

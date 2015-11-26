@@ -185,6 +185,7 @@ public class BattleController : Controller<Battle>
 			newFighter.transform.localScale = tempScale;
         }
 
+//		newFighter.GetComponent <FighterController> ().SetFighterSkin ();
         newFighter.SetActive(true);
 
         return newFighter;

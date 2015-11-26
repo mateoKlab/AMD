@@ -14,8 +14,15 @@ public class GameData : MonoBehaviour {
 
 	public PlayerData playerData;
 
+
+
 	public List<FighterData> fighterDatabase = new List<FighterData> ();
 	public Dictionary<StageType, Dictionary<string, StageData>> stageDatabase;
+
+	// List of sprites available for each sprite attachment/body part.
+	private SpriteDatabase _spriteDatabase;
+	public SpriteDatabase spriteDatabase { get; private set; }
+
 
 	// Team management
 	public FighterData[] activeParty = new FighterData[GameData.MAX_ACTIVE_FIGHTERS];
@@ -69,6 +76,7 @@ public class GameData : MonoBehaviour {
 	
 	public void LoadDatabase()
 	{
+		spriteDatabase = SpriteDatabase.LoadDatabase ();
 
 		// Initialize stage Database dictionary.
 		stageDatabase = new Dictionary<StageType, Dictionary<string, StageData>> ();
@@ -92,18 +100,18 @@ public class GameData : MonoBehaviour {
 			stageDatabase[stage.stageType].Add(stage.name, stage);
 		}
 
-		// TEMPORARY DATABASE.
-		ser = new XmlSerializer(typeof(FighterDatabase));
-		textAsset = Resources.Load ("Data/FighterDatabase") as TextAsset;
-		stringReader = new System.IO.StringReader(textAsset.text);
-		FighterDatabase fighters;
-
-		using (XmlReader reader = XmlReader.Create(stringReader))
-		{
-			fighters = (FighterDatabase) ser.Deserialize(reader);
-		}
-
-		fighterDatabase = fighters.fighters;
+//		// TEMPORARY DATABASE.
+//		ser = new XmlSerializer(typeof(FighterDatabase));
+//		textAsset = Resources.Load ("Data/FighterDatabase") as TextAsset;
+//		stringReader = new System.IO.StringReader(textAsset.text);
+//		FighterDatabase fighters;
+//
+//		using (XmlReader reader = XmlReader.Create(stringReader))
+//		{
+//			fighters = (FighterDatabase) ser.Deserialize(reader);
+//		}
+//
+//		fighterDatabase = fighters.fighters;
 	}
 
 	#region Player Data Manipulation
@@ -169,6 +177,7 @@ public class GameData : MonoBehaviour {
 
 //		fighter.activeTroopIndex = -1;
 		playerData.fightersOwned.Add(fighter);
+		playerData.Save ();
 
 		return true;
 	}

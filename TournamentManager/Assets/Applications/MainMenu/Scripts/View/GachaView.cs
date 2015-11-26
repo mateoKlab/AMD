@@ -48,7 +48,8 @@ public class GachaView : View
 		elementLabel.text = "Element: " + fData.fighterElement;
 
 		characterSprite.SetActive (true);
-		SpriteBuilder.instance.BuildSprite (characterSprite.GetComponent <FighterSpriteController> ());
+		characterSprite.GetComponent<FighterSpriteController> ().SetFighterSkin (fData.skinData);
+//		SpriteBuilder.instance.BuildSprite (characterSprite.GetComponent <FighterSpriteController> ());
 	}
 
 	public void ResetDisplayValues() {

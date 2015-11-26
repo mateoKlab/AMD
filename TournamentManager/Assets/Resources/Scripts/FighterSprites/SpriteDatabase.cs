@@ -7,7 +7,7 @@ using System.IO;
 
 [XmlRoot]
 // List of available sprite attachments/body parts grouped by Fighter BaseType (Warrior, Archer, Mage)
-public class SpriteDatabase : SerializableDictionary <FighterSpriteController.BaseType, SerializableDictionary <FighterSpriteAttachment.AttachmentType, List <string>>>
+public class SpriteDatabase : SerializableDictionary <FighterClass, SerializableDictionary <FighterSpriteAttachment.AttachmentType, List <string>>>
 {
 	public static SpriteDatabase LoadDatabase ()
 	{

@@ -16,11 +16,9 @@ public class FighterView : View {
 		fighterSprite.GetComponent<Animator> ().SetTrigger ("Attack");
 	}
 
-	public void SetSprite ()
+	public void SetFighterSkin (FighterSkinData skinData)
 	{	
-		SpriteBuilder.instance.BuildSprite (fighterSprite);
-
-	
+		fighterSprite.SetFighterSkin (skinData);
 	}
 
 	void OnTriggerEnter2D (Collider2D other)

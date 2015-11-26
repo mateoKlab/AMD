@@ -19,10 +19,12 @@ public class FighterController : Controller
 		(view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
 	}
 
-    public void SetSprite()
+    public void SetFighterSkin ()
     {
-        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
-        sr.sprite = ((FighterModel) model).fighterData.normalIcon;
+		(view as FighterView).SetFighterSkin ((model as FighterModel).fighterData.skinData);
+
+//        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+//        sr.sprite = ((FighterModel) model).fighterData.normalIcon;
     }
 
     public Attack GetAttackData()
@@ -60,7 +62,7 @@ public class FighterController : Controller
 
 	private void OnFighterDataSet ()
 	{
-		(view as FighterView).SetSprite ();
+		SetFighterSkin ();
 	}
 
 	private void ReceiveDamage (Attack attack)
