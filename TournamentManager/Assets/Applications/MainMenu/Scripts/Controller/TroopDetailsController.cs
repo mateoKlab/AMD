@@ -10,6 +10,6 @@ public class TroopDetailsController : Controller
         ((TroopDetailsView) view).SetAtk(fighterData.ATK);
         ((TroopDetailsView) view).SetHP(fighterData.HP);
         ((TroopDetailsView) view).SetCost(fighterData.cost);
-        ((TroopDetailsView) view).SetIcon(fighterData);
+        ((TroopDetailsView) view).SetSprite(fighterData.skinData);
     }
 }
