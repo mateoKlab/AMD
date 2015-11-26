@@ -44,7 +44,6 @@ public class ActiveTeamSlotController : Controller
 
 			troopOnSlot.SetTroopActive(slotIndex);
 			selectedTroop.transform.SetParent(transform);
-            ((RectTransform)selectedTroop.transform).localPosition = Vector3.zero;
 			selectedTroop.transform.localPosition = Vector2.zero;
 		}
 	}

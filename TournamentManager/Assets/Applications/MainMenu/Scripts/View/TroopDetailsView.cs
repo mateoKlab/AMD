@@ -9,7 +9,7 @@ public class TroopDetailsView : View
     private Text atkText;
     private Text hpText;
     private Text costText;
-    public SkeletonRenderer skeletonRenderer;
+    public FighterSpriteController troopSprite;
 
     public override void Awake()
     {
@@ -18,7 +18,7 @@ public class TroopDetailsView : View
         atkText = transform.FindChild("Attack").GetComponent<Text>();
         hpText = transform.FindChild("HP").GetComponent<Text>();
         costText = transform.FindChild("Cost").GetComponent<Text>();
-        skeletonRenderer = transform.FindChild("TroopIconBorder/TroopSpine").GetComponent<SkeletonRenderer>();
+        troopSprite = transform.FindChild("TroopIconBorder/TroopSprite").GetComponent<FighterSpriteController>();
     }
 
     public void SetName(string name)
@@ -43,8 +43,8 @@ public class TroopDetailsView : View
 
     public void SetIcon(FighterData fighterData)
     {
-        skeletonRenderer.GetComponent<HeroAttachmentLoader>().setType = (HeroAttachmentLoader.SetType) fighterData.fighterElement;
-        skeletonRenderer.GetComponent<HeroAttachmentLoader>().ChangeSet();
+        // TODO building sprite everytime feels really slow, refactor later
+        SpriteBuilder.instance.BuildSprite (troopSprite);
     }
 
 }
