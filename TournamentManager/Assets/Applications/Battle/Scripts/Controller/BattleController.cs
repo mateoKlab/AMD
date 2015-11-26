@@ -8,6 +8,9 @@ public class BattleController : Controller<Battle>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
+    public BattleEndController battleEndController { get; private set; }
+    
+    [Inject]
     public BattleMenuController battleMenuController { get; private set; }
     
     //////// END MVCCodeEditor GENERATED CODE ////////
@@ -57,18 +60,22 @@ public class BattleController : Controller<Battle>
 
             //TODO: Show WIN popup. Send WIN event.		
 
+			battleEndController.ShowBattleEndPopUp(true);
+
             if (GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount)
             {
                 GameData.instance.playerData.tournamentProgress++;
             }
 
-            Application.LoadLevel("MainMenuScene");
+            //Application.LoadLevel("MainMenuScene");
         }
         else if (allies.Count == 0)
         {
             // TODO: Apply injuries, etc.
 
-            Application.LoadLevel("MainMenuScene");
+			battleEndController.ShowBattleEndPopUp(false);
+
+            //Application.LoadLevel("MainMenuScene");
         }
 
         // TODO: pooling

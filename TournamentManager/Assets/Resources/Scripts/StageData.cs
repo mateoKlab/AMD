@@ -31,4 +31,10 @@ public class StageData {
 	[XmlArray("Enemies")]
 	[XmlArrayItem("Fighter")]
 	public List<FighterData> enemies = new List<FighterData> ();
+
+	[XmlElement]
+	public int goldReward;
+
+	[XmlElement]
+	public int xpReward;
 }
