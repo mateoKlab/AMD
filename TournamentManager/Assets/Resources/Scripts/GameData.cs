@@ -13,7 +13,7 @@ public class GameData : MonoBehaviour {
 	public const int MAX_ACTIVE_FIGHTERS = 6;
 
 	public PlayerData playerData;
-
+    public TownData town;
 
 
 	public List<FighterData> fighterDatabase = new List<FighterData> ();
@@ -65,6 +65,7 @@ public class GameData : MonoBehaviour {
 
 		LoadDatabase ();
 		playerData = PlayerData.Load ();
+        town = playerData.town;
 		//LoadActiveFighters();
         LoadActiveParty();
 	}
@@ -119,35 +120,7 @@ public class GameData : MonoBehaviour {
 	public void SavePlayerData()
 	{
 		playerData.Save();
-	}
-
-    /*
-	public void LoadActiveFighters()
-	{
-		if(playerData.fightersOwned.Count == 0)
-            InitFirstFighter();
-
-		for(int i = 0; i < playerData.fightersOwned.Count; i++)
-		{
-			if(playerData.fightersOwned[i].activeTroopIndex > -1)
-			{
-				if(IsWithinPartyCapacity(playerData.fightersOwned[i].cost))
-				{
-					// Add active troop to active fighters and add its cost to team capacity
-					activeParty[playerData.fightersOwned[i].activeTroopIndex] = playerData.fightersOwned[i];
-					currentPartyCost += playerData.fightersOwned[i].cost;
-				}
-				else
-				{
-					// Just in case there was an error in saving the active troops, if the troop is active 
-					// and adding it to active troops will exceed the current troop capacity,
-					// set that troop as incactive
-					playerData.fightersOwned[i].activeTroopIndex = -1;
-				}
-			}
-		}
-	}
-    */   
+	} 
 
 	public List<FighterData> GetFightersOwned()
 	{
@@ -266,8 +239,7 @@ public class GameData : MonoBehaviour {
     public void InitFirstFighter()
     {
         // Create default character
-        FighterData fd = fighterDatabase[0];
-        fd.id = GUIDGenerator.NewGuid();
+        FighterData fd = FighterGenerator.GenerateFighter ();
         AddFighter(fd);
         SetFighterOnActiveParty(fd, 0);
         playerData.Save();
