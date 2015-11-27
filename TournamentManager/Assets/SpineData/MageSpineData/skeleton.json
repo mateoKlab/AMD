@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "HSHpdlRrulaALc5nmJc/D+5gJ14", "spine": "2.1.27", "width": 378.11, "height": 384.74, "images": "" },
+"skeleton": { "hash": "VCg/OR2ADkvUd68tDexaLYG9K7E", "spine": "2.1.27", "width": 378.11, "height": 384.74, "images": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "l_foot", "parent": "root", "length": 92.69, "x": 4.56, "y": 87.99, "rotation": -65.65 },
@@ -259,6 +259,84 @@
 					{ "time": 0, "angle": 13.34 },
 					{ "time": 0.6666, "angle": -102.74, "curve": "stepped" },
 					{ "time": 1.3333, "angle": -102.74 }
+				]
+			}
+		}
+	},
+	"hit": {
+		"slots": {
+			"eyes": {
+				"attachment": [
+					{ "time": 0, "name": "eyes" },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.3333, "name": "eyes" },
+					{ "time": 0.6666, "name": "eyes" }
+				]
+			},
+			"eyes_blink1": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": "eyes_blink" },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.6666, "name": null }
+				]
+			},
+			"eyes_blink2": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": "eyes_blink" },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.6666, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"spine": {
+				"translate": [
+					{ "time": 0, "x": -0.03, "y": 0.82 },
+					{ "time": 0.1666, "x": 0.39, "y": -8.24 },
+					{ "time": 0.3333, "x": -0.03, "y": 0.82 }
+				]
+			},
+			"r_foot": {
+				"translate": [
+					{ "time": 0, "x": 1.65, "y": 0 },
+					{ "time": 0.1666, "x": 0, "y": 0 },
+					{ "time": 0.3333, "x": 1.65, "y": 0 }
+				]
+			},
+			"l_foot": {
+				"translate": [
+					{ "time": 0, "x": 0.82, "y": 0 },
+					{ "time": 0.1666, "x": 1.65, "y": 0 },
+					{ "time": 0.3333, "x": 0.82, "y": 0 }
+				]
+			},
+			"head": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1666, "angle": -19.06 },
+					{ "time": 0.3333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.6666, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0.9, "y": 0, "curve": "stepped" },
+					{ "time": 0.3333, "x": 0.9, "y": 0, "curve": "stepped" },
+					{ "time": 0.6666, "x": 0.9, "y": 0 }
+				]
+			},
+			"r_arm": {
+				"rotate": [
+					{ "time": 0, "angle": 2.22 },
+					{ "time": 0.1666, "angle": 15.29 },
+					{ "time": 0.3333, "angle": 2.22 }
+				]
+			},
+			"l_arm": {
+				"rotate": [
+					{ "time": 0, "angle": 5.41 },
+					{ "time": 0.1666, "angle": -17.71 },
+					{ "time": 0.3333, "angle": 5.41 }
 				]
 			}
 		}
