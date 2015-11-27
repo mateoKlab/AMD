@@ -6,20 +6,25 @@ using Bingo;
 
 public class TroopView : View<MainMenu>, IPointerEnterHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
-    private FighterSpriteController sprite;
+    private FighterSpriteController troopSprite;
     private Canvas myCanvas;
 
 	public override void Awake ()
 	{
 		base.Awake ();
 
-        sprite = transform.GetChild(0).GetComponent<FighterSpriteController>();
+        troopSprite = transform.GetChild(0).GetComponent<FighterSpriteController>();
         myCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
 	}
 
-    public void SetIcon()
+    void Start()
     {
-        SpriteBuilder.instance.BuildSprite(sprite);
+        SetSprite(((FighterModel)model).skindData);
+    }
+
+    public void SetSprite(FighterSkinData skinData)
+    {
+        troopSprite.SetFighterSkin(skinData);
     }
 
 	public void OnPointerEnter (PointerEventData eventData)

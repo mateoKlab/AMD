@@ -65,4 +65,12 @@ public class FighterModel : Model {
 			return fighterData.cost;
 		}
 	}
+
+    public FighterSkinData skindData
+    {
+        get
+        {
+            return fighterData.skinData;
+        }
+    }
 }

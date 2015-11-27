@@ -41,10 +41,10 @@ public class TroopDetailsView : View
         costText.text = cost.ToString("n0");
     }
 
-    public void SetIcon(FighterData fighterData)
+    public void SetSprite(FighterSkinData skinData)
     {
         // TODO building sprite everytime feels really slow, refactor later
-        SpriteBuilder.instance.BuildSprite (troopSprite);
+        troopSprite.SetFighterSkin(skinData);
     }
 
 }
