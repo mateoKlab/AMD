@@ -12,7 +12,7 @@ public class MeleeFighterController : FighterController
 		}
 		
 		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
-		transform.position = new Vector3 (transform.position.x + (0.05f * moveDirection) , transform.position.y, transform.position.x + (0.05f * moveDirection));
+		transform.position = new Vector3 (transform.position.x + (0.05f * moveDirection), transform.position.y, transform.position.z);//(transform.position.x + 1.0f) * moveDirection);
 	}
 
 	public void OnGroundEnter ()

@@ -87,31 +87,29 @@ public class BattleController : Controller<Battle>
         GameObject newFighter;
 
         // TEST spawn positions. TODO: positioning code.
-        Vector3 startPos = new Vector3(-3f, -1f, -1f);
+        Vector3 startPos = new Vector3(-2f, -1f, -1f);
         
-        foreach (FighterData fighter in GameData.instance.GetActiveFighters())
+        foreach (FighterData fighter in GameData.instance.GetActiveParty())
         {
             if (fighter == null) {
                 continue;
 			}
 
             newFighter = SpawnFighter(fighter, FighterAlliegiance.Ally);
-            newFighter.transform.position = startPos;
 
-            startPos = new Vector3(startPos.x - 1f, - 1f, -1f);
+            startPos = new Vector3(startPos.x - 1f, - 1f, newFighter.transform.position.z);
+			newFighter.transform.position = startPos;
         }
 
-        startPos = new Vector3(3f, -1f, -1f);
+        startPos = new Vector3(2f, -1f, -1f);
 
         StageData currentStage = GameData.instance.currentStage;
         foreach (FighterData fighter in currentStage.enemies)
         {
             newFighter = SpawnFighter(fighter, FighterAlliegiance.Enemy);
 
-            newFighter.transform.position = startPos;
-            newFighter.transform.rotation = Quaternion.Euler(0, 180f, 0);
-
-            startPos = new Vector3(startPos.x + 1.2f, -1f, -1f);
+			startPos = new Vector3(startPos.x + 1f, -1f, newFighter.transform.position.z);
+			newFighter.transform.position = startPos;
         }
 
 
@@ -121,9 +119,13 @@ public class BattleController : Controller<Battle>
     public void OnUnitAttack(GameObject attacker, GameObject defender)
     {
         FighterController attackingUnit = ((FighterController) attacker.GetComponent<FighterController>());
-        FighterController defendingUnit = ((FighterController) defender.GetComponent<FighterController>());
+
+		// Check if the defending unit is still alive. (Attacks may land at the same time).
+		if (defender != null) {
+			FighterController defendingUnit = ((FighterController)defender.GetComponent<FighterController> ());
 		
-        defendingUnit.OnReceiveAttack(attackingUnit.GetAttackData());
+			defendingUnit.OnReceiveAttack (attackingUnit.GetAttackData ());
+		}
     }
 
     public void OnRangedAttack(GameObject attacker)
@@ -145,9 +147,6 @@ public class BattleController : Controller<Battle>
         if (fighterData.isRanged)
         {
             newFighter = Instantiate(rangedFighterPrefab);
-
-			// TEST code.
-			fighterData.spriteName = "mage_water";
 		}
         else
         {
@@ -158,8 +157,22 @@ public class BattleController : Controller<Battle>
         fighterModel.fighterData = fighterData;
         fighterModel.allegiance = allegiance;
 
-		// TEST.
+		// Set currentHP back to max value.
 		fighterModel.fighterData.HP = fighterModel.fighterData.maxHP;
+
+		// TEMP. Increase/Decrease box collider height to offset sprite positions.
+
+		float randomOffset = Mathf.Round((UnityEngine.Random.Range (0.7f, 1.5f)) * 100f) / 100f; // Random float round off to 2 decimal place.
+
+
+		BoxCollider2D collider = newFighter.GetComponent <BoxCollider2D> ();
+		collider.size = new Vector2 (collider.size.x, randomOffset);
+
+		Vector3 tempPosition = newFighter.transform.position;
+		tempPosition.z = randomOffset * 10f;
+		newFighter.transform.position = tempPosition;
+
+//		Debug.Log ("RANDOM OFFSET: " + randomOffset.ToString ());
 
         if (allegiance == FighterAlliegiance.Ally)
         {
@@ -168,9 +181,18 @@ public class BattleController : Controller<Battle>
         else
         {
             enemies.Add(newFighter);
+
+			// Set layer of object (rigidBody) and child (trigger collider) to "EnemyUnits".
             newFighter.layer = LayerMask.NameToLayer("EnemyUnits");
+			newFighter.transform.GetChild (0).gameObject.layer = LayerMask.NameToLayer("EnemyUnits");
+
+			// Set enemy sprites to face the opposite direction.
+			Vector3 tempScale = newFighter.transform.localScale;
+			tempScale.x *= -1;
+			newFighter.transform.localScale = tempScale;
         }
 
+//		newFighter.GetComponent <FighterController> ().SetFighterSkin ();
         newFighter.SetActive(true);
 
         return newFighter;

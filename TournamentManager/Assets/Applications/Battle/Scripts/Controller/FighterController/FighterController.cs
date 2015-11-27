@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using Bingo;
 
 public class FighterController : Controller
 {
-
 	// Use this for initialization
 	public virtual void Awake () {
 		(model as FighterModel).OnFighterDataSet += OnFighterDataSet;
 		(view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
 
-		SetSprite();
+		// comment out for now. (crashing due to changes.)
+//		SetSprite();
 	}
 
 	void OnDestroy () {
@@ -18,35 +19,19 @@ public class FighterController : Controller
 		(view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
 	}
 
-//    // Use this for initialization
-//    public virtual void Start()
-//    {
-//        (view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
-//
-//        SetSprite();
-//    }
-// badc5a012dd44499e87c3f4e99d03ad5
-
-    public void SetSprite()
+    public void SetFighterSkin ()
     {
-        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
-        sr.sprite = ((FighterModel) model).fighterData.normalIcon;
+		(view as FighterView).SetFighterSkin ((model as FighterModel).fighterData.skinData);
+
+//        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+//        sr.sprite = ((FighterModel) model).fighterData.normalIcon;
     }
 
     public Attack GetAttackData()
     {
         FighterData fighter = ((FighterModel) GetComponent<Model>()).fighterData;
 
-        return new Attack(fighter.ATK, 1.0f, AttackType.Melee, gameObject);
-    }
-
-    // TEST. Temporary animation until SPINE animations.
-    IEnumerator AttackAnimation()
-    {
-        ((FighterView) view).SetAttackSprite();
-        yield return new WaitForSeconds(0.6f);
-
-        ((FighterView) view).SetIdleSprite();
+		return new Attack(fighter.ATK, 1.0f, AttackType.Melee, gameObject);
     }
 
     public void OnReceiveAttack(Attack attack)
@@ -77,7 +62,7 @@ public class FighterController : Controller
 
 	private void OnFighterDataSet ()
 	{
-		(view as FighterView).SetSprite ();
+		SetFighterSkin ();
 	}
 
 	private void ReceiveDamage (Attack attack)
@@ -86,6 +71,8 @@ public class FighterController : Controller
 		(model as FighterModel).fighterData.HP -= attack.damage;
 
 		Messenger.Send (EventTags.FIGHTER_RECEIVED_DAMAGE, attack.damage, this.gameObject);
+
+//		(view as FighterView).fighterSprite.GetComponent<Animator> ().SetTrigger ("Hit");
 
 		// TODO: Move to model. Use delegate.
 		if ((model as FighterModel).fighterData.HP <= 0) {
@@ -97,6 +84,11 @@ public class FighterController : Controller
 	{
 		// Temporary konckback. TODO: Apply knockback resistance/amount.
 		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
-		GetComponent<Rigidbody2D> ().AddForce (new Vector2 (5.0f * -moveDirection, 5.0f), ForceMode2D.Impulse);
+
+		Rigidbody2D rigidBody = GetComponent<Rigidbody2D> ();
+
+		if (Math.Abs (rigidBody.velocity.x) < 1.0f) {
+			rigidBody.AddForce (new Vector2 (9.0f * -moveDirection, 1.0f), ForceMode2D.Impulse);
+		}
 	}
 }

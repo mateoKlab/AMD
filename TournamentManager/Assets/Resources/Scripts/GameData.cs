@@ -13,12 +13,19 @@ public class GameData : MonoBehaviour {
 	public const int MAX_ACTIVE_FIGHTERS = 6;
 
 	public PlayerData playerData;
+    public TownData town;
+
 
 	public List<FighterData> fighterDatabase = new List<FighterData> ();
 	public Dictionary<StageType, Dictionary<string, StageData>> stageDatabase;
 
+	// List of sprites available for each sprite attachment/body part.
+	private SpriteDatabase _spriteDatabase;
+	public SpriteDatabase spriteDatabase { get; private set; }
+
+
 	// Team management
-	public FighterData[] activeFighters = new FighterData[GameData.MAX_ACTIVE_FIGHTERS];
+	public FighterData[] activeParty = new FighterData[GameData.MAX_ACTIVE_FIGHTERS];
 	public int currentPartyCost;
 
 	// For test purposes only -AJ
@@ -58,7 +65,9 @@ public class GameData : MonoBehaviour {
 
 		LoadDatabase ();
 		playerData = PlayerData.Load ();
-		LoadActiveFighters();
+        town = playerData.town;
+		//LoadActiveFighters();
+        LoadActiveParty();
 	}
 
 	public void Save ()
@@ -68,6 +77,7 @@ public class GameData : MonoBehaviour {
 	
 	public void LoadDatabase()
 	{
+		spriteDatabase = SpriteDatabase.LoadDatabase ();
 
 		// Initialize stage Database dictionary.
 		stageDatabase = new Dictionary<StageType, Dictionary<string, StageData>> ();
@@ -91,18 +101,18 @@ public class GameData : MonoBehaviour {
 			stageDatabase[stage.stageType].Add(stage.name, stage);
 		}
 
-		// TEMPORARY DATABASE.
-		ser = new XmlSerializer(typeof(FighterDatabase));
-		textAsset = Resources.Load ("Data/FighterDatabase") as TextAsset;
-		stringReader = new System.IO.StringReader(textAsset.text);
-		FighterDatabase fighters;
-
-		using (XmlReader reader = XmlReader.Create(stringReader))
-		{
-			fighters = (FighterDatabase) ser.Deserialize(reader);
-		}
-
-		fighterDatabase = fighters.fighters;
+//		// TEMPORARY DATABASE.
+//		ser = new XmlSerializer(typeof(FighterDatabase));
+//		textAsset = Resources.Load ("Data/FighterDatabase") as TextAsset;
+//		stringReader = new System.IO.StringReader(textAsset.text);
+//		FighterDatabase fighters;
+//
+//		using (XmlReader reader = XmlReader.Create(stringReader))
+//		{
+//			fighters = (FighterDatabase) ser.Deserialize(reader);
+//		}
+//
+//		fighterDatabase = fighters.fighters;
 	}
 
 	#region Player Data Manipulation
@@ -110,42 +120,16 @@ public class GameData : MonoBehaviour {
 	public void SavePlayerData()
 	{
 		playerData.Save();
-	}
-
-	public void LoadActiveFighters()
-	{
-		if(playerData.fightersOwned.Count == 0)
-			playerData.InitFirstCharacter();
-
-		for(int i = 0; i < playerData.fightersOwned.Count; i++)
-		{
-			if(playerData.fightersOwned[i].activeTroopIndex > -1)
-			{
-				if(IsWithinPartyCapacity(playerData.fightersOwned[i].cost))
-				{
-					// Add active troop to active fighters and add its cost to team capacity
-					activeFighters[playerData.fightersOwned[i].activeTroopIndex] = playerData.fightersOwned[i];
-					currentPartyCost += playerData.fightersOwned[i].cost;
-				}
-				else
-				{
-					// Just in case there was an error in saving the active troops, if the troop is active 
-					// and adding it to active troops will exceed the current troop capacity,
-					// set that troop as incactive
-					playerData.fightersOwned[i].activeTroopIndex = -1;
-				}
-			}
-		}
-	}
+	} 
 
 	public List<FighterData> GetFightersOwned()
 	{
 		return playerData.fightersOwned;
 	}
 
-	public FighterData[] GetActiveFighters()
+	public FighterData[] GetActiveParty()
 	{
-		return activeFighters;
+		return activeParty;
 	}
 
 	public int GetPartyCapacity()
@@ -164,11 +148,102 @@ public class GameData : MonoBehaviour {
 		if(playerData.fightersOwned.Count >= playerData.teamCapacity)
 			return false;
 
-		fighter.activeTroopIndex = -1;
+//		fighter.activeTroopIndex = -1;
 		playerData.fightersOwned.Add(fighter);
+		playerData.Save ();
 
 		return true;
 	}
+
+    public FighterData GetFighterByID(string id)
+    {
+        for(int i = 0; i < playerData.fightersOwned.Count; i++)
+        {
+           if(playerData.fightersOwned[i].id == id)
+                return playerData.fightersOwned[i];
+        }
+
+        return null;
+    }
+
+    public bool CheckIfFighterActive(FighterData fd)
+    {
+        for(int i = 0; i < activeParty.Length; i++)
+        {
+            if(activeParty[i] != null && activeParty[i].id == fd.id)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public int GetActiveFighterIndexOnParty(FighterData fd)
+    {
+        for(int i = 0; i < activeParty.Length; i++)
+        {
+            if(activeParty[i] != null && activeParty[i].id == fd.id)
+            {
+                return i;
+            }
+        }
+        
+        return -1;
+    }
+
+    public void SetFighterOnActiveParty(FighterData fighter, int indexOnParty) 
+    {
+        if(indexOnParty > -1 && indexOnParty < playerData.activePartyIDs.Length)
+        {
+            if(fighter == null)
+            {
+                activeParty[indexOnParty] = null;
+                playerData.activePartyIDs[indexOnParty] = "";
+            }
+            else
+            {
+                activeParty[indexOnParty] = fighter;
+                playerData.activePartyIDs[indexOnParty] = fighter.id;
+                //Debug.Log("Added fighter " + playerData.activePartyIDs[indexOnParty] + " to party");
+            }
+        }
+        else
+        {
+            Debug.LogError("Index out of bounds, failed to set fighter on party");
+        }
+    }
+
+    public void LoadActiveParty()
+    {
+        if(playerData.fightersOwned.Count == 0)
+        {
+            InitFirstFighter();
+        }
+
+        for(int i = 0; i < activeParty.Length; i++)
+        {
+            activeParty[i] = null;
+
+            if(!string.IsNullOrEmpty(playerData.activePartyIDs[i]))
+            {
+                FighterData fd = GetFighterByID(playerData.activePartyIDs[i]);
+                if(fd != null)
+                {
+                    activeParty[i] = fd;
+                }
+            }
+        }
+    }
+
+    public void InitFirstFighter()
+    {
+        // Create default character
+        FighterData fd = FighterGenerator.GenerateFighter ();
+        AddFighter(fd);
+        SetFighterOnActiveParty(fd, 0);
+        playerData.Save();
+    }
 
 	#endregion
 }

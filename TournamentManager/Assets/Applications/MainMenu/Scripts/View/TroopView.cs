@@ -6,19 +6,26 @@ using Bingo;
 
 public class TroopView : View<MainMenu>, IPointerEnterHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
-	private Image icon;
+    private FighterSpriteController troopSprite;
+    private Canvas myCanvas;
 
 	public override void Awake ()
 	{
 		base.Awake ();
 
-		icon = gameObject.GetComponent<Image>();
+        troopSprite = transform.GetChild(0).GetComponent<FighterSpriteController>();
+        myCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
 	}
 
-	public void SetIcon(Sprite icon)
-	{
-		this.icon.sprite = icon;
-	}
+    void Start()
+    {
+        SetSprite(((FighterModel)model).skindData);
+    }
+
+    public void SetSprite(FighterSkinData skinData)
+    {
+        troopSprite.SetFighterSkin(skinData);
+    }
 
 	public void OnPointerEnter (PointerEventData eventData)
 	{
@@ -32,8 +39,10 @@ public class TroopView : View<MainMenu>, IPointerEnterHandler, IBeginDragHandler
 
 	public void OnDrag(PointerEventData eventData)
 	{
-		transform.position = Input.mousePosition;
-	}
+        Vector2 pos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, Input.mousePosition, myCanvas.worldCamera, out pos);
+        transform.position = myCanvas.transform.TransformPoint(pos);
+    }
 
 	public void OnEndDrag(PointerEventData eventData) 
 	{

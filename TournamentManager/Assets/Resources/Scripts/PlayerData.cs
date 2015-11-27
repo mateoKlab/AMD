@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
@@ -26,6 +28,10 @@ public class PlayerData
     public int
         tournamentMatchCount;
 
+    [XmlArray("ActiveParty")]
+    [XmlArrayItem("ActiveFighter")]
+    public string[] activePartyIDs = new string[GameData.MAX_ACTIVE_FIGHTERS] {"", "", "", "", "", ""};
+
     [XmlArray("FightersOwned")]
     [XmlArrayItem("Fighter")]
     public List<FighterData>
@@ -38,6 +44,16 @@ public class PlayerData
     [XmlElement("TeamCapacity")]
     public int
         teamCapacity = 50;
+
+    // TOWN
+    [XmlElement("Town")]
+    public TownData town;
+
+
+    private PlayerData() 
+    {
+        town = new TownData();
+    }
 
     public void Save()
     {
@@ -64,12 +80,14 @@ public class PlayerData
         }
         #endif
 
+        #if UNITY_EDITOR
         AssetDatabase.Refresh();
+        #endif
     }
 
     public static PlayerData Load()
     {
-
+		Debug.Log ("LOADING");
         XmlSerializer ser = new XmlSerializer(typeof(PlayerData));
 
         #if UNITY_EDITOR || UNITY_IOS
@@ -118,14 +136,5 @@ public class PlayerData
         #else
         return Application.dataPath +"/"+ fileName;
         #endif
-    }
-
-    public void InitFirstCharacter()
-    {
-        // Create default character
-        FighterData gachaCharacter = GameData.instance.fighterDatabase[0];
-        gachaCharacter.activeTroopIndex = 0;	// Automatically make that character active
-        fightersOwned.Add(gachaCharacter);
-        Save();
     }
 }

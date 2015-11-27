@@ -22,6 +22,14 @@ public enum FighterElement
     Earth
 }
 
+[XmlRoot ("Class")]
+public enum FighterClass
+{
+	Warrior,
+	Mage,
+	Archer
+}
+
 public enum FighterAttackType
 {
     Melee,
@@ -31,6 +39,9 @@ public enum FighterAttackType
 [XmlRoot]
 public class FighterData
 {
+    [XmlElement]
+    public string id = "";
+
     //TEMPORARY. default to knight.
     [XmlElement ("SpriteName")]
     public string
@@ -57,8 +68,8 @@ public class FighterData
         name = "Juan";
 
     [XmlElement ("Class")]
-    public string
-        fighterClass = "Warrior";
+	public FighterClass
+        fighterClass = FighterClass.Warrior;
 
     [XmlElement ("Element")]
     public FighterElement
@@ -68,26 +79,8 @@ public class FighterData
     public int
         cost = 2;
 
-    [XmlElement ("ActiveIndex")]
-    public int
-        activeTroopIndex = -1;
-
-    [XmlIgnore]
-    private Sprite[]
-        _sprites;
-    [XmlIgnore]
-    public Sprite[] sprites
-    {
-        get
-        {
-            if (_sprites == null || _sprites.Length == 0)
-            {
-                _sprites = Resources.LoadAll<Sprite>("Sprites/Classes/" + fighterClass);
-            }
-
-            return _sprites;
-        }
-    }
+	// TODO: Put initializations into constructor.
+	public FighterSkinData skinData = new FighterSkinData ();
 
     [XmlIgnore]
     public Sprite normalIcon

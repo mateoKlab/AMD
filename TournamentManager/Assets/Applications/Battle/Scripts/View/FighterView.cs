@@ -5,30 +5,28 @@ using Bingo;
 
 public class FighterView : View {
 
-	// TEMPORARY. Animation Frames.
-	public Sprite attackSprite;
-	public Sprite idleSprite;
+	public FighterSpriteController fighterSprite;
 	
 	public Action<GameObject> OnCollideWithEnemy;
 
-	// TEMPORARY.
-	public void SetAttackSprite ()
+
+	// Temporary. TODO: Move to controller.
+	public void AnimateAttack ()
 	{
-//		GetComponent<SpriteRenderer> ().sprite = attackSprite;
+		fighterSprite.GetComponent<Animator> ().SetTrigger ("Attack");
 	}
 
-	// TEMPORARY.
-	public void SetIdleSprite ()
-	{
-//		GetComponent<SpriteRenderer> ().sprite = idleSprite;
+	public void SetFighterSkin (FighterSkinData skinData)
+	{	
+		fighterSprite.SetFighterSkin (skinData);
 	}
 
-	public void SetSprite ()
+	void OnTriggerEnter2D (Collider2D other)
 	{
-		SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer> ();
-		string spriteName = (model as FighterModel).fighterData.spriteName;
-
-		spriteRenderer.sprite = Resources.Load ("Sprites/" + spriteName, typeof(Sprite)) as Sprite;
+		//Test
+		if (other.gameObject.tag == Tags.Units) {
+			AnimateAttack ();
+		}
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)

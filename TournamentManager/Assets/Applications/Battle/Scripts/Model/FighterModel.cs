@@ -22,6 +22,7 @@ public class FighterModel : Model {
 	public FighterData fighterData {
 		get { return _fighterData; }
 		set {
+
 			_fighterData = value;
 
 			isRanged = _fighterData.isRanged;
@@ -56,18 +57,6 @@ public class FighterModel : Model {
 			return fighterData.ATK;
 		}
 	}
-	
-	public int activeTroopIndex
-	{
-		get
-		{
-			return fighterData.activeTroopIndex;
-		}
-		set
-		{
-			fighterData.activeTroopIndex = value;
-		}
-	}
 
 	public int cost
 	{
@@ -76,4 +65,12 @@ public class FighterModel : Model {
 			return fighterData.cost;
 		}
 	}
+
+    public FighterSkinData skindData
+    {
+        get
+        {
+            return fighterData.skinData;
+        }
+    }
 }

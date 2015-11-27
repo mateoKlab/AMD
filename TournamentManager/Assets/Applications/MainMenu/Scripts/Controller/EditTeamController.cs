@@ -65,8 +65,11 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 
     private void SaveTeam()
     {
+        for(int i = 0; i < model.activeTroops.Length; i++)
+        {
+            gameData.SetFighterOnActiveParty(model.activeTroops[i], i);
+        }
         gameData.SavePlayerData();
-        gameData.activeFighters = model.activeTroops;
     }
 
     private IEnumerator LoadAllTroops()
@@ -113,6 +116,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
             GameObject go = Instantiate(troopPrefab);
             go.AddComponent<FighterModel>();
             go.transform.SetParent(teamPanel);
+            ((RectTransform)go.transform).localPosition = Vector3.zero;
             TroopController tc = go.GetComponent<TroopController>();
             model.troops.Add(tc);
             tc.SetTroop(fighters[i]);
@@ -126,10 +130,11 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
     {
         for (int i = 0; i < model.troops.Count; i++)
         {
-            if (model.troops[i].GetTroop().activeTroopIndex > -1)
+            if (gameData.CheckIfFighterActive(model.troops[i].GetFighter()))
             {
-                model.GetActiveTeamSlot(model.troops[i].GetTroop().activeTroopIndex).SetTroopOnSlot(model.troops[i].gameObject);
-                AddTroopOnTeam(model.troops[i].GetTroop().activeTroopIndex, model.troops[i].GetTroop());
+                int index = gameData.GetActiveFighterIndexOnParty(model.troops[i].GetFighter());
+                model.GetActiveTeamSlot(index).SetTroopOnSlot(model.troops[i].gameObject);
+                AddTroopOnTeam(index, model.troops[i].GetFighter());
             }
         }
     }
@@ -154,10 +159,31 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
         view.SetCost(GetPartyCost(), gameData.GetPartyCapacity());
     }
 
-    public void RemoveTroopOnTeam(int index)
+    public void RemoveTroopOnTeam(FighterData fd)
     {
-        model.activeTroops[index] = null;
+        for(int i = 0; i < model.activeTroops.Length; i++)
+        {
+            if(model.activeTroops[i] != null && model.activeTroops[i].id == fd.id)
+            {
+                model.activeTroops[i] = null;
+                break;
+            }
+        }
+
         view.SetCost(GetPartyCost(), gameData.GetPartyCapacity());
+    }
+
+    public bool IsTroopActive(FighterData fd)
+    {
+        for(int i = 0; i < model.activeTroops.Length; i++)
+        {
+            if(model.activeTroops[i] != null && model.activeTroops[i].id == fd.id)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public int GetPartyCost()
