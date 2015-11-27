@@ -38,6 +38,9 @@ public class FighterController : Controller
     {
         // TODO: Calculate skill effects, evade, block, etc.
 
+		// TEST.
+		(view as FighterView).AnimateHit ();
+
         ReceiveDamage(attack);
         ReceiveKnockback(attack.knockback);
 

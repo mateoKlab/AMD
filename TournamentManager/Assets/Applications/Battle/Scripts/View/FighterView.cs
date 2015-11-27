@@ -9,11 +9,29 @@ public class FighterView : View {
 	
 	public Action<GameObject> OnCollideWithEnemy;
 
+	private Animator animator;
 
-	// Temporary. TODO: Move to controller.
+	void Start ()
+	{
+		// Cache animator component.
+		animator = fighterSprite.GetComponent<Animator> ();
+	}
+
 	public void AnimateAttack ()
 	{
-		fighterSprite.GetComponent<Animator> ().SetTrigger ("Attack");
+		// Don't transition to attack while being hit.
+		if (animator.IsInTransition (0) && animator.GetCurrentAnimatorStateInfo (0).IsName ("Hit")) {
+			// Don't do it!
+		} else {
+			fighterSprite.GetComponent<Animator> ().SetBool ("Attack", true);
+		}
+	}
+
+	public void AnimateHit ()
+	{
+		// Interrupt and cancel other animations when getting hit.
+		animator.SetBool ("Attack", false);
+		animator.SetBool ("Hit", true);
 	}
 
 	public void SetFighterSkin (FighterSkinData skinData)
