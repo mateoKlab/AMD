@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
@@ -43,6 +45,16 @@ public class PlayerData
     public int
         teamCapacity = 50;
 
+    // TOWN
+    [XmlElement("Town")]
+    public TownData town;
+
+
+    private PlayerData() 
+    {
+        town = new TownData();
+    }
+
     public void Save()
     {
         XmlSerializer xmls = new XmlSerializer(typeof(PlayerData));
@@ -68,7 +80,9 @@ public class PlayerData
         }
         #endif
 
+        #if UNITY_EDITOR
         AssetDatabase.Refresh();
+        #endif
     }
 
     public static PlayerData Load()

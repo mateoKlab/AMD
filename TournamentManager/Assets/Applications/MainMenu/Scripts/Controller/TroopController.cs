@@ -33,7 +33,6 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
     public void SetTroop(FighterData fighterData)
     {
         model.fighterData = fighterData;
-        view.SetIcon();
     }
 
     public FighterData GetFighter()
