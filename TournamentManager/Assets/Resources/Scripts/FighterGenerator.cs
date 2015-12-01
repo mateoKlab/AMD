@@ -28,7 +28,7 @@ public static class FighterGenerator {
 
 		// TEMPORARY. Assign Class. TODO: Assign Class from GachaDatabase/pool (Not all classes will be available through gacha).
 //		newFighter.fighterClass = classPool[UnityEngine.Random.Range (0, classPool.Count)];
-		newFighter.fighterClass = FighterClass.Warrior;
+		newFighter.fighterClass = FighterClass.Mage;//
 
 		RandomizeSkin (newFighter);
 
@@ -41,6 +41,10 @@ public static class FighterGenerator {
 		SerializableDictionary<FighterSpriteAttachment.AttachmentType, List<string>> spritePool = GameData.instance.spriteDatabase [fighterData.fighterClass];
 					
 		foreach (FighterSpriteAttachment.AttachmentType attachment in spritePool.Keys) {
+			if (!spritePool.ContainsKey (attachment)) {
+				continue;
+			}
+
 			List<string> attachmentPool = spritePool[attachment];
 
 			int randomAttachment = UnityEngine.Random.Range (0, attachmentPool.Count);

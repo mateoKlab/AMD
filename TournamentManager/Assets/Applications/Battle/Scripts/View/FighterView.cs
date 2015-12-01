@@ -11,15 +11,19 @@ public class FighterView : View {
 
 	private Animator animator;
 
-	void Start ()
+	void Awake ()
 	{
 		// Cache animator component.
 		animator = fighterSprite.GetComponent<Animator> ();
+		Debug.Log(animator);
 	}
 
 	public void AnimateAttack ()
 	{
 		// Don't transition to attack while being hit.
+		Debug.Log(animator);
+		Debug.Log(animator.IsInTransition(0));
+		Debug.Log(animator.GetCurrentAnimatorStateInfo (0).IsName ("Hit"));
 		if (animator.IsInTransition (0) && animator.GetCurrentAnimatorStateInfo (0).IsName ("Hit")) {
 			// Don't do it!
 		} else {

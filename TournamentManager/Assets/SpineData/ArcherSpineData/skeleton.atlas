@@ -1,0 +1,118 @@
+
+skeleton.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images/Arrow
+  rotate: false
+  xy: 326, 220
+  size: 235, 34
+  orig: 235, 34
+  offset: 0, 0
+  index: -1
+images/arm_left
+  rotate: false
+  xy: 690, 191
+  size: 60, 63
+  orig: 60, 63
+  offset: 0, 0
+  index: -1
+images/arm_right
+  rotate: false
+  xy: 2, 3
+  size: 65, 52
+  orig: 65, 52
+  offset: 0, 0
+  index: -1
+images/body
+  rotate: false
+  xy: 141, 2
+  size: 82, 139
+  orig: 82, 139
+  offset: 0, 0
+  index: -1
+images/bow
+  rotate: false
+  xy: 2, 57
+  size: 137, 197
+  orig: 137, 197
+  offset: 0, 0
+  index: -1
+images/eyes
+  rotate: false
+  xy: 225, 3
+  size: 72, 32
+  orig: 72, 32
+  offset: 0, 0
+  index: -1
+images/eyes_blink
+  rotate: false
+  xy: 69, 2
+  size: 70, 11
+  orig: 70, 11
+  offset: 0, 0
+  index: -1
+images/eyes_dead
+  rotate: false
+  xy: 752, 218
+  size: 73, 36
+  orig: 73, 36
+  offset: 0, 0
+  index: -1
+images/face
+  rotate: false
+  xy: 482, 94
+  size: 132, 124
+  orig: 132, 124
+  offset: 0, 0
+  index: -1
+images/foot_left
+  rotate: false
+  xy: 616, 151
+  size: 72, 103
+  orig: 72, 103
+  offset: 0, 0
+  index: -1
+images/foot_right
+  rotate: false
+  xy: 225, 37
+  size: 84, 104
+  orig: 84, 104
+  offset: 0, 0
+  index: -1
+images/hair
+  rotate: false
+  xy: 326, 118
+  size: 154, 100
+  orig: 154, 100
+  offset: 0, 0
+  index: -1
+images/hat
+  rotate: false
+  xy: 141, 143
+  size: 183, 111
+  orig: 183, 111
+  offset: 0, 0
+  index: -1
+images/head_feather
+  rotate: false
+  xy: 69, 15
+  size: 63, 40
+  orig: 63, 40
+  offset: 0, 0
+  index: -1
+images/left_hand
+  rotate: false
+  xy: 616, 94
+  size: 56, 55
+  orig: 56, 55
+  offset: 0, 0
+  index: -1
+images/right_hand
+  rotate: false
+  xy: 311, 61
+  size: 51, 55
+  orig: 51, 55
+  offset: 0, 0
+  index: -1
