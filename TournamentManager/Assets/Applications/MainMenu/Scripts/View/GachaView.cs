@@ -6,13 +6,13 @@ using Spine;
 
 public class GachaView : View
 {
-	public Text nameLabel;
-	public Text classLabel;
-	public Text hpLabel;
-	public Text atkLabel;
-	public Text elementLabel;
+	private Text nameLabel;
+	private Text classLabel;
+	private Text hpLabel;
+	private Text atkLabel;
+	private Text elementLabel;
+	private RawImage classIcon;
 	public Button rollButton;
-
 	public GameObject characterSprite;
 
 	public override void Awake() {
@@ -28,6 +28,7 @@ public class GachaView : View
 		atkLabel = transform.FindChild("ATKLabel").GetComponent<Text>();
 		elementLabel = transform.FindChild("ElementLabel").GetComponent<Text>();
 		rollButton = transform.FindChild("RollButton").GetComponent<Button>();
+		classIcon = transform.FindChild("ClassIcon").GetComponent<RawImage>();
 	}
 
 	public void OnClickCloseButton() {
@@ -47,6 +48,8 @@ public class GachaView : View
 		classLabel.text = "Class: " + fData.fighterClass;
 		elementLabel.text = "Element: " + fData.fighterElement;
 
+		classIcon.texture = Resources.Load("Sprites/ClassIcons/" + fData.fighterClass) as Texture;
+		classIcon.gameObject.SetActive(true);
 		characterSprite.SetActive (true);
 		characterSprite.GetComponent<FighterSpriteController> ().SetFighterSkin (fData.skinData);
 //		SpriteBuilder.instance.BuildSprite (characterSprite.GetComponent <FighterSpriteController> ());
@@ -58,7 +61,7 @@ public class GachaView : View
 		atkLabel.text = "";
 		classLabel.text = "";
 		elementLabel.text = "";
-
+		classIcon.gameObject.SetActive(false);
 		characterSprite.SetActive (false);
 	}
 

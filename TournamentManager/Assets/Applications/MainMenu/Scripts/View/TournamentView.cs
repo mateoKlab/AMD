@@ -7,7 +7,6 @@ using System.Collections.Generic;
 public class TournamentView : View
 {
 	public VerticalLayoutGroup content;
-	public ScrollRect scrollRect;
 
 	private float elementHeight;
 	private Text rankText;
@@ -30,8 +29,7 @@ public class TournamentView : View
 	}
 
 	public void InitializeScrollView() {
-		Debug.Log ("INITIALIZE SCROLL VIEW");
-//		content = transform.FindChild("TournamentScrollView").GetComponentInChildren<VerticalLayoutGroup>();
+		content = transform.FindChild("TournamentScrollView").GetComponentInChildren<VerticalLayoutGroup>();
 		GameObject tournamentElement;
 
 		for (int i = 0; i < ((TournamentModel)model).tournamentMatchList.Count; i++) {
@@ -56,8 +54,6 @@ public class TournamentView : View
 		RectTransform rt = content.GetComponent<RectTransform>();
 		rt.sizeDelta = new Vector2(rt.rect.width, elementHeight * (((TournamentModel)model).tournamentMatchList.Count + 1) + content.padding.top + content.padding.bottom);
 
-//		GetComponentInChildren<ScrollRect>().verticalScrollbar.value = 0;
-		scrollRect.verticalScrollbar.value = 0;
+		GetComponentInChildren<ScrollRect>().verticalScrollbar.value = 0;
 	}
-
 }
