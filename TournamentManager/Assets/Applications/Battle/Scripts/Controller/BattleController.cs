@@ -16,7 +16,9 @@ public class BattleController : Controller<Battle>
     //////// END MVCCodeEditor GENERATED CODE ////////
     
     public GameObject meleeFighterPrefab;
-    public GameObject rangedFighterPrefab;
+//    public GameObject rangedFighterPrefab;//
+	public GameObject archerFighterPrefab;
+	public GameObject mageFighterPrefab;
 
     [HideInInspector]
     public List<GameObject>
@@ -144,9 +146,13 @@ public class BattleController : Controller<Battle>
         GameObject newFighter;
 
         // Instantiate prefab with appropriate behavior. (Melee Fighter Controller/Ranged Fighter Controller)
-        if (fighterData.isRanged)
+        if (fighterData.fighterClass == FighterClass.Archer)
         {
-            newFighter = Instantiate(rangedFighterPrefab);
+            newFighter = Instantiate(archerFighterPrefab);
+		}
+		else if(fighterData.fighterClass == FighterClass.Mage)
+		{
+			newFighter = Instantiate(mageFighterPrefab);
 		}
         else
         {

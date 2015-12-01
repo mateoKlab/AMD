@@ -11,7 +11,7 @@ public class FighterView : View {
 
 	private Animator animator;
 
-	void Start ()
+	void Awake ()
 	{
 		// Cache animator component.
 		animator = fighterSprite.GetComponent<Animator> ();
