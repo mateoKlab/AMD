@@ -35,11 +35,13 @@ public static class FighterGenerator {
 		return newFighter;
 	}
 
+	// TODO: Change to "RandomizeEquipment" ().
+	// TODO: Add chance to  accesssories/cape/wing. 
 	public static void RandomizeSkin (FighterData fighterData)
 	{
 		// List of possible sprites for each attachment.
-		SerializableDictionary<FighterSpriteAttachment.AttachmentType, List<string>> spritePool = GameData.instance.spriteDatabase [fighterData.fighterClass];
-					
+		SerializableDictionary<FighterSpriteAttachment.AttachmentType, List<string>> spritePool = GameDatabase.spriteDatabase [fighterData.fighterClass];
+																								// GameData.instance.gameDatabase.spriteDatabase [fighterData.fighterClass];
 		foreach (FighterSpriteAttachment.AttachmentType attachment in spritePool.Keys) {
 			List<string> attachmentPool = spritePool[attachment];
 

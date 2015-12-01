@@ -16,7 +16,6 @@ public class FighterModel : Model {
 
 	public bool isRanged;
 
-
 	private FighterData _fighterData;
 
 	public FighterData fighterData {

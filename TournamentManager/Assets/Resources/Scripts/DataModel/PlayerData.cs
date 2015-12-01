@@ -11,7 +11,6 @@ using System.IO;
 [XmlRoot]
 public class PlayerData
 {
-
     [XmlElement ("Gold")]
     public int
         gold = 1000;
@@ -19,6 +18,10 @@ public class PlayerData
     [XmlElement ("Diamonds")]
     public int
         diamonds;
+
+	[XmlArray ("EquipmentUnlocked")]
+	[XmlArrayItem("Equip")]
+	public List<Equipment> unlockedEquipment;
 
     [XmlElement ("TournamentProgress")]
     public int
@@ -55,8 +58,19 @@ public class PlayerData
         town = new TownData();
     }
 
+	void Start ()
+	{
+		//TEST
+		unlockedEquipment = new List<Equipment> ();
+		unlockedEquipment.Add (new Equipment { type = Equipment.EquipmentType.Weapon, id = "TEST ID 1" });
+		unlockedEquipment.Add (new Equipment { type = Equipment.EquipmentType.Body, id = "TEST ID 2" });
+	}
+
     public void Save()
     {
+
+		// TEST. Add unlocked equipment to player.
+		Start ();
         XmlSerializer xmls = new XmlSerializer(typeof(PlayerData));
 
         #if UNITY_EDITOR || UNITY_IOS

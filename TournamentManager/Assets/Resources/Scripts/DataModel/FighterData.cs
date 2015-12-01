@@ -7,7 +7,6 @@ using System.Xml.Serialization;
 [XmlRoot]
 public class FighterDatabase
 {
-
    [XmlArray("Fighters")]
    [XmlArrayItem("Fighter")]
     public List<FighterData>

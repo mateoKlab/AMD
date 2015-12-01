@@ -20,7 +20,8 @@ public class MissionModel : Model
 	private void PopulateMissionList()
 	{
 
-		Dictionary<StageType, Dictionary<string, StageData>> stageDatabaseClone = GameData.instance.stageDatabase;
+		StageDatabase stageDatabaseClone = GameDatabase.stageDatabase;
+
 		missionDictionary = stageDatabaseClone[StageType.Mission];
 		
 		foreach (StageData mData in missionDictionary.Values)

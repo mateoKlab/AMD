@@ -15,15 +15,6 @@ public class GameData : MonoBehaviour {
 	public PlayerData playerData;
     public TownData town;
 
-
-	public List<FighterData> fighterDatabase = new List<FighterData> ();
-	public Dictionary<StageType, Dictionary<string, StageData>> stageDatabase;
-
-	// List of sprites available for each sprite attachment/body part.
-	private SpriteDatabase _spriteDatabase;
-	public SpriteDatabase spriteDatabase { get; private set; }
-
-
 	// Team management
 	public FighterData[] activeParty = new FighterData[GameData.MAX_ACTIVE_FIGHTERS];
 	public int currentPartyCost;
@@ -77,42 +68,7 @@ public class GameData : MonoBehaviour {
 	
 	public void LoadDatabase()
 	{
-		spriteDatabase = SpriteDatabase.LoadDatabase ();
-
-		// Initialize stage Database dictionary.
-		stageDatabase = new Dictionary<StageType, Dictionary<string, StageData>> ();
-		foreach (StageType stageType in Enum.GetValues (typeof(StageType))) {
-			stageDatabase.Add(stageType, new Dictionary<string, StageData>());
-		}
-
-		// Load Stage data.
-		XmlSerializer ser = new XmlSerializer(typeof(StageDatabase));
-
-		TextAsset textAsset = Resources.Load ("Data/StageDatabase") as TextAsset;
-		System.IO.StringReader stringReader = new System.IO.StringReader(textAsset.text);
-		StageDatabase stages;
-
-		using (XmlReader reader = XmlReader.Create(stringReader))
-		{
-			stages = (StageDatabase) ser.Deserialize(reader);
-		}
-
-		foreach (StageData stage in stages.stages) {
-			stageDatabase[stage.stageType].Add(stage.name, stage);
-		}
-
-//		// TEMPORARY DATABASE.
-//		ser = new XmlSerializer(typeof(FighterDatabase));
-//		textAsset = Resources.Load ("Data/FighterDatabase") as TextAsset;
-//		stringReader = new System.IO.StringReader(textAsset.text);
-//		FighterDatabase fighters;
-//
-//		using (XmlReader reader = XmlReader.Create(stringReader))
-//		{
-//			fighters = (FighterDatabase) ser.Deserialize(reader);
-//		}
-//
-//		fighterDatabase = fighters.fighters;
+		GameDatabase.LoadGameDatabase ();
 	}
 
 	#region Player Data Manipulation
@@ -150,7 +106,7 @@ public class GameData : MonoBehaviour {
 
 //		fighter.activeTroopIndex = -1;
 		playerData.fightersOwned.Add(fighter);
-		playerData.Save ();
+//		playerData.Save ();
 
 		return true;
 	}
