@@ -30,18 +30,38 @@ public static class FighterGenerator {
 //		newFighter.fighterClass = classPool[UnityEngine.Random.Range (0, classPool.Count)];
 		newFighter.fighterClass = FighterClass.Warrior;
 
+		RandomizeEquipment (newFighter);
 		RandomizeSkin (newFighter);
 
 		return newFighter;
 	}
 
+	// TODO: EquipmentGenerator.
+	static void RandomizeEquipment (FighterData fighterData)
+	{
+		SerializableDictionary<Equipment.EquipmentType, List<Equipment>> classEquips = GameDatabase.equipmentDatabase [fighterData.fighterClass];
+
+		foreach (Equipment.EquipmentType type in classEquips.Keys) {
+			int randomWeapon = UnityEngine.Random.Range (0, classEquips[type].Count);
+
+			Equipment newEquip = classEquips [type][randomWeapon];
+
+			fighterData.equipmentData.Add (type, newEquip);
+
+			FighterSpriteAttachment.AttachmentType attachmentType = (FighterSpriteAttachment.AttachmentType) Enum.Parse(typeof(FighterSpriteAttachment.AttachmentType), newEquip.type.ToString ());
+			fighterData.skinData.Add (attachmentType, newEquip.spriteName);
+			Debug.Log ("EQUIP: " + newEquip.spriteName);
+		}
+	}
+
+
 	// TODO: Change to "RandomizeEquipment" ().
 	// TODO: Add chance to  accesssories/cape/wing. 
 	public static void RandomizeSkin (FighterData fighterData)
 	{
-		// List of possible sprites for each attachment.
+		// List of possible sprites for this class.
 		SerializableDictionary<FighterSpriteAttachment.AttachmentType, List<string>> spritePool = GameDatabase.spriteDatabase [fighterData.fighterClass];
-																								// GameData.instance.gameDatabase.spriteDatabase [fighterData.fighterClass];
+
 		foreach (FighterSpriteAttachment.AttachmentType attachment in spritePool.Keys) {
 			List<string> attachmentPool = spritePool[attachment];
 

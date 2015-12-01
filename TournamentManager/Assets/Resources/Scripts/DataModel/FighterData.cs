@@ -78,6 +78,9 @@ public class FighterData
     public int
         cost = 2;
 
+	[XmlElement ("EquipmentData")]
+	public SerializableDictionary<Equipment.EquipmentType, Equipment> equipmentData = new SerializableDictionary<Equipment.EquipmentType, Equipment> ();
+
 	// TODO: Put initializations into constructor.
 	public FighterSkinData skinData = new FighterSkinData ();
 
