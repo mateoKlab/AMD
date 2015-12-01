@@ -73,6 +73,7 @@ public class GameData : MonoBehaviour {
 	public void Save ()
 	{
 		// Do Save.
+        playerData.Save();
 	}
 	
 	public void LoadDatabase()
@@ -127,6 +128,12 @@ public class GameData : MonoBehaviour {
 		return playerData.fightersOwned;
 	}
 
+    // Base fighter capacity + barracks facility level
+    public int GetFighterCapacity()
+    {
+        return (playerData.fighterCapacity + town.AdditionalFighterCapacity());
+    }
+
 	public FighterData[] GetActiveParty()
 	{
 		return activeParty;
@@ -134,21 +141,22 @@ public class GameData : MonoBehaviour {
 
 	public int GetPartyCapacity()
 	{
-		return playerData.partyCapacity;
+		return (playerData.partyCapacity + town.AdditionalPartyCapacity());
 	}
 
 	public bool IsWithinPartyCapacity(int troopCost)
 	{
-		return ((currentPartyCost + troopCost) <= playerData.partyCapacity);
+		return ((currentPartyCost + troopCost) <= GetPartyCapacity());
 	}
 
 	// Return true if fighter successfully added to team, else return false
 	public bool AddFighter(FighterData fighter)
 	{
-		if(playerData.fightersOwned.Count >= playerData.teamCapacity)
+		if(playerData.fightersOwned.Count >= GetFighterCapacity())
+        {
 			return false;
+        }
 
-//		fighter.activeTroopIndex = -1;
 		playerData.fightersOwned.Add(fighter);
 		playerData.Save ();
 

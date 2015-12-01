@@ -5,7 +5,13 @@ using System;
 
 public class FacilityModel : Model
 {
-	public int cost;
+    [HideInInspector]
+    public int level;
+    [HideInInspector]
+    public int cost;
+    [HideInInspector]
 	public float cooldown;
+    [HideInInspector]
 	public DateTime timeClicked;
+    
 }

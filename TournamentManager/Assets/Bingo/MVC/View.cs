@@ -35,6 +35,33 @@ namespace Bingo
         }
     }
 
+    public class View<T, M, C> : View where T : BaseApplication where M: Model where C: Controller
+    {
+        new public T app
+        {
+            get
+            {
+                return base.app as T;
+            }
+        }
+
+        new public M model
+        {
+            get
+            {
+                return base.model as M;
+            }
+        }
+
+        new public C controller
+        {
+            get
+            {
+                return base.controller as C;
+            }
+        }
+    }
+
     public class NetworkView : NetworkElement
     {
         private Model _model;
