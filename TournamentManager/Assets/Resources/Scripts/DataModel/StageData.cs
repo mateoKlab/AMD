@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-[XmlRoot]
-public class StageDatabase {
-
-	[XmlElement ("Stages")]
-	public List<StageData> stages;
-}
+// Container class for XML Serialization.
+//[XmlRoot]
+//public class StageDatabase {
+//
+//	[XmlElement ("Stages")]
+//	public List<StageData> stages;
+//}
 
 public enum StageType {
 	Tournament,

@@ -17,7 +17,8 @@ public class TournamentModel : Model
 	
 	public void Awake()
 	{
-		Dictionary<StageType, Dictionary<string, StageData>> stageDatabaseClone = GameData.instance.stageDatabase;
+		StageDatabase stageDatabaseClone = GameDatabase.stageDatabase;//GameData.instance.gameDatabase.stageDatabase;
+
 		tournamentMatchDictionary = stageDatabaseClone[StageType.Tournament];
 
 		foreach (StageData sData in tournamentMatchDictionary.Values) 
