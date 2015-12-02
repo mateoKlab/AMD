@@ -49,9 +49,8 @@ public class FighterExpView : View<MainMenu, FighterModel, FighterExpController>
         expGainedText.text = "EXP GAINED " + Mathf.RoundToInt(expGained);
     }
 
-    public void SetSliderValue(float value)
+    public void SetCurrentExpOnSlider(float expRatio)
     {
-        expSlider.value = value;
+        expSlider.value = expRatio;
     }
-
 }

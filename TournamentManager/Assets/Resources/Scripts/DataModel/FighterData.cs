@@ -49,6 +49,9 @@ public class FighterData
     [XmlElement ("Level")]
     public int level = 1;
 
+    [XmlElement ("Experience")]
+    public int exp = 0;
+
     [XmlElement]
     public int
         HP = 1000;

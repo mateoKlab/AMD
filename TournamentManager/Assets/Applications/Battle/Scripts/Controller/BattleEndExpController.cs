@@ -37,6 +37,21 @@ public class BattleEndExpController : Controller<Battle, BattleEndExpModel, Batt
                 i++;
             }
         }
+
+        StartCoroutine("AnimateExpSliders");
+    }
+
+    private IEnumerator AnimateExpSliders()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        for(int i = 0; i < model.fighters.Count; i++)
+        {
+            if(model.fighters[i].gameObject.activeSelf)
+            {
+                model.fighters[i].AnimateExpSlider();
+            }
+        }
     }
 
     public void OnReturnToMainMenu(params object[] args)

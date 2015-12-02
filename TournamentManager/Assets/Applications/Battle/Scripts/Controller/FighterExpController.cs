@@ -5,6 +5,7 @@ using Bingo;
 public class FighterExpController : Controller
 {
     private bool isActive;
+    private float expGained;
 
     void Start()
     {
@@ -23,7 +24,30 @@ public class FighterExpController : Controller
         ((FighterExpView)view).SetSprite(fd.skinData);
         ((FighterExpView)view).SetName(fd.name);
         ((FighterExpView)view).SetLevel(fd.level);
-        ((FighterExpView)view).SetExpGained(100);
-        ((FighterExpView)view).SetSliderValue(Random.value);
+        // HACK TEST VALUES
+        expGained = Random.Range(30,101);
+        ((FighterExpView)view).SetExpGained(expGained);
+        ((FighterExpView)view).SetCurrentExpOnSlider(0);
+    }
+
+    public void AnimateExpSlider()
+    {
+        StopCoroutine("AnimateExpSliderCoroutine");
+        StartCoroutine("AnimateExpSliderCoroutine");
+    }
+
+    public IEnumerator AnimateExpSliderCoroutine()
+    {
+        float count = 0;
+        while(count <= expGained)
+        {
+            // HACK TEST VALUES
+            float expRatio = count / 100f;
+            ((FighterExpView)view).SetCurrentExpOnSlider(expRatio);
+            count++;
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return null;
     }
 }
