@@ -57,7 +57,6 @@ public class GameData : MonoBehaviour {
 		LoadDatabase ();
 		playerData = PlayerData.Load ();
         town = playerData.town;
-		//LoadActiveFighters();
         LoadActiveParty();
 	}
 
@@ -88,6 +87,11 @@ public class GameData : MonoBehaviour {
     public int GetFighterCapacity()
     {
         return (playerData.fighterCapacity + town.AdditionalFighterCapacity());
+    }
+
+    public FighterData GetActiveFighter(int index)
+    {
+        return activeParty[index];
     }
 
 	public FighterData[] GetActiveParty()

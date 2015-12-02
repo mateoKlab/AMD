@@ -8,5 +8,7 @@ public enum EventTags
 								// args[1]: typeof:GameObject	desc: The fighter that received damage.
 
 	STAGE_WIN, 					// args[0]: typeof:StageData    desc: The stage beaten.
+    END_SCREEN_EXP,
+    RETURN_TO_MAIN_MENU,
 	DEFAULT
 }
