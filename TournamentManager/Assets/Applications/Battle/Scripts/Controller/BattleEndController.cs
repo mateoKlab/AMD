@@ -27,6 +27,8 @@ public class BattleEndController : Controller <Battle, BattleEndModel, BattleEnd
 
 	public void ReturnToMainMenu() 
 	{
-		Application.LoadLevel("MainMenuScene");
+		//Application.LoadLevel("MainMenuScene");
+        Messenger.Send(EventTags.END_SCREEN_EXP);
+        gameObject.SetActive(false);
 	}
 }

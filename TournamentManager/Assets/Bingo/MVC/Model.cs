@@ -35,6 +35,25 @@ namespace Bingo
         }
     }
 
+    public class Model<T, C> : Model where T : BaseApplication where C: Controller
+    {
+        new public T app
+        {
+            get
+            {
+                return base.app as T;
+            }
+        }
+
+        new public C controller
+        {
+            get
+            {
+                return base.controller as C;
+            }
+        }
+    }
+
     public class NetworkModel : NetworkElement
     {
         private Model _model;

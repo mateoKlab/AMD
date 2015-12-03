@@ -8,30 +8,29 @@ public static class FighterGenerator {
 
 	public static FighterData GenerateFighter ()
 	{
-		// TEMPORARY. TODO: Load this from file, and cache it.
-		List<string> namePool = new List<string> { "AJ", "Dave", "Matt", "Rence", "JC", "Ryan", "Khai", "Jeff", "Jed" };
-		List<FighterClass> classPool = Enum.GetValues (typeof(FighterClass)).Cast <FighterClass> ().ToList ();
-
 		FighterData newFighter = new FighterData();
 
 		newFighter.id = GUIDGenerator.NewGuid();
-		newFighter.name = namePool [UnityEngine.Random.Range (0, namePool.Count)];
 
-		// TEMPORARY. Set stats. TODO: Get stat ranges, names, etc from a GachaDatabase/pool.
-		newFighter.fighterElement = (FighterElement)UnityEngine.Random.Range(0, 4);
-		newFighter.HP  = (int)UnityEngine.Random.Range(5, 15) * 100; 
-		newFighter.ATK = (int)UnityEngine.Random.Range(5, 15) * 10;
+		GachaDatabase gachaDatabase = GameDatabase.gachaDatabase;
 
-		// TEST. Assign Melee.
-		newFighter.isRanged = false;
-//		newFighter.isRanged = System.Convert.ToBoolean (UnityEngine.Random.Range (0, 2)); // Random between 0 and 1. Max value is exclusive.
+		newFighter.name = gachaDatabase.GetRandomName ();
+		newFighter.fighterClass = gachaDatabase.GetRandomClass ();
+		newFighter.ATK = gachaDatabase.GetClassBaseAttack (newFighter.fighterClass);
+		newFighter.HP = gachaDatabase.GetClassBaseHP (newFighter.fighterClass);
+		newFighter.fighterElement = gachaDatabase.GetRandomElement ();
 
-		// TEMPORARY. Assign Class. TODO: Assign Class from GachaDatabase/pool (Not all classes will be available through gacha).
-//		newFighter.fighterClass = classPool[UnityEngine.Random.Range (0, classPool.Count)];
-		newFighter.fighterClass = FighterClass.Warrior;//
+
+		// TEMP. TODO: Must define in Data.
+		if (newFighter.fighterClass == FighterClass.Warrior) {
+			newFighter.isRanged = false;
+		} else {
+			newFighter.isRanged = true;
+		}
+
 
 		RandomizeEquipment (newFighter);
-//		RandomizeSkin (newFighter);
+		RandomizeSkin (newFighter);
 
 		return newFighter;
 	}
@@ -39,6 +38,11 @@ public static class FighterGenerator {
 	// TODO: EquipmentGenerator.
 	static void RandomizeEquipment (FighterData fighterData)
 	{
+		// If no equipment for this class exists, return.
+		if (!GameDatabase.equipmentDatabase.ContainsKey (fighterData.fighterClass)) {
+			return;
+		}
+
 		SerializableDictionary<Equipment.EquipmentType, List<Equipment>> classEquips = GameDatabase.equipmentDatabase [fighterData.fighterClass];
 
 		foreach (Equipment.EquipmentType type in classEquips.Keys) {
@@ -50,7 +54,6 @@ public static class FighterGenerator {
 
 			FighterSpriteAttachment.AttachmentType attachmentType = (FighterSpriteAttachment.AttachmentType) Enum.Parse(typeof(FighterSpriteAttachment.AttachmentType), newEquip.type.ToString ());
 			fighterData.skinData.Add (attachmentType, newEquip.spriteName);
-			Debug.Log ("EQUIP: " + newEquip.spriteName);
 		}
 	}
 
@@ -59,6 +62,11 @@ public static class FighterGenerator {
 	// TODO: Add chance to  accesssories/cape/wing. 
 	public static void RandomizeSkin (FighterData fighterData)
 	{
+		// If no sprites for this class exist, return.
+		if (!GameDatabase.spriteDatabase.ContainsKey (fighterData.fighterClass)) {
+			return;
+		}
+
 		// List of possible sprites for this class.
 		SerializableDictionary<FighterSpriteAttachment.AttachmentType, List<string>> spritePool = GameDatabase.spriteDatabase [fighterData.fighterClass];
 

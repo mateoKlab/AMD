@@ -8,6 +8,9 @@ public class BattleController : Controller<Battle>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
+    public BattleEndExpController battleEndExpController { get; private set; }
+    
+    [Inject]
     public BattleEndController battleEndController { get; private set; }
     
     [Inject]
@@ -30,11 +33,13 @@ public class BattleController : Controller<Battle>
     void Start()
     {
         Messenger.AddListener(EventTags.FIGHTER_KILLED, FighterKilled);
+        Messenger.AddListener(EventTags.END_SCREEN_EXP, OnEndScreenExp);
     }
 
     void OnDestroy()
     {
         Messenger.RemoveListener(EventTags.FIGHTER_KILLED, FighterKilled);
+        Messenger.RemoveListener(EventTags.END_SCREEN_EXP, OnEndScreenExp);
     }
 
     // Called when a Fighter is killed.
@@ -202,6 +207,11 @@ public class BattleController : Controller<Battle>
         newFighter.SetActive(true);
 
         return newFighter;
+    }
+
+    public void OnEndScreenExp(params object[] args)
+    {
+        battleEndExpController.Show();
     }
 }
 

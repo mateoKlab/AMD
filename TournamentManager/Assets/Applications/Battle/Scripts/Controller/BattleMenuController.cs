@@ -6,13 +6,6 @@ using Bingo;
 
 public class BattleMenuController : Controller
 {
-    // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
-    
-    [Inject]
-    public BattleEndController battleEndController { get; private set; }
-    
-    //////// END MVCCodeEditor GENERATED CODE ////////
-    
 	public List<BattleMenuItemController> menuItems;
 
 	private Dictionary<GameObject, BattleMenuItemController> menuItemDictionary;
