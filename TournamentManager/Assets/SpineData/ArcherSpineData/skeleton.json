@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "QYqPeV8yqpVKzImBoxv8PfYOzZg", "spine": "2.1.27", "width": 274.54, "height": 371.78, "images": "" },
+"skeleton": { "hash": "62rxZ2Sp0krKDB01XdXYUCRnGrM", "spine": "2.1.27", "width": 274.54, "height": 371.78, "images": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "l_leg", "parent": "root", "length": 93.02, "x": 9, "y": 81.67, "rotation": -59.51 },
@@ -82,6 +82,58 @@
 	}
 },
 "animations": {
+	"Win": {
+		"slots": {
+			"images/Arrow": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.3333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"spine": {
+				"translate": [
+					{ "time": 0, "x": 0.05, "y": -1.57 },
+					{ "time": 0.1666, "x": -0.46, "y": 7.91 },
+					{ "time": 0.3333, "x": 0.05, "y": -1.57 }
+				]
+			},
+			"l_arm": {
+				"rotate": [
+					{ "time": 0, "angle": -17.55 },
+					{ "time": 0.1666, "angle": 23.9, "curve": "stepped" },
+					{ "time": 0.3333, "angle": 23.9 }
+				]
+			},
+			"r_arm": {
+				"rotate": [
+					{ "time": 0, "angle": 11.24 }
+				],
+				"translate": [
+					{ "time": 0, "x": 2.41, "y": 43.8 }
+				]
+			},
+			"head": {
+				"translate": [
+					{ "time": 0, "x": -0.86, "y": 0.04 }
+				]
+			},
+			"arrow": {
+				"rotate": [
+					{ "time": 0, "angle": -8.1 }
+				]
+			},
+			"root": {
+				"translate": [
+					{ "time": 0, "x": -0.95, "y": 0 },
+					{ "time": 0.1666, "x": -0.95, "y": 19.1 },
+					{ "time": 0.3333, "x": -0.95, "y": 0 }
+				]
+			}
+		}
+	},
 	"animation": {},
 	"attack": {
 		"slots": {

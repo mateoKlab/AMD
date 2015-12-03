@@ -28,10 +28,10 @@ public static class FighterGenerator {
 
 		// TEMPORARY. Assign Class. TODO: Assign Class from GachaDatabase/pool (Not all classes will be available through gacha).
 //		newFighter.fighterClass = classPool[UnityEngine.Random.Range (0, classPool.Count)];
-		newFighter.fighterClass = FighterClass.Mage;//
+		newFighter.fighterClass = FighterClass.Warrior;//
 
 		RandomizeEquipment (newFighter);
-		RandomizeSkin (newFighter);
+//		RandomizeSkin (newFighter);
 
 		return newFighter;
 	}
