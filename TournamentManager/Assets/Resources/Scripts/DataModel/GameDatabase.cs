@@ -18,6 +18,8 @@ public static class GameDatabase {
 	// List of Equipment available for each type.
 	private static EquipmentDatabase _equipmentDatabase;
 
+	private static GachaDatabase _gachaDatabase;
+
 	#region Getters
 	public static SpriteDatabase spriteDatabase 
 	{
@@ -49,6 +51,16 @@ public static class GameDatabase {
 			return _equipmentDatabase; 
 		}
 	}
+
+	public static GachaDatabase gachaDatabase {
+		get {
+			if (_gachaDatabase == null) {
+				_gachaDatabase = LoadDatabase<GachaDatabase> ();
+			}
+			
+			return _gachaDatabase; 
+		}
+	}
 	#endregion
 
 	public static void LoadGameDatabase ()
@@ -56,7 +68,6 @@ public static class GameDatabase {
 		// Initialize here.
 		_spriteDatabase = LoadDatabase<SpriteDatabase> ();
 		_stageDatabase  = LoadDatabase<StageDatabase> ();
-
 		_equipmentDatabase = LoadDatabase<EquipmentDatabase> ();
 	}
 	
