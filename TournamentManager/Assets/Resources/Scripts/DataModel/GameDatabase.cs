@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,18 +9,22 @@ using System.IO;
 
 public static class GameDatabase {
 
-	// List of sprites available for each sprite attachment/body part.
+	// List of sprites(string filename) available for each sprite attachment/body part.
 	private static SpriteDatabase _spriteDatabase;
 
-	// List of stages available for each stage/mission type.
+	// List of StageData available for each type.
 	private static StageDatabase _stageDatabase;
 
+	// List of Equipment available for each type.
+	private static EquipmentDatabase _equipmentDatabase;
+
+	private static GachaDatabase _gachaDatabase;
 
 	#region Getters
 	public static SpriteDatabase spriteDatabase 
 	{
 		get {
-			if (_spriteDatabase != null) {
+			if (_spriteDatabase == null) {
 				_spriteDatabase = LoadDatabase<SpriteDatabase> ();
 			}
 
@@ -29,11 +34,31 @@ public static class GameDatabase {
 
 	public static StageDatabase stageDatabase {
 		get {
-			if (_stageDatabase != null) {
+			if (_stageDatabase == null) {
 				_stageDatabase = LoadDatabase<StageDatabase> ();
 			}
 			
 			return _stageDatabase; 
+		}
+	}
+
+	public static EquipmentDatabase equipmentDatabase {
+		get {
+			if (_equipmentDatabase == null) {
+				_equipmentDatabase = LoadDatabase<EquipmentDatabase> ();
+			}
+			
+			return _equipmentDatabase; 
+		}
+	}
+
+	public static GachaDatabase gachaDatabase {
+		get {
+			if (_gachaDatabase == null) {
+				_gachaDatabase = LoadDatabase<GachaDatabase> ();
+			}
+			
+			return _gachaDatabase; 
 		}
 	}
 	#endregion
@@ -43,8 +68,9 @@ public static class GameDatabase {
 		// Initialize here.
 		_spriteDatabase = LoadDatabase<SpriteDatabase> ();
 		_stageDatabase  = LoadDatabase<StageDatabase> ();
+		_equipmentDatabase = LoadDatabase<EquipmentDatabase> ();
 	}
-
+	
 	private static T LoadDatabase<T> ()
 	{
 		XmlSerializer ser = new XmlSerializer(typeof (T));
@@ -71,15 +97,20 @@ public static class GameDatabase {
 
 // Container classes for XML Serialization.
 // TODO: Implement Read-only wrapper class for SerializableDictionary.
+
+// List of sprites available for each class.
 [XmlRoot ("SpriteDatabase")]
 public class SpriteDatabase : SerializableDictionary<FighterClass, 
 SerializableDictionary <FighterSpriteAttachment.AttachmentType, List <string>>>
 { }
 
+// List of equipment available for each class.
 [XmlRoot ("EquipmentDatabase")]
-public class EquipmentDatabase : SerializableDictionary<Equipment.EquipmentType, List<string>>
+public class EquipmentDatabase : SerializableDictionary<FighterClass,
+SerializableDictionary<Equipment.EquipmentType, List<Equipment>>>
 { }
 
+// List of Stages for each StageType.
 [XmlRoot ("StageDatabase")]
 public class StageDatabase : SerializableDictionary<StageType, SerializableDictionary<string, StageData>>
 { }

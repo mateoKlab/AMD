@@ -44,9 +44,13 @@ public class PlayerData
     public int
         partyCapacity = 20;
 
-    [XmlElement("TeamCapacity")]
+    /// <summary>
+    /// The fighter base capacity.
+    /// Do not access this directly. Use the GetFighterCapacity method on GameData instead
+    /// </summary>
+    [XmlElement("FighterCapacity")]
     public int
-        teamCapacity = 50;
+        fighterCapacity = 50;
 
     // TOWN
     [XmlElement("Town")]

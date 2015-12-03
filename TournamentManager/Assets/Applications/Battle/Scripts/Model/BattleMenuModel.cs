@@ -6,14 +6,7 @@ using System.Collections.Generic;
 using Bingo;
 
 public class BattleMenuModel : Model
-{
-    // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
-    
-    [Inject]
-    public BattleEndModel battleEndModel { get; private set; }
-    
-    //////// END MVCCodeEditor GENERATED CODE ////////
-    
+{   
 	public Action<List<GameObject>> OnFightersSet;
 
 	private List<GameObject> _fighters;

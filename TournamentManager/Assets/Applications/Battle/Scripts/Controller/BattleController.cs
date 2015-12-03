@@ -8,6 +8,9 @@ public class BattleController : Controller<Battle>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
+    public BattleEndExpController battleEndExpController { get; private set; }
+    
+    [Inject]
     public BattleEndController battleEndController { get; private set; }
     
     [Inject]
@@ -16,7 +19,9 @@ public class BattleController : Controller<Battle>
     //////// END MVCCodeEditor GENERATED CODE ////////
     
     public GameObject meleeFighterPrefab;
-    public GameObject rangedFighterPrefab;
+//    public GameObject rangedFighterPrefab;//
+	public GameObject archerFighterPrefab;
+	public GameObject mageFighterPrefab;
 
     [HideInInspector]
     public List<GameObject>
@@ -28,11 +33,13 @@ public class BattleController : Controller<Battle>
     void Start()
     {
         Messenger.AddListener(EventTags.FIGHTER_KILLED, FighterKilled);
+        Messenger.AddListener(EventTags.END_SCREEN_EXP, OnEndScreenExp);
     }
 
     void OnDestroy()
     {
         Messenger.RemoveListener(EventTags.FIGHTER_KILLED, FighterKilled);
+        Messenger.RemoveListener(EventTags.END_SCREEN_EXP, OnEndScreenExp);
     }
 
     // Called when a Fighter is killed.
@@ -144,9 +151,13 @@ public class BattleController : Controller<Battle>
         GameObject newFighter;
 
         // Instantiate prefab with appropriate behavior. (Melee Fighter Controller/Ranged Fighter Controller)
-        if (fighterData.isRanged)
+        if (fighterData.fighterClass == FighterClass.Archer)
         {
-            newFighter = Instantiate(rangedFighterPrefab);
+            newFighter = Instantiate(archerFighterPrefab);
+		}
+		else if(fighterData.fighterClass == FighterClass.Mage)
+		{
+			newFighter = Instantiate(mageFighterPrefab);
 		}
         else
         {
@@ -196,6 +207,11 @@ public class BattleController : Controller<Battle>
         newFighter.SetActive(true);
 
         return newFighter;
+    }
+
+    public void OnEndScreenExp(params object[] args)
+    {
+        battleEndExpController.Show();
     }
 }
 

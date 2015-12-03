@@ -13,7 +13,7 @@ body
   index: -1
 eyes
   rotate: false
-  xy: 218, 283
+  xy: 375, 332
   size: 84, 48
   orig: 84, 48
   offset: 0, 0
@@ -27,7 +27,7 @@ eyes_blink
   index: -1
 eyes_dead
   rotate: false
-  xy: 304, 288
+  xy: 212, 190
   size: 35, 43
   orig: 35, 43
   offset: 0, 0
@@ -55,30 +55,30 @@ hair_tail
   index: -1
 left_arm
   rotate: false
-  xy: 190, 18
+  xy: 98, 18
   size: 87, 113
   orig: 87, 113
   offset: 0, 0
   index: -1
 left_foot
   rotate: false
-  xy: 212, 190
-  size: 71, 91
-  orig: 71, 91
+  xy: 294, 243
+  size: 53, 88
+  orig: 53, 88
   offset: 0, 0
   index: -1
 right_arm
   rotate: false
-  xy: 98, 12
-  size: 90, 119
-  orig: 90, 119
+  xy: 187, 16
+  size: 73, 115
+  orig: 73, 115
   offset: 0, 0
   index: -1
 right_foot
   rotate: false
-  xy: 375, 276
-  size: 89, 104
-  orig: 89, 104
+  xy: 218, 235
+  size: 74, 96
+  orig: 74, 96
   offset: 0, 0
   index: -1
 staff

@@ -46,6 +46,9 @@ public class FighterData
     public string
         spriteName = "knight_fire";
 
+    [XmlElement ("Level")]
+    public int level = 1;
+
     [XmlElement]
     public int
         HP = 1000;
@@ -77,6 +80,9 @@ public class FighterData
     [XmlElement ("Cost")]
     public int
         cost = 2;
+
+	[XmlElement ("EquipmentData")]
+	public SerializableDictionary<Equipment.EquipmentType, Equipment> equipmentData = new SerializableDictionary<Equipment.EquipmentType, Equipment> ();
 
 	// TODO: Put initializations into constructor.
 	public FighterSkinData skinData = new FighterSkinData ();
