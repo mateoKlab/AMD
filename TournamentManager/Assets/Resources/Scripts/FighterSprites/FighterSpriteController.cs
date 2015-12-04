@@ -15,7 +15,7 @@ public class FighterSpriteController : MonoBehaviour {
 		foreach (FighterSpriteAttachment attachment in spriteAttachments) {
 
 			if (skinData.ContainsKey (attachment.type)) {
-				newSprite = Resources.Load ("Sprites/UnitSprites/" + attachment.type.ToString() + "/" + skinData[attachment.type], typeof(Sprite)) as Sprite;
+				newSprite = Resources.Load ("Sprites/UnitSprites/" + attachment.type.ToString() + "/" + skinData[attachment.type].ToString(), typeof(Sprite)) as Sprite;
 				attachment.GetComponent <SpriteRenderer> ().sprite = newSprite;
 			}
 		}

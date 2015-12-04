@@ -30,7 +30,7 @@ public static class FighterGenerator {
 
 
 		RandomizeEquipment (newFighter);
-		RandomizeSkin (newFighter);
+//		RandomizeSkin (newFighter);
 
 		return newFighter;
 	}
