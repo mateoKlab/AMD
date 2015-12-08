@@ -11,38 +11,21 @@ public class ArmoryModel : Model
 	public override void Awake ()
 	{
 		base.Awake ();
-
-		SerializableDictionary<Equipment.EquipmentType, List<Equipment>> warriorEquips = GameDatabase.equipmentDatabase [FighterClass.Warrior];
-		SerializableDictionary<Equipment.EquipmentType, List<Equipment>> mageEquips = GameDatabase.equipmentDatabase [FighterClass.Mage];
-		SerializableDictionary<Equipment.EquipmentType, List<Equipment>> archerEquips = GameDatabase.equipmentDatabase [FighterClass.Archer];
 	
+		foreach (Equipment.Type type in GameDatabase.equipmentDatabase.Keys) {
+			//	Examples:
+			//		if (type is Equipment.Type.Weapon) {}
+			//		if (type.typeName == Equipment.Type.Weapon.Sword) {}  
 
-		for (int i = 0; i < warriorEquips[Equipment.EquipmentType.Weapon].Count; i++)
-		{
-			weaponList.Add(warriorEquips[Equipment.EquipmentType.Weapon][i]);
-		}
-		for (int i = 0; i < mageEquips[Equipment.EquipmentType.Weapon].Count; i++)
-		{
-			weaponList.Add(mageEquips[Equipment.EquipmentType.Weapon][i]);
-		}
-		for (int i = 0; i < archerEquips[Equipment.EquipmentType.Weapon].Count; i++)
-		{
-			weaponList.Add(archerEquips[Equipment.EquipmentType.Weapon][i]);
+			if (type.typeName == "Sword") {
+				weaponList = GameDatabase.equipmentDatabase[type];
+			}
+
+			if (type.typeName == "HeavyArmor") {
+				armorList = GameDatabase.equipmentDatabase[type];
+			}
 		}
 	
-
-		for (int i = 0; i < warriorEquips[Equipment.EquipmentType.Body].Count; i++)
-		{
-			armorList.Add(warriorEquips[Equipment.EquipmentType.Body][i]);
-		}
-		for (int i = 0; i < mageEquips[Equipment.EquipmentType.Body].Count; i++)
-		{
-			armorList.Add(mageEquips[Equipment.EquipmentType.Body][i]);
-		}
-		for (int i = 0; i < archerEquips[Equipment.EquipmentType.Body].Count; i++)
-		{
-			armorList.Add(archerEquips[Equipment.EquipmentType.Body][i]);
-		}
 
 	}
 }

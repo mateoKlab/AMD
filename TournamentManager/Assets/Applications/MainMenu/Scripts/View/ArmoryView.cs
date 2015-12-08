@@ -7,13 +7,11 @@ public class ArmoryView : View
 
 	public void OnClickWeaponsTab() 
 	{
-		((ArmoryController)controller).HideArmors();
 		((ArmoryController)controller).DisplayWeapons();
 	}
 
 	public void OnClickArmorsTab()
 	{
-		((ArmoryController)controller).HideWeapons();
 		((ArmoryController)controller).DisplayArmors();
 	}
 
