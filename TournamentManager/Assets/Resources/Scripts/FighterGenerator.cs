@@ -15,14 +15,18 @@ public static class FighterGenerator {
 		GachaDatabase gachaDatabase = GameDatabase.gachaDatabase;
 
 		newFighter.name = gachaDatabase.GetRandomName ();
-		newFighter.fighterClass = gachaDatabase.GetRandomClass ();
-		newFighter.ATK = gachaDatabase.GetClassBaseAttack (newFighter.fighterClass);
-		newFighter.HP = gachaDatabase.GetClassBaseHP (newFighter.fighterClass);
+
+		// TODO: Implement readonly interface for data.
+		ClassData classData = gachaDatabase.GetRandomClass ();
+		newFighter.fighterClass = classData.fighterClass;
+
+		newFighter.ATK = classData.baseATK;
+		newFighter.HP = classData.baseHP;
 		newFighter.fighterElement = gachaDatabase.GetRandomElement ();
 
 
-		// TEMP. TODO: Must define in Data.
-		if (newFighter.fighterClass == FighterClass.Warrior) {
+		// TEMP. TODO: Must define isRanged in Data.
+		if (newFighter.fighterClass == Class.Warrior) {
 			newFighter.isRanged = false;
 		} else {
 			newFighter.isRanged = true;
@@ -35,25 +39,25 @@ public static class FighterGenerator {
 		return newFighter;
 	}
 
-	// TODO: EquipmentGenerator.
 	static void RandomizeEquipment (FighterData fighterData)
 	{
-		// If no equipment for this class exists, return.
-		if (!GameDatabase.equipmentDatabase.ContainsKey (fighterData.fighterClass)) {
-			return;
-		}
+		ClassData classData = GameDatabase.classDatabase [fighterData.fighterClass];
 
-		SerializableDictionary<Equipment.EquipmentType, List<Equipment>> classEquips = GameDatabase.equipmentDatabase [fighterData.fighterClass];
+		foreach (Equipment.Type equipmentType in classData.equipmentAllowed) 
+		{
 
-		foreach (Equipment.EquipmentType type in classEquips.Keys) {
-			int randomWeapon = UnityEngine.Random.Range (0, classEquips[type].Count);
+			// TODO: Get () methods from EquipmentDatabase class.
+			// TODO: Equip categories. Required/Not required e.g. Sword/armor vs accessories/wings/cape.
+			// TODO: Equip drop rate.
 
-			Equipment newEquip = classEquips [type][randomWeapon];
+			List<Equipment> equipmentPool = GameDatabase.equipmentDatabase [equipmentType];
 
-			fighterData.equipmentData.Add (type, newEquip);
+			Equipment randomEquipment = equipmentPool[UnityEngine.Random.Range (0, equipmentPool.Count)];
+			fighterData.equipmentData.Add (equipmentType, randomEquipment);
 
-			FighterSpriteAttachment.AttachmentType attachmentType = (FighterSpriteAttachment.AttachmentType) Enum.Parse(typeof(FighterSpriteAttachment.AttachmentType), newEquip.type.ToString ());
-			fighterData.skinData.Add (attachmentType, newEquip.spriteName);
+			// TEMP. add attachment type member to Equipment?
+			FighterSpriteAttachment.AttachmentType attachmentType = (FighterSpriteAttachment.AttachmentType) Enum.Parse(typeof(FighterSpriteAttachment.AttachmentType), equipmentType.GetType ().Name); //randomEquipment.type.typeName);
+			fighterData.skinData.Add (attachmentType, randomEquipment.spriteName);
 		}
 	}
 

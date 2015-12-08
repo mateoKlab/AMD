@@ -21,14 +21,6 @@ public enum FighterElement
     Earth
 }
 
-[XmlRoot ("Class")]
-public enum FighterClass
-{
-	Warrior,
-	Mage,
-	Archer
-}
-
 public enum FighterAttackType
 {
     Melee,
@@ -70,8 +62,8 @@ public class FighterData
         name = "Juan";
 
     [XmlElement ("Class")]
-	public FighterClass
-        fighterClass = FighterClass.Warrior;
+	public Class
+        fighterClass = Class.Warrior;
 
     [XmlElement ("Element")]
     public FighterElement
@@ -82,7 +74,7 @@ public class FighterData
         cost = 2;
 
 	[XmlElement ("EquipmentData")]
-	public SerializableDictionary<Equipment.EquipmentType, Equipment> equipmentData = new SerializableDictionary<Equipment.EquipmentType, Equipment> ();
+	public SerializableDictionary<Equipment.Type, Equipment> equipmentData = new SerializableDictionary<Equipment.Type, Equipment> ();
 
 	// TODO: Put initializations into constructor.
 	public FighterSkinData skinData = new FighterSkinData ();
