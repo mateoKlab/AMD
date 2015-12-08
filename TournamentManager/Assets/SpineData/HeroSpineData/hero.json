@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "ytaTxubNJ4srz3CsOsb2SwpZ5TI", "spine": "2.1.27", "width": 323.31, "height": 336.43, "images": "./images/" },
+"skeleton": { "hash": "LPRpYX0cjYbthLxSHkUXEiP9Ep4", "spine": "2.1.27", "width": 323.31, "height": 336.43, "images": "./images/" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "Hip", "parent": "root", "y": 94.88 },
@@ -664,6 +664,60 @@
 				"translate": [
 					{ "time": 0, "x": 0, "y": -12.22, "curve": "stepped" },
 					{ "time": 1, "x": 0, "y": -12.22 }
+				]
+			}
+		}
+	},
+	"Dash": {
+		"bones": {
+			"R_Ankle": {
+				"translate": [
+					{ "time": 0, "x": 5.68, "y": 19.54 }
+				]
+			},
+			"Hip": {
+				"rotate": [
+					{ "time": 0, "angle": -17.48 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": -6.4 }
+				]
+			},
+			"L_Ground": {
+				"translate": [
+					{ "time": 0, "x": -24.91, "y": 0 }
+				]
+			},
+			"foot1": {
+				"rotate": [
+					{ "time": 0, "angle": -21.16 }
+				]
+			},
+			"foot2": {
+				"rotate": [
+					{ "time": 0, "angle": -25.44 }
+				]
+			},
+			"head": {
+				"translate": [
+					{ "time": 0, "x": -0.36, "y": 0.01 },
+					{ "time": 0.5, "x": 1.2, "y": -0.05 },
+					{ "time": 1, "x": -0.36, "y": 0.01 }
+				]
+			},
+			"upperarm1": {
+				"translate": [
+					{ "time": 0, "x": 0.19, "y": -0.22 },
+					{ "time": 0.5, "x": -0.49, "y": 0.58 },
+					{ "time": 0.7, "x": -0.33, "y": 0.86 },
+					{ "time": 1, "x": 0.19, "y": -0.22 }
+				]
+			},
+			"upperarm2": {
+				"translate": [
+					{ "time": 0, "x": -0.6, "y": -0.01 },
+					{ "time": 0.5, "x": -1.8, "y": -0.03 },
+					{ "time": 1, "x": -0.6, "y": -0.01 }
 				]
 			}
 		}
