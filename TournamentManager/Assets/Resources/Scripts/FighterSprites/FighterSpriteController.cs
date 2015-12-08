@@ -6,7 +6,7 @@ public class FighterSpriteController : MonoBehaviour {
 
 	public List<FighterSpriteAttachment> spriteAttachments;
 	
-	public FighterClass fighterClass;
+	public Class fighterClass;
 
 	public void SetFighterSkin (FighterSkinData skinData)
 	{

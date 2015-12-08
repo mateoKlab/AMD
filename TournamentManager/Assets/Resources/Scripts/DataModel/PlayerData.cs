@@ -19,9 +19,9 @@ public class PlayerData
     public int
         diamonds;
 
-	[XmlArray ("EquipmentUnlocked")]
-	[XmlArrayItem("Equip")]
-	public List<Equipment> unlockedEquipment;
+//	[XmlArray ("EquipmentUnlocked")]
+//	[XmlArrayItem("Equip")]
+//	public List<string> unlockedEquipment;
 
     [XmlElement ("TournamentProgress")]
     public int
@@ -64,10 +64,13 @@ public class PlayerData
 
 	void Start ()
 	{
+
+
 		//TEST
-		unlockedEquipment = new List<Equipment> ();
-		unlockedEquipment.Add (new Equipment { type = Equipment.EquipmentType.Weapon, id = "TEST ID 1" });
-		unlockedEquipment.Add (new Equipment { type = Equipment.EquipmentType.Body, id = "TEST ID 2" });
+//		unlockedEquipment = new List<Equipment> ();
+
+//		unlockedEquipment.Add (Equipment.Type.Weapon.Sword);
+//		unlockedEquipment.Add (Equipment.Type.Armor.Body);
 	}
 
     public void Save()

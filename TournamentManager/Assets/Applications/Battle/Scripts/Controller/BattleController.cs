@@ -151,11 +151,11 @@ public class BattleController : Controller<Battle>
         GameObject newFighter;
 
         // Instantiate prefab with appropriate behavior. (Melee Fighter Controller/Ranged Fighter Controller)
-        if (fighterData.fighterClass == FighterClass.Archer)
+        if (fighterData.fighterClass == Class.Archer)
         {
             newFighter = Instantiate(archerFighterPrefab);
 		}
-		else if(fighterData.fighterClass == FighterClass.Mage)
+		else if(fighterData.fighterClass == Class.Mage)
 		{
 			newFighter = Instantiate(mageFighterPrefab);
 		}

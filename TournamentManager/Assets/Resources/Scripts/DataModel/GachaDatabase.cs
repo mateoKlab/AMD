@@ -12,17 +12,22 @@ public class GachaDatabase {
 	public List<string> namePool;
 	public List<FighterElement> elementPool;
 
-	public SerializableDictionary<FighterClass, BaseStats> classPool;
+	// List of classes that can be obtained through gacha.
+	public List<Class> classPool;
 
 	public string GetRandomName ()
 	{
 		return namePool [UnityEngine.Random.Range (0, namePool.Count)];
 	}
 
-	public FighterClass GetRandomClass ()
+	// TODO: Implement readonly interface for data.
+	public ClassData GetRandomClass ()
 	{
-		List<FighterClass> classes = new List<FighterClass>(classPool.Keys);
-		return classes [UnityEngine.Random.Range (0, classes.Count)];
+		Class randomClass = classPool [UnityEngine.Random.Range (0, classPool.Count)];
+
+		Debug.Log (randomClass.ToString ());
+
+		return GameDatabase.classDatabase [randomClass];
 	}
 
 	public FighterElement GetRandomElement ()
@@ -30,15 +35,15 @@ public class GachaDatabase {
 		return elementPool [UnityEngine.Random.Range (0, elementPool.Count)];
 	}
 
-	public int GetClassBaseAttack (FighterClass fighterClass)
-	{
-		return classPool [fighterClass].attack;
-	}
-
-	public int GetClassBaseHP (FighterClass fighterClass)
-	{
-		return classPool [fighterClass].hp;
-	}
+//	public int GetClassBaseAttack (FighterClass fighterClass)
+//	{
+//		return classPool [fighterClass].attack;
+//	}
+//
+//	public int GetClassBaseHP (FighterClass fighterClass)
+//	{
+//		return classPool [fighterClass].hp;
+//	}
 
 
 	public struct BaseStats {
