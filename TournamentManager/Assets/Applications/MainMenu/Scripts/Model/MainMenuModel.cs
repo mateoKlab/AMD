@@ -7,6 +7,9 @@ public class MainMenuModel : Model<MainMenu>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
+    public ArmoryModel armoryModel { get; private set; }
+    
+    [Inject]
     public EditTeamModel editTeamModel { get; private set; }
     
     [Inject]

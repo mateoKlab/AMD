@@ -9,6 +9,9 @@ public class MainMenuController : Controller<MainMenu>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
+    public ArmoryController armoryController { get; private set; }
+    
+    [Inject]
     public TroopDetailsController troopDetailsController { get; private set; }
     
     [Inject]
@@ -70,6 +73,20 @@ public class MainMenuController : Controller<MainMenu>
         footerController.DisableButtons();
         GetComponent<MainMenuView>().gachaView.gameObject.SetActive(true);
     }
+
+	public void ShowArmoryPopUp(params object[] args)
+	{
+		footerController.DisableButtons();
+		if (GetComponent<MainMenuView>().gachaView.gameObject.activeSelf)
+		{
+			app.view.isShowingGachaPopUp = true;
+			GetComponent<MainMenuView>().gachaView.gameObject.SetActive(false);
+		} else {
+			app.view.isShowingGachaPopUp = false;
+		}
+
+		GetComponent<MainMenuView>().armoryView.gameObject.SetActive(true);
+	}
 
     public void EnableMainMenuItems(bool enabled)
     {
