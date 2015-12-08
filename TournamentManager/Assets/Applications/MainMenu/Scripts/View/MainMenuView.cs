@@ -7,6 +7,9 @@ public class MainMenuView : View<MainMenu>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
+    public ArmoryView armoryView { get; private set; }
+    
+    [Inject]
     public TroopDetailsView troopDetailsView { get; private set; }
     
     [Inject]
@@ -35,6 +38,8 @@ public class MainMenuView : View<MainMenu>
     
     //////// END MVCCodeEditor GENERATED CODE ////////
     
+	public bool isShowingGachaPopUp;
+
 	public void OnClickBattleButton() {
 		((MainMenuController)controller).GoToBattleScene();
 	}
@@ -53,6 +58,10 @@ public class MainMenuView : View<MainMenu>
 
 	public void OnClickGachaButton() {
 		((MainMenuController)controller).ShowGachaPopUp();
+	}
+
+	public void OnClickArmoryButton() {
+		((MainMenuController)controller).ShowArmoryPopUp();
 	}
 }
 
