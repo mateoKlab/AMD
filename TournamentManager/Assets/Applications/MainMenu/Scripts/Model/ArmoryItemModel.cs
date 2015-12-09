@@ -4,5 +4,5 @@ using Bingo;
 
 public class ArmoryItemModel : Model
 {
-
+	public Equipment currentEquipment;
 }

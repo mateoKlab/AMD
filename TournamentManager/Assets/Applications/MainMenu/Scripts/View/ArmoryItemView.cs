@@ -6,4 +6,9 @@ public class ArmoryItemView : View
 {
 	public RawImage itemSprite;
 	public Text itemLabel;
+	public GameObject diamondsIcon;
+
+	public void OnClickArmoryItem() {
+		((ArmoryItemController)controller).UnlockItem();
+	}
 }

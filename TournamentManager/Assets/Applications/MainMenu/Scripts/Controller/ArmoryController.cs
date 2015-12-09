@@ -47,7 +47,7 @@ public class ArmoryController : Controller <MainMenu, ArmoryModel, ArmoryView>
 		for(int i = 0; i < model.weaponList.Count; i++) 
 		{
 			elementsList[i].SetActive(true);
-			elementsList[i].GetComponent<ArmoryItemController>().UpdateArmoryItem(model.weaponList[i].spriteName, model.weaponList[i].name, "Weapon");
+			elementsList[i].GetComponent<ArmoryItemController>().DisplayArmoryItem(model.weaponList[i], "Weapon");
 			elementsList[i].transform.SetParent(content.transform, false);
 		}
 		
@@ -62,7 +62,7 @@ public class ArmoryController : Controller <MainMenu, ArmoryModel, ArmoryView>
 		for(int i = 0; i < model.armorList.Count; i++) 
 		{
 			elementsList[i].SetActive(true);
-			elementsList[i].GetComponent<ArmoryItemController>().UpdateArmoryItem(model.armorList[i].spriteName, model.armorList[i].name, "Body");
+			elementsList[i].GetComponent<ArmoryItemController>().DisplayArmoryItem(model.armorList[i], "Body");
 			elementsList[i].transform.SetParent(content.transform, false);
 		}
 		
@@ -75,7 +75,7 @@ public class ArmoryController : Controller <MainMenu, ArmoryModel, ArmoryView>
 		for(int i = 0; i < model.armorList.Count; i++) 
 		{
 			elementsList[i].SetActive(true);
-			elementsList[i].GetComponent<ArmoryItemController>().UpdateArmoryItem(itemList[i].spriteName, itemList[i].name, itemList[i].type.ToString());
+			elementsList[i].GetComponent<ArmoryItemController>().DisplayArmoryItem(itemList[i], itemList[i].type.ToString());
 			elementsList[i].transform.SetParent(content.transform, false);
 		}
 		
