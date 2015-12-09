@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HeaderView : View
 {
 	private Text goldLabel;
+	private Text diamondsLabel;
 
 	public override void Awake() {
 		base.Awake();
@@ -15,10 +16,18 @@ public class HeaderView : View
 	private void InitializeHeader() 
 	{
 		goldLabel = transform.FindChild("GoldLabel").GetComponent<Text>();
+		diamondsLabel = transform.FindChild("DiamondsLabel").GetComponent<Text>();
 		UpdateGoldValue();
+		UpdateDiamondsValue();
 	}
 
-	public void UpdateGoldValue() {
+	public void UpdateGoldValue() 
+	{
 		goldLabel.text = "GOLD: " + GameData.instance.playerData.gold;
+	}
+
+	public void UpdateDiamondsValue() 
+	{
+		diamondsLabel.text = "DIAMONDS: " + GameData.instance.playerData.diamonds;
 	}
 }

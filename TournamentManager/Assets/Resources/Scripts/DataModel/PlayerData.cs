@@ -17,7 +17,7 @@ public class PlayerData
 
     [XmlElement ("Diamonds")]
     public int
-        diamonds;
+        diamonds = 500;
 
 //	[XmlArray ("EquipmentUnlocked")]
 //	[XmlArrayItem("Equip")]
@@ -64,8 +64,6 @@ public class PlayerData
 
 	void Start ()
 	{
-
-
 		//TEST
 //		unlockedEquipment = new List<Equipment> ();
 
