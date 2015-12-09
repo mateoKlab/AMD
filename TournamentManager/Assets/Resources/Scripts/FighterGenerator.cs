@@ -50,14 +50,16 @@ public static class FighterGenerator {
 			// TODO: Equip categories. Required/Not required e.g. Sword/armor vs accessories/wings/cape.
 			// TODO: Equip drop rate.
 
-			List<Equipment> equipmentPool = GameDatabase.equipmentDatabase [equipmentType];
+			List<Equipment> equipmentPool = EquipmentDatabase.GetEquipment (equipmentType, false);
 
-			Equipment randomEquipment = equipmentPool[UnityEngine.Random.Range (0, equipmentPool.Count)];
-			fighterData.equipmentData.Add (equipmentType, randomEquipment);
+			if (equipmentPool != null) {
+				Equipment randomEquipment = equipmentPool[UnityEngine.Random.Range (0, equipmentPool.Count)];
+				fighterData.equipmentData.Add (equipmentType, randomEquipment);
 
-			// TEMP. add attachment type member to Equipment?
-			FighterSpriteAttachment.AttachmentType attachmentType = (FighterSpriteAttachment.AttachmentType) Enum.Parse(typeof(FighterSpriteAttachment.AttachmentType), equipmentType.GetType ().Name); //randomEquipment.type.typeName);
-			fighterData.skinData.Add (attachmentType, randomEquipment.spriteName);
+				// TEMP. add attachment type member to Equipment?
+				FighterSpriteAttachment.AttachmentType attachmentType = (FighterSpriteAttachment.AttachmentType) Enum.Parse(typeof(FighterSpriteAttachment.AttachmentType), equipmentType.GetType ().Name); //randomEquipment.type.typeName);
+				fighterData.skinData.Add (attachmentType, randomEquipment.spriteName);
+			}
 		}
 	}
 
