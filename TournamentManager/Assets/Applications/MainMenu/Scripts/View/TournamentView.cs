@@ -9,8 +9,14 @@ public class TournamentView : View
 	public VerticalLayoutGroup content;
 
 	private float elementHeight;
-	private Text rankText;
 	private List<GameObject> elementsList = new List<GameObject>();
+
+	public GameObject stageDetailsPopUp;
+	public Text stageNameLabel;
+	public Text enemyCountLabel;
+	public Text goldRewardLabel;
+	public Text expRewardLabel;
+	public RawImage emblem;
 
 	public void Start()
 	{
@@ -28,8 +34,15 @@ public class TournamentView : View
 		((TournamentController)controller).GoToBattleScene();
 	}
 
+	public void OnClickCloseStageDetails() {
+		((TournamentController)controller).CloseStageDetails();
+	}
+
+	public void OnClickStartTournamentMatchButton() {
+		((TournamentController)controller).StartTournamentMatch();
+	}
+
 	public void InitializeScrollView() {
-		content = transform.FindChild("TournamentScrollView").GetComponentInChildren<VerticalLayoutGroup>();
 		GameObject tournamentElement;
 
 		for (int i = 0; i < ((TournamentModel)model).tournamentMatchList.Count; i++) {
@@ -54,6 +67,15 @@ public class TournamentView : View
 		RectTransform rt = content.GetComponent<RectTransform>();
 		rt.sizeDelta = new Vector2(rt.rect.width, elementHeight * (((TournamentModel)model).tournamentMatchList.Count + 1) + content.padding.top + content.padding.bottom);
 
-		GetComponentInChildren<ScrollRect>().verticalScrollbar.value = 0;
+		GetComponentInChildren<ScrollRect>().verticalScrollbar.value = 1;
+		StartCoroutine(ScrolldownCoroutine());
 	}
+
+	public IEnumerator ScrolldownCoroutine() {
+		while (GetComponentInChildren<ScrollRect>().verticalScrollbar.value > 0) {
+			GetComponentInChildren<ScrollRect>().verticalScrollbar.value -= Time.fixedDeltaTime/2;
+			yield return new WaitForEndOfFrame();
+		}
+	}
+
 }

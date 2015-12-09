@@ -1,16 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Bingo;
+using UnityEngine.UI;
 
 public class TournamentElementController : Controller <MainMenu, TournamentElementModel, TournamentElementView>
 {
+
+	public Sprite emblem;
 	public void SetRankValue(int i) {
 		model.rankValue = i;
 		view.rankLabel.text = i.ToString();
 	}
 
 	public void SetStageData(StageData sData) {
-
+		emblem = Resources.Load<Sprite>("Sprites/Emblems/" + sData.id);
+		view.fightButton.GetComponent<Image>().sprite = emblem;
+		view.fightButton.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(emblem.texture.width,emblem.texture.height);
+	
 		model.stageData = sData;
 		view.nameLabel.text = sData.name;
 	}
@@ -19,11 +25,10 @@ public class TournamentElementController : Controller <MainMenu, TournamentEleme
 		if (GameData.instance.playerData.tournamentProgress == app.model.tournamentModel.tournamentMatchList.IndexOf(model.stageData))
 		{	
 			view.fightButton.interactable = true;
+			view.fightButton.GetComponent<Animator>().enabled = true;
+			view.fightButton.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(emblem.texture.width * 1.2f,emblem.texture.height * 1.2f);
 		}
 	}
 
-	public void StartTournamentMatch() {
-		GameData.instance.currentStage =  model.stageData;
-		Messenger.Send(MainMenuEvents.START_BATTLE, model.stageData.id);
-	}
+
 }

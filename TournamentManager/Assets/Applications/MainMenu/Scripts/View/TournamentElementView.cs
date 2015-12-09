@@ -3,13 +3,13 @@ using System.Collections;
 using Bingo;
 using UnityEngine.UI;
 
-public class TournamentElementView : View
+public class TournamentElementView : View <MainMenu>
 {
 	public Text rankLabel;
 	public Text nameLabel;
 	public Button fightButton;
 
-	public void OnClickFightButton() {
-		((TournamentElementController)controller).StartTournamentMatch();
+	public void OnClickDetailsButton() {
+		app.controller.tournamentController.ShowStageDetails(((TournamentElementModel)model).stageData);
 	}
 }
