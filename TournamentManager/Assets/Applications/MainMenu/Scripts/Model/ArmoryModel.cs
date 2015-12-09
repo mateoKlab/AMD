@@ -8,6 +8,10 @@ public class ArmoryModel : Model
 	public List<Equipment> weaponList = new List<Equipment>();
 	public List<Equipment> armorList = new List<Equipment>();
 
+
+	// The following are test variables only
+	public List<Equipment> unlockedItems = new List<Equipment>();
+
 	public override void Awake ()
 	{
 		base.Awake ();
@@ -26,6 +30,16 @@ public class ArmoryModel : Model
 			}
 		}
 	
+		// Test
+		for (int i = 0; i < weaponList.Count/2; i++)
+		{
+			unlockedItems.Add(weaponList[i]);
+		}
+
+		for (int i = 0; i < armorList.Count/2; i++)
+		{
+			unlockedItems.Add(armorList[i]);
+		}
 
 	}
 }
