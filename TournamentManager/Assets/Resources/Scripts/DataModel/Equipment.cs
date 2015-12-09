@@ -9,7 +9,7 @@ using System.IO;
 public struct Equipment {
 
 	#region Class members
-	[XmlElement ("Type")]
+	[XmlElement ("EquipmentType")]
 	public Type type; //Type.Weapon.sword;
 
 	[XmlElement ("ID")]
@@ -32,6 +32,8 @@ public struct Equipment {
 	#endregion
 
 
+
+
 	// Nested "Type" classes used as a hierarchical ID system. (C# does not support struct inheritance/nested enums.)
 	// Usage: someEquip.type = Equipment.Type.Weapon.Sword;
 	[XmlInclude(typeof(Weapon))]
@@ -41,27 +43,53 @@ public struct Equipment {
 	{
 		[XmlElement ("TypeName")]
 		public string typeName;
+		public virtual Type parentType { get { return null; } }
+
+		// Subtype static members. Allows use of Equipment.Type.<Subtype> "abstract" type.
+		// "Type" suffix added to prevent hiding of nested subclasses.
+		public static Type WeaponType  = new Type { typeName = "Weapon" };
+		public static Type OffhandType = new Type { typeName = "Offhand" };
+		public static Type BodyType	   = new Type { typeName = "Body" };
+
 
 		// Equipment Types determine attachment type to sprite.
 		#region Equipment Types
 		public class Weapon : Type {
-			
+
+			// All weapon subtypes are of type: WeaponType.
+			public override Type parentType {
+				get { return Type.WeaponType; }
+			}
+
+			// Weapon subtypes.
 			public static Weapon Sword = new Weapon { typeName = "Sword" };
 			public static Weapon Staff = new Weapon { typeName = "Staff" };
 		}
 		
 		public class Offhand : Type {
-			
+
+			// All Offhand subtypes are of type: OffhandType.
+			public override Type parentType {
+				get { return Type.OffhandType; }
+			}
+
+			// Offhand subtypes.
 			public static Offhand Shield = new Offhand { typeName = "Shield" };
 		}
 		
 		public class Body : Type {
-			
+
+			// All Body subtypes are of type: BodyType.
+			public override Type parentType {
+				get { return Type.BodyType; }
+			}
+
+			// Body subtypes.
 			public static Body HeavyArmor = new Body { typeName = "HeavyArmor" };
 		}
 		#endregion
-
-
+		
+		
 		// Override Equals and GetHashCode methods to determine type equality.
 		public override bool Equals(object obj)
 		{
@@ -77,5 +105,6 @@ public struct Equipment {
 			return typeName.GetHashCode();
 		}
 	}
+
 }
 
