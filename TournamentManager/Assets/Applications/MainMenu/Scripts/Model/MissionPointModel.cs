@@ -4,7 +4,7 @@ using Bingo;
 
 public class MissionPointModel : Model
 {
-	public string imagePath = "Sprites/StagePreviewSprites/";
+	public string imagePath = "Sprites/StageBackgrounds/";
 	public StageData missionPointData;
 
 
