@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using Bingo;
 using UnityEngine.UI;
 using Spine;
@@ -13,7 +13,7 @@ public class GachaView : View
 	private Text elementLabel;
 	private RawImage classIcon;
 	public Button rollButton;
-	public GameObject characterSprite;
+	public List <GachaSpriteMap> gachaSprites =  new List<GachaSpriteMap>();
 
 	public override void Awake() {
 		base.Awake();
@@ -38,7 +38,6 @@ public class GachaView : View
 
 	public void OnClickRollButton() {
 		((GachaController)controller).GenerateRandomCharacter();
-		//rollButton.interactable = false;
 	}
 
 	public void DisplayGachaCharacter(FighterData fData) {
@@ -50,9 +49,18 @@ public class GachaView : View
 
 		classIcon.texture = Resources.Load("Sprites/ClassIcons/" + fData.fighterClass) as Texture;
 		classIcon.gameObject.SetActive(true);
-		characterSprite.SetActive (true);
-		characterSprite.GetComponent<FighterSpriteController> ().SetFighterSkin (fData.skinData);
-//		SpriteBuilder.instance.BuildSprite (characterSprite.GetComponent <FighterSpriteController> ());
+		for (int i = 0; i < gachaSprites.Count; i++)
+		{
+			if(gachaSprites[i].characterClass == fData.fighterClass)
+			{
+				gachaSprites[i].characterSprite.SetActive(true);
+				gachaSprites[i].characterSprite.GetComponent<FighterSpriteController>().SetFighterSkin (fData.skinData);
+			}
+			else
+			{
+				gachaSprites[i].characterSprite.SetActive(false);
+			}
+		}
 	}
 
 	public void ResetDisplayValues() {
@@ -62,11 +70,16 @@ public class GachaView : View
 		classLabel.text = "";
 		elementLabel.text = "";
 		classIcon.gameObject.SetActive(false);
-		characterSprite.SetActive (false);
+	
+		for (int i = 0; i < gachaSprites.Count; i++)
+		{
+			gachaSprites[i].characterSprite.SetActive(false);
+		}
 	}
 
 	public void OnEnable() 
 	{
 		((GachaController)controller).CheckGold();
 	}
+
 }
