@@ -31,6 +31,9 @@ public class PlayerData
     public int
         tournamentMatchCount;
 
+	public List<Equipment> unlockedItems = new List<Equipment>();
+
+
 //	public List<string> unlockedEquipment 
 
     [XmlArray("ActiveParty")]
