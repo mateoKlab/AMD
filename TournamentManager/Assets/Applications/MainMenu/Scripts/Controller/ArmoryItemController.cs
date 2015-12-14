@@ -10,7 +10,7 @@ public class ArmoryItemController : Controller <MainMenu, ArmoryItemModel, Armor
 
 		view.itemSprite.texture = Resources.Load("Sprites/UnitSprites/" + type + "/" + item.spriteName) as Texture;
 
-		if (app.model.armoryModel.unlockedItems.Contains(item)) // Do if item is unlocked
+		if (GameData.instance.playerData.unlockedItems.Contains(item)) // Do if item is unlocked
 		{
 			view.itemSprite.color = Color.white;
 			view.itemLabel.text = item.name;
@@ -29,15 +29,18 @@ public class ArmoryItemController : Controller <MainMenu, ArmoryItemModel, Armor
 		if (GameData.instance.playerData.diamonds < cost)
 			return;
 
-		if (!app.model.armoryModel.unlockedItems.Contains(model.currentEquipment))
+		if (!GameData.instance.playerData.unlockedItems.Contains(model.currentEquipment))
 		{
-			app.model.armoryModel.unlockedItems.Add(model.currentEquipment);
 			GameData.instance.playerData.diamonds -= cost;
 			app.view.headerView.UpdateDiamondsValue();
 			
 			view.itemSprite.color = Color.white;
 			view.itemLabel.text = model.currentEquipment.name;
 			view.diamondsIcon.SetActive(false);
+
+			// TEMPORARY.
+			GameData.instance.playerData.unlockedItems.Add (model.currentEquipment);
+			GameData.instance.Save();
 		}
 
 	}

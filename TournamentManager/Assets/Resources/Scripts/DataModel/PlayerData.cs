@@ -50,8 +50,8 @@ public class PlayerData
     public int
         tournamentMatchCount;
  
-//	public List<string> unlockedEquipment 
-
+	public List<Equipment> unlockedItems = new List<Equipment>();
+	
     [XmlArray("ActiveParty")]
     [XmlArrayItem("ActiveFighter")]
     public string[] activePartyIDs = new string[GameData.MAX_ACTIVE_FIGHTERS] {"", "", "", "", "", ""};
