@@ -45,12 +45,10 @@ public static class FighterGenerator {
 
 		foreach (Equipment.Type equipmentType in classData.equipmentAllowed) 
 		{
-
-			// TODO: Get () methods from EquipmentDatabase class.
-			// TODO: Equip categories. Required/Not required e.g. Sword/armor vs accessories/wings/cape.
+			// TODO: Equip gacha categories. Required/Not required e.g. Sword/armor vs accessories/wings/cape.
 			// TODO: Equip drop rate.
 
-			List<Equipment> equipmentPool = EquipmentDatabase.GetEquipment (equipmentType, false);
+			List<Equipment> equipmentPool = GameDatabase.equipmentDatabase.GetItems (equipmentType, false);
 
 			if (equipmentPool != null) {
 				Equipment randomEquipment = equipmentPool[UnityEngine.Random.Range (0, equipmentPool.Count)];
