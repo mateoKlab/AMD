@@ -23,7 +23,7 @@ public class FooterController : Controller
 	public void DisableButtons() {
 		for (int  i = 0; i < buttonList.Count; i++) {
 			buttonList[i].interactable = false;
-			buttonList[i].GetComponentInChildren<Text>().color = Color.gray;
+			//buttonList[i].GetComponentInChildren<Text>().color = Color.gray;
 		}
 	}
 
@@ -31,7 +31,7 @@ public class FooterController : Controller
 		for (int  i = 0; i < buttonList.Count; i++) {
 			if (buttonList[i] != null) {
 				buttonList[i].interactable = true;
-				buttonList[i].GetComponentInChildren<Text>().color = Color.white;
+				//buttonList[i].GetComponentInChildren<Text>().color = Color.white;
 			}
 		}
 	}
