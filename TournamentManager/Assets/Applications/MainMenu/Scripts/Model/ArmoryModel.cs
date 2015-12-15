@@ -9,22 +9,12 @@ public class ArmoryModel : Model
 	public List<Equipment> armorList = new List<Equipment>();
 
 	//Test
-	public List<Equipment> unlockedItems = new List<Equipment>();
 
 	public override void Awake ()
 	{
 		base.Awake ();
 	
-		weaponList = EquipmentDatabase.GetEquipment(Equipment.Type.Weapon.Sword, false);
-		armorList = EquipmentDatabase.GetEquipment(Equipment.Type.Body.HeavyArmor, false);
-
-
-		// Test
-		for (int i = 0; i < weaponList.Count/2; i++) {
-			unlockedItems.Add(weaponList[i]);
-		}
-		for (int i = 0; i < armorList.Count/2; i++) {
-			unlockedItems.Add(armorList[i]);
-		}
+		weaponList = GameDatabase.equipmentDatabase.GetItems (Equipment.Type.Weapon.Sword, false);
+		armorList  = GameDatabase.equipmentDatabase.GetItems (Equipment.Type.Body.HeavyArmor, false);
 	}
 }
