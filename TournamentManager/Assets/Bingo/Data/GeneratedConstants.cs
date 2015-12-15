@@ -10,6 +10,7 @@ public static class Tags
     public static readonly string GameController = "GameController";
     public static readonly string Ground = "Ground";
     public static readonly string Units = "Units";
+    public static readonly string MenuItem = "MenuItem";
 }
 
 public static class Layers
