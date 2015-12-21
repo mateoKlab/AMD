@@ -91,6 +91,7 @@ public class MainMenuController : Controller<MainMenu>
     {
         footerController.DisableButtons();
         GetComponent<MainMenuView>().tournamentView.gameObject.SetActive(true);
+		app.controller.tournamentController.GetComponent<Animator>().SetTrigger("TransitionIn");
     }
 
     public void ShowTownPopUp(params object[] args)

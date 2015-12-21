@@ -15,7 +15,7 @@ public class TournamentElementController : Controller <MainMenu, TournamentEleme
 	public void SetStageData(StageData sData) {
 		emblem = Resources.Load<Sprite>("Sprites/Emblems/" + sData.id);
 		view.fightButton.GetComponent<Image>().sprite = emblem;
-		view.fightButton.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(emblem.texture.width,emblem.texture.height);
+		view.fightButton.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(emblem.texture.width * 1.4f,emblem.texture.height * 1.4f);
 	
 		model.stageData = sData;
 		view.nameLabel.text = sData.name;
@@ -24,9 +24,11 @@ public class TournamentElementController : Controller <MainMenu, TournamentEleme
 	public void CheckIfStageIsUnlocked() {
 		if (GameData.instance.playerData.tournamentProgress == app.model.tournamentModel.tournamentMatchList.IndexOf(model.stageData))
 		{	
+			view.frame.color = Color.white;
 			view.fightButton.interactable = true;
 			view.fightButton.GetComponent<Animator>().enabled = true;
-			view.fightButton.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(emblem.texture.width * 1.2f,emblem.texture.height * 1.2f);
+			view.fightButton.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(emblem.texture.width * 1.6f,emblem.texture.height * 1.6f);
+			view.OnClickDetailsButton();
 		}
 	}
 
