@@ -18,8 +18,8 @@ public class TournamentController : Controller <MainMenu, TournamentModel, Tourn
 		view.goldRewardLabel.text = "Gold Reward: " + sData.goldReward;
 		view.expRewardLabel.text = "Exp Reward: " + sData.xpReward;
 		view.stageDetailsPopUp.SetActive(true);
-		view.emblem.texture = Resources.Load<Texture>("Sprites/Emblems/" + sData.id);
-		view.emblem.rectTransform.sizeDelta = new Vector2(view.emblem.texture.width * 2, view.emblem.texture.height * 2);
+		//view.emblem.texture = Resources.Load<Texture>("Sprites/Emblems/" + sData.id);
+		//view.emblem.rectTransform.sizeDelta = new Vector2(view.emblem.texture.width * 2, view.emblem.texture.height * 2);
 	}
 
 	public void CloseStageDetails() {
@@ -28,5 +28,15 @@ public class TournamentController : Controller <MainMenu, TournamentModel, Tourn
 
 	public void StartTournamentMatch() {
 		Messenger.Send(MainMenuEvents.START_BATTLE, GameData.instance.currentStage.id);
+	}
+
+	public void TransitionOut() {
+		StartCoroutine(TransitionOutCoroutine());
+	}
+	
+	IEnumerator TransitionOutCoroutine() {
+		GetComponent<Animator>().SetTrigger("TransitionOut");
+		yield return new WaitForSeconds(1.25f);
+		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
 	}
 }

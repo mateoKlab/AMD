@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 public class TournamentView : View
 {
-	public VerticalLayoutGroup content;
+	public HorizontalLayoutGroup content;
 
-	private float elementHeight;
+	private float elementWidth;
 	private List<GameObject> elementsList = new List<GameObject>();
 
 	public GameObject stageDetailsPopUp;
@@ -16,7 +16,7 @@ public class TournamentView : View
 	public Text enemyCountLabel;
 	public Text goldRewardLabel;
 	public Text expRewardLabel;
-	public RawImage emblem;
+	//public RawImage emblem;
 
 	public void Start()
 	{
@@ -26,7 +26,7 @@ public class TournamentView : View
 	}
 
 	public void OnClickCloseButton() {
-		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
+		((TournamentController)controller).TransitionOut();
 	}
 
 	public void OnClickTournamentButton(string id) {
@@ -57,23 +57,26 @@ public class TournamentView : View
 		tournamentElement = Instantiate(Resources.Load("Prefabs/TournamentElement_Self", typeof(GameObject))) as GameObject;
 		elementsList.Insert(((TournamentModel)model).tournamentMatchList.Count - GameData.instance.playerData.tournamentProgress, tournamentElement);
 		
-		for (int i = 0; i < elementsList.Count; i++) {
+		for (int i = elementsList.Count - 1; i >= 0; i--) {
 			elementsList[i].transform.SetParent(content.transform, false);
 			elementsList[i].GetComponent<TournamentElementController>().SetRankValue(i + 1);
 		}
 
 		// Resize scrollable background based on number of elements
-		elementHeight = tournamentElement.GetComponent<LayoutElement>().minHeight + content.spacing;
+		elementWidth = tournamentElement.GetComponent<LayoutElement>().minWidth + content.spacing;
 		RectTransform rt = content.GetComponent<RectTransform>();
-		rt.sizeDelta = new Vector2(rt.rect.width, elementHeight * (((TournamentModel)model).tournamentMatchList.Count + 1) + content.padding.top + content.padding.bottom);
+		rt.sizeDelta = new Vector2(elementWidth * (((TournamentModel)model).tournamentMatchList.Count + 1) + content.padding.right + content.padding.bottom, rt.rect.height);
 
-		GetComponentInChildren<ScrollRect>().verticalScrollbar.value = 1;
-		StartCoroutine(ScrolldownCoroutine());
+		GetComponentInChildren<ScrollRect>().horizontalScrollbar.value = 0;
+		//StartCoroutine(ScrolldownCoroutine());
 	}
 
 	public IEnumerator ScrolldownCoroutine() {
-		while (GetComponentInChildren<ScrollRect>().verticalScrollbar.value > 0) {
-			GetComponentInChildren<ScrollRect>().verticalScrollbar.value -= Time.fixedDeltaTime/2;
+		GetComponentInChildren<ScrollRect>().horizontalScrollbar.value = 1;
+		yield return new WaitForSeconds(2.5f);
+
+		while (GetComponentInChildren<ScrollRect>().horizontalScrollbar.value > 0) {
+			GetComponentInChildren<ScrollRect>().horizontalScrollbar.value -= Time.fixedDeltaTime/2;
 			yield return new WaitForEndOfFrame();
 		}
 	}
