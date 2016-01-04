@@ -8,16 +8,35 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
+
 [XmlRoot]
 public class PlayerData
 {
-    [XmlElement ("Gold")]
-    public int
-        gold = 1000;
+	[XmlElement ("Gold")]
+	private int _gold = 1000;
+	public int gold {
+		get {
+			return _gold;
+		}
+		set {
+			_gold = value;
+			Save ();
+		}
+	}
+	
+	[XmlElement ("Diamonds")]
+	private int _diamonds = 500;
+	public int diamonds {
+		get {
+			return _diamonds;
+		}
+		set {
+			_diamonds = value;
+			Save ();
+		}
+	}	
 
-    [XmlElement ("Diamonds")]
-    public int
-        diamonds = 500;
+	public SerializableDictionary<string, List<string>> inventory;
 
 //	[XmlArray ("EquipmentUnlocked")]
 //	[XmlArrayItem("Equip")]
@@ -30,12 +49,9 @@ public class PlayerData
     [XmlElement ("TournamentMatchCount")]
     public int
         tournamentMatchCount;
-
+ 
 	public List<Equipment> unlockedItems = new List<Equipment>();
-
-
-//	public List<string> unlockedEquipment 
-
+	
     [XmlArray("ActiveParty")]
     [XmlArrayItem("ActiveFighter")]
     public string[] activePartyIDs = new string[GameData.MAX_ACTIVE_FIGHTERS] {"", "", "", "", "", ""};
@@ -60,27 +76,25 @@ public class PlayerData
     // TOWN
     [XmlElement("Town")]
     public TownData town;
-
-
+	
     private PlayerData() 
     {
         town = new TownData();
     }
 
-	void Start ()
+	public void AddItem ()
 	{
-		//TEST
-//		unlockedEquipment = new List<Equipment> ();
-
-//		unlockedEquipment.Add (Equipment.Type.Weapon.Sword);
-//		unlockedEquipment.Add (Equipment.Type.Armor.Body);
+//	 	inventory.AddToInventory
 	}
 
+	public void AddEquipment (Equipment equipment)
+	{
+
+	}
+
+	#region Save/Load
     public void Save()
     {
-
-		// TEST. Add unlocked equipment to player.
-		Start ();
         XmlSerializer xmls = new XmlSerializer(typeof(PlayerData));
 
         #if UNITY_EDITOR || UNITY_IOS
@@ -160,4 +174,37 @@ public class PlayerData
         return Application.dataPath +"/"+ fileName;
         #endif
     }
+	#endregion
+
+
+
+
+
+	private static class InventoryManager
+	{
+
+		
+	}
 }
+	
+
+	
+
+
+//public class Inventory
+//{
+//	public string itemId;
+//	public int quantity;
+//
+//	public static 
+//}
+
+
+
+
+
+
+
+
+
+

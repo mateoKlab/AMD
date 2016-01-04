@@ -3,6 +3,7 @@ using System.Collections;
 using Bingo;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MainMenuController : Controller<MainMenu>
 {
@@ -43,7 +44,27 @@ public class MainMenuController : Controller<MainMenu>
 		
         Messenger.AddListener(MainMenuEvents.START_BATTLE, GoToBattleScene);
         Messenger.AddListener(MainMenuEvents.CLOSE_POPUP, ClosePopUp);
+		Messenger.AddListener(MainMenuEvents.SHOW_MENU, ShowMenu);
+		Messenger.AddListener(MainMenuEvents.HIDE_MENU, HideMenu);
     }
+
+	public void Update() {
+		if(Input.GetMouseButtonDown(0))
+		{
+			PointerEventData pointer = new PointerEventData(EventSystem.current);
+			pointer.position = Input.mousePosition;
+			
+			List<RaycastResult> raycastResults = new List<RaycastResult>();
+			EventSystem.current.RaycastAll(pointer, raycastResults);
+			
+			if(raycastResults.Count > 0)
+			{
+				if(raycastResults[0].gameObject.tag != "MenuItem")
+					Messenger.Send(MainMenuEvents.HIDE_MENU);
+			}
+		}
+
+	}
 
     public void GoToBattleScene(params object[] args)
     {
@@ -56,10 +77,21 @@ public class MainMenuController : Controller<MainMenu>
         editTeamController.ShowEditTeam();
     }
 
+	public void ShowMenu(params object[] args)
+	{
+		footerController.GetComponent<Animator>().SetTrigger("ShowMenu");
+	}
+
+	public void HideMenu(params object[] args)
+	{
+		footerController.GetComponent<Animator>().SetTrigger("HideMenu");
+	}
+
     public void ShowTournamentPopUp(params object[] args)
     {
         footerController.DisableButtons();
         GetComponent<MainMenuView>().tournamentView.gameObject.SetActive(true);
+		app.controller.tournamentController.GetComponent<Animator>().SetTrigger("TransitionIn");
     }
 
     public void ShowTownPopUp(params object[] args)

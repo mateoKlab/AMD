@@ -31,7 +31,7 @@ public class FighterView : View {
 	{
 		// Interrupt and cancel other animations when getting hit.
 		animator.SetBool ("Attack", false);
-		animator.SetBool ("Hit", true);
+		animator.SetTrigger ("Hit");
 	}
 
 	public void SetFighterSkin (FighterSkinData skinData)
