@@ -6,13 +6,17 @@ public class MeleeFighterController : FighterController
 {
 	void FixedUpdate() 
 	{
-		// TEMPORARY.
-		if (!((FighterModel)model).onGround) {
-			return;
+		base.FixedUpdate ();
+	}
+
+	public override void OnAttackEnded (Attack attack)
+	{
+		base.OnAttackEnded (attack);
+
+		if (attack.attackTarget != null) {
+			((BattleController)app.controller).OnMeleeAttack (attack);
 		}
-		
-		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
-		transform.position = new Vector3 (transform.position.x + (0.05f * moveDirection), transform.position.y, transform.position.z);//(transform.position.x + 1.0f) * moveDirection);
+
 	}
 
 	public void OnGroundEnter ()

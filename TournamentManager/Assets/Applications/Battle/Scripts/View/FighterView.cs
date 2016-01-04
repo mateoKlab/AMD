@@ -8,6 +8,9 @@ public class FighterView : View {
 	public FighterSpriteController fighterSprite;
 	
 	public Action<GameObject> OnCollideWithEnemy;
+	public Action<GameObject> OnEnemyInRange;
+	public Action<GameObject> OnEnemyExitRange;
+
 
 	private Animator animator;
 
@@ -39,11 +42,26 @@ public class FighterView : View {
 		fighterSprite.SetFighterSkin (skinData);
 	}
 
+	// Target Detection collider is set as trigger. 
+	// Physics layering prevents triggering for allied units.
 	void OnTriggerEnter2D (Collider2D other)
 	{
-		//Test
 		if (other.gameObject.tag == Tags.Units) {
-			AnimateAttack ();
+//			AnimateAttack ();
+
+
+			// BROADCAST IN-ATTACK-RANGE MESSAGE.
+			OnEnemyInRange (other.gameObject);
+//			Messenger.Send (EventTags.FIGHTER_IN_RANGE, other.gameObject);
+
+
+		}
+	}
+
+	void OnTriggerExit2D (Collider2D other)
+	{
+		if (other.gameObject.tag == Tags.Units) {
+			OnEnemyExitRange (other.gameObject);
 		}
 	}
 
@@ -56,9 +74,9 @@ public class FighterView : View {
 			((FighterController)controller).OnGroundEnter();
 		}
 
-		if (coll.gameObject.tag == Tags.Units) {
-			OnCollideWithEnemy(coll.gameObject);
-		}
+//		if (coll.gameObject.tag == Tags.Units) {
+//			OnCollideWithEnemy(coll.gameObject);
+//		}
 
 	}
 

@@ -131,9 +131,25 @@ public class BattleController : Controller<Battle>
 		if (defender != null) {
 			FighterController defendingUnit = ((FighterController)defender.GetComponent<FighterController> ());
 		
-			defendingUnit.OnReceiveAttack (attackingUnit.GetAttackData ());
+//			defendingUnit.OnReceiveAttack (attackingUnit.GetAttackData ());
 		}
     }
+
+	public void OnMeleeAttack(Attack attackData)
+	{
+		if (attackData == null) {
+			Debug.Log ("NULL ATTACK DATA");
+		}
+
+		FighterController attackingUnit = ((FighterController) attackData.attackOrigin.GetComponent<FighterController>());
+		FighterController targetUnit    = ((FighterController) attackData.attackTarget.GetComponent<FighterController>());
+
+		// Check if the defending unit is still alive.
+		if (targetUnit.gameObject != null) {
+
+			targetUnit.OnReceiveAttack (attackData);
+		}
+	}
 
     public void OnRangedAttack(GameObject attacker)
     {
@@ -146,6 +162,7 @@ public class BattleController : Controller<Battle>
         Application.LoadLevel("MainMenuScene");
     }
 
+	// TODO: clean up. encapsulate.
     private GameObject SpawnFighter(FighterData fighterData, FighterAlliegiance allegiance)
     {
         GameObject newFighter;
