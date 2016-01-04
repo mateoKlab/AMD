@@ -29,4 +29,14 @@ public class TournamentController : Controller <MainMenu, TournamentModel, Tourn
 	public void StartTournamentMatch() {
 		Messenger.Send(MainMenuEvents.START_BATTLE, GameData.instance.currentStage.id);
 	}
+
+	public void TransitionOut() {
+		StartCoroutine(TransitionOutCoroutine());
+	}
+	
+	IEnumerator TransitionOutCoroutine() {
+		GetComponent<Animator>().SetTrigger("TransitionOut");
+		yield return new WaitForSeconds(1.25f);
+		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
+	}
 }
