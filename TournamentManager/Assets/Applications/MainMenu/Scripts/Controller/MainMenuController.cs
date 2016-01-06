@@ -60,7 +60,8 @@ public class MainMenuController : Controller<MainMenu>
 			if(raycastResults.Count > 0)
 			{
 				if(raycastResults[0].gameObject.tag != "MenuItem")
-					Messenger.Send(MainMenuEvents.HIDE_MENU);
+					//Messenger.Send(MainMenuEvents.HIDE_MENU);
+					HideMenu();
 			}
 		}
 
@@ -79,11 +80,13 @@ public class MainMenuController : Controller<MainMenu>
 
 	public void ShowMenu(params object[] args)
 	{
+		footerController.GetComponent<Animator>().ResetTrigger("HideMenu");
 		footerController.GetComponent<Animator>().SetTrigger("ShowMenu");
 	}
 
 	public void HideMenu(params object[] args)
 	{
+		footerController.GetComponent<Animator>().ResetTrigger("ShowMenu");
 		footerController.GetComponent<Animator>().SetTrigger("HideMenu");
 	}
 
