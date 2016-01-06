@@ -80,11 +80,13 @@ public class MainMenuController : Controller<MainMenu>
 
 	public void ShowMenu(params object[] args)
 	{
+		footerController.GetComponent<Animator>().ResetTrigger("HideMenu");
 		footerController.GetComponent<Animator>().SetTrigger("ShowMenu");
 	}
 
 	public void HideMenu(params object[] args)
 	{
+		footerController.GetComponent<Animator>().ResetTrigger("ShowMenu");
 		footerController.GetComponent<Animator>().SetTrigger("HideMenu");
 	}
 
