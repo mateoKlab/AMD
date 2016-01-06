@@ -20,23 +20,6 @@ public class FighterView : View {
 		animator = fighterSprite.GetComponent<Animator> ();
 	}
 
-	public void AnimateAttack ()
-	{
-		// Don't transition to attack while being hit.
-		if (animator.IsInTransition (0) && animator.GetCurrentAnimatorStateInfo (0).IsName ("Hit")) {
-			// Don't do it!
-		} else {
-			fighterSprite.GetComponent<Animator> ().SetBool ("Attack", true);
-		}
-	}
-
-	public void AnimateHit ()
-	{
-		// Interrupt and cancel other animations when getting hit.
-		animator.SetBool ("Attack", false);
-		animator.SetTrigger ("Hit");
-	}
-
 	public void SetFighterSkin (FighterSkinData skinData)
 	{	
 		fighterSprite.SetFighterSkin (skinData);
@@ -47,14 +30,8 @@ public class FighterView : View {
 	void OnTriggerEnter2D (Collider2D other)
 	{
 		if (other.gameObject.tag == Tags.Units) {
-//			AnimateAttack ();
 
-
-			// BROADCAST IN-ATTACK-RANGE MESSAGE.
 			OnEnemyInRange (other.gameObject);
-//			Messenger.Send (EventTags.FIGHTER_IN_RANGE, other.gameObject);
-
-
 		}
 	}
 

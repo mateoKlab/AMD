@@ -117,15 +117,15 @@ public class BattleController : Controller<Battle>
         battleMenuController.SetFighters(allies);
     }
 
-    public void OnUnitAttack(GameObject attacker, GameObject defender)
+    public void OnRangedAttack(Attack attackData, GameObject defender)
     {
-        FighterController attackingUnit = ((FighterController) attacker.GetComponent<FighterController>());
+		FighterController attackingUnit = ((FighterController) attackData.attackOrigin.GetComponent<FighterController>());
 
 		// Check if the defending unit is still alive. (Attacks may land at the same time).
 		if (defender != null) {
 			FighterController defendingUnit = ((FighterController)defender.GetComponent<FighterController> ());
 		
-//			defendingUnit.OnReceiveAttack (attackingUnit.GetAttackData ());
+			defendingUnit.OnReceiveAttack (attackData);
 		}
     }
 
@@ -145,10 +145,10 @@ public class BattleController : Controller<Battle>
 		}
 	}
 
-    public void OnRangedAttack(GameObject attacker)
-    {
-        GameObject newProjectile = ProjectileManager.instance.GetProjectile(attacker, ProjectileType.Fireball); // Type = Temporary.
-        newProjectile.transform.position = attacker.transform.position;
+	public void OnRangedAttack(Attack attackData)
+	{
+		GameObject newProjectile = ProjectileManager.instance.GetProjectile(attackData, ProjectileType.Fireball); // Type = Temporary.
+		newProjectile.transform.position = attackData.attackOrigin.transform.position;
     }
 
     public void OnBackButtonClicked()

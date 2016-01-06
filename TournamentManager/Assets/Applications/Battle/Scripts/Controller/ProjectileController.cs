@@ -11,12 +11,12 @@ public class ProjectileController : Controller
 
 	void Awake ()
 	{
-		(model as ProjectileModel).OnFighterSet += OnFighterSet;
+		(model as ProjectileModel).OnAttackDataSet += OnAttackDataSet;
 		(view as ProjectileView).OnHitEnemy += OnHitEnemy;
 	}
 
 	void OnDestroy () {
-		(model as ProjectileModel).OnFighterSet -= OnFighterSet;
+		(model as ProjectileModel).OnAttackDataSet -= OnAttackDataSet;
 		(view as ProjectileView).OnHitEnemy -= OnHitEnemy;
 	}
 
@@ -25,9 +25,9 @@ public class ProjectileController : Controller
 		transform.position = new Vector3 (transform.position.x + (0.1f * moveDirection) , transform.position.y, transform.position.z);
 	}
 
-	void OnFighterSet (GameObject fighter)
+	void OnAttackDataSet (Attack attackData)
 	{
-		FighterModel fighterModel = (model as ProjectileModel).fighter.GetComponent<FighterModel> ();
+		FighterModel fighterModel = (model as ProjectileModel).attackData.attackOrigin.GetComponent<FighterModel> ();
 		moveDirection = (int)fighterModel.allegiance;
 
 		if (fighterModel.allegiance == FighterAlliegiance.Ally) {
@@ -39,7 +39,7 @@ public class ProjectileController : Controller
 
 	public void OnHitEnemy (GameObject enemy)
 	{
-		((BattleController)app.controller).OnUnitAttack ((model as ProjectileModel).fighter, enemy);
+		((BattleController)app.controller).OnRangedAttack ((model as ProjectileModel).attackData, enemy);
 
 		if (OnDestroyProjectile != null) {
 			OnDestroyProjectile (gameObject);

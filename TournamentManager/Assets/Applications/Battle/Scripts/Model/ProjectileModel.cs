@@ -5,16 +5,17 @@ using Bingo;
 
 public class ProjectileModel : Model
 {
-	public Action<GameObject> OnFighterSet;
+	public Action<Attack> OnAttackDataSet;
 
-	private GameObject _fighter;
-	public GameObject fighter {
-		get { return _fighter; }
+
+	private Attack _attackData;
+	public Attack attackData {
+		get { return _attackData; }
 		set {
-			_fighter = value;
+			_attackData = value;
 
-			if (OnFighterSet != null) {
-				OnFighterSet (_fighter);
+			if (OnAttackDataSet != null) {
+				OnAttackDataSet (_attackData);
 			}
 		}
 	}

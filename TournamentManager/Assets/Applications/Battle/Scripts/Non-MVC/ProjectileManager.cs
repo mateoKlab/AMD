@@ -57,7 +57,7 @@ public class ProjectileManager : MonoBehaviour {
 		}
 	}
 	
-	public GameObject GetProjectile (GameObject attacker, ProjectileType type)
+	public GameObject GetProjectile (Attack attackData, ProjectileType type)
 	{
 		if (projectileCache.Count > 0) {
 			GameObject projectile = projectileCache [0];
@@ -66,14 +66,14 @@ public class ProjectileManager : MonoBehaviour {
 			projectile.SetActive (true);
 
 			projectile.GetComponent<ProjectileController> ().OnDestroyProjectile += OnDestroyProjectile;
-			projectile.GetComponent<ProjectileModel> ().fighter = attacker;
+			projectile.GetComponent<ProjectileModel> ().attackData = attackData;
 
 			projectileCache.RemoveAt (0);
 
 			return projectile;
 		} else {
 			GameObject newProjectile = GameObject.Instantiate (projectilePrefab);
-			newProjectile.GetComponent<ProjectileModel> ().fighter = attacker;
+			newProjectile.GetComponent<ProjectileModel> ().attackData = attackData;
 			return newProjectile;
 		}
 	}
