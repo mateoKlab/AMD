@@ -90,7 +90,7 @@ public class FighterController : Controller
 		if ((model as FighterModel).GetEnemyInRange () != null) {
 			Attack ();
 		} else {
-			state.actionState.Walk ();
+			Walk ();
 		}
 	}
 	
@@ -113,6 +113,11 @@ public class FighterController : Controller
 			float tempCooldown = UnityEngine.Random.Range (0.75f, 1.25f);
 			state.Attack (GetAttackData (enemyInRange), tempCooldown);
 		}
+	}
+
+	private void Walk ()
+	{
+		state.Walk ();
 	}
 
 	private void ReceiveDamage (Attack attack)

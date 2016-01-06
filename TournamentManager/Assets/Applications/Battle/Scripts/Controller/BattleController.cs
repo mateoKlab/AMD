@@ -19,7 +19,6 @@ public class BattleController : Controller<Battle>
     //////// END MVCCodeEditor GENERATED CODE ////////
     
     public GameObject meleeFighterPrefab;
-//    public GameObject rangedFighterPrefab;//
 	public GameObject archerFighterPrefab;
 	public GameObject mageFighterPrefab;
 
@@ -64,9 +63,6 @@ public class BattleController : Controller<Battle>
 
         if (enemies.Count == 0)
         {
-
-            //TODO: Show WIN popup. Send WIN event.		
-
 			battleEndController.ShowBattleEndPopUp(true);
 
             if (GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount)
@@ -81,8 +77,6 @@ public class BattleController : Controller<Battle>
             // TODO: Apply injuries, etc.
 
 			battleEndController.ShowBattleEndPopUp(false);
-
-            //Application.LoadLevel("MainMenuScene");
         }
 
         // TODO: pooling
@@ -190,7 +184,7 @@ public class BattleController : Controller<Battle>
 
 		// TEMP. Increase/Decrease box collider height to offset sprite positions.
 
-		float randomOffset = Mathf.Round((UnityEngine.Random.Range (0.7f, 1.5f)) * 100f) / 100f; // Random float round off to 2 decimal place.
+		float randomOffset = Mathf.Round((UnityEngine.Random.Range (0.5f, 1.7f)) * 100f) / 100f; // Random float round off to 2 decimal place.
 
 
 		BoxCollider2D collider = newFighter.GetComponent <BoxCollider2D> ();

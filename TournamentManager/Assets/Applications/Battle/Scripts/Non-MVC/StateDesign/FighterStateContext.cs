@@ -25,7 +25,7 @@ public class FighterStateContext {
 		Initialize ();
 	}
 	
-	// Update States here.
+	// Update States here. Call this from your MonoBehaviour's Update method.ac
 	public void Update ()
 	{
 		_actionState.Update ();
@@ -39,7 +39,8 @@ public class FighterStateContext {
 		_actionState   = new ActionState.WalkState (this);
 		_cooldownState = new CooldownState.ReadyState (this);
 	}
-
+	
+	// Handle commands and state changes here.
 	#region Public Methods
 
 	public void Attack (Attack attackData, float cooldownDuration)
