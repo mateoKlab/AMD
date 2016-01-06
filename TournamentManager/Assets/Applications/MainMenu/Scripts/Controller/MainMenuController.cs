@@ -60,7 +60,8 @@ public class MainMenuController : Controller<MainMenu>
 			if(raycastResults.Count > 0)
 			{
 				if(raycastResults[0].gameObject.tag != "MenuItem")
-					Messenger.Send(MainMenuEvents.HIDE_MENU);
+					//Messenger.Send(MainMenuEvents.HIDE_MENU);
+					HideMenu();
 			}
 		}
 
