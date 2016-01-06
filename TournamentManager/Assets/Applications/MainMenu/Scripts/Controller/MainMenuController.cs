@@ -10,9 +10,6 @@ public class MainMenuController : Controller<MainMenu>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
-    public ArmoryController armoryController { get; private set; }
-    
-    [Inject]
     public TroopDetailsController troopDetailsController { get; private set; }
     
     [Inject]
@@ -20,6 +17,9 @@ public class MainMenuController : Controller<MainMenu>
     
     [Inject]
     public TournamentController tournamentController { get; private set; }
+    
+    [Inject]
+    public ArmoryController armoryController { get; private set; }
     
     [Inject]
     public GachaController gachaController { get; private set; }
@@ -41,13 +41,13 @@ public class MainMenuController : Controller<MainMenu>
     public override void Awake()
     {
         base.Awake();
-		
+
         Messenger.AddListener(MainMenuEvents.START_BATTLE, GoToBattleScene);
         Messenger.AddListener(MainMenuEvents.CLOSE_POPUP, ClosePopUp);
 		Messenger.AddListener(MainMenuEvents.SHOW_MENU, ShowMenu);
 		Messenger.AddListener(MainMenuEvents.HIDE_MENU, HideMenu);
     }
-
+	
 	public void Update() {
 		if(Input.GetMouseButtonDown(0))
 		{
@@ -89,26 +89,26 @@ public class MainMenuController : Controller<MainMenu>
 
     public void ShowTournamentPopUp(params object[] args)
     {
-        footerController.DisableButtons();
+        //footerController.DisableButtons();
         GetComponent<MainMenuView>().tournamentView.gameObject.SetActive(true);
 		app.controller.tournamentController.GetComponent<Animator>().SetTrigger("TransitionIn");
     }
 
     public void ShowTownPopUp(params object[] args)
     {
-        footerController.DisableButtons();
+        //footerController.DisableButtons();
         GetComponent<MainMenuView>().townView.gameObject.SetActive(true);
     }
 
     public void ShowGachaPopUp(params object[] args)
     {
-        footerController.DisableButtons();
+        //footerController.DisableButtons();
         GetComponent<MainMenuView>().gachaView.gameObject.SetActive(true);
     }
 
 	public void ShowArmoryPopUp(params object[] args)
 	{
-		footerController.DisableButtons();
+		//footerController.DisableButtons();
 		if (GetComponent<MainMenuView>().gachaView.gameObject.activeSelf)
 		{
 			app.view.isShowingGachaPopUp = true;

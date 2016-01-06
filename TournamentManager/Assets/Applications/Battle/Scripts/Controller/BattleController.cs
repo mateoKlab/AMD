@@ -69,7 +69,7 @@ public class BattleController : Controller<Battle>
 
 			battleEndController.ShowBattleEndPopUp(true);
 
-            if (GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount)
+			if (GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount && GameData.instance.currentStage.stageType == StageType.Tournament)
             {
                 GameData.instance.playerData.tournamentProgress++;
             }

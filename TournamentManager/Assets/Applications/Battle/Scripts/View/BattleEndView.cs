@@ -8,6 +8,12 @@ public class BattleEndView : View
 	public Text headerLabel;
 	public Text expValue;
 	public Text goldValue;
+	public GameObject continueButton;
+
+	public void OnClickNextButton() 
+	{
+		((BattleEndController)controller).ShowExpScreen();
+	}
 
 	public void OnClickReturnButton() 
 	{
