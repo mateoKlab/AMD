@@ -19,7 +19,6 @@ public class BattleController : Controller<Battle>
     //////// END MVCCodeEditor GENERATED CODE ////////
     
     public GameObject meleeFighterPrefab;
-//    public GameObject rangedFighterPrefab;//
 	public GameObject archerFighterPrefab;
 	public GameObject mageFighterPrefab;
 
@@ -64,9 +63,6 @@ public class BattleController : Controller<Battle>
 
         if (enemies.Count == 0)
         {
-
-            //TODO: Show WIN popup. Send WIN event.		
-
 			battleEndController.ShowBattleEndPopUp(true);
 
 			if (GameData.instance.playerData.tournamentProgress < GameData.instance.playerData.tournamentMatchCount && GameData.instance.currentStage.stageType == StageType.Tournament)
@@ -81,8 +77,6 @@ public class BattleController : Controller<Battle>
             // TODO: Apply injuries, etc.
 
 			battleEndController.ShowBattleEndPopUp(false);
-
-            //Application.LoadLevel("MainMenuScene");
         }
 
         // TODO: pooling
@@ -131,9 +125,25 @@ public class BattleController : Controller<Battle>
 		if (defender != null) {
 			FighterController defendingUnit = ((FighterController)defender.GetComponent<FighterController> ());
 		
-			defendingUnit.OnReceiveAttack (attackingUnit.GetAttackData ());
+//			defendingUnit.OnReceiveAttack (attackingUnit.GetAttackData ());
 		}
     }
+
+	public void OnMeleeAttack(Attack attackData)
+	{
+		if (attackData == null) {
+			Debug.Log ("NULL ATTACK DATA");
+		}
+
+		FighterController attackingUnit = ((FighterController) attackData.attackOrigin.GetComponent<FighterController>());
+		FighterController targetUnit    = ((FighterController) attackData.attackTarget.GetComponent<FighterController>());
+
+		// Check if the defending unit is still alive.
+		if (targetUnit.gameObject != null) {
+
+			targetUnit.OnReceiveAttack (attackData);
+		}
+	}
 
     public void OnRangedAttack(GameObject attacker)
     {
@@ -146,6 +156,7 @@ public class BattleController : Controller<Battle>
         Application.LoadLevel("MainMenuScene");
     }
 
+	// TODO: clean up. encapsulate.
     private GameObject SpawnFighter(FighterData fighterData, FighterAlliegiance allegiance)
     {
         GameObject newFighter;
@@ -173,7 +184,7 @@ public class BattleController : Controller<Battle>
 
 		// TEMP. Increase/Decrease box collider height to offset sprite positions.
 
-		float randomOffset = Mathf.Round((UnityEngine.Random.Range (0.7f, 1.5f)) * 100f) / 100f; // Random float round off to 2 decimal place.
+		float randomOffset = Mathf.Round((UnityEngine.Random.Range (0.5f, 1.7f)) * 100f) / 100f; // Random float round off to 2 decimal place.
 
 
 		BoxCollider2D collider = newFighter.GetComponent <BoxCollider2D> ();

@@ -5,77 +5,127 @@ using Bingo;
 
 public class FighterController : Controller
 {
+	private FighterStateContext state;
+
 	// Use this for initialization
-	public virtual void Awake () {
+	public virtual void Start () {
+		state = new FighterStateContext (this.gameObject);
+		state.OnCooldownEnded += OnCooldownEnded;
+		state.OnAttackEnded   += OnAttackEnded;
+
 		(model as FighterModel).OnFighterDataSet += OnFighterDataSet;
 		(view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
-
-		// comment out for now. (crashing due to changes.)
-//		SetSprite();
+		(view as FighterView).OnEnemyInRange	 += OnEnemyInRange;
+		(view as FighterView).OnEnemyExitRange 	 += OnEnemyExitRange;
 	}
 
 	void OnDestroy () {
+		state.OnCooldownEnded -= OnCooldownEnded;
+		state.OnAttackEnded   -= OnAttackEnded;
+
 		(model as FighterModel).OnFighterDataSet -= OnFighterDataSet;
 		(view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
+		(view as FighterView).OnEnemyInRange	 -= OnEnemyInRange;
+		(view as FighterView).OnEnemyExitRange 	 -= OnEnemyExitRange;
 	}
 
-    public void SetFighterSkin ()
-    {
-		(view as FighterView).SetFighterSkin ((model as FighterModel).fighterData.skinData);
+	protected void FixedUpdate ()
+	{
+		state.Update ();
+	}
 
-//        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
-//        sr.sprite = ((FighterModel) model).fighterData.normalIcon;
-    }
-
-    public Attack GetAttackData()
-    {
-        FighterData fighter = ((FighterModel) GetComponent<Model>()).fighterData;
-
-		return new Attack(fighter.ATK, 1.0f, AttackType.Melee, gameObject);
-    }
+	#region TEMPORARY
+	public void OnGroundEnter ()
+	{
+		((FighterModel)model).onGround = true;
+	}
+	
+	public void OnGroundExit ()
+	{
+		((FighterModel)model).onGround = false;
+	}
+	#endregion
 
     public void OnReceiveAttack(Attack attack)
     {
         // TODO: Calculate skill effects, evade, block, etc.
 
-		// TEST.
-		(view as FighterView).AnimateHit ();
-
         ReceiveDamage(attack);
-        ReceiveKnockback(attack.knockback);
-
-        // HACK.
-//		OnGroundExit ();
+//        ReceiveKnockback(attack.knockback);
     }
 
-	public void OnGroundEnter ()
+	#region View Delegates
+
+	private void OnEnemyInRange (GameObject enemy)
 	{
-		((FighterModel)model).onGround = true;
+		(model as FighterModel).AddEnemyInRange (enemy);
+		Attack (); // Trigger attack state if not in cooldown.
+	}
+	
+	private void OnEnemyExitRange (GameObject enemy)
+	{
+		(model as FighterModel).RemoveEnemyInRange (enemy);
 	}
 
-	public void OnGroundExit ()
-	{
-		((FighterModel)model).onGround = false;
-	}
-
+	
 	private void OnCollideWithEnemy (GameObject enemy)
 	{
-		((BattleController)app.controller).OnUnitAttack (gameObject, enemy);
+		
 	}
+
+	#endregion
+	#region Model Delegates
 
 	private void OnFighterDataSet ()
 	{
 		SetFighterSkin ();
 	}
 
+	#endregion
+	#region StateDesign Callbacks
+	
+	// Callback for end of cooldown.
+	void OnCooldownEnded ()
+	{
+		if ((model as FighterModel).GetEnemyInRange () != null) {
+			Attack ();
+		} else {
+			Walk ();
+		}
+	}
+	
+	// Callback for end of attack animation.
+	public virtual void OnAttackEnded (Attack attack)
+	{
+		// OVERRIDE ME.
+	}
+	
+	#endregion
+
+	#region Private Methods
+
+	private void Attack ()
+	{
+		GameObject enemyInRange = (model as FighterModel).GetEnemyInRange ();
+		if (enemyInRange != null) {
+
+			// TODO: Use attackspeed for cooldown.
+			float tempCooldown = UnityEngine.Random.Range (0.75f, 1.25f);
+			state.Attack (GetAttackData (enemyInRange), tempCooldown);
+		}
+	}
+
+	private void Walk ()
+	{
+		state.Walk ();
+	}
+
 	private void ReceiveDamage (Attack attack)
 	{
-		// Temporary. TODO: Apply armor damage reduction effects.
+		// TODO: Apply armor/damage reduction effects.
 		(model as FighterModel).fighterData.HP -= attack.damage;
 
 		Messenger.Send (EventTags.FIGHTER_RECEIVED_DAMAGE, attack.damage, this.gameObject);
-
-//		(view as FighterView).fighterSprite.GetComponent<Animator> ().SetTrigger ("Hit");
 
 		// TODO: Move to model. Use delegate.
 		if ((model as FighterModel).fighterData.HP <= 0) {
@@ -85,7 +135,7 @@ public class FighterController : Controller
 
 	private void ReceiveKnockback (float knockback)
 	{
-		// Temporary konckback. TODO: Apply knockback resistance/amount.
+		// TODO: Apply knockback resistance/amount.
 		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
 
 		Rigidbody2D rigidBody = GetComponent<Rigidbody2D> ();
@@ -94,4 +144,18 @@ public class FighterController : Controller
 			rigidBody.AddForce (new Vector2 (9.0f * -moveDirection, 1.0f), ForceMode2D.Impulse);
 		}
 	}
+
+	private Attack GetAttackData (GameObject attackTarget)
+	{
+		FighterData fighter = ((FighterModel) GetComponent<Model>()).fighterData;
+		
+		return new Attack(fighter.ATK, 1.0f, AttackType.Melee, gameObject, attackTarget);
+	}
+
+	private void SetFighterSkin ()
+	{
+		(view as FighterView).SetFighterSkin ((model as FighterModel).fighterData.skinData);
+	}
+
+	#endregion
 }

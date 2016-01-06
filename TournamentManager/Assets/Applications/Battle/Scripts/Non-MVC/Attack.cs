@@ -14,14 +14,16 @@ public class Attack {
 	public AttackType type;
 
 	public GameObject attackOrigin;
+	public GameObject attackTarget;
 
 	//TODO: Effects List. e.g. Slow, Freeze, Stun, etc.
 
-	public Attack (int damageAmount, float knockbackAmount, AttackType attackType, GameObject attacker)
+	public Attack (int damageAmount, float knockbackAmount, AttackType attackType, GameObject attacker, GameObject target)
 	{
 		damage = damageAmount;
 		knockback = knockbackAmount;
 		type = attackType;
 		attackOrigin = attacker;
+		attackTarget = target;
 	}
 }
