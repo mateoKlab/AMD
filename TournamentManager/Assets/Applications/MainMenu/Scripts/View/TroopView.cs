@@ -4,8 +4,11 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using Bingo;
 
-public class TroopView : View<MainMenu>, IPointerEnterHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class TroopView : View<MainMenu> //, IPointerEnterHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
+	public Text nameLabel;
+	public RawImage classIcon;
+	public Text stateLabel;
     private FighterSpriteController troopSprite;
     private Canvas myCanvas;
 
@@ -13,7 +16,7 @@ public class TroopView : View<MainMenu>, IPointerEnterHandler, IBeginDragHandler
 	{
 		base.Awake ();
 
-        troopSprite = transform.GetChild(0).GetComponent<FighterSpriteController>();
+        //troopSprite = transform.GetChild(0).GetComponent<FighterSpriteController>();
         myCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
 	}
 
@@ -24,7 +27,7 @@ public class TroopView : View<MainMenu>, IPointerEnterHandler, IBeginDragHandler
 
     public void SetSprite(FighterSkinData skinData)
     {
-        troopSprite.SetFighterSkin(skinData);
+        //troopSprite.SetFighterSkin(skinData);
     }
 
 	public void OnPointerEnter (PointerEventData eventData)
@@ -39,6 +42,7 @@ public class TroopView : View<MainMenu>, IPointerEnterHandler, IBeginDragHandler
 
 	public void OnDrag(PointerEventData eventData)
 	{
+		return;
         Vector2 pos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(myCanvas.transform as RectTransform, Input.mousePosition, myCanvas.worldCamera, out pos);
         transform.position = myCanvas.transform.TransformPoint(pos);
@@ -54,5 +58,13 @@ public class TroopView : View<MainMenu>, IPointerEnterHandler, IBeginDragHandler
 	{
 		if(eventData.selectedObject != null)
 			((TroopController)controller).OnDrop(eventData.selectedObject);
+	}
+
+	public void OnClickStateButton() {
+		((TroopController)controller).ToggleState();
+	}
+
+	public void OnClickTroop() {
+		((TroopController)controller).DisplayTroopDetails();
 	}
 }

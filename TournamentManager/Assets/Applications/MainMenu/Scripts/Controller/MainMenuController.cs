@@ -74,7 +74,7 @@ public class MainMenuController : Controller<MainMenu>
     
     public void ShowStablePopUp(params object[] args)
     {
-        EnableMainMenuItems(false);
+		HideMenu();
         editTeamController.ShowEditTeam();
     }
 
@@ -100,18 +100,21 @@ public class MainMenuController : Controller<MainMenu>
     public void ShowTownPopUp(params object[] args)
     {
         //footerController.DisableButtons();
+		HideMenu();
         GetComponent<MainMenuView>().townView.gameObject.SetActive(true);
     }
 
     public void ShowGachaPopUp(params object[] args)
     {
         //footerController.DisableButtons();
+		HideMenu();
         GetComponent<MainMenuView>().gachaView.gameObject.SetActive(true);
     }
 
 	public void ShowArmoryPopUp(params object[] args)
 	{
 		//footerController.DisableButtons();
+		HideMenu();
 		if (GetComponent<MainMenuView>().gachaView.gameObject.activeSelf)
 		{
 			app.view.isShowingGachaPopUp = true;

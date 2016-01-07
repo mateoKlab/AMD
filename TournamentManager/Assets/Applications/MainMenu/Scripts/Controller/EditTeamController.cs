@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using Bingo;
 
 public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamView>
@@ -12,7 +13,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
     
     //////// END MVCCodeEditor GENERATED CODE ////////
     
-
+	public VerticalLayoutGroup content;
     private Transform activeTeamPanel;
     private Transform teamPanel;
     private GameObject troopPrefab;
@@ -32,7 +33,14 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 
         activeTeamPanel = transform.Find("ActiveTeamPanel");
         teamPanel = transform.Find("TeamPanelScrollView/TeamPanel");
-        model.activeTeamSlots = activeTeamPanel.GetComponentsInChildren<ActiveTeamSlotController>();
+        //model.activeTeamSlots = activeTeamPanel.GetComponentsInChildren<ActiveTeamSlotController>();
+
+		for (int i = 0; i < gameData.GetPartyCapacity(); i++)
+		{
+			GameObject slotPrefab = Instantiate(Resources.Load("Prefabs/PartyCostSlot", typeof(GameObject))) as GameObject;
+			slotPrefab.transform.SetParent(view.partyCostBar.transform, false);
+			view.slots.Add(slotPrefab.GetComponent<RawImage>());
+		}
     }
 
     void OnEnable()
@@ -65,7 +73,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 
     private void SaveTeam()
     {
-        for(int i = 0; i < model.activeTroops.Length; i++)
+        for(int i = 0; i < model.activeTroops.Count; i++)
         {
             gameData.SetFighterOnActiveParty(model.activeTroops[i], i);
         }
@@ -80,6 +88,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
         yield return StartCoroutine("LoadTroops");
         MoveActiveTroopsToActiveSlots();
         yield return new WaitForEndOfFrame();
+
         view.SetCost(GetPartyCost(), gameData.GetPartyCapacity());
     }
 
@@ -93,7 +102,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
             DestroyObject(currentTroops[i].gameObject);
         }
         // Destroy troops on ActiveTeamPanel
-        for (int i = 0; i < model.activeTeamSlots.Length; i++)
+        for (int i = 0; i < model.activeTeamSlots.Count; i++)
         {
             if (model.activeTeamSlots[i].transform.childCount > 0)
             {
@@ -102,7 +111,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
         }
 
         model.troops.Clear();
-        for (int i = 0; i < model.activeTroops.Length; i++)
+        for (int i = 0; i < model.activeTroops.Count; i++)
         {
             model.activeTroops[i] = null;
         }
@@ -122,6 +131,11 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
             tc.SetTroop(fighters[i]);
         }
 
+		// Resize scrollable background based on number of elements
+		float elementHeight = troopPrefab.GetComponent<LayoutElement>().minHeight + content.spacing;
+		RectTransform rt = content.GetComponent<RectTransform>();
+		rt.sizeDelta = new Vector2(rt.rect.width, elementHeight * fighters.Count + 1 + content.padding.right + content.padding.bottom);
+
         yield return new WaitForEndOfFrame();
         ShowTroopDetails(fighters[0]);
     }
@@ -132,10 +146,11 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
         {
             if (gameData.CheckIfFighterActive(model.troops[i].GetFighter()))
             {
-                int index = gameData.GetActiveFighterIndexOnParty(model.troops[i].GetFighter());
-                model.GetActiveTeamSlot(index).SetTroopOnSlot(model.troops[i].gameObject);
-                AddTroopOnTeam(index, model.troops[i].GetFighter());
+                //int index = gameData.GetActiveFighterIndexOnParty(model.troops[i].GetFighter());
+                // model.GetActiveTeamSlot(index).SetTroopOnSlot(model.troops[i].gameObject);
+                AddTroopOnTeam(model.troops[i].GetFighter());
             }
+			model.troops[i].CheckState();
         }
     }
 
@@ -153,15 +168,16 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
         troopDetailsController.SetTroopDetails(fighter);
     }
 
-    public void AddTroopOnTeam(int index, FighterData troop)
+    public void AddTroopOnTeam(FighterData troop)
     {
-        model.activeTroops[index] = troop;
+		if (!model.activeTroops.Contains(troop))
+ 	       model.activeTroops.Add(troop);
         view.SetCost(GetPartyCost(), gameData.GetPartyCapacity());
     }
 
     public void RemoveTroopOnTeam(FighterData fd)
     {
-        for(int i = 0; i < model.activeTroops.Length; i++)
+        for(int i = 0; i < model.activeTroops.Count; i++)
         {
             if(model.activeTroops[i] != null && model.activeTroops[i].id == fd.id)
             {
@@ -175,7 +191,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 
     public bool IsTroopActive(FighterData fd)
     {
-        for(int i = 0; i < model.activeTroops.Length; i++)
+        for(int i = 0; i < model.activeTroops.Count; i++)
         {
             if(model.activeTroops[i] != null && model.activeTroops[i].id == fd.id)
             {
@@ -189,7 +205,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
     public int GetPartyCost()
     {
         int cost = 0;
-        for (int i = 0; i < model.activeTroops.Length; i++)
+        for (int i = 0; i < model.activeTroops.Count; i++)
         {
             if (model.activeTroops[i] != null)
             {
