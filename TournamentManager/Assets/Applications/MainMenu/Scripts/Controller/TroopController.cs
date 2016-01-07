@@ -33,6 +33,8 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
     public void SetTroop(FighterData fighterData)
     {
         model.fighterData = fighterData;
+		view.nameLabel.text = fighterData.name;
+		view.classIcon.texture = Resources.Load("Sprites/ClassIcons/" + fighterData.fighterClass) as Texture;
     }
 
     public FighterData GetFighter()
@@ -42,7 +44,7 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
 
     public void SetTroopActive(int slotIndex)
     {
-        editTeamController.AddTroopOnTeam(slotIndex, model.fighterData);
+        editTeamController.AddTroopOnTeam(model.fighterData);
     }
 
     public int GetTroopCost()
@@ -57,6 +59,7 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
 
     public void OnBeginDrag()
     {
+		return;
         canvasGroup.alpha = 1;
         startPosition = transform.position;
         startParent = transform.parent;
@@ -75,6 +78,7 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
 
     public void OnEndDrag()
     {
+		return;
         canvasGroup.blocksRaycasts = true;
 
         if (transform.parent == editTeamController.transform)
@@ -95,9 +99,34 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
         canvasGroup.alpha = 1;
     }
 
+
     // If a troop being dragged is dropped over this troop, return that troop to team panel
     public void OnDrop(GameObject selectedObject)
     {
         editTeamController.ReturnTroopFromSlotToTeamPanel(selectedObject);
     }
+
+	public void ToggleState() {
+		if (!editTeamController.model.activeTroops.Contains(model.fighterData) && (model.cost < GameData.instance.GetPartyCapacity() - editTeamController.GetPartyCost()) && editTeamController.model.activeTroops.Count < GameData.MAX_ACTIVE_FIGHTERS)
+		{
+			editTeamController.model.activeTroops.Add(model.fighterData);
+			view.stateLabel.text = "ACTIVE";
+		} else if (editTeamController.model.activeTroops.Contains(model.fighterData)) {
+			editTeamController.model.activeTroops.Remove(model.fighterData);
+			view.stateLabel.text = "IDLE";
+		}
+		editTeamController.view.SetCost(editTeamController.GetPartyCost(), GameData.instance.GetPartyCapacity());
+	}
+
+	public void CheckState() {
+		if (editTeamController.model.activeTroops.Contains(model.fighterData))
+			view.stateLabel.text = "ACTIVE";
+		else
+			view.stateLabel.text = "IDLE";
+	}
+
+	public void DisplayTroopDetails() {
+		editTeamController.ShowTroopDetails(model.fighterData);
+	}
+
 }
