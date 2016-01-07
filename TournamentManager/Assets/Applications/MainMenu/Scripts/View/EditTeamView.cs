@@ -8,18 +8,21 @@ public class EditTeamView : View
 {
 	public GameObject partyCostBar;
 	public List<RawImage> slots;
-	private Text teamCost;
+	private Text teamCostLabel;
+	private Text teamSlotsLabel;
 
 	public override void Awake ()
 	{
 		base.Awake ();
 
-		teamCost = transform.Find("PartyCost").GetComponent<Text>();
+		teamCostLabel = transform.Find("PartyCost").GetComponent<Text>();
+		teamSlotsLabel = transform.Find("PartySlots").GetComponent<Text>();
 	}
 
 	public void SetCost(int cost, int capacity)
 	{
-		teamCost.text = cost + " / " + capacity;
+		teamCostLabel.text = cost + " / " + capacity;
+		teamSlotsLabel.text = ((EditTeamModel)model).activeTroops.Count + " / " + GameData.MAX_ACTIVE_FIGHTERS;
 		for (int  i = 0; i < capacity; i++) {
 			if (i < cost)
 			{
