@@ -39,6 +39,57 @@ public static class XmlHelper {
 		AssetDatabase.Refresh();
 		#endif
 	}
+	
+	public static T Load<T> (string filename) where T : new ()
+	{
+		XmlSerializer ser = new XmlSerializer(typeof(T));
 
+        #if UNITY_EDITOR || UNITY_IOS
+        TextAsset textAsset = Resources.Load("Data/" + filename) as TextAsset;
+        System.IO.StringReader stringReader;
+		
+        if (textAsset == null)
+        {
+            Debug.Log("File not found. Returning default values...");
+            return new T ();
+        }
+        else
+        {
+            stringReader = new System.IO.StringReader(textAsset.text);
+            using (XmlReader reader = XmlReader.Create(stringReader))
+            {
+                return (T) ser.Deserialize(reader);
+            }
+        }
+        #elif UNITY_ANDROID
+        string filePath = GetPath(filename + ".xml");
+        if (System.IO.File.Exists(filePath))
+        {
+            using (XmlReader reader = XmlReader.Create(filePath))
+            {
+                return (T) ser.Deserialize(reader);
+            }
+        }
+        else
+        {
+            Debug.Log("No Player save file found. Returning default values...");
+            return new T ();
+        }
+        #endif
 
+	}
+
+ 	// Retrieve relative path depending on platform
+    private static string GetPath(string fileName)
+    {
+        #if UNITY_EDITOR
+        return Application.dataPath + "/Resources/Data/" + fileName;
+        #elif UNITY_ANDROID
+        return Application.persistentDataPath+fileName;
+        #elif UNITY_IPHONE
+        return Application.persistentDataPath+"/"+fileName;
+        #else
+        return Application.dataPath +"/"+ fileName;
+        #endif
+    }
 }

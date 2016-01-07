@@ -12,6 +12,7 @@ using System.IO;
 [XmlRoot]
 public class PlayerData
 {
+	#region Currency
 	[XmlElement ("Gold")]
 	private int _gold = 1000;
 	public int gold {
@@ -34,36 +35,32 @@ public class PlayerData
 			_diamonds = value;
 			Save ();
 		}
-	}	
+	}
+	#endregion
 
-	public SerializableDictionary<string, List<string>> inventory;
-
-//	[XmlArray ("EquipmentUnlocked")]
-//	[XmlArrayItem("Equip")]
-//	public List<string> unlockedEquipment;
 
     [XmlElement ("TournamentProgress")]
-    public int
-        tournamentProgress;
+    public int tournamentProgress;
 
     [XmlElement ("TournamentMatchCount")]
-    public int
-        tournamentMatchCount;
+    public int tournamentMatchCount;
  
-	public List<Equipment> unlockedItems = new List<Equipment>();
-	
     [XmlArray("ActiveParty")]
     [XmlArrayItem("ActiveFighter")]
     public string[] activePartyIDs = new string[GameData.MAX_ACTIVE_FIGHTERS] {"", "", "", "", "", ""};
 
+	public List<string> currentParty;
+
+	[XmlArray("UnlockedEquipment")]
+	[XmlArrayItem("ID")]
+	public List<string> unlockedEquipment = new List<string> () { "sword" };
+
     [XmlArray("FightersOwned")]
     [XmlArrayItem("Fighter")]
-    public List<FighterData>
-        fightersOwned = new List<FighterData>();
+    public List<FighterData> fightersOwned = new List<FighterData>();
 	
     [XmlElement("PartyCapacity")]
-    public int
-        partyCapacity = 20;
+    public int partyCapacity = 20;
 
     /// <summary>
     /// The fighter base capacity.
@@ -77,129 +74,33 @@ public class PlayerData
     [XmlElement("Town")]
     public TownData town;
 	
-    private PlayerData() 
+    public PlayerData() 
     {
         town = new TownData();
     }
 
-	public void AddItem ()
+	public void UnlockEquipment (string id)
 	{
-//	 	inventory.AddToInventory
-	}
-
-	public void AddEquipment (Equipment equipment)
-	{
-
+		if (!unlockedEquipment.Contains (id)) {
+			unlockedEquipment.Add (id);
+			Save ();
+		} else {
+			Debug.LogWarning ("Equipment: " + id + " already unlocked.");
+		}
 	}
 
 	#region Save/Load
     public void Save()
     {
-        XmlSerializer xmls = new XmlSerializer(typeof(PlayerData));
-
-        #if UNITY_EDITOR || UNITY_IOS
-		using(StringWriter sww = new StringWriter())
-		using(XmlWriter writer = XmlWriter.Create(sww))
-		{
-			xmls.Serialize(writer, this);
-
-			// Using XmlDocument guarantees a properly formatted xml file.
-			XmlDocument xdoc = new XmlDocument();
-			xdoc.LoadXml(sww.ToString());
-			xdoc.Save(Application.dataPath + "/Resources/Data/PlayerData.xml");
-		}
-
-        #elif UNITY_ANDROID
-        string filePath = GetPath("PlayerData.xml");
-        using (var stream = System.IO.File.CreateText(filePath))
-        {
-            xmls.Serialize(stream, this);
-            stream.Close();
-        }
-        #endif
-
-        #if UNITY_EDITOR
-        AssetDatabase.Refresh();
-        #endif
+		XmlHelper.Save<PlayerData> (this, "PlayerData");
     }
 
     public static PlayerData Load()
     {
-        XmlSerializer ser = new XmlSerializer(typeof(PlayerData));
-
-        #if UNITY_EDITOR || UNITY_IOS
-        TextAsset textAsset = Resources.Load("Data/PlayerData") as TextAsset;
-        System.IO.StringReader stringReader;
-		
-        if (textAsset == null)
-        {
-            Debug.Log("No Player save file found. Returning default values...");
-            return new PlayerData();
-        }
-        else
-        {
-            stringReader = new System.IO.StringReader(textAsset.text);
-            using (XmlReader reader = XmlReader.Create(stringReader))
-            {
-                return (PlayerData) ser.Deserialize(reader);
-            }
-        }
-        #elif UNITY_ANDROID
-        string filePath = GetPath("PlayerData.xml");
-        if (System.IO.File.Exists(filePath))
-        {
-            using (XmlReader reader = XmlReader.Create(filePath))
-            {
-                return (PlayerData) ser.Deserialize(reader);
-            }
-        }
-        else
-        {
-            Debug.Log("No Player save file found. Returning default values...");
-            return new PlayerData();
-        }
-        #endif
-    }
-
-    // Retrieve relative path depending on platform
-    private static string GetPath(string fileName)
-    {
-        #if UNITY_EDITOR
-        return Application.dataPath + "/Resources/Data/" + fileName;
-        #elif UNITY_ANDROID
-        return Application.persistentDataPath+fileName;
-        #elif UNITY_IPHONE
-        return Application.persistentDataPath+"/"+fileName;
-        #else
-        return Application.dataPath +"/"+ fileName;
-        #endif
-    }
-	#endregion
-
-
-
-
-
-	private static class InventoryManager
-	{
-
-		
+		return XmlHelper.Load<PlayerData> ("PlayerData");
 	}
+	#endregion
 }
-	
-
-	
-
-
-//public class Inventory
-//{
-//	public string itemId;
-//	public int quantity;
-//
-//	public static 
-//}
-
-
 
 
 

@@ -18,6 +18,8 @@ public class ItemDatabase<T> {
 		return rootNode.GetItems (itemType, recursive);
 	}
 
+	// TODO: ADD item.
+
 	public void Save ()
 	{
 		// TODO: Fix LoadDatabase<T> filename.
