@@ -35,43 +35,34 @@ public class FighterData
 
     //TEMPORARY. default to knight.
     [XmlElement ("SpriteName")]
-    public string
-        spriteName = "knight_fire";
+    public string spriteName = "knight_fire";
 
     [XmlElement ("Level")]
     public int level = 1;
 
     [XmlElement]
-    public int
-        HP = 1000;
+    public int HP = 1000;
 
     [XmlElement ("MaxHP")]
-    public int
-        maxHP = 1000;
+    public int maxHP = 1000;
 
     [XmlElement]
-    public int
-        ATK = 100;
+    public int ATK = 100;
 
     [XmlElement]
-    public bool
-        isRanged = false;
+    public bool isRanged = false;
 
     [XmlElement ("Name")]
-    public string
-        name = "Juan";
+    public string name = "Juan";
 
     [XmlElement ("Class")]
-	public Class
-        fighterClass = Class.Warrior;
+	public Class fighterClass = Class.Warrior;
 
     [XmlElement ("Element")]
-    public FighterElement
-        fighterElement;
+    public FighterElement fighterElement;
 
     [XmlElement ("Cost")]
-    public int
-        cost = 2;
+    public int cost = 2;
 
 	[XmlElement ("EquipmentData")]
 	public SerializableDictionary<Equipment.Type, Equipment> equipmentData = new SerializableDictionary<Equipment.Type, Equipment> ();

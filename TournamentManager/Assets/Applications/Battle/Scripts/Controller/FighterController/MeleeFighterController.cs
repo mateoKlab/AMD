@@ -9,9 +9,9 @@ public class MeleeFighterController : FighterController
 		base.FixedUpdate ();
 	}
 
-	public override void OnAttackEnded (Attack attack)
+	public override void OnAttack (Attack attack)
 	{
-		base.OnAttackEnded (attack);
+		base.OnAttack (attack);
 
 		if (attack.attackTarget != null) {
 			((BattleController)app.controller).OnMeleeAttack (attack);

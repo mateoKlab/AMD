@@ -11,7 +11,7 @@ public class FighterController : Controller
 	public virtual void Start () {
 		state = new FighterStateContext (this.gameObject);
 		state.OnCooldownEnded += OnCooldownEnded;
-		state.OnAttackEnded   += OnAttackEnded;
+		state.OnAttackEnded   += OnAttack;
 
 		(model as FighterModel).OnFighterDataSet += OnFighterDataSet;
 		(view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
@@ -21,7 +21,7 @@ public class FighterController : Controller
 
 	void OnDestroy () {
 		state.OnCooldownEnded -= OnCooldownEnded;
-		state.OnAttackEnded   -= OnAttackEnded;
+		state.OnAttackEnded   -= OnAttack;
 
 		(model as FighterModel).OnFighterDataSet -= OnFighterDataSet;
 		(view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
@@ -95,7 +95,7 @@ public class FighterController : Controller
 	}
 	
 	// Callback for end of attack animation.
-	public virtual void OnAttackEnded (Attack attack)
+	public virtual void OnAttack (Attack attack)
 	{
 		// OVERRIDE ME.
 	}

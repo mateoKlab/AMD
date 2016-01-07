@@ -15,18 +15,16 @@ public class RangedFighterController : FighterController
 		nextAttackAllowed = Time.time;
 	}
 
-	void FixedUpdate() 
+	public override void OnAttack (Attack attackData)
 	{
-		if (Time.time > nextAttackAllowed + cooldown) {
-			Attack ();
-		}
+		base.OnAttack (attackData);
+
+		RangedAttack (attackData);
 	}
 
-	void Attack ()
+	void RangedAttack (Attack attackData)
 	{
-		nextAttackAllowed = Time.time + cooldown;
-
 		//(app.controller as BattleController).OnRangedAttack (gameObject);
-		((BattleController)app.controller).OnRangedAttack (gameObject);
+		((BattleController)app.controller).OnRangedAttack (attackData);
 	}
 }
