@@ -21,7 +21,9 @@ public class FighterSpriteAttachment : MonoBehaviour {
 		Hind_Upper_Arm,
 		Hind_Lower_Arm,
 		Hind_Fist,
-		Shield
+		Shield,
+		Body,
+		Weapon
 
 	}
 

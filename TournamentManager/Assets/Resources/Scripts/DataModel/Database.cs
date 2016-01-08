@@ -9,9 +9,9 @@ using System.Xml;
 using System.Xml.Serialization;
 
 [XmlRoot]
-public class ItemDatabase<T> {
+public class Database<T> {
 
-	public ItemNode<T> rootNode;
+	public DatabaseNode<T> rootNode;
 
 	public List<T> GetItems (ItemType<T> itemType, bool recursive)
 	{
@@ -23,14 +23,14 @@ public class ItemDatabase<T> {
 	public void Save ()
 	{
 		// TODO: Fix LoadDatabase<T> filename.
-		XmlHelper.Save<ItemDatabase<T>> (this, typeof(ItemDatabase<T>).ToString ()); //(this, typeof (T).ToString () + "Database");
+		XmlHelper.Save<Database<T>> (this, typeof(Database<T>).ToString ()); //(this, typeof (T).ToString () + "Database");
 	}
 }
 
-public class ItemNode<T>
+public class DatabaseNode<T>
 {
-	public SerializableDictionary<string, Item<T>> items;
-	public SerializableDictionary<ItemType<T>, ItemNode<T>> branch; 
+	public SerializableDictionary<string, DatabaseItem<T>> items;
+	public SerializableDictionary<ItemType<T>, DatabaseNode<T>> branch; 
 
 	// TODO: Get quantity of item: args: itemId.
 	// TODO: Get item with Id.
@@ -39,19 +39,19 @@ public class ItemNode<T>
 	{
 		List<T> itemList = null;
 		
-		ItemNode<T> node = GetNode (itemType);
+		DatabaseNode<T> node = GetNode (itemType);
 		
 		if (node != null) {
-			List<Item<T>> tempList = GetItems (node, recursive);
+			List<DatabaseItem<T>> tempList = GetItems (node, recursive);
 			itemList = tempList.Select(item => item.item).ToList();
 		}
 		
 		return itemList;
 	}
 
-	private ItemNode<T> GetNode (ItemType<T> itemType) 
+	private DatabaseNode<T> GetNode (ItemType<T> itemType) 
 	{
-		ItemNode<T> currentNode = this;
+		DatabaseNode<T> currentNode = this;
 		Stack<ItemType<T>> typeStack = GetTypeStack (itemType);
 		
 		while (typeStack.Count > 0) {
@@ -68,9 +68,9 @@ public class ItemNode<T>
 		return currentNode;
 	}
 
-	private List<Item<T>> GetItems (ItemNode<T> itemNode, bool recursive)
+	private List<DatabaseItem<T>> GetItems (DatabaseNode<T> itemNode, bool recursive)
 	{
-		List<Item<T>> itemList = new List<Item<T>> ();
+		List<DatabaseItem<T>> itemList = new List<DatabaseItem<T>> ();
 		
 		if (itemNode.items != null) {
 			itemList.AddRange (itemNode.items.Values.ToList ());
@@ -79,7 +79,7 @@ public class ItemNode<T>
 		// Recursively search through nested databases.
 		if (recursive && itemNode.branch != null) {
 			
-			foreach (ItemNode<T> nestedNode in itemNode.branch.Values) {
+			foreach (DatabaseNode<T> nestedNode in itemNode.branch.Values) {
 				itemList.AddRange (GetItems (nestedNode, recursive));
 			}
 		}
@@ -106,7 +106,7 @@ public class ItemNode<T>
 }
 
 
-public class Item<T>
+public class DatabaseItem<T>
 {
 	public T item;
 	public int itemQuantity;

@@ -16,19 +16,6 @@ public class ArmoryItemController : Controller <MainMenu, ArmoryItemModel, Armor
 			view.itemLabel.text = item.name;
 			view.diamondsIcon.SetActive(false);
 		}
-
-//		if (GameData.instance.playerData.unlockedItems.Contains(item)) // Do if item is unlocked
-//		{
-//			view.itemSprite.color = Color.white;
-//			view.itemLabel.text = item.name;
-//			view.diamondsIcon.SetActive(false);
-//		} 
-//		else 
-//		{
-//			view.itemSprite.color = Color.black;
-//			view.itemLabel.text = "100";
-//			view.diamondsIcon.SetActive(true);
-//		}
 	}
 
 	public void UnlockItem() {

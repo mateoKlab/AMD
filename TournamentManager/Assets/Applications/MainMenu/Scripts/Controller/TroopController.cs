@@ -48,20 +48,24 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
     }
 	
 	public void ToggleState() {
-		if (!editTeamController.model.activeTroops.Contains(model.fighterData) && (model.cost < GameData.instance.GetPartyCapacity() - editTeamController.GetPartyCost()) && editTeamController.model.activeTroops.Count < GameData.MAX_ACTIVE_FIGHTERS)
+		if (!GameData.instance.playerData.currentParty.fighters.Contains (model.fighterData.id) && (model.cost < GameData.instance.playerData.partyCapacity - editTeamController.GetPartyCost()) && editTeamController.model.activeTroops.Count < GameData.MAX_ACTIVE_FIGHTERS)
 		{
 			editTeamController.AddTroopOnTeam(model.fighterData);
-		} else if (editTeamController.model.activeTroops.Contains(model.fighterData)) {
+
+
+		} else if (GameData.instance.playerData.currentParty.fighters.Contains (model.fighterData.id)) {
 			//editTeamController.model.activeTroops.Remove(model.fighterData);
 			editTeamController.RemoveTroopOnTeam(model.fighterData);
 
 		}
-		editTeamController.view.SetCost(editTeamController.GetPartyCost(), GameData.instance.GetPartyCapacity());
+		editTeamController.view.SetCost(editTeamController.GetPartyCost(), GameData.instance.playerData.partyCapacity);
+		Debug.Log ("TOGGLE: " + GameData.instance.playerData.currentParty.currentCost + " / " + GameData.instance.playerData.partyCapacity);
+
 		CheckState();
 	}
 
 	public void CheckState() {
-		if (editTeamController.model.activeTroops.Contains(model.fighterData))
+		if (GameData.instance.playerData.currentParty.fighters.Contains (model.fighterData.id))
 			view.stateLabel.text = "ACTIVE";
 		else
 			view.stateLabel.text = "IDLE";
