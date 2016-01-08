@@ -50,7 +50,7 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
 	public void ToggleState() {
 		if (!editTeamController.model.activeTroops.Contains(model.fighterData) && (model.cost < GameData.instance.GetPartyCapacity() - editTeamController.GetPartyCost()) && editTeamController.model.activeTroops.Count < GameData.MAX_ACTIVE_FIGHTERS)
 		{
-			editTeamController.model.activeTroops.Add(model.fighterData);
+			editTeamController.AddTroopOnTeam(model.fighterData);
 		} else if (editTeamController.model.activeTroops.Contains(model.fighterData)) {
 			//editTeamController.model.activeTroops.Remove(model.fighterData);
 			editTeamController.RemoveTroopOnTeam(model.fighterData);
