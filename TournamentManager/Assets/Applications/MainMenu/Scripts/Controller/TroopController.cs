@@ -52,7 +52,9 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
 		{
 			editTeamController.model.activeTroops.Add(model.fighterData);
 		} else if (editTeamController.model.activeTroops.Contains(model.fighterData)) {
-			editTeamController.model.activeTroops.Remove(model.fighterData);
+			//editTeamController.model.activeTroops.Remove(model.fighterData);
+			editTeamController.RemoveTroopOnTeam(model.fighterData);
+
 		}
 		editTeamController.view.SetCost(editTeamController.GetPartyCost(), GameData.instance.GetPartyCapacity());
 		CheckState();
