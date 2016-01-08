@@ -8,9 +8,5 @@ public class EditTeamModel : Model
 	public List<TroopController> troops;
 	public List<FighterData> activeTroops = new List<FighterData>();//FighterData[GameData.MAX_ACTIVE_FIGHTERS];
 
-	public List<ActiveTeamSlotController> activeTeamSlots =  new List<ActiveTeamSlotController>();
-
-	public ActiveTeamSlotController GetActiveTeamSlot(int index) {
-		return activeTeamSlots[index];
-	}
+	//public List<ActiveTeamSlotController> activeTeamSlots =  new List<ActiveTeamSlotController>();
 }
