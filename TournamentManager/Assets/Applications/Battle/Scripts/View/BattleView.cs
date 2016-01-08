@@ -14,7 +14,7 @@ public class BattleView : View<Battle>
     
     //////// END MVCCodeEditor GENERATED CODE ////////
     
-    
+	public SpriteRenderer backgroundImage;   
 
 	public void OnClickBackButton ()
 	{

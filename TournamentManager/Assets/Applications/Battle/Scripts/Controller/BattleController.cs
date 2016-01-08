@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Bingo;
 
-public class BattleController : Controller<Battle>
+public class BattleController : Controller<Battle, BattleModel, BattleView>
 {
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
@@ -115,7 +115,15 @@ public class BattleController : Controller<Battle>
 
 
         battleMenuController.SetFighters(allies);
+		SetBackgroundImage(currentStage);
     }
+
+	public void SetBackgroundImage(StageData sData) {
+		if (sData.stageType == StageType.Mission) 
+		{
+			view.backgroundImage.sprite = Resources.Load("Sprites/StageBackgrounds/" + sData.name.Split(' ')[0], typeof(Sprite)) as Sprite; 
+		}
+	}
 
     public void OnRangedAttack(Attack attackData, GameObject defender)
     {
