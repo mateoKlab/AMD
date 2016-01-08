@@ -1,0 +1,346 @@
+
+skeleton.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Cape_Frame1
+  rotate: false
+  xy: 2, 279
+  size: 1019, 681
+  orig: 1019, 681
+  offset: 0, 0
+  index: -1
+Front_Ankle
+  rotate: false
+  xy: 420, 3
+  size: 135, 127
+  orig: 135, 127
+  offset: 0, 0
+  index: -1
+Front_Fist
+  rotate: false
+  xy: 557, 150
+  size: 135, 127
+  orig: 135, 127
+  offset: 0, 0
+  index: -1
+Front_Lower_Arm
+  rotate: false
+  xy: 557, 21
+  size: 135, 127
+  orig: 135, 127
+  offset: 0, 0
+  index: -1
+Front_Upper_Arm
+  rotate: false
+  xy: 420, 132
+  size: 135, 145
+  orig: 135, 145
+  offset: 0, 0
+  index: -1
+Front_Upper_Leg
+  rotate: false
+  xy: 694, 150
+  size: 135, 127
+  orig: 135, 127
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 694, 21
+  size: 135, 127
+  orig: 135, 127
+  offset: 0, 0
+  index: -1
+Helm
+  rotate: false
+  xy: 2, 2
+  size: 256, 275
+  orig: 256, 275
+  offset: 0, 0
+  index: -1
+Hind_Ankle
+  rotate: false
+  xy: 831, 150
+  size: 135, 127
+  orig: 135, 127
+  offset: 0, 0
+  index: -1
+Hind_Fist
+  rotate: false
+  xy: 831, 21
+  size: 135, 127
+  orig: 135, 127
+  offset: 0, 0
+  index: -1
+Upper_Body
+  rotate: false
+  xy: 260, 2
+  size: 158, 275
+  orig: 158, 275
+  offset: 0, 0
+  index: -1
+
+skeleton2.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Cape_Frame2
+  rotate: false
+  xy: 2, 260
+  size: 1019, 681
+  orig: 1019, 681
+  offset: 0, 0
+  index: -1
+Front_Lower_Leg
+  rotate: false
+  xy: 276, 131
+  size: 133, 127
+  orig: 133, 127
+  offset: 0, 0
+  index: -1
+Hind_Lower_Arm
+  rotate: false
+  xy: 2, 131
+  size: 135, 127
+  orig: 135, 127
+  offset: 0, 0
+  index: -1
+Hind_Lower_Leg
+  rotate: false
+  xy: 2, 2
+  size: 135, 127
+  orig: 135, 127
+  offset: 0, 0
+  index: -1
+Hind_Upper_Arm
+  rotate: false
+  xy: 139, 131
+  size: 135, 127
+  orig: 135, 127
+  offset: 0, 0
+  index: -1
+Hind_Upper_Leg
+  rotate: false
+  xy: 139, 2
+  size: 135, 127
+  orig: 135, 127
+  offset: 0, 0
+  index: -1
+
+skeleton3.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Cape_Frame3
+  rotate: false
+  xy: 2, 2
+  size: 1019, 681
+  orig: 1019, 681
+  offset: 0, 0
+  index: -1
+
+skeleton4.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Cape_Frame4
+  rotate: false
+  xy: 2, 2
+  size: 1019, 681
+  orig: 1019, 681
+  offset: 0, 0
+  index: -1
+
+skeleton5.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Cape_Frame5
+  rotate: false
+  xy: 2, 2
+  size: 1019, 681
+  orig: 1019, 681
+  offset: 0, 0
+  index: -1
+
+skeleton6.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Cape_Frame6
+  rotate: false
+  xy: 2, 2
+  size: 1019, 681
+  orig: 1019, 681
+  offset: 0, 0
+  index: -1
+
+skeleton7.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Cape_Frame7
+  rotate: false
+  xy: 2, 2
+  size: 1019, 681
+  orig: 1019, 681
+  offset: 0, 0
+  index: -1
+
+skeleton8.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Cape_Frame8
+  rotate: false
+  xy: 2, 2
+  size: 1019, 681
+  orig: 1019, 681
+  offset: 0, 0
+  index: -1
+
+skeleton9.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Cape_Frame9
+  rotate: false
+  xy: 2, 2
+  size: 1019, 681
+  orig: 1019, 681
+  offset: 0, 0
+  index: -1
+
+skeleton10.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Slash_Frame4
+  rotate: false
+  xy: 2, 2
+  size: 1019, 681
+  orig: 1019, 681
+  offset: 0, 0
+  index: -1
+
+skeleton11.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Slash_Frame5
+  rotate: false
+  xy: 2, 2
+  size: 1019, 681
+  orig: 1019, 681
+  offset: 0, 0
+  index: -1
+
+skeleton12.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Slash_Frame6
+  rotate: false
+  xy: 2, 2
+  size: 1019, 681
+  orig: 1019, 681
+  offset: 0, 0
+  index: -1
+
+skeleton13.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Cape_Frame10
+  rotate: false
+  xy: 2, 2
+  size: 864, 695
+  orig: 864, 695
+  offset: 0, 0
+  index: -1
+
+skeleton14.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Stab_Frame4
+  rotate: false
+  xy: 2, 2
+  size: 864, 695
+  orig: 864, 695
+  offset: 0, 0
+  index: -1
+
+skeleton15.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Stab_Frame5
+  rotate: false
+  xy: 2, 2
+  size: 864, 695
+  orig: 864, 695
+  offset: 0, 0
+  index: -1
+
+skeleton16.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Stab_Frame6
+  rotate: false
+  xy: 2, 2
+  size: 864, 695
+  orig: 864, 695
+  offset: 0, 0
+  index: -1
+
+skeleton17.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Stab_Frame7
+  rotate: false
+  xy: 2, 2
+  size: 864, 695
+  orig: 864, 695
+  offset: 0, 0
+  index: -1
+
+skeleton18.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Shield
+  rotate: false
+  xy: 2, 2
+  size: 548, 501
+  orig: 548, 501
+  offset: 0, 0
+  index: -1
+Sword
+  rotate: false
+  xy: 552, 37
+  size: 236, 466
+  orig: 236, 466
+  offset: 0, 0
+  index: -1
