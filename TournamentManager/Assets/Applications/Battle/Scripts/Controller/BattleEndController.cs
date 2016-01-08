@@ -49,17 +49,22 @@ public class BattleEndController : Controller <Battle, BattleEndModel, BattleEnd
 		yield return new WaitForSeconds(1);
 		int tempGold = 0;
 		int tempExp = 0;
-		while((tempGold < model.gold || tempExp < model.exp) && isLerping) {
+		float time = 0;
+	
+		while((tempGold < model.gold || tempExp < model.exp) && isLerping && time < 2) {
 			if (tempGold < model.gold) {
-				tempGold += 50;
+				tempGold += model.gold/100;
 			}
 			if (tempExp < model.exp) {
-				tempExp += 50;
+				tempExp += model.gold/100;
 			}
 			view.goldValue.text = tempGold.ToString();
 			view.expValue.text = tempExp.ToString();
+	
+			time += Time.fixedDeltaTime;
 			yield return new WaitForSeconds(Time.fixedDeltaTime);
 		}
+
 		view.goldValue.text = model.gold.ToString();
 		view.expValue.text = model.exp.ToString();
 		view.continueButton.SetActive(true);
