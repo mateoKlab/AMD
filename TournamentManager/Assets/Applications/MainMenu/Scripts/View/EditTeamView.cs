@@ -21,16 +21,18 @@ public class EditTeamView : View
 
 	public void SetCost(int cost, int capacity)
 	{
+
+		Debug.LogError (capacity);
 		teamCostLabel.text = cost + " / " + capacity;
 		teamSlotsLabel.text = ((EditTeamModel)model).activeTroops.Count + " / " + GameData.MAX_ACTIVE_FIGHTERS;
 		for (int  i = 0; i < capacity; i++) {
 			if (i < cost)
 			{
-				slots[i].color = new Color32(215, 85, 45, 255);
+				slots[i].color = new Color32(255, 195, 0, 255);
 			}
 			else
 			{
-				slots[i].color = new Color32(255, 195, 0, 255);
+				slots[i].color = new Color32(215, 85, 45, 255);
 			}
 		}
 	}
