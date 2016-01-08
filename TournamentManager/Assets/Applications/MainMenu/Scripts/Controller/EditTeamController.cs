@@ -32,7 +32,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
         teamPanel = transform.Find("TeamPanelScrollView/TeamPanel");
         //model.activeTeamSlots = activeTeamPanel.GetComponentsInChildren<ActiveTeamSlotController>();
 
-		for (int i = 0; i < gameData.playerData.fighterCapacity; i++)
+		for (int i = 0; i < gameData.playerData.partyCapacity; i++)
 		{
 			GameObject slotPrefab = Instantiate(Resources.Load("Prefabs/PartyCostSlot", typeof(GameObject))) as GameObject;
 			slotPrefab.transform.SetParent(view.partyCostBar.transform, false);
