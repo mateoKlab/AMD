@@ -32,7 +32,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
         teamPanel = transform.Find("TeamPanelScrollView/TeamPanel");
         //model.activeTeamSlots = activeTeamPanel.GetComponentsInChildren<ActiveTeamSlotController>();
 
-		for (int i = 0; i < gameData.GetPartyCapacity(); i++)
+		for (int i = 0; i < gameData.playerData.fighterCapacity; i++)
 		{
 			GameObject slotPrefab = Instantiate(Resources.Load("Prefabs/PartyCostSlot", typeof(GameObject))) as GameObject;
 			slotPrefab.transform.SetParent(view.partyCostBar.transform, false);
@@ -56,7 +56,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
     {
         // There were no active troops, do not allow player to leave edit team screen
         // TODO Add popup here or disable close button
-        if (GetPartyCost() <= 0)
+        if (gameData.playerData.currentParty.currentCost <= 0)
         {
             Debug.LogError("Atleast 1 troop in party is required, please assign at least 1 before exiting");
             return;
@@ -88,7 +88,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
         MoveActiveTroopsToActiveSlots();
         yield return new WaitForEndOfFrame();
 
-        view.SetCost(GetPartyCost(), gameData.GetPartyCapacity());
+        view.SetCost(gameData.playerData.currentParty.currentCost, gameData.playerData.partyCapacity);
     }
 
     private void DeleteAllTroops()
@@ -100,6 +100,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
         {
             DestroyObject(currentTroops[i].gameObject);
         }
+
 //        // Destroy troops on ActiveTeamPanel
 //        for (int i = 0; i < model.activeTeamSlots.Count; i++)
 //        {
@@ -107,7 +108,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 //            {
 //                DestroyObject(model.activeTeamSlots[i].transform.GetChild(0).gameObject);
 //            }
-//        }b
+//        }
 
         model.troops.Clear();
         for (int i = 0; i < model.activeTroops.Count; i++)
@@ -169,10 +170,18 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 
     public void AddTroopOnTeam(FighterData troop)
     {
-		if (!model.activeTroops.Contains(troop))
- 	       model.activeTroops.Add(troop);
-        view.SetCost(GetPartyCost(), gameData.GetPartyCapacity());
-    }
+		if (!model.activeTroops.Contains (troop)) {
+			model.activeTroops.Add (troop);
+
+			// new. TODO: cleanup, migrate/deprecate old code.
+			gameData.playerData.AddToParty (troop);
+			Debug.Log ("ADD: " + gameData.playerData.currentParty.currentCost + " / " + gameData.playerData.partyCapacity);
+
+		}
+
+
+		view.SetCost(gameData.playerData.currentParty.currentCost, gameData.playerData.partyCapacity);
+	}
 
     public void RemoveTroopOnTeam(FighterData fd)
     {
@@ -185,8 +194,9 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
             }
         }
 
-        view.SetCost(GetPartyCost(), gameData.GetPartyCapacity());
-    }
+		gameData.playerData.currentParty.fighters.Remove (fd.id);
+		view.SetCost(gameData.playerData.currentParty.currentCost, gameData.playerData.partyCapacity);
+	}
 
     public bool IsTroopActive(FighterData fd)
     {
@@ -216,6 +226,6 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 
     public bool IsWithinPartyCapacity(int troopCost)
     {
-        return ((GetPartyCost() + troopCost) <= gameData.GetPartyCapacity());
+		return ((gameData.playerData.currentParty.currentCost + troopCost) <= gameData.playerData.fighterCapacity);
     }
 }

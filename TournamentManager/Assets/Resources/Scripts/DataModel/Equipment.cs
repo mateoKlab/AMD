@@ -1,9 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
-
 
 [XmlRoot ("Equipment")]
 public struct Equipment {

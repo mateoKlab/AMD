@@ -18,7 +18,7 @@ public static class GameDatabase {
 	private static StageDatabase _stageDatabase;
 
 	// List of Equipment available for each type.
-	private static ItemDatabase<Equipment> _equipmentDatabase;
+	private static Database<Equipment> _equipmentDatabase;
 
 	private static GachaDatabase _gachaDatabase;
 
@@ -47,11 +47,11 @@ public static class GameDatabase {
 		}
 	}
 
-	public static ItemDatabase<Equipment> equipmentDatabase 
+	public static Database<Equipment> equipmentDatabase 
 	{
 		get {
 			if (_equipmentDatabase == null) {
-				_equipmentDatabase = LoadDatabase<ItemDatabase<Equipment>> ();
+				_equipmentDatabase = LoadDatabase<Database<Equipment>> ();
 			}
 			
 			return _equipmentDatabase; 
@@ -80,15 +80,13 @@ public static class GameDatabase {
 		}
 	}
 	#endregion
-
-	public static ItemDatabase<Equipment> testDatabase;
-
+	
 	public static void LoadGameDatabase ()
 	{
 		// Initialize here.
 		_spriteDatabase    = LoadDatabase<SpriteDatabase> ();
 		_stageDatabase	   = LoadDatabase<StageDatabase> ();
-		_equipmentDatabase = LoadDatabase<ItemDatabase<Equipment>> ();
+		_equipmentDatabase = LoadDatabase<Database<Equipment>> ();
 		_classDatabase 	   = LoadDatabase<ClassDatabase> ();
 
 		List<Equipment> testList = _equipmentDatabase.GetItems (Equipment.Type.Weapon.Sword, false);

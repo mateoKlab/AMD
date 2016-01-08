@@ -26,17 +26,17 @@ public class BattleEndExpController : Controller<Battle, BattleEndExpModel, Batt
     {
         this.gameObject.SetActive(true);
 
-        int i = 0;
-        for(int j = 0; j < gameData.GetActiveParty().Length; j++)
-        {
-            FighterData fd = gameData.GetActiveFighter(j);
-            if(fd != null)
-            {
-                model.fighters[i].EnableFighter(true);
-                model.fighters[i].SetFighterDetails(fd);
-                i++;
-            }
-        }
+//        int i = 0;
+//        for(int j = 0; j < gameData.GetActiveParty().Length; j++)
+//        {
+//            FighterData fd = gameData.GetActiveFighter(j);
+//            if(fd != null)
+//            {
+//                model.fighters[i].EnableFighter(true);
+//                model.fighters[i].SetFighterDetails(fd);
+//                i++;
+//            }
+//        }
     }
 
     public void OnReturnToMainMenu(params object[] args)
