@@ -14,7 +14,6 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
     //////// END MVCCodeEditor GENERATED CODE ////////
     
 	public VerticalLayoutGroup content;
-    private Transform activeTeamPanel;
     private Transform teamPanel;
     private GameObject troopPrefab;
 
@@ -29,9 +28,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 
     public override void Awake()
     {
-        base.Awake();
-
-        activeTeamPanel = transform.Find("ActiveTeamPanel");
+		base.Awake();
         teamPanel = transform.Find("TeamPanelScrollView/TeamPanel");
         //model.activeTeamSlots = activeTeamPanel.GetComponentsInChildren<ActiveTeamSlotController>();
 
@@ -69,6 +66,8 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
         Input.multiTouchEnabled = true;
         app.controller.EnableMainMenuItems(true);
         gameObject.SetActive(false);
+
+		Debug.LogError ("Active Troops:" + model.activeTroops.Count);
     }
 
     private void SaveTeam()
@@ -101,14 +100,14 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
         {
             DestroyObject(currentTroops[i].gameObject);
         }
-        // Destroy troops on ActiveTeamPanel
-        for (int i = 0; i < model.activeTeamSlots.Count; i++)
-        {
-            if (model.activeTeamSlots[i].transform.childCount > 0)
-            {
-                DestroyObject(model.activeTeamSlots[i].transform.GetChild(0).gameObject);
-            }
-        }
+//        // Destroy troops on ActiveTeamPanel
+//        for (int i = 0; i < model.activeTeamSlots.Count; i++)
+//        {
+//            if (model.activeTeamSlots[i].transform.childCount > 0)
+//            {
+//                DestroyObject(model.activeTeamSlots[i].transform.GetChild(0).gameObject);
+//            }
+//        }b
 
         model.troops.Clear();
         for (int i = 0; i < model.activeTroops.Count; i++)
