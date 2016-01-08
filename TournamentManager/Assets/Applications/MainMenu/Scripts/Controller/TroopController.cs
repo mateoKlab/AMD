@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using Bingo;
 
-public class TroopController : Controller<MainMenu, FighterModel, TroopView>
+public class TroopController : Controller<MainMenu, TroopModel, TroopView>
 {
     public bool isAnActiveTroop;
 	
@@ -44,11 +44,11 @@ public class TroopController : Controller<MainMenu, FighterModel, TroopView>
 
     public int GetTroopCost()
     {
-        return model.cost;
+        return model.fighterData.cost;
     }
 	
 	public void ToggleState() {
-		if (!GameData.instance.playerData.currentParty.fighters.Contains (model.fighterData.id) && (model.cost < GameData.instance.playerData.partyCapacity - editTeamController.GetPartyCost()) && editTeamController.model.activeTroops.Count < GameData.MAX_ACTIVE_FIGHTERS)
+		if (!GameData.instance.playerData.currentParty.fighters.Contains (model.fighterData.id) && (model.fighterData.cost < GameData.instance.playerData.partyCapacity - editTeamController.GetPartyCost()) && editTeamController.model.activeTroops.Count < GameData.MAX_ACTIVE_FIGHTERS)
 		{
 			editTeamController.AddTroopOnTeam(model.fighterData);
 

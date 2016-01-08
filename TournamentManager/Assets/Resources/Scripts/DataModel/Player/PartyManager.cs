@@ -40,17 +40,14 @@ public class Party {
 
 	[XmlArray("Fighters")]
 	[XmlArrayItem("ID")]
-	public List<string> fighters;
+	public List<string> fighters = new List<string> ();
 
 	public void Add (FighterData fighter)
 	{
-		Debug.Log ("ADDING...");
 		if (!fighters.Contains (fighter.id)) {
 			fighters.Add (fighter.id);
 
 			currentCost += fighter.cost;
-			Debug.Log ("ADDED...");
-
 		}	
 	}
 	

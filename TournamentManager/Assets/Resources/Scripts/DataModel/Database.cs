@@ -18,12 +18,11 @@ public class Database<T> {
 		return rootNode.GetItems (itemType, recursive);
 	}
 
-	// TODO: ADD item.
+	// TODO: ADD item method.
 
 	public void Save ()
 	{
-		// TODO: Fix LoadDatabase<T> filename.
-		XmlHelper.Save<Database<T>> (this, typeof(Database<T>).ToString ()); //(this, typeof (T).ToString () + "Database");
+		XmlHelper.Save<Database<T>> (this, typeof(Database<T>).ToString ());
 	}
 }
 

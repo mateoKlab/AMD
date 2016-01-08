@@ -109,8 +109,8 @@ public class GameData : MonoBehaviour {
 			return false;
         }
 
-		playerData.fightersOwned.Add(fighter.id, fighter);
-//		playerData.Save ();
+		playerData.fightersOwned.Add (fighter.id, fighter);
+		playerData.Save ();
 
 		return true;
 	}
