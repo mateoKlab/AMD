@@ -85,7 +85,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
         yield return new WaitForEndOfFrame();
         troopPrefab = Resources.Load("Prefabs/Troop") as GameObject;
         yield return StartCoroutine("LoadTroops");
-        MoveActiveTroopsToActiveSlots();
+        UpdateTroopStatus ();
         yield return new WaitForEndOfFrame();
 
         view.SetCost(gameData.playerData.currentParty.currentCost, gameData.playerData.partyCapacity);
@@ -120,15 +120,16 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
     private IEnumerator LoadTroops()
     {
         List<FighterData> fighters = gameData.GetFightersOwned();
-        for (int i = 0; i < fighters.Count; i++)
+        foreach (FighterData fighter in fighters)
         {
             GameObject go = Instantiate(troopPrefab);
-            go.AddComponent<FighterModel>();
+//            go.AddComponent<FighterModel>();
             go.transform.SetParent(teamPanel);
             ((RectTransform)go.transform).localPosition = Vector3.zero;
+
             TroopController tc = go.GetComponent<TroopController>();
-            model.troops.Add(tc);
-            tc.SetTroop(fighters[i]);
+            model.troops.Add (tc);
+            tc.SetTroop (fighter);
         }
 
 		// Resize scrollable background based on number of elements
@@ -139,20 +140,27 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
         yield return new WaitForEndOfFrame();
         ShowTroopDetails(fighters[0]);
     }
-	
-    private void MoveActiveTroopsToActiveSlots()
-    {
-        for (int i = 0; i < model.troops.Count; i++)
-        {
-            if (gameData.CheckIfFighterActive(model.troops[i].GetFighter()))
-            {
-                //int index = gameData.GetActiveFighterIndexOnParty(model.troops[i].GetFighter());
-                // model.GetActiveTeamSlot(index).SetTroopOnSlot(model.troops[i].gameObject);
-                AddTroopOnTeam(model.troops[i].GetFighter());
-            }
-			model.troops[i].CheckState();
-        }
-    }
+
+	private void UpdateTroopStatus ()
+	{
+		foreach (TroopController troop in model.troops) {
+			troop.CheckState ();
+		}
+	}
+
+//    private void MoveActiveTroopsToActiveSlots()
+//    {
+//        for (int i = 0; i < model.troops.Count; i++)
+//        {
+//            if (gameData.CheckIfFighterActive(model.troops[i].GetFighter()))
+//            {
+//                //int index = gameData.GetActiveFighterIndexOnParty(model.troops[i].GetFighter());
+//                // model.GetActiveTeamSlot(index).SetTroopOnSlot(model.troops[i].gameObject);
+//                AddTroopOnTeam(model.troops[i].GetFighter());
+//            }
+//			model.troops[i].CheckState();
+//        }
+//    }
 
     public void ReturnTroopFromSlotToTeamPanel(GameObject troop)
     {
@@ -194,7 +202,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
             }
         }
 
-		gameData.playerData.currentParty.fighters.Remove (fd.id);
+		gameData.playerData.RemoveFromParty (fd);
 		view.SetCost(gameData.playerData.currentParty.currentCost, gameData.playerData.partyCapacity);
 	}
 

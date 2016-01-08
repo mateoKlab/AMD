@@ -22,7 +22,8 @@ public class EditTeamView : View
 	public void SetCost(int cost, int capacity)
 	{
 		teamCostLabel.text = cost + " / " + capacity;
-		teamSlotsLabel.text = ((EditTeamModel)model).activeTroops.Count + " / " + GameData.MAX_ACTIVE_FIGHTERS;
+		teamSlotsLabel.text = (GameData.instance.playerData.currentParty.fighters.Count + " / " + GameData.MAX_ACTIVE_FIGHTERS);
+
 		for (int  i = 0; i < capacity; i++) {
 			if (i < cost)
 			{

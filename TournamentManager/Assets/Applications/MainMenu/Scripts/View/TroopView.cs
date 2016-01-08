@@ -13,7 +13,7 @@ public class TroopView : View<MainMenu> //, IPointerEnterHandler, IBeginDragHand
 
     void Start()
     {
-        SetSprite(((FighterModel)model).skindData);
+//        SetSprite(((FighterModel)model).skindData);
     }
 
     public void SetSprite(FighterSkinData skinData)
