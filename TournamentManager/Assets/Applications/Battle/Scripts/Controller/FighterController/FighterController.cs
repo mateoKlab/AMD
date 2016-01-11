@@ -131,6 +131,9 @@ public class FighterController : Controller
 		if ((model as FighterModel).fighterData.HP <= 0) {
 			Messenger.Send (EventTags.FIGHTER_KILLED, this.gameObject, attack.attackOrigin);
 		}
+
+		// Edit: AJ (Test)
+		DamageManager.instance.ActivateDamageElement(transform.position, attack.damage);
 	}
 
 	private void ReceiveKnockback (float knockback)
