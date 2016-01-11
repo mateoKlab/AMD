@@ -68,16 +68,9 @@ public class BattleEndController : Controller <Battle, BattleEndModel, BattleEnd
 		view.goldValue.text = model.gold.ToString();
 		view.expValue.text = model.exp.ToString();
 		view.continueButton.SetActive(true);
+		iTween.PunchScale(view.continueButton, Vector3.one * 1.2f, 0.7f);
 
 	
-		float i = 0;
-		while (i < 1)
-		{
-			view.continueButton.GetComponent<RectTransform>().localScale = Vector3.one * i/1;
-			i += Time.fixedDeltaTime * 10;
-			yield return new WaitForEndOfFrame();
-		}
-
 		GameData.instance.playerData.gold += model.gold;
 		GameData.instance.SavePlayerData();
 	}

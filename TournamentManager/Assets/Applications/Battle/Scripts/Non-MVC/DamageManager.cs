@@ -34,10 +34,10 @@ public class DamageManager : BaseApplication <DamageUIModel, DamageUIView, Damag
 		}
 	}
 	
-	public void ActivateDamageElement(Vector3 hitPos, int damage) {
+	public void ActivateDamageElement(Vector3 hitPos, int damage, bool isAlly) {
 		damagePool[0].SetActive(true);
 		damagePool[0].transform.position = hitPos;
-		damagePool[0].GetComponent<DamageUIController>().ShowDamage(damage);
+		damagePool[0].GetComponent<DamageUIController>().ShowDamage(damage, isAlly);
 		damagePool.RemoveAt(0);
 	}
 
