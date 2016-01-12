@@ -36,7 +36,7 @@ public class FighterStateContext {
 	{
 		// Set initial states.
 		_groundState   = new GroundState.OnGroundState (this);
-		_actionState   = new ActionState.WalkState (this);
+		_actionState   = new ActionState.IdleState (this);
 		_cooldownState = new CooldownState.ReadyState (this);
 	}
 	

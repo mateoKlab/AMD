@@ -46,7 +46,7 @@ public class BattleEndExpController : Controller<Battle, BattleEndExpModel, Batt
 
 	IEnumerator ReturnToMainMenuCoroutine() {
 		app.GetComponentInChildren<Animator>().SetTrigger("HideScroll");
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1);
 		Application.LoadLevel("MainMenuScene");
 	}
 

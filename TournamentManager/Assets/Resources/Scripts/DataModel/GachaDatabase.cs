@@ -23,7 +23,10 @@ public class GachaDatabase {
 	// TODO: Implement readonly interface for data.
 	public ClassData GetRandomClass ()
 	{
-		Class randomClass = classPool [UnityEngine.Random.Range (0, classPool.Count)];
+//		Class randomClass = classPool [UnityEngine.Random.Range (0, classPool.Count)];
+
+		// TEST.
+		Class randomClass = Class.Warrior;
 
 		Debug.Log (randomClass.ToString ());
 

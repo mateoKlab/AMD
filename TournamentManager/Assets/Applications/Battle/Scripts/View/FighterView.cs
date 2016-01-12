@@ -25,6 +25,29 @@ public class FighterView : View {
 		fighterSprite.SetFighterSkin (skinData);
 	}
 
+	// TEMP.
+	public void SetSpriteColor ()
+	{
+		StartCoroutine ("ChangeColor");
+	}
+
+	IEnumerator ChangeColor ()
+	{
+		foreach (FighterSpriteAttachment spriteAttachment in fighterSprite.spriteAttachments) {
+			SpriteRenderer renderer = spriteAttachment.gameObject.GetComponent<SpriteRenderer> ();
+			renderer.color = new Color32 (200,100,100,255);
+		}
+
+		yield return new WaitForSeconds (0.1f);
+
+		foreach (FighterSpriteAttachment spriteAttachment in fighterSprite.spriteAttachments) {
+			SpriteRenderer renderer = spriteAttachment.gameObject.GetComponent<SpriteRenderer> ();
+			renderer.color = Color.white;
+		}
+	}
+
+
+
 	// Target Detection collider is set as trigger. 
 	// Physics layering prevents triggering for allied units.
 	void OnTriggerEnter2D (Collider2D other)

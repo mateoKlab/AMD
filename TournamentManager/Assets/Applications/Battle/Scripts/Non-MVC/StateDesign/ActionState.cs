@@ -85,7 +85,7 @@ public abstract class ActionState {
 		public override void Update ()
 		{
 			// TEST: attack animation names, don't match. Remove once fixed.
-			if ((animator.GetCurrentAnimatorStateInfo (0).IsName ("attack") || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack")) && animator.IsInTransition (0)) { //&& !animator.IsInTransition (0)) {
+			if ((animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack") || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack2")) && animator.IsInTransition (0)) { //&& !animator.IsInTransition (0)) {
 
 				if (stateContext.OnAttackEnded != null) {
 					stateContext.OnAttackEnded (attackData);

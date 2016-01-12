@@ -88,9 +88,9 @@ public static class GameDatabase {
 		_stageDatabase	   = LoadDatabase<StageDatabase> ();
 		_equipmentDatabase = LoadDatabase<Database<Equipment>> ();
 		_classDatabase 	   = LoadDatabase<ClassDatabase> ();
-
-		List<Equipment> testList = _equipmentDatabase.GetItems (Equipment.Type.Weapon.Sword, false);
-		Debug.Log (testList [0].spriteName);
+//
+//		List<Equipment> testList = _equipmentDatabase.GetItems (Equipment.Type.Weapon.Sword, false);
+//		Debug.Log (testList [0].spriteName);
 	}
 	
 	private static T LoadDatabase<T> ()

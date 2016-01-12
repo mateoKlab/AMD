@@ -5,7 +5,7 @@ using Bingo;
 
 public class FighterController : Controller
 {
-	private FighterStateContext state;
+	public FighterStateContext state;
 
 	// Use this for initialization
 	public virtual void Start () {
@@ -132,6 +132,7 @@ public class FighterController : Controller
 			Messenger.Send (EventTags.FIGHTER_KILLED, this.gameObject, attack.attackOrigin);
 		}
 
+		(view as FighterView).SetSpriteColor ();
 		// Edit: AJ (Test)
 		DamageManager.instance.ActivateDamageElement(transform.position, attack.damage, (model as FighterModel).allegiance == FighterAlliegiance.Ally);
 	}

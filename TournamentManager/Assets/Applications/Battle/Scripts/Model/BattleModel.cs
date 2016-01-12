@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Bingo;
 
 public class BattleModel : Model<Battle>
@@ -17,6 +18,10 @@ public class BattleModel : Model<Battle>
 	public PlayerData PlayerData;
 	public StageData currentStage;
 
+	[HideInInspector]
+	public List<GameObject> allies = new List<GameObject>();
+	[HideInInspector]
+	public List<GameObject> enemies = new List<GameObject>();
 
 	// Temporary.
 	void Start ()
