@@ -133,6 +133,8 @@ public class FighterController : Controller
 		}
 
 		(view as FighterView).SetSpriteColor ();
+		// Edit: AJ (Test)
+		DamageManager.instance.ActivateDamageElement(transform.position, attack.damage, (model as FighterModel).allegiance == FighterAlliegiance.Ally);
 	}
 
 	private void ReceiveKnockback (float knockback)
