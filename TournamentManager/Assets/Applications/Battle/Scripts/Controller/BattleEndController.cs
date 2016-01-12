@@ -46,7 +46,7 @@ public class BattleEndController : Controller <Battle, BattleEndModel, BattleEnd
 
 	IEnumerator ReturnToMainMenuCoroutine() {
 		app.GetComponentInChildren<Animator>().SetTrigger("FadeOut");
-		yield return new WaitForSeconds(0.3f);
+		yield return new WaitForSeconds(1);
 		Application.LoadLevel("MainMenuScene");
 	}
 	

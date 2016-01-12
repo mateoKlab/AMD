@@ -47,13 +47,13 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 	public void StartBattle ()
 	{
 		foreach (GameObject fighter in model.allies) {
-			FighterStateContext state = fighter.GetComponent<FighterStateContext> ();
+			FighterStateContext state = fighter.GetComponent<FighterController> ().state;
 
 			state.Walk ();
 		}
 
 		foreach (GameObject fighter in model.enemies) {
-			FighterStateContext state = fighter.GetComponent<FighterStateContext> ();
+			FighterStateContext state = fighter.GetComponent<FighterController> ().state;
 			
 			state.Walk ();
 		}

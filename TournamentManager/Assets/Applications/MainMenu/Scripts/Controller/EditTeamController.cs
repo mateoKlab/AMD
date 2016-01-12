@@ -67,7 +67,6 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
         app.controller.EnableMainMenuItems(true);
         gameObject.SetActive(false);
 
-		Debug.LogError ("Active Troops:" + model.activeTroops.Count);
     }
 
     private void SaveTeam()
