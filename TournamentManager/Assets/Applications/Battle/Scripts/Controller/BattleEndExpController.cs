@@ -41,7 +41,13 @@ public class BattleEndExpController : Controller<Battle, BattleEndExpModel, Batt
 
     public void OnReturnToMainMenu(params object[] args)
     {
-        Application.LoadLevel("MainMenuScene");
+		StartCoroutine(ReturnToMainMenuCoroutine());
     }
+
+	IEnumerator ReturnToMainMenuCoroutine() {
+		app.GetComponentInChildren<Animator>().SetTrigger("HideScroll");
+		yield return new WaitForSeconds(1);
+		Application.LoadLevel("MainMenuScene");
+	}
 
 }           
