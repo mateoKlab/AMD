@@ -21,7 +21,7 @@ public class PlayerData
 		}
 		set {
 			_gold = value;
-			Save ();
+//			 Save ();
 		}
 	}
 	
@@ -33,7 +33,7 @@ public class PlayerData
 		}
 		set {
 			_diamonds = value;
-			Save ();
+//			Save ();
 		}
 	}
 	#endregion
@@ -125,6 +125,7 @@ public class PlayerData
 
     public static PlayerData Load()
     {
+		Debug.Log ("Loading...");
 		return XmlHelper.Load<PlayerData> ("PlayerData");;
 	}
 	#endregion

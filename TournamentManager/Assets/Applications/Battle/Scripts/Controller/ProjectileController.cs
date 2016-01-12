@@ -39,7 +39,7 @@ public class ProjectileController : Controller
 
 	public void OnHitEnemy (GameObject enemy)
 	{
-		((BattleController)app.controller).OnRangedAttack ((model as ProjectileModel).attackData, enemy);
+		((BattleController)app.controller).OnProjectileHit ((model as ProjectileModel).attackData, enemy);
 
 		if (OnDestroyProjectile != null) {
 			OnDestroyProjectile (gameObject);

@@ -131,6 +131,8 @@ public class FighterController : Controller
 		if ((model as FighterModel).fighterData.HP <= 0) {
 			Messenger.Send (EventTags.FIGHTER_KILLED, this.gameObject, attack.attackOrigin);
 		}
+
+		(view as FighterView).SetSpriteColor ();
 	}
 
 	private void ReceiveKnockback (float knockback)

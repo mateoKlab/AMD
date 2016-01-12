@@ -22,17 +22,19 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 	public GameObject archerFighterPrefab;
 	public GameObject mageFighterPrefab;
 
-    [HideInInspector]
-    public List<GameObject>
-        allies = new List<GameObject>();
-    [HideInInspector]
-    public List<GameObject>
-        enemies = new List<GameObject>();
+	private Dictionary<Class, GameObject> prefabs = new Dictionary<Class, GameObject> ();
+
+	private Vector3 alliedStartingPos = new Vector3 (-5f, -1f, -1f);
+	private Vector3 enemyStartingPos = new Vector3 (5f, -1f, -1f);
 
     void Start()
     {
         Messenger.AddListener(EventTags.FIGHTER_KILLED, FighterKilled);
         Messenger.AddListener(EventTags.END_SCREEN_EXP, OnEndScreenExp);
+
+		prefabs.Add (Class.Warrior, meleeFighterPrefab);
+		prefabs.Add (Class.Mage, mageFighterPrefab);
+		prefabs.Add (Class.Archer, archerFighterPrefab);
     }
 
     void OnDestroy()
@@ -41,6 +43,50 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
         Messenger.RemoveListener(EventTags.END_SCREEN_EXP, OnEndScreenExp);
     }
 
+
+	public void StartBattle ()
+	{
+		foreach (GameObject fighter in model.allies) {
+			FighterStateContext state = fighter.GetComponent<FighterStateContext> ();
+
+			state.Walk ();
+		}
+
+		foreach (GameObject fighter in model.enemies) {
+			FighterStateContext state = fighter.GetComponent<FighterStateContext> ();
+			
+			state.Walk ();
+		}
+	}
+
+	public void SpawnFighters()
+	{
+		GameObject newFighter = null;
+		StageData currentStage = GameData.instance.currentStage;
+		
+		foreach (FighterData fighter in GameData.instance.GetActiveParty())
+		{
+			newFighter = SpawnFighter(fighter, FighterAlliegiance.Ally);
+		}
+		
+		foreach (FighterData fighter in currentStage.enemies)
+		{
+			newFighter = SpawnFighter(fighter, FighterAlliegiance.Enemy);
+		}
+
+		battleMenuController.SetFighters(model.allies);
+		SetBackgroundImage(currentStage);
+	}
+
+	public void SetBackgroundImage (StageData sData)
+	{
+		if (sData.stageType == StageType.Mission) 
+		{
+			view.backgroundImage.sprite = Resources.Load("Sprites/StageBackgrounds/" + sData.name.Split(' ')[0], typeof(Sprite)) as Sprite; 
+		}
+	}
+
+	#region Events
     // Called when a Fighter is killed.
     // args[0]: typeof:GameObject  desc: The fighter killed.
     // args[1]: typeof:GameObject  desc: The attacker.
@@ -52,16 +98,16 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 
         if (defender.GetComponent<FighterModel>().allegiance == FighterAlliegiance.Ally)
         {
-            allies.Remove(defender);
+            model.allies.Remove(defender);
         }
         else
         {
-            enemies.Remove(defender);
+            model.enemies.Remove(defender);
         }
 
         // TODO: Give XP to attacker.
 
-        if (enemies.Count == 0)
+        if (model.enemies.Count == 0)
         {
 			battleEndController.ShowBattleEndPopUp(true);
 
@@ -72,7 +118,7 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 
             //Application.LoadLevel("MainMenuScene");
         }
-        else if (allies.Count == 0)
+		else if (model.allies.Count == 0)
         {
             // TODO: Apply injuries, etc.
 
@@ -82,87 +128,52 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
         // TODO: pooling
         Destroy(defender);
     }
-			                     
-    public void SpawnFighters()
-    {
-        GameObject newFighter;
 
-        // TEST spawn positions. TODO: positioning code.
-        Vector3 startPos = new Vector3(-2f, -1f, -1f);
-        
-        foreach (FighterData fighter in GameData.instance.GetActiveParty())
-        {
-            if (fighter == null) {
-                continue;
-			}
-
-            newFighter = SpawnFighter(fighter, FighterAlliegiance.Ally);
-
-            startPos = new Vector3(startPos.x - 1f, - 1f, newFighter.transform.position.z);
-			newFighter.transform.position = startPos;
-        }
-
-        startPos = new Vector3(2f, -1f, -1f);
-
-        StageData currentStage = GameData.instance.currentStage;
-        foreach (FighterData fighter in currentStage.enemies)
-        {
-            newFighter = SpawnFighter(fighter, FighterAlliegiance.Enemy);
-
-			startPos = new Vector3(startPos.x + 1f, -1f, newFighter.transform.position.z);
-			newFighter.transform.position = startPos;
-        }
-
-
-        battleMenuController.SetFighters(allies);
-		SetBackgroundImage(currentStage);
-    }
-
-	public void SetBackgroundImage(StageData sData) {
-		if (sData.stageType == StageType.Mission) 
-		{
-			view.backgroundImage.sprite = Resources.Load("Sprites/StageBackgrounds/" + sData.name.Split(' ')[0], typeof(Sprite)) as Sprite; 
-		}
-	}
-
-    public void OnRangedAttack(Attack attackData, GameObject defender)
-    {
+	public void OnProjectileHit (Attack attackData, GameObject defender)
+	{
 		FighterController attackingUnit = ((FighterController) attackData.attackOrigin.GetComponent<FighterController>());
-
+		
 		// Check if the defending unit is still alive. (Attacks may land at the same time).
 		if (defender != null) {
 			FighterController defendingUnit = ((FighterController)defender.GetComponent<FighterController> ());
-		
+			
 			defendingUnit.OnReceiveAttack (attackData);
 		}
-    }
-
-	public void OnMeleeAttack(Attack attackData)
+	}
+	
+	public void OnMeleeAttack (Attack attackData)
 	{
 		if (attackData == null) {
 			Debug.Log ("NULL ATTACK DATA");
 		}
-
+		
 		FighterController attackingUnit = ((FighterController) attackData.attackOrigin.GetComponent<FighterController>());
 		FighterController targetUnit    = ((FighterController) attackData.attackTarget.GetComponent<FighterController>());
-
+		
 		// Check if the defending unit is still alive.
 		if (targetUnit.gameObject != null) {
-
+			
 			targetUnit.OnReceiveAttack (attackData);
 		}
 	}
-
+	
 	public void OnRangedAttack(Attack attackData)
 	{
 		GameObject newProjectile = ProjectileManager.instance.GetProjectile(attackData, ProjectileType.Fireball); // Type = Temporary.
 		newProjectile.transform.position = attackData.attackOrigin.transform.position;
-    }
+	}
+	
+	public void OnBackButtonClicked()
+	{
+		Application.LoadLevel("MainMenuScene");
+	}
 
-    public void OnBackButtonClicked()
-    {
-        Application.LoadLevel("MainMenuScene");
-    }
+	public void OnEndScreenExp(params object[] args)
+	{
+		battleEndExpController.Show();
+	}
+	#endregion
+
 
 	// TODO: clean up. encapsulate.
     private GameObject SpawnFighter(FighterData fighterData, FighterAlliegiance allegiance)
@@ -170,18 +181,7 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
         GameObject newFighter;
 
         // Instantiate prefab with appropriate behavior. (Melee Fighter Controller/Ranged Fighter Controller)
-        if (fighterData.fighterClass == Class.Archer)
-        {
-            newFighter = Instantiate(archerFighterPrefab);
-		}
-		else if(fighterData.fighterClass == Class.Mage)
-		{
-			newFighter = Instantiate(mageFighterPrefab);
-		}
-        else
-        {
-            newFighter = Instantiate(meleeFighterPrefab);
-        }
+		newFighter = Instantiate (prefabs [fighterData.fighterClass]);
 
         FighterModel fighterModel = newFighter.GetComponent <FighterModel>();
         fighterModel.fighterData = fighterData;
@@ -190,27 +190,13 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 		// Set currentHP back to max value.
 		fighterModel.fighterData.HP = fighterModel.fighterData.maxHP;
 
-		// TEMP. Increase/Decrease box collider height to offset sprite positions.
-
-		float randomOffset = Mathf.Round((UnityEngine.Random.Range (0.5f, 1.7f)) * 100f) / 100f; // Random float round off to 2 decimal place.
-
-
-		BoxCollider2D collider = newFighter.GetComponent <BoxCollider2D> ();
-		collider.size = new Vector2 (collider.size.x, randomOffset);
-
-		Vector3 tempPosition = newFighter.transform.position;
-		tempPosition.z = randomOffset * 10f;
-		newFighter.transform.position = tempPosition;
-
-//		Debug.Log ("RANDOM OFFSET: " + randomOffset.ToString ());
-
         if (allegiance == FighterAlliegiance.Ally)
         {
-            allies.Add(newFighter);
+            model.allies.Add(newFighter);
         }
         else
         {
-            enemies.Add(newFighter);
+            model.enemies.Add(newFighter);
 
 			// Set layer of object (rigidBody) and child (trigger collider) to "EnemyUnits".
             newFighter.layer = LayerMask.NameToLayer("EnemyUnits");
@@ -222,15 +208,43 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 			newFighter.transform.localScale = tempScale;
         }
 
-//		newFighter.GetComponent <FighterController> ().SetFighterSkin ();
+		// TEMP. Increase/Decrease box collider height to offset sprite positions.
+		SetOffset (newFighter);
+		SetStartingPosition (newFighter);
+
+
         newFighter.SetActive(true);
 
         return newFighter;
     }
 
-    public void OnEndScreenExp(params object[] args)
-    {
-        battleEndExpController.Show();
-    }
+	private void SetStartingPosition (GameObject fighter)
+	{
+	
+		FighterAlliegiance allegiance = fighter.GetComponent<FighterModel> ().allegiance;
+
+		if (allegiance == FighterAlliegiance.Ally) {
+			int index = model.allies.IndexOf (fighter);
+
+			fighter.transform.position = new Vector3 (alliedStartingPos.x + (0.8f * index), -1f, fighter.transform.position.z);
+
+		} else {
+			int index = model.enemies.IndexOf (fighter);
+
+			fighter.transform.position = new Vector3 (enemyStartingPos.x - (0.8f * index), -1f, fighter.transform.position.z);
+		}
+	}
+
+	private void SetOffset (GameObject fighter)
+	{
+		float randomOffset = Mathf.Round((UnityEngine.Random.Range (0.5f, 1.7f)) * 100f) / 100f; // Random float round off to 2 decimal place.
+		
+		BoxCollider2D collider = fighter.GetComponent <BoxCollider2D> ();
+		collider.size = new Vector2 (collider.size.x, randomOffset);
+		
+		Vector3 tempPosition = fighter.transform.position;
+		tempPosition.z = randomOffset * 10f;
+		fighter.transform.position = tempPosition;
+	}
 }
 

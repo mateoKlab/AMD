@@ -12,12 +12,13 @@ public class FighterSpriteController : MonoBehaviour {
 	{
 		Sprite newSprite;
 
-		foreach (FighterSpriteAttachment attachment in spriteAttachments) {
 
-			if (skinData.ContainsKey (attachment.type)) {
-				newSprite = Resources.Load ("Sprites/UnitSprites/" + attachment.type.ToString() + "/" + skinData[attachment.type].ToString(), typeof(Sprite)) as Sprite;
-				attachment.GetComponent <SpriteRenderer> ().sprite = newSprite;
-			}
-		}
+//		foreach (FighterSpriteAttachment attachment in spriteAttachments) {
+//
+//			if (skinData.ContainsKey (attachment.type)) {
+//				newSprite = Resources.Load ("Sprites/UnitSprites/" + attachment.type.ToString() + "/" + skinData[attachment.type].ToString(), typeof(Sprite)) as Sprite;
+//				attachment.GetComponent <SpriteRenderer> ().sprite = newSprite;
+//			}
+//		}
 	}
 }

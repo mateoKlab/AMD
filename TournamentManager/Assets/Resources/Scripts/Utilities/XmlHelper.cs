@@ -12,29 +12,30 @@ public static class XmlHelper {
 	public static void Save<T> (object obj, string filename)
 	{
 		XmlSerializer xmls = new XmlSerializer(typeof(T));
+//		
+//		#if UNITY_EDITOR || UNITY_IOS
+//		using(StringWriter sww = new StringWriter())
+//			using(XmlWriter writer = XmlWriter.Create(sww))
+//		{
+//			xmls.Serialize(writer, obj);
+//			
+//			// Using XmlDocument guarantees a properly formatted xml file.
+//			XmlDocument xdoc = new XmlDocument();
+//			xdoc.LoadXml(sww.ToString());
+//
+//			xdoc.Save(Application.dataPath + "/Resources/Data/" + filename + ".xml");
+//		}
 		
-		#if UNITY_EDITOR || UNITY_IOS
-		using(StringWriter sww = new StringWriter())
-			using(XmlWriter writer = XmlWriter.Create(sww))
-		{
-			xmls.Serialize(writer, obj);
-			
-			// Using XmlDocument guarantees a properly formatted xml file.
-			XmlDocument xdoc = new XmlDocument();
-			xdoc.LoadXml(sww.ToString());
+//		#elif UNITY_ANDROID
+		string filePath = GetPath (filename + ".xml"); // typeof (T).ToString () + ".xml");
 
-			xdoc.Save(Application.dataPath + "/Resources/Data/" + filename + ".xml");
-		}
-		
-		#elif UNITY_ANDROID
-		string filePath = GetPath("typeof (T).ToString ()" + Database.xml");
 		using (var stream = System.IO.File.CreateText(filePath))
 		{
-			xmls.Serialize(stream, this);
+			xmls.Serialize(stream, obj);
 			stream.Close();
 		}
-		#endif
-		
+//		#endif
+
 		#if UNITY_EDITOR
 		AssetDatabase.Refresh();
 		#endif
@@ -42,32 +43,41 @@ public static class XmlHelper {
 	
 	public static T Load<T> (string filename) where T : new ()
 	{
+
 		XmlSerializer ser = new XmlSerializer(typeof(T));
 
-        #if UNITY_EDITOR || UNITY_IOS
-        TextAsset textAsset = Resources.Load("Data/" + filename) as TextAsset;
-        System.IO.StringReader stringReader;
-		
-        if (textAsset == null)
-        {
-            Debug.Log("File not found. Returning default values...");
-            return new T ();
-        }
-        else
-        {
-            stringReader = new System.IO.StringReader(textAsset.text);
-            using (XmlReader reader = XmlReader.Create(stringReader))
-            {
-                return (T) ser.Deserialize(reader);
-            }
-        }
-        #elif UNITY_ANDROID
+//        #if UNITY_EDITOR || UNITY_IOS
+//        TextAsset textAsset = Resources.Load("Data/" + filename) as TextAsset;
+//        System.IO.StringReader stringReader;
+//		
+//        if (textAsset == null)
+//        {
+//            Debug.Log("File not found. Returning default values...");
+//            return new T ();
+//        }
+//        else
+//        {
+//            stringReader = new System.IO.StringReader(textAsset.text);
+//            using (XmlReader reader = XmlReader.Create(stringReader))
+//            {
+//                return (T) ser.Deserialize(reader);
+//            }
+//        }
+//        #elif UNITY_ANDROID
+
+		XmlReaderSettings settings = new XmlReaderSettings ();
+		settings.CloseInput = true;
+
         string filePath = GetPath(filename + ".xml");
+
         if (System.IO.File.Exists(filePath))
         {
-            using (XmlReader reader = XmlReader.Create(filePath))
+            using (XmlReader reader = XmlReader.Create(filePath, settings))
             {
-                return (T) ser.Deserialize(reader);
+				var t = (T) ser.Deserialize(reader);
+				reader.Close ();
+
+				return t;
             }
         }
         else
@@ -75,7 +85,7 @@ public static class XmlHelper {
             Debug.Log("No Player save file found. Returning default values...");
             return new T ();
         }
-        #endif
+//        #endif
 
 	}
 
