@@ -4,18 +4,18 @@ using Bingo;
 
 public class ArmoryItemController : Controller <MainMenu, ArmoryItemModel, ArmoryItemView>
 {
-	public void DisplayArmoryItem(Equipment item, string type) {
+	public void DisplayArmoryItem (Equipment item, string type) {
 
 		model.currentEquipment = item;
 
-		view.itemSprite.texture = Resources.Load("Sprites/UnitSprites/" + type + "/" + item.spriteName) as Texture;
-
-		if (GameData.instance.playerData.unlockedEquipment.Contains (item.id)) 
-		{
-			view.itemSprite.color = Color.white;
-			view.itemLabel.text = item.name;
-			view.diamondsIcon.SetActive(false);
-		}
+//		view.itemSprite.texture = Resources.Load("Sprites/UnitSprites/" + type + "/" + item.sprites [0].spriteName) as Texture;
+//
+//		if (GameData.instance.playerData.unlockedEquipment.Contains (item.id)) 
+//		{
+//			view.itemSprite.color = Color.white;
+//			view.itemLabel.text = item.name;
+//			view.diamondsIcon.SetActive(false);
+//		}
 	}
 
 	public void UnlockItem() {
@@ -29,8 +29,8 @@ public class ArmoryItemController : Controller <MainMenu, ArmoryItemModel, Armor
 		GameData.instance.playerData.diamonds -= cost;
 		app.view.headerView.UpdateDiamondsValue();
 		
-		view.itemSprite.color = Color.white;
-		view.itemLabel.text = model.currentEquipment.name;
-		view.diamondsIcon.SetActive(false);
+//		view.itemSprite.color = Color.white;
+//		view.itemLabel.text = model.currentEquipment.name;
+//		view.diamondsIcon.SetActive(false);
 	}
 }

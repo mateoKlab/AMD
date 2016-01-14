@@ -72,10 +72,6 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 
     private void SaveTeam()
     {
-        for(int i = 0; i < model.activeTroops.Count; i++)
-        {
-            gameData.SetFighterOnActiveParty(model.activeTroops[i], i);
-        }
         gameData.SavePlayerData();
     }
 

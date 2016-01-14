@@ -5,8 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public static class EquipmentDatabase
+
+public class EquipmentDatabase : SerializableDictionary<string,
+										SerializableDictionary<string, Equipment>>
 { 
-
+	// TODO: STUFF.
 }
-

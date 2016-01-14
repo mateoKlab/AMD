@@ -58,7 +58,8 @@ public class GachaView : View
 			}
 			else
 			{
-				gachaSprites[i].characterSprite.SetActive(false);
+
+//				gachaSprites[i].characterSprite.SetActive(false);
 			}
 		}
 	}

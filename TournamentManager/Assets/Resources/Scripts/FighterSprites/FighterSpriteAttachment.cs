@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FighterSpriteAttachment : MonoBehaviour {
+[System.Serializable]
+public class FighterSpriteAttachment {
 
 	// FighterSpriteAttachment.Type
 	public enum AttachmentType {
@@ -27,5 +28,6 @@ public class FighterSpriteAttachment : MonoBehaviour {
 
 	}
 
-	public AttachmentType type;	
+	public AttachmentType type;
+	public GameObject gameObject;
 }

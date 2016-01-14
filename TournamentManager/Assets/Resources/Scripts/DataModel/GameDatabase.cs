@@ -18,7 +18,7 @@ public static class GameDatabase {
 	private static StageDatabase _stageDatabase;
 
 	// List of Equipment available for each type.
-	private static Database<Equipment> _equipmentDatabase;
+	private static EquipmentDatabase _equipmentDatabase;
 
 	private static GachaDatabase _gachaDatabase;
 
@@ -47,11 +47,11 @@ public static class GameDatabase {
 		}
 	}
 
-	public static Database<Equipment> equipmentDatabase 
+	public static EquipmentDatabase equipmentDatabase 
 	{
 		get {
 			if (_equipmentDatabase == null) {
-				_equipmentDatabase = LoadDatabase<Database<Equipment>> ();
+				_equipmentDatabase = LoadDatabase<EquipmentDatabase> ();
 			}
 			
 			return _equipmentDatabase; 
@@ -83,14 +83,42 @@ public static class GameDatabase {
 	
 	public static void LoadGameDatabase ()
 	{
+		Debug.Log ("WOW");
 		// Initialize here.
 		_spriteDatabase    = LoadDatabase<SpriteDatabase> ();
 		_stageDatabase	   = LoadDatabase<StageDatabase> ();
-		_equipmentDatabase = LoadDatabase<Database<Equipment>> ();
+		_equipmentDatabase = LoadDatabase<EquipmentDatabase> ();
 		_classDatabase 	   = LoadDatabase<ClassDatabase> ();
+
+
+//		Equipment sword = new Equipment ();
+//		sword.attack = 10;
+//		sword.defense = 0;
+//		sword.hp = 0;
+//		sword.id = "Sword";
+//		sword.name = "cool sword";
+//		sword.sprites = new List<EquipmentSprite> ();
+//		sword.sprites.Add (new EquipmentSprite { attachmentType = "Sword", spriteName = "Sword" });
 //
-//		List<Equipment> testList = _equipmentDatabase.GetItems (Equipment.Type.Weapon.Sword, false);
-//		Debug.Log (testList [0].spriteName);
+//		Equipment helm = new Equipment ();
+//		helm.attack = 0;
+//		helm.defense = 10;
+//		helm.hp = 100;
+//		helm.id = "Helm";
+//		helm.name = "cool helm";
+//		helm.sprites = new List<EquipmentSprite> ();
+//		helm.sprites.Add (new EquipmentSprite { attachmentType = "Helm", spriteName = "Helm" });
+//
+//		SerializableDictionary<string, Equipment> swordDic = new SerializableDictionary<string, Equipment> ();
+//		swordDic.Add (sword.id, sword);
+//
+//		SerializableDictionary<string, Equipment> helmDic = new SerializableDictionary<string, Equipment> ();
+//		helmDic.Add (helm.id, helm);
+//
+//		_equipmentDatabase.Add ("Sword", swordDic);
+//		_equipmentDatabase.Add ("Helm", helmDic);
+//
+//		XmlHelper.Save<EquipmentDatabase> (_equipmentDatabase, "EquipmentDatabase");
 	}
 	
 	private static T LoadDatabase<T> ()
