@@ -42,7 +42,7 @@ public class MainMenuController : Controller<MainMenu>
     {
         base.Awake();
 
-        Messenger.AddListener(MainMenuEvents.START_BATTLE, GoToBattleScene);
+        //Messenger.AddListener(MainMenuEvents.START_BATTLE, GoToBattleScene);
         Messenger.AddListener(MainMenuEvents.CLOSE_POPUP, ClosePopUp);
 		Messenger.AddListener(MainMenuEvents.SHOW_MENU, ShowMenu);
 		Messenger.AddListener(MainMenuEvents.HIDE_MENU, HideMenu);
@@ -69,9 +69,18 @@ public class MainMenuController : Controller<MainMenu>
 
     public void GoToBattleScene(params object[] args)
     {
-        Application.LoadLevel("BattleScene");
+		StartCoroutine(TransitionToBattleSceneCoroutine());
     }
     
+	IEnumerator TransitionToBattleSceneCoroutine() {
+		((MainMenuView)view).fadeMask.gameObject.SetActive(true);
+		yield return new WaitForSeconds(1f);
+		GetComponentInChildren<Animator>().SetTrigger("TransitionOut");
+		yield return new WaitForSeconds(1f);
+
+		Application.LoadLevel("BattleScene");
+	}
+
     public void ShowStablePopUp(params object[] args)
     {
 		HideMenu();

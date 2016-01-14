@@ -41,9 +41,15 @@ public class BattleEndController : Controller <Battle, BattleEndModel, BattleEnd
 
 	public void ReturnToMainMenu() 
 	{
-		Application.LoadLevel("MainMenuScene");
+		StartCoroutine(ReturnToMainMenuCoroutine());
 	}
 
+	IEnumerator ReturnToMainMenuCoroutine() {
+		app.GetComponentInChildren<Animator>().SetTrigger("FadeOut");
+		yield return new WaitForSeconds(1);
+		Application.LoadLevel("MainMenuScene");
+	}
+	
 	IEnumerator LerpRewardValuesCoroutine() {
 		isLerping = true;
 		yield return new WaitForSeconds(1);
@@ -51,12 +57,12 @@ public class BattleEndController : Controller <Battle, BattleEndModel, BattleEnd
 		int tempExp = 0;
 		float time = 0;
 	
-		while((tempGold < model.gold || tempExp < model.exp) && isLerping && time < 2) {
+		while((tempGold < model.gold || tempExp < model.exp) && isLerping && time < 1f) {
 			if (tempGold < model.gold) {
-				tempGold += model.gold/100;
+				tempGold += model.gold/50;
 			}
 			if (tempExp < model.exp) {
-				tempExp += model.gold/100;
+				tempExp += model.gold/50;
 			}
 			view.goldValue.text = tempGold.ToString();
 			view.expValue.text = tempExp.ToString();

@@ -23,11 +23,11 @@ public class HeaderView : View
 
 	public void UpdateGoldValue() 
 	{
-		goldLabel.text = "GOLD: " + GameData.instance.playerData.gold;
+		goldLabel.text = "Gold: " + GameData.instance.playerData.gold;
 	}
 
 	public void UpdateDiamondsValue() 
 	{
-		diamondsLabel.text = "DIAMONDS: " + GameData.instance.playerData.diamonds;
+		diamondsLabel.text = "Diamonds: " + GameData.instance.playerData.diamonds;
 	}
 }

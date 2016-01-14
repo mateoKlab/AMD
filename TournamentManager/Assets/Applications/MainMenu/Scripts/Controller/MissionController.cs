@@ -23,8 +23,10 @@ public class MissionController : Controller <MainMenu, MissionModel, MissionView
 
 	
 	public void StartMissionMatch() {
+		GetComponent<Animator>().SetTrigger("TransitionToBattle");
 		GameData.instance.currentStage =  currentMissionPoint.missionPointData;
-		Messenger.Send(MainMenuEvents.START_BATTLE, currentMissionPoint.missionPointData.id);
+		//Messenger.Send(MainMenuEvents.START_BATTLE, currentMissionPoint.missionPointData.id);
+		app.controller.GoToBattleScene();
 	}
 
 	public void TransitionOut() {

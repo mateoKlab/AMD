@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Bingo;
+using UnityEngine.UI;
 
 public class MainMenuView : View<MainMenu>
 {
@@ -39,6 +40,7 @@ public class MainMenuView : View<MainMenu>
     //////// END MVCCodeEditor GENERATED CODE ////////
     
 	public bool isShowingGachaPopUp;
+	public RawImage fadeMask;
 
 	public void OnClickBattleButton() {
 		((MainMenuController)controller).GoToBattleScene();

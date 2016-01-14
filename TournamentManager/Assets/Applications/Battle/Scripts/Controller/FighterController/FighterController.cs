@@ -6,7 +6,7 @@ using Bingo;
 
 public class FighterController : Controller
 {
-	private FighterStateContext state;
+	public FighterStateContext state;
 
 	// Use this for initialization
 	public virtual void Start () {

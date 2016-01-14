@@ -27,7 +27,8 @@ public class TournamentController : Controller <MainMenu, TournamentModel, Tourn
 	}
 
 	public void StartTournamentMatch() {
-		Messenger.Send(MainMenuEvents.START_BATTLE, GameData.instance.currentStage.id);
+		app.controller.GoToBattleScene(GameData.instance.currentStage.id);
+		//Messenger.Send(MainMenuEvents.START_BATTLE, GameData.instance.currentStage.id);
 	}
 
 	public void TransitionOut() {

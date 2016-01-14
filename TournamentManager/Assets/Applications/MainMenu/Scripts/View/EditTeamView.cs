@@ -21,8 +21,6 @@ public class EditTeamView : View
 
 	public void SetCost(int cost, int capacity)
 	{
-
-		Debug.LogError (capacity);
 		teamCostLabel.text = cost + " / " + capacity;
 		teamSlotsLabel.text = (GameData.instance.playerData.currentParty.fighters.Count + " / " + GameData.MAX_ACTIVE_FIGHTERS);
 
