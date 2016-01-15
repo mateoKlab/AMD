@@ -26,17 +26,18 @@ public class TournamentView : View
 	}
 
 	public void OnClickCloseButton() {
+		SoundManager.instance.PlayUISFX("Audio/SFX/Button1");
 		((TournamentController)controller).TransitionOut();
 	}
 
-	public void OnClickTournamentButton(string id) {
-		GameData.instance.currentStage = ((TournamentModel)model).tournamentMatchDictionary[id];
-		((TournamentController)controller).GoToBattleScene();
-	}
+//	public void OnClickTournamentButton(string id) {
+//		GameData.instance.currentStage = ((TournamentModel)model).tournamentMatchDictionary[id];
+//		((TournamentController)controller).GoToBattleScene();
+//	}
 
-	public void OnClickCloseStageDetails() {
-		((TournamentController)controller).CloseStageDetails();
-	}
+//	public void OnClickCloseStageDetails() {
+//		((TournamentController)controller).CloseStageDetails();
+//	}
 
 	public void OnClickStartTournamentMatchButton() {
 		((TournamentController)controller).StartTournamentMatch();

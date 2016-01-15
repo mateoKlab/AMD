@@ -38,16 +38,23 @@ public class MainMenuController : Controller<MainMenu>
     
     //////// END MVCCodeEditor GENERATED CODE ////////
 
+	private bool menuOn = false;
+
     public override void Awake()
     {
         base.Awake();
 
         //Messenger.AddListener(MainMenuEvents.START_BATTLE, GoToBattleScene);
         Messenger.AddListener(MainMenuEvents.CLOSE_POPUP, ClosePopUp);
-		Messenger.AddListener(MainMenuEvents.SHOW_MENU, ShowMenu);
-		Messenger.AddListener(MainMenuEvents.HIDE_MENU, HideMenu);
+		//Messenger.AddListener(MainMenuEvents.SHOW_MENU, ShowMenu);
+		//Messenger.AddListener(MainMenuEvents.HIDE_MENU, HideMenu);
+
     }
-	
+
+	public void Start() {
+		SoundManager.instance.PlayBGM("Audio/BGM/SampleBGM");
+	}
+
 	public void Update() {
 		if(Input.GetMouseButtonDown(0))
 		{
@@ -73,6 +80,8 @@ public class MainMenuController : Controller<MainMenu>
     }
     
 	IEnumerator TransitionToBattleSceneCoroutine() {
+		SoundManager.instance.FadeOutBGM(0.1f);
+		SoundManager.instance.PlaySFX("Audio/SFX/Drums/Drum3");
 		((MainMenuView)view).fadeMask.gameObject.SetActive(true);
 		yield return new WaitForSeconds(1f);
 		GetComponentInChildren<Animator>().SetTrigger("TransitionOut");
@@ -89,19 +98,31 @@ public class MainMenuController : Controller<MainMenu>
 
 	public void ShowMenu(params object[] args)
 	{
-		footerController.GetComponent<Animator>().ResetTrigger("HideMenu");
-		footerController.GetComponent<Animator>().SetTrigger("ShowMenu");
+		if(!menuOn) {
+			menuOn = true;
+			SoundManager.instance.PlayUISFX("Audio/SFX/Button1");
+			footerController.GetComponent<Animator>().ResetTrigger("HideMenu");
+			footerController.GetComponent<Animator>().SetTrigger("ShowMenu");
+		}
+
 	}
 
 	public void HideMenu(params object[] args)
 	{
-		footerController.GetComponent<Animator>().ResetTrigger("ShowMenu");
-		footerController.GetComponent<Animator>().SetTrigger("HideMenu");
+		if (menuOn) 
+		{
+			menuOn = false;
+			SoundManager.instance.PlaySFX("Audio/SFX/Card_Flip");
+			footerController.GetComponent<Animator>().ResetTrigger("ShowMenu");
+			footerController.GetComponent<Animator>().SetTrigger("HideMenu");
+		}
+	
 	}
 
     public void ShowTournamentPopUp(params object[] args)
     {
         //footerController.DisableButtons();
+		SoundManager.instance.PlayUISFX("Audio/SFX/Button2");
         GetComponent<MainMenuView>().tournamentView.gameObject.SetActive(true);
 		app.controller.tournamentController.GetComponent<Animator>().SetTrigger("TransitionIn");
     }
@@ -153,5 +174,7 @@ public class MainMenuController : Controller<MainMenu>
         popUp.SetActive(false);
         EnableMainMenuItems(true);
     }
+
+
 }
 

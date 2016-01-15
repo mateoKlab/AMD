@@ -19,12 +19,18 @@ public class BattleEndController : Controller <Battle, BattleEndModel, BattleEnd
 
 		if (didWin) 
 		{
+			//SoundManager.instance.FadeOutBGM(0.1f);
+			SoundManager.instance.StopBGM();
+			//SoundManager.instance.PlayUISFX("Audio/SFX/Gong");
+
 			view.headerLabel.text = "VICTORY";
 			GetComponent<Animator>().SetTrigger("WinTransitionIn");
 			StartCoroutine(LerpRewardValuesCoroutine());
 		}
 		else
 		{
+			SoundManager.instance.FadeOutBGM(0.1f);
+			SoundManager.instance.PlayUISFX("Audio/SFX/Drums/Drum2");
 			view.headerLabel.text = "DEFEAT";
 			GetComponent<Animator>().SetTrigger("LoseTransitionIn");
 			model.gold = 0;
@@ -68,16 +74,29 @@ public class BattleEndController : Controller <Battle, BattleEndModel, BattleEnd
 			view.expValue.text = tempExp.ToString();
 	
 			time += Time.fixedDeltaTime;
+			SoundManager.instance.PlaySFX("Audio/SFX/Cash");
 			yield return new WaitForSeconds(Time.fixedDeltaTime);
 		}
 
 		view.goldValue.text = model.gold.ToString();
 		view.expValue.text = model.exp.ToString();
 		view.continueButton.SetActive(true);
-		iTween.PunchScale(view.continueButton, Vector3.one * 1.2f, 0.7f);
-
+		iTween.PunchScale(view.continueButton, Vector3.one * 1.1f, 0.7f);
+		yield return new WaitForSeconds(0.3f);
+		SoundManager.instance.PlayUISFX("Audio/SFX/Card_Flip");
 	
 		GameData.instance.playerData.gold += model.gold;
 		GameData.instance.SavePlayerData();
+	}
+
+	public void PlayBGMEvent() {
+		SoundManager.instance.PlayBGM("Audio/BGM/WinTheme");
+	}
+
+	public void PlaySFXEvent(string sfxName) {
+		SoundManager.instance.PlaySFX("Audio/SFX/" + sfxName);
+	}
+	public void PlayUISFXEvent(string sfxName) {
+		SoundManager.instance.PlayUISFX("Audio/SFX/" + sfxName);
 	}
 }
