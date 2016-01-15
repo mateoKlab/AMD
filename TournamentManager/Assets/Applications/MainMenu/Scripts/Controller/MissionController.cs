@@ -23,6 +23,7 @@ public class MissionController : Controller <MainMenu, MissionModel, MissionView
 
 	
 	public void StartMissionMatch() {
+		SoundManager.instance.PlayUISFX("Audio/SFX/Button1");
 		GetComponent<Animator>().SetTrigger("TransitionToBattle");
 		GameData.instance.currentStage =  currentMissionPoint.missionPointData;
 		//Messenger.Send(MainMenuEvents.START_BATTLE, currentMissionPoint.missionPointData.id);
@@ -34,8 +35,15 @@ public class MissionController : Controller <MainMenu, MissionModel, MissionView
 	}
 
 	IEnumerator TransitionOutCoroutine() {
+		SoundManager.instance.PlayUISFX("Audio/SFX/Button1");
 		GetComponent<Animator>().SetTrigger("TransitionOut");
 		yield return new WaitForSeconds(1);
 		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
 	}
+
+	public void PlaySFXEvent(string sfxName) {
+		SoundManager.instance.PlaySFX("Audio/SFX/" + sfxName);
+	}
+
+
 }

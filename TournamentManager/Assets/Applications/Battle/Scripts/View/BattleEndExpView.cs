@@ -27,6 +27,7 @@ public class BattleEndExpView : View
 
     private void OnClickMainMenu()
     {
+		SoundManager.instance.PlayUISFX("Audio/SFX/Button1");
         Messenger.Send(EventTags.RETURN_TO_MAIN_MENU);
     }
 }

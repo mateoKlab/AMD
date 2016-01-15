@@ -8,6 +8,9 @@ public class Battle : BaseApplication<BattleModel, BattleView, BattleController>
 	{
 		// TEMP..
 		GetComponent<BattleController> ().SpawnFighters ();
+		SoundManager.instance.PlayBGM("Audio/BGM/01 RPG Battle Music");
+		SoundManager.instance.PlaySFX("Audio/SFX/Horn");
+
 	}
 
 
