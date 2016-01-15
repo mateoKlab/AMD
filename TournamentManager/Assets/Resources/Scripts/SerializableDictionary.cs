@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 using System.IO;
 
 [XmlRoot("Dictionary")]
+[System.Serializable]
 public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IXmlSerializable
 {
 	#region IXmlSerializable Members

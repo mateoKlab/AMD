@@ -13,21 +13,21 @@ Attack_Cape_Frame1
   index: -1
 Front_Ankle
   rotate: false
-  xy: 420, 3
+  xy: 557, 150
   size: 135, 127
   orig: 135, 127
   offset: 0, 0
   index: -1
 Front_Fist
   rotate: false
-  xy: 557, 150
+  xy: 694, 150
   size: 135, 127
   orig: 135, 127
   offset: 0, 0
   index: -1
 Front_Lower_Arm
   rotate: false
-  xy: 557, 21
+  xy: 831, 150
   size: 135, 127
   orig: 135, 127
   offset: 0, 0
@@ -41,14 +41,14 @@ Front_Upper_Arm
   index: -1
 Front_Upper_Leg
   rotate: false
-  xy: 694, 150
+  xy: 557, 21
   size: 135, 127
   orig: 135, 127
   offset: 0, 0
   index: -1
 Head
   rotate: false
-  xy: 694, 21
+  xy: 420, 3
   size: 135, 127
   orig: 135, 127
   offset: 0, 0
@@ -62,7 +62,7 @@ Helm
   index: -1
 Hind_Ankle
   rotate: false
-  xy: 831, 150
+  xy: 694, 21
   size: 135, 127
   orig: 135, 127
   offset: 0, 0
@@ -87,44 +87,44 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Attack_Cape_Frame2
+Block Collide Frame 6
   rotate: false
-  xy: 2, 260
-  size: 1019, 681
-  orig: 1019, 681
+  xy: 2, 131
+  size: 948, 838
+  orig: 948, 838
   offset: 0, 0
   index: -1
 Front_Lower_Leg
   rotate: false
-  xy: 276, 131
+  xy: 550, 2
   size: 133, 127
   orig: 133, 127
   offset: 0, 0
   index: -1
 Hind_Lower_Arm
   rotate: false
-  xy: 2, 131
+  xy: 2, 2
   size: 135, 127
   orig: 135, 127
   offset: 0, 0
   index: -1
 Hind_Lower_Leg
   rotate: false
-  xy: 2, 2
+  xy: 139, 2
   size: 135, 127
   orig: 135, 127
   offset: 0, 0
   index: -1
 Hind_Upper_Arm
   rotate: false
-  xy: 139, 131
+  xy: 276, 2
   size: 135, 127
   orig: 135, 127
   offset: 0, 0
   index: -1
 Hind_Upper_Leg
   rotate: false
-  xy: 139, 2
+  xy: 413, 2
   size: 135, 127
   orig: 135, 127
   offset: 0, 0
@@ -135,11 +135,11 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Attack_Cape_Frame3
+Block Collide Frame 5
   rotate: false
   xy: 2, 2
-  size: 1019, 681
-  orig: 1019, 681
+  size: 923, 843
+  orig: 923, 843
   offset: 0, 0
   index: -1
 
@@ -148,7 +148,7 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Attack_Cape_Frame4
+Attack_Cape_Frame2
   rotate: false
   xy: 2, 2
   size: 1019, 681
@@ -161,7 +161,7 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Attack_Cape_Frame5
+Attack_Cape_Frame3
   rotate: false
   xy: 2, 2
   size: 1019, 681
@@ -174,7 +174,7 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Attack_Cape_Frame6
+Attack_Cape_Frame4
   rotate: false
   xy: 2, 2
   size: 1019, 681
@@ -187,7 +187,7 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Attack_Cape_Frame7
+Attack_Cape_Frame5
   rotate: false
   xy: 2, 2
   size: 1019, 681
@@ -200,7 +200,7 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Attack_Cape_Frame8
+Attack_Cape_Frame6
   rotate: false
   xy: 2, 2
   size: 1019, 681
@@ -213,7 +213,7 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Attack_Cape_Frame9
+Attack_Cape_Frame7
   rotate: false
   xy: 2, 2
   size: 1019, 681
@@ -226,7 +226,7 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Attack_Slash_Frame4
+Attack_Cape_Frame8
   rotate: false
   xy: 2, 2
   size: 1019, 681
@@ -239,7 +239,7 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Attack_Slash_Frame5
+Attack_Cape_Frame9
   rotate: false
   xy: 2, 2
   size: 1019, 681
@@ -252,7 +252,7 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Attack_Slash_Frame6
+Attack_Slash_Frame4
   rotate: false
   xy: 2, 2
   size: 1019, 681
@@ -265,6 +265,97 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+Attack_Slash_Frame5
+  rotate: false
+  xy: 2, 2
+  size: 1019, 681
+  orig: 1019, 681
+  offset: 0, 0
+  index: -1
+
+skeleton14.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack_Slash_Frame6
+  rotate: false
+  xy: 2, 2
+  size: 1019, 681
+  orig: 1019, 681
+  offset: 0, 0
+  index: -1
+
+skeleton15.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+13 - Death cape frame 13
+  rotate: false
+  xy: 2, 2
+  size: 797, 797
+  orig: 797, 797
+  offset: 0, 0
+  index: -1
+
+skeleton16.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+14 - Death cape frame 14
+  rotate: false
+  xy: 2, 2
+  size: 797, 797
+  orig: 797, 797
+  offset: 0, 0
+  index: -1
+
+skeleton17.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+15 to 25 - Death cape frame 15
+  rotate: false
+  xy: 2, 2
+  size: 797, 797
+  orig: 797, 797
+  offset: 0, 0
+  index: -1
+
+skeleton18.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+3 - Death Cape Frame 3
+  rotate: false
+  xy: 2, 2
+  size: 797, 797
+  orig: 797, 797
+  offset: 0, 0
+  index: -1
+
+skeleton19.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+8 - Death cape frame 8
+  rotate: false
+  xy: 2, 2
+  size: 797, 797
+  orig: 797, 797
+  offset: 0, 0
+  index: -1
+
+skeleton20.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
 Attack_Cape_Frame10
   rotate: false
   xy: 2, 2
@@ -273,7 +364,7 @@ Attack_Cape_Frame10
   offset: 0, 0
   index: -1
 
-skeleton14.png
+skeleton21.png
 size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
@@ -286,7 +377,7 @@ Attack_Stab_Frame4
   offset: 0, 0
   index: -1
 
-skeleton15.png
+skeleton22.png
 size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
@@ -299,7 +390,7 @@ Attack_Stab_Frame5
   offset: 0, 0
   index: -1
 
-skeleton16.png
+skeleton23.png
 size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
@@ -312,7 +403,7 @@ Attack_Stab_Frame6
   offset: 0, 0
   index: -1
 
-skeleton17.png
+skeleton24.png
 size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
@@ -325,7 +416,475 @@ Attack_Stab_Frame7
   offset: 0, 0
   index: -1
 
-skeleton18.png
+skeleton25.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Axe1
+  rotate: false
+  xy: 657, 470
+  size: 236, 466
+  orig: 236, 466
+  offset: 0, 0
+  index: -1
+Block Collide Frame 4
+  rotate: false
+  xy: 2, 93
+  size: 653, 843
+  orig: 653, 843
+  offset: 0, 0
+  index: -1
+Sword
+  rotate: false
+  xy: 657, 2
+  size: 236, 466
+  orig: 236, 466
+  offset: 0, 0
+  index: -1
+
+skeleton26.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack3_Slash_Frame7
+  rotate: false
+  xy: 602, 149
+  size: 374, 696
+  orig: 374, 696
+  offset: 0, 0
+  index: -1
+Block Collide Frame 3
+  rotate: false
+  xy: 2, 2
+  size: 598, 843
+  orig: 598, 843
+  offset: 0, 0
+  index: -1
+
+skeleton27.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack3_Slash_Frame6
+  rotate: false
+  xy: 2, 2
+  size: 786, 694
+  orig: 786, 694
+  offset: 0, 0
+  index: -1
+
+skeleton28.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Attack3_Slash_Frame5
+  rotate: false
+  xy: 2, 2
+  size: 697, 695
+  orig: 697, 695
+  offset: 0, 0
+  index: -1
+
+skeleton29.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame1
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton30.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame2
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton31.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame3
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton32.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame4
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton33.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame5
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton34.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame6
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton35.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame7
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton36.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame8
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton37.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame9
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton38.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame10
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton39.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame11
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton40.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame12
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton41.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame13
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton42.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame14
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton43.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walk_Cape_Frame15
+  rotate: false
+  xy: 2, 2
+  size: 700, 636
+  orig: 700, 636
+  offset: 0, 0
+  index: -1
+
+skeleton44.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Idle_Cape_Frame10F
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+Idle_Cape_Frame12F
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+Idle_Cape_Frame9F
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+Idle_Cape_Frame13F
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+
+skeleton45.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Idle_Cape_Frame11G
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+
+skeleton46.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Idle_Cape_Frame14E
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+Idle_Cape_Frame8E
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+
+skeleton47.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Idle_Cape_Frame15E
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+Idle_Cape_Frame7E
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+
+skeleton48.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Idle_Cape_Frame16E
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+Idle_Cape_Frame_6E
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+
+skeleton49.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Idle_Cape_Frame17D
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+Idle_Cape_Frame5D
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+
+skeleton50.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Idle_Cape_Frame19B
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+Idle_Cape_Frame3B
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+
+skeleton51.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Idle_Cape_Frame1A
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+
+skeleton52.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Idle_Cape_Frame20A
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+Idle_Cape_Frame2A
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+
+skeleton53.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Idle_Cape_Frame4C
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+Idle_Cape_Frame_18C
+  rotate: false
+  xy: 2, 2
+  size: 560, 615
+  orig: 560, 615
+  offset: 0, 0
+  index: -1
+
+skeleton54.png
 size: 1024,512
 format: RGBA8888
 filter: Linear,Linear
@@ -335,12 +894,5 @@ Shield
   xy: 2, 2
   size: 548, 501
   orig: 548, 501
-  offset: 0, 0
-  index: -1
-Sword
-  rotate: false
-  xy: 552, 37
-  size: 236, 466
-  orig: 236, 466
   offset: 0, 0
   index: -1

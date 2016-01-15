@@ -14,7 +14,7 @@ public class ArmoryModel : Model
 	{
 		base.Awake ();
 	
-		weaponList = GameDatabase.equipmentDatabase.GetItems (Equipment.Type.Weapon.Sword, false);
-		armorList  = GameDatabase.equipmentDatabase.GetItems (Equipment.Type.Body.HeavyArmor, false);
+//		weaponList = GameDatabase.equipmentDatabase.GetItems (Equipment.Type.Weapon.Sword, false);
+//		armorList  = GameDatabase.equipmentDatabase.GetItems (Equipment.Type.Body.HeavyArmor, false);
 	}
 }

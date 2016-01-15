@@ -24,8 +24,8 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 
 	private Dictionary<Class, GameObject> prefabs = new Dictionary<Class, GameObject> ();
 
-	private Vector3 alliedStartingPos = new Vector3 (-5f, -1f, -1f);
-	private Vector3 enemyStartingPos = new Vector3 (5f, -1f, -1f);
+	private Vector3 alliedStartingPos = new Vector3 (-7f, -1f, -1f);
+	private Vector3 enemyStartingPos = new Vector3 (7f, -1f, -1f);
 
     void Start()
     {
@@ -215,6 +215,9 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 
 
         newFighter.SetActive(true);
+
+		//TEST.
+		newFighter.GetComponent <FighterView> ().SetFighterSkin (fighterModel.fighterData.skinData);
 
         return newFighter;
     }

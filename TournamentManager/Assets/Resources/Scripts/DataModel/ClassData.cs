@@ -18,12 +18,13 @@ public class ClassData {
 	[XmlElement ("Class")]
 	public Class fighterClass;
 
-	[XmlElement ("EquipmentAllowed")]
-	public List<Equipment.Type> equipmentAllowed;
-
 	public int baseATK;
-
+	
 	public int baseHP;
-
+	
 	public int baseDEF;
+
+	[XmlArray ("EquipmentAllowed")]
+	[XmlArrayItem ("Equip")]
+	public List<string> equipmentAllowed;
 }

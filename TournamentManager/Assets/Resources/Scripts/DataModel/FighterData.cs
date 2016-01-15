@@ -65,10 +65,17 @@ public class FighterData
     public int cost = 2;
 
 	[XmlElement ("EquipmentData")]
-	public SerializableDictionary<Equipment.Type, Equipment> equipmentData = new SerializableDictionary<Equipment.Type, Equipment> ();
+//	public SerializableDictionary<Equipment.Type, Equipment> equipmentData = new SerializableDictionary<Equipment.Type, Equipment> ();
+	public SerializableDictionary<string, Equipment> equipmentData = new SerializableDictionary<string, Equipment> ();
 
-	// TODO: Put initializations into constructor.
+	[XmlElement ("SkinData")]
 	public FighterSkinData skinData = new FighterSkinData ();
+	// TODO: Put initializations into constructor.
+//	public FighterSkinData skinData = new FighterSkinData ();
+
+//	[XmlArray ("SkinData")]
+//	[XmlArrayItem ("SpriteAttachment")]
+//	public FighterSkinData skinData;
 
     [XmlIgnore]
     public Sprite normalIcon

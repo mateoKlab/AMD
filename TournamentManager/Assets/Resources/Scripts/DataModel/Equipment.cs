@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
@@ -18,8 +19,9 @@ public struct Equipment {
 	[XmlElement ("Name")]
 	public string name;// = "Default weapon";
 
-	[XmlElement ("SpriteName")]
-	public string spriteName;// = "default filename";
+	[XmlArray ("Sprites")]
+	[XmlArrayItem ("Sprite")]
+	public List<EquipmentSprite> sprites;// = "default filename";
 
 	[XmlElement ("Attack")]
 	public float attack;// = 100.0f;
@@ -37,14 +39,14 @@ public struct Equipment {
 	// Inherits from ItemType<T> to be enabled for use with the Inventory system.
 	[XmlInclude(typeof(Weapon))]
 	[XmlInclude(typeof(Offhand))]
-	[XmlInclude(typeof(Body))]
+	[XmlInclude(typeof(Armor))]
 	public class Type : ItemType<Equipment>
 	{
 		// Subtype static members. Allows use of Equipment.Type.<Subtype> "abstract" type.
 		// "Type" suffix added to prevent hiding of nested subclasses.
 		public static Type WeaponType  = new Type { typeName = "Weapon" };
 		public static Type OffhandType = new Type { typeName = "Offhand" };
-		public static Type BodyType	   = new Type { typeName = "Body" };
+		public static Type ArmorType   = new Type { typeName = "Armor" };
 		
 		
 		// Equipment Types determine attachment type to sprite.
@@ -72,17 +74,26 @@ public struct Equipment {
 			public static Offhand Shield = new Offhand { typeName = "Shield" };
 		}
 		
-		public class Body : Type {
+		public class Armor : Type {
 			
 			// All Body subtypes are of type: BodyType.
 			public override ItemType<Equipment> parentType {
-				get { return Type.BodyType; }
+				get { return Type.ArmorType; }
 			}
 			
 			// Body subtypes.
-			public static Body HeavyArmor = new Body { typeName = "HeavyArmor" };
+			public static Armor Helm = new Armor { typeName = "Helm" };
 		}
 		#endregion
 	}
 }
 
+[XmlRoot ("EquipmentSprite")]
+public struct EquipmentSprite
+{
+	[XmlElement ("AttachmentType")]
+	public string attachmentType;
+
+	[XmlElement ("SpriteName")]
+	public string spriteName;
+}

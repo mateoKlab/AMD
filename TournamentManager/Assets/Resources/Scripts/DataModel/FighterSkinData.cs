@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 using System.IO;
 
 [XmlRoot ("KeyValuePair")]
+[System.Serializable]
 public struct SerializableKVP<K, V>
 {
 	public K Key 
@@ -13,10 +14,26 @@ public struct SerializableKVP<K, V>
 	
 	public V Value 
 	{ get; set; }
+
+	public SerializableKVP (K key, V value)
+	{
+		Key = key;
+		Value = value;
+	}
 }
 
 [XmlRoot ("FighterSkin")]
-public class FighterSkinData : SerializableDictionary <FighterSpriteAttachment.AttachmentType, string> 
+public class FighterSkinData : List<SerializableKVP<string, string>>
 {
-//	List<SerializableKVP> attachmentPairs;
+	public void AddSkin (string attachmentType, string spriteName)
+	{
+		this.Add (new SerializableKVP<string, string> (attachmentType, spriteName));
+	}
+}
+
+[System.Serializable]
+[XmlRoot]
+public struct SpriteKVP
+{
+
 }
