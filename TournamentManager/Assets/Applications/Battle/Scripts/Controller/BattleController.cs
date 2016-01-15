@@ -215,6 +215,9 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 
         newFighter.SetActive(true);
 
+		//TEST.
+		newFighter.GetComponent <FighterView> ().SetFighterSkin (fighterModel.fighterData.skinData);
+
         return newFighter;
     }
 

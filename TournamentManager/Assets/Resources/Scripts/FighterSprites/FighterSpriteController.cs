@@ -28,13 +28,13 @@ public class FighterSpriteController : MonoBehaviour {
 
 		foreach (FighterSpriteAttachment spriteAttachment in spriteAttachments) {
 
-
 			attachmentDictionary.Add (spriteAttachment.type.ToString (), spriteAttachment.gameObject);
 		}
 	}
 
 	public void SetFighterSkin (FighterSkinData skinData)
 	{
+		Debug.Log ("SET");
 		Sprite newSprite;
 
 		foreach (SerializableKVP<string, string> spritePair in skinData) {

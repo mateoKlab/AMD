@@ -8,26 +8,6 @@
       <Dictionary>
         <item>
           <key>
-            <string>Sword</string>
-          </key>
-          <value>
-            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-              <ID>Sword</ID>
-              <Name>cool sword</Name>
-              <Sprites>
-                <Sprite>
-                  <AttachmentType>Sword</AttachmentType>
-                  <SpriteName>Sword</SpriteName>
-                </Sprite>
-              </Sprites>
-              <Attack>10</Attack>
-              <Defense>0</Defense>
-              <HP>0</HP>
-            </Equipment>
-          </value>
-        </item>
-        <item>
-          <key>
             <string>Sword1</string>
           </key>
           <value>
@@ -206,6 +186,125 @@
             </Equipment>
           </value>
         </item>
+          <item>
+          <key>
+            <string>Sword10</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Sword10</ID>
+              <Name>cool Sword10</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Sword</AttachmentType>
+                  <SpriteName>Sword10</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>10</Attack>
+              <Defense>0</Defense>
+              <HP>0</HP>
+            </Equipment>
+          </value>
+        </item>
+      </Dictionary>
+    </value>
+  </item>
+    <item>
+    <key>
+      <string>Shield</string>
+    </key>
+    <value>
+      <Dictionary>
+        <item>
+          <key>
+            <string>Shield1</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Shield1</ID>
+              <Name>Nice Shield1</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Shield</AttachmentType>
+                  <SpriteName>Shield1</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Defense>20</Defense>
+            </Equipment>
+          </value>
+        </item>
+         <item>
+          <key>
+            <string>Shield3</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Shield3</ID>
+              <Name>Nice Shield3</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Shield</AttachmentType>
+                  <SpriteName>Shield3</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Defense>20</Defense>
+            </Equipment>
+          </value>
+        </item>
+         <item>
+          <key>
+            <string>Shield6</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Shield6</ID>
+              <Name>Nice Shield6</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Shield</AttachmentType>
+                  <SpriteName>Shield6</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Defense>20</Defense>
+            </Equipment>
+          </value>
+        </item>
+         <item>
+          <key>
+            <string>Shield7</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Shield7</ID>
+              <Name>Nice Shield7</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Shield</AttachmentType>
+                  <SpriteName>Shield7</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Defense>20</Defense>
+            </Equipment>
+          </value>
+        </item>
+         <item>
+          <key>
+            <string>Shield8</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Shield8</ID>
+              <Name>Nice Shield8</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Shield</AttachmentType>
+                  <SpriteName>Shield8</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Defense>20</Defense>
+            </Equipment>
+          </value>
+        </item>
       </Dictionary>
     </value>
   </item>
@@ -226,7 +325,11 @@
               <Sprites>
                 <Sprite>
                   <AttachmentType>Helm</AttachmentType>
-                  <SpriteName>Helm</SpriteName>
+                  <SpriteName>Head_Helm1</SpriteName>
+                </Sprite>
+                 <Sprite>
+                  <AttachmentType>Head</AttachmentType>
+                  <SpriteName>Head_Head1</SpriteName>
                 </Sprite>
               </Sprites>
               <Attack>0</Attack>
@@ -246,7 +349,11 @@
               <Sprites>
                 <Sprite>
                   <AttachmentType>Helm</AttachmentType>
-                  <SpriteName>Helm2</SpriteName>
+                  <SpriteName>Head_Helm2</SpriteName>
+                </Sprite>
+                 <Sprite>
+                  <AttachmentType>Head</AttachmentType>
+                  <SpriteName>Head_Head2</SpriteName>
                 </Sprite>
               </Sprites>
               <Attack>0</Attack>
@@ -266,7 +373,11 @@
               <Sprites>
                 <Sprite>
                   <AttachmentType>Helm</AttachmentType>
-                  <SpriteName>Helm4</SpriteName>
+                  <SpriteName>Head_Helm4</SpriteName>
+                </Sprite>
+                 <Sprite>
+                  <AttachmentType>Head</AttachmentType>
+                  <SpriteName>Head_Head2</SpriteName>
                 </Sprite>
               </Sprites>
               <Attack>0</Attack>
@@ -286,7 +397,11 @@
               <Sprites>
                 <Sprite>
                   <AttachmentType>Helm</AttachmentType>
-                  <SpriteName>Helm5</SpriteName>
+                  <SpriteName>Head_Helm5</SpriteName>
+                </Sprite>
+                 <Sprite>
+                  <AttachmentType>Head</AttachmentType>
+                  <SpriteName>Head_Head2</SpriteName>
                 </Sprite>
               </Sprites>
               <Attack>0</Attack>
@@ -306,12 +421,523 @@
               <Sprites>
                 <Sprite>
                   <AttachmentType>Helm</AttachmentType>
-                  <SpriteName>Helm6</SpriteName>
+                  <SpriteName>Head_Helm6</SpriteName>
+                </Sprite>
+                 <Sprite>
+                  <AttachmentType>Head</AttachmentType>
+                  <SpriteName>Head_Head6</SpriteName>
                 </Sprite>
               </Sprites>
               <Attack>0</Attack>
               <Defense>10</Defense>
               <HP>100</HP>
+            </Equipment>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Helm7</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Helm7</ID>
+              <Name>cool helm7</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Helm</AttachmentType>
+                  <SpriteName>Head_Helm7</SpriteName>
+                </Sprite>
+                 <Sprite>
+                  <AttachmentType>Head</AttachmentType>
+                  <SpriteName>Head_Head7</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>10</Defense>
+              <HP>100</HP>
+            </Equipment>
+          </value>
+        </item>
+      </Dictionary>
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>Shoulder</string>
+    </key>
+    <value>
+      <Dictionary>
+        <item>
+          <key>
+            <string>Shoulder1</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Shoulder1</ID>
+              <Name>Cold Shoulder</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Front_Upper_Arm</AttachmentType>
+                  <SpriteName>Shoulder_Front_Upper_Arm1</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Hind_Upper_Arm</AttachmentType>
+                  <SpriteName>Shoulder_Hind_Upper_Arm1</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>10</Defense>
+              <HP>0</HP>
+            </Equipment>
+          </value>
+        </item>
+         <item>
+          <key>
+            <string>Shoulde2r</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Shoulder</ID>
+              <Name>Cold Shoulder2</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Front_Upper_Arm</AttachmentType>
+                  <SpriteName>Shoulder_Front_Upper_Arm2</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Hind_Upper_Arm</AttachmentType>
+                  <SpriteName>Shoulder_Hind_Upper_Arm2</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>10</Defense>
+              <HP>0</HP>
+            </Equipment>
+          </value>
+        </item>
+         <item>
+          <key>
+            <string>Shoulder4</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Shoulder4</ID>
+              <Name>Cold Shoulder4</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Front_Upper_Arm</AttachmentType>
+                  <SpriteName>Shoulder_Front_Upper_Arm4</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Hind_Upper_Arm</AttachmentType>
+                  <SpriteName>Shoulder_Hind_Upper_Arm4</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>10</Defense>
+              <HP>0</HP>
+            </Equipment>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Shoulder5</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Shoulder5</ID>
+              <Name>Cold Shoulder5</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Front_Upper_Arm</AttachmentType>
+                  <SpriteName>Shoulder_Front_Upper_Arm5</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Hind_Upper_Arm</AttachmentType>
+                  <SpriteName>Shoulder_Hind_Upper_Arm5</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>10</Defense>
+              <HP>0</HP>
+            </Equipment>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Shoulder6</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Shoulder6</ID>
+              <Name>Cold Shoulder6</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Front_Upper_Arm</AttachmentType>
+                  <SpriteName>Shoulder_Front_Upper_Arm6</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Hind_Upper_Arm</AttachmentType>
+                  <SpriteName>Shoulder_Hind_Upper_Arm6</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>10</Defense>
+              <HP>0</HP>
+            </Equipment>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Shoulder7</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Shoulder7</ID>
+              <Name>Cold Shoulder7</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Front_Upper_Arm</AttachmentType>
+                  <SpriteName>Shoulder_Front_Upper_Arm7</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Hind_Upper_Arm</AttachmentType>
+                  <SpriteName>Shoulder_Hind_Upper_Arm7</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>10</Defense>
+              <HP>0</HP>
+            </Equipment>
+          </value>
+        </item>
+      </Dictionary>
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>Upper_Body</string>
+    </key>
+    <value>
+      <Dictionary>
+        <item>
+          <key>
+            <string>Upper_Body1</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Upper_Body1</ID>
+              <Name>Nice Body1</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Upper_Body</AttachmentType>
+                  <SpriteName>Upper_Body1</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>10</Defense>
+              <HP>100</HP>
+            </Equipment>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Upper_Body2</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Upper_Body2</ID>
+              <Name>Nice Body2</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Upper_Body</AttachmentType>
+                  <SpriteName>Upper_Body2</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>10</Defense>
+              <HP>100</HP>
+            </Equipment>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Upper_Body4</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Upper_Body4</ID>
+              <Name>Nice Body4</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Upper_Body</AttachmentType>
+                  <SpriteName>Upper_Body4</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>10</Defense>
+              <HP>100</HP>
+            </Equipment>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Upper_Body5</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Upper_Body5</ID>
+              <Name>Nice Body5</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Upper_Body</AttachmentType>
+                  <SpriteName>Upper_Body5</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>10</Defense>
+              <HP>100</HP>
+            </Equipment>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Upper_Body6</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Upper_Body6</ID>
+              <Name>Nice Body6</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Upper_Body</AttachmentType>
+                  <SpriteName>Upper_Body6</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>10</Defense>
+              <HP>100</HP>
+            </Equipment>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Upper_Body7</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Upper_Body7</ID>
+              <Name>Nice Body7</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Upper_Body</AttachmentType>
+                  <SpriteName>Upper_Body7</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>10</Defense>
+              <HP>100</HP>
+            </Equipment>
+          </value>
+        </item>
+      </Dictionary>
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>Gauntlet</string>
+    </key>
+    <value>
+      <Dictionary>
+        <item>
+          <key>
+            <string>Gauntlet1</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Gauntlet1</ID>
+              <Name>Gauntlet Name1</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Hind_Lower_Arm</AttachmentType>
+                  <SpriteName>Gauntlet_Hind_Lower_Arm1</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Hind_Fist</AttachmentType>
+                  <SpriteName>Gauntlet_Hind_Fist1</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Front_Lower_Arm</AttachmentType>
+                  <SpriteName>Gauntlet_Front_Lower_Arm1</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Front_Fist</AttachmentType>
+                  <SpriteName>Gauntlet_Front_Fist1</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>5</Defense>
+              <HP>50</HP>
+            </Equipment>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Gauntlet2</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Gauntlet2</ID>
+              <Name>Gauntlet Name2</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Hind_Lower_Arm</AttachmentType>
+                  <SpriteName>Gauntlet_Hind_Lower_Arm2</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Hind_Fist</AttachmentType>
+                  <SpriteName>Gauntlet_Hind_Fist2</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Front_Lower_Arm</AttachmentType>
+                  <SpriteName>Gauntlet_Front_Lower_Arm2</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Front_Fist</AttachmentType>
+                  <SpriteName>Gauntlet_Front_Fist2</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>5</Defense>
+              <HP>50</HP>
+            </Equipment>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Gauntlet4</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Gauntlet4</ID>
+              <Name>Gauntlet Name4</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Hind_Lower_Arm</AttachmentType>
+                  <SpriteName>Gauntlet_Hind_Lower_Arm4</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Hind_Fist</AttachmentType>
+                  <SpriteName>Gauntlet_Hind_Fist4</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Front_Lower_Arm</AttachmentType>
+                  <SpriteName>Gauntlet_Front_Lower_Arm4</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Front_Fist</AttachmentType>
+                  <SpriteName>Gauntlet_Front_Fist4</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>5</Defense>
+              <HP>50</HP>
+            </Equipment>
+          </value>
+        </item>
+          <item>
+          <key>
+            <string>Gauntlet5</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Gauntlet5</ID>
+              <Name>Gauntlet Name5</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Hind_Lower_Arm</AttachmentType>
+                  <SpriteName>Gauntlet_Hind_Lower_Arm5</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Hind_Fist</AttachmentType>
+                  <SpriteName>Gauntlet_Hind_Fist5</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Front_Lower_Arm</AttachmentType>
+                  <SpriteName>Gauntlet_Front_Lower_Arm5</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Front_Fist</AttachmentType>
+                  <SpriteName>Gauntlet_Front_Fist5</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>5</Defense>
+              <HP>50</HP>
+            </Equipment>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Gauntlet6</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Gauntlet6</ID>
+              <Name>Gauntlet Name6</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Hind_Lower_Arm</AttachmentType>
+                  <SpriteName>Gauntlet_Hind_Lower_Arm6</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Hind_Fist</AttachmentType>
+                  <SpriteName>Gauntlet_Hind_Fist6</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Front_Lower_Arm</AttachmentType>
+                  <SpriteName>Gauntlet_Front_Lower_Arm6</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Front_Fist</AttachmentType>
+                  <SpriteName>Gauntlet_Front_Fist6</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>5</Defense>
+              <HP>50</HP>
+            </Equipment>
+          </value>
+        </item>
+        <item>
+          <key>
+            <string>Gauntlet7</string>
+          </key>
+          <value>
+            <Equipment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <ID>Gauntlet7</ID>
+              <Name>Gauntlet Name7</Name>
+              <Sprites>
+                <Sprite>
+                  <AttachmentType>Hind_Lower_Arm</AttachmentType>
+                  <SpriteName>Gauntlet_Hind_Lower_Arm7</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Hind_Fist</AttachmentType>
+                  <SpriteName>Gauntlet_Hind_Fist7</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Front_Lower_Arm</AttachmentType>
+                  <SpriteName>Gauntlet_Front_Lower_Arm7</SpriteName>
+                </Sprite>
+                <Sprite>
+                  <AttachmentType>Front_Fist</AttachmentType>
+                  <SpriteName>Gauntlet_Front_Fist7</SpriteName>
+                </Sprite>
+              </Sprites>
+              <Attack>0</Attack>
+              <Defense>5</Defense>
+              <HP>50</HP>
             </Equipment>
           </value>
         </item>

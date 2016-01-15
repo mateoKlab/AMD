@@ -83,40 +83,39 @@ public static class GameDatabase {
 	
 	public static void LoadGameDatabase ()
 	{
-		Debug.Log ("WOW");
 		// Initialize here.
 		_spriteDatabase    = LoadDatabase<SpriteDatabase> ();
 		_stageDatabase	   = LoadDatabase<StageDatabase> ();
 		_equipmentDatabase = LoadDatabase<EquipmentDatabase> ();
 		_classDatabase 	   = LoadDatabase<ClassDatabase> ();
 
-
-//		Equipment sword = new Equipment ();
-//		sword.attack = 10;
-//		sword.defense = 0;
-//		sword.hp = 0;
-//		sword.id = "Sword";
-//		sword.name = "cool sword";
-//		sword.sprites = new List<EquipmentSprite> ();
-//		sword.sprites.Add (new EquipmentSprite { attachmentType = "Sword", spriteName = "Sword" });
+//		Equipment gauntlet = new Equipment ();
+//		gauntlet.defense = 5;
+//		gauntlet.hp = 50;
+//		gauntlet.id = "Gauntlet";
+//		gauntlet.name = "Gauntlet Name";
+//		gauntlet.sprites = new List<EquipmentSprite> ();
+//		gauntlet.sprites.Add (new EquipmentSprite () { attachmentType = "Hind_Lower_Arm", spriteName = "Hind_Lower_Arm" });
+//		gauntlet.sprites.Add (new EquipmentSprite () { attachmentType = "Hind_Fist", spriteName = "Hind_Fist" });
+//		gauntlet.sprites.Add (new EquipmentSprite () { attachmentType = "Front_Lower_Arm", spriteName = "Front_Lower_Arm" });
+//		gauntlet.sprites.Add (new EquipmentSprite () { attachmentType = "Front_Fist", spriteName = "Front_Fist" });
 //
-//		Equipment helm = new Equipment ();
-//		helm.attack = 0;
-//		helm.defense = 10;
-//		helm.hp = 100;
-//		helm.id = "Helm";
-//		helm.name = "cool helm";
-//		helm.sprites = new List<EquipmentSprite> ();
-//		helm.sprites.Add (new EquipmentSprite { attachmentType = "Helm", spriteName = "Helm" });
-//
-//		SerializableDictionary<string, Equipment> swordDic = new SerializableDictionary<string, Equipment> ();
-//		swordDic.Add (sword.id, sword);
-//
-//		SerializableDictionary<string, Equipment> helmDic = new SerializableDictionary<string, Equipment> ();
-//		helmDic.Add (helm.id, helm);
-//
-//		_equipmentDatabase.Add ("Sword", swordDic);
-//		_equipmentDatabase.Add ("Helm", helmDic);
+//		Equipment gauntlet6 = new Equipment ();
+//		gauntlet6.defense = 5;
+//		gauntlet6.hp = 50;
+//		gauntlet6.id = "Gauntlet6";
+//		gauntlet6.name = "Gauntlet Name6";
+//		gauntlet6.sprites = new List<EquipmentSprite> ();
+//		gauntlet6.sprites.Add (new EquipmentSprite () { attachmentType = "Hind_Lower_Arm", spriteName = "Hind_Lower_Arm6" });
+//		gauntlet6.sprites.Add (new EquipmentSprite () { attachmentType = "Hind_Fist", spriteName = "Hind_Fist6" });
+//		gauntlet6.sprites.Add (new EquipmentSprite () { attachmentType = "Front_Lower_Arm", spriteName = "Front_Lower_Arm6" });
+//		gauntlet6.sprites.Add (new EquipmentSprite () { attachmentType = "Front_Fist", spriteName = "Front_Fist6" });
+//		
+//		SerializableDictionary<string, Equipment> gauntletDic = new SerializableDictionary<string, Equipment> ();
+//		gauntletDic.Add (gauntlet.id, gauntlet);
+//		gauntletDic.Add (gauntlet6.id, gauntlet6);
+//	
+//		_equipmentDatabase.Add ("Gauntlet", gauntletDic);
 //
 //		XmlHelper.Save<EquipmentDatabase> (_equipmentDatabase, "EquipmentDatabase");
 	}

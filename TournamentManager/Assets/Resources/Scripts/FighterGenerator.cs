@@ -45,12 +45,13 @@ public static class FighterGenerator {
 
 		foreach (string equipmentType in classData.equipmentAllowed) 
 		{
+			Debug.Log ("GET EQUIP POOL: " + equipmentType);
 			List<Equipment> equipmentPool = GameDatabase.equipmentDatabase [equipmentType].Values.ToList ();
 
 			if (equipmentPool != null) {
 //				Equipment.Type.Weapon.Sword = new Equipment.Type.Weapon ();
 
-//				Debug.Log ("GET: " + equipmentType.ToString ());
+				Debug.Log ("GET: " + equipmentType.ToString ());
 
 				Equipment randomEquipment = equipmentPool[UnityEngine.Random.Range (0, equipmentPool.Count)];
 				fighterData.equipmentData.Add (equipmentType, randomEquipment);

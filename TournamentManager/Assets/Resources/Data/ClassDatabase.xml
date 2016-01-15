@@ -13,6 +13,10 @@
         <EquipmentAllowed>
           <Equip>Sword</Equip>
           <Equip>Helm</Equip>
+          <Equip>Shoulder</Equip>
+          <Equip>Upper_Body</Equip>
+          <Equip>Gauntlet</Equip>
+          <Equip>Shield</Equip>
         </EquipmentAllowed>
       </ClassData>
     </value>
