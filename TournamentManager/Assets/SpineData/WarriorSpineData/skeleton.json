@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "q0bc0CLWNwMhnK2e8hi62yBfaWM", "spine": "2.1.27", "width": 547.96, "height": 615.06, "images": "" },
+"skeleton": { "hash": "M9FqXbvNu+KCJgMfzkqwHyy57q4", "spine": "2.1.27", "width": 547.96, "height": 615.06, "images": "" },
 "bones": [
 	{ "name": "root", "x": 48.65 },
 	{ "name": "Cape3", "parent": "root", "x": -48.56, "y": 230.19 },
@@ -143,7 +143,6 @@
 	{ "name": "Front_Upper_Leg", "bone": "Front_Upper_Leg", "attachment": "Front_Upper_Leg" },
 	{ "name": "15 to 25 - Death cape frame 15", "bone": "Cape" },
 	{ "name": "Sword", "bone": "Sword", "attachment": "Sword" },
-	{ "name": "Axe", "bone": "Sword" },
 	{ "name": "Front_Lower_Arm", "bone": "Front_Lower_Arm", "attachment": "Front_Lower_Arm" },
 	{ "name": "Hind_Fist", "bone": "Front_Fist" },
 	{ "name": "Front_Upper_Arm", "bone": "Front_Upper_Arm", "attachment": "Front_Upper_Arm" },
@@ -240,9 +239,6 @@
 		},
 		"Attack_Stab_Frame7": {
 			"Attack_Stab_Frame7": { "x": 48.65, "width": 864, "height": 695 }
-		},
-		"Axe": {
-			"Axe1": { "x": 159.92, "y": -0.82, "rotation": 269.6, "width": 236, "height": 466 }
 		},
 		"Block Collide Frame 3": {
 			"Block Collide Frame 3": { "x": -102.82, "y": 87.38, "width": 598, "height": 843 }
@@ -362,8 +358,7 @@
 			"Idle_Cape_Frame_6E": { "x": 48.65, "width": 560, "height": 615 }
 		},
 		"Shield": {
-			"Shield": { "x": 55.46, "y": 86.78, "rotation": -77.84, "width": 548, "height": 501 },
-			"Shield2": { "path": "Shield", "x": 55.46, "y": 86.78, "rotation": -77.84, "width": 548, "height": 501 }
+			"Shield": { "x": 55.46, "y": 86.78, "rotation": -77.84, "width": 548, "height": 501 }
 		},
 		"Sword": {
 			"Sword": { "x": 159.91, "y": -2.01, "rotation": 269.6, "width": 236, "height": 466 }
@@ -802,12 +797,14 @@
 			"Attack_Cape_Frame6": {
 				"attachment": [
 					{ "time": 0.3333, "name": "Attack_Cape_Frame6" },
-					{ "time": 0.4, "name": null }
+					{ "time": 0.4, "name": null },
+					{ "time": 0.5, "name": null }
 				]
 			},
 			"Attack_Cape_Frame10": {
 				"attachment": [
-					{ "time": 0.4, "name": "Attack_Cape_Frame10" }
+					{ "time": 0.4, "name": "Attack_Cape_Frame10" },
+					{ "time": 0.5, "name": "Attack_Cape_Frame10" }
 				]
 			},
 			"Attack_Stab_Frame4": {
@@ -1135,12 +1132,14 @@
 					{ "time": 0.2666, "name": "Attack_Cape_Frame7" },
 					{ "time": 0.3333, "name": null },
 					{ "time": 0.5333, "name": "Attack_Cape_Frame7" },
-					{ "time": 0.6, "name": null }
+					{ "time": 0.6, "name": null },
+					{ "time": 0.6666, "name": null }
 				]
 			},
 			"Attack_Cape_Frame8": {
 				"attachment": [
-					{ "time": 0.6, "name": "Attack_Cape_Frame8" }
+					{ "time": 0.6, "name": "Attack_Cape_Frame8" },
+					{ "time": 0.6666, "name": "Attack_Cape_Frame8" }
 				]
 			},
 			"Attack_Cape_Frame9": {
@@ -1410,7 +1409,8 @@
 					{ "time": 0, "angle": 0, "curve": "stepped" },
 					{ "time": 0.2666, "angle": -365.38, "curve": "stepped" },
 					{ "time": 0.5333, "angle": -365.38, "curve": "stepped" },
-					{ "time": 0.6, "angle": -365.38 }
+					{ "time": 0.6, "angle": -365.38, "curve": "stepped" },
+					{ "time": 0.6666, "angle": -365.38 }
 				],
 				"translate": [
 					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
@@ -1418,7 +1418,8 @@
 					{ "time": 0.2666, "x": 8.05, "y": 37.86, "curve": "stepped" },
 					{ "time": 0.3333, "x": 0, "y": 0, "curve": "stepped" },
 					{ "time": 0.5333, "x": 8.05, "y": 37.86, "curve": "stepped" },
-					{ "time": 0.6, "x": 8.05, "y": 37.86 }
+					{ "time": 0.6, "x": 8.05, "y": 37.86, "curve": "stepped" },
+					{ "time": 0.6666, "x": 8.05, "y": 37.86 }
 				]
 			},
 			"Slash": {
@@ -1459,7 +1460,8 @@
 			"Attack_Cape_Frame7": {
 				"attachment": [
 					{ "time": 0.4, "name": "Attack_Cape_Frame7" },
-					{ "time": 0.4666, "name": null }
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
 				]
 			},
 			"Attack_Cape_Frame8": {
@@ -1471,7 +1473,8 @@
 			},
 			"Attack_Cape_Frame9": {
 				"attachment": [
-					{ "time": 0.4666, "name": "Attack_Cape_Frame9" }
+					{ "time": 0.4666, "name": "Attack_Cape_Frame9" },
+					{ "time": 0.5, "name": "Attack_Cape_Frame9" }
 				]
 			},
 			"Attack_Cape_Frame10": {
@@ -2238,12 +2241,14 @@
 			"14 - Death cape frame 14": {
 				"attachment": [
 					{ "time": 0.8666, "name": "14 - Death cape frame 14" },
-					{ "time": 0.9333, "name": null }
+					{ "time": 0.9333, "name": null },
+					{ "time": 1.0333, "name": null }
 				]
 			},
 			"15 to 25 - Death cape frame 15": {
 				"attachment": [
-					{ "time": 0.9333, "name": "15 to 25 - Death cape frame 15" }
+					{ "time": 0.9333, "name": "15 to 25 - Death cape frame 15" },
+					{ "time": 1.0333, "name": "15 to 25 - Death cape frame 15" }
 				]
 			},
 			"3 - Death Cape Frame 3": {
@@ -2525,6 +2530,7 @@
 			},
 			"Cape": {
 				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
 					{ "time": 0.8, "angle": -300.63, "curve": "stepped" },
 					{ "time": 0.8666, "angle": 66.35, "curve": "stepped" },
 					{ "time": 0.9333, "angle": -290.05 }
@@ -2810,13 +2816,15 @@
 		"slots": {
 			"Attack_Cape_Frame3": {
 				"attachment": [
-					{ "time": 0.2, "name": "Attack_Cape_Frame3" }
+					{ "time": 0.2, "name": "Attack_Cape_Frame3" },
+					{ "time": 0.2333, "name": "Attack_Cape_Frame3" }
 				]
 			},
 			"Attack_Cape_Frame7": {
 				"attachment": [
 					{ "time": 0.1333, "name": "Attack_Cape_Frame7" },
-					{ "time": 0.2, "name": null }
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null }
 				]
 			},
 			"Attack_Cape_Frame8": {
@@ -3740,12 +3748,14 @@
 			"Walk_Cape_Frame14": {
 				"attachment": [
 					{ "time": 0.8666, "name": "Walk_Cape_Frame14" },
-					{ "time": 0.9333, "name": null }
+					{ "time": 0.9333, "name": null },
+					{ "time": 1, "name": null }
 				]
 			},
 			"Walk_Cape_Frame15": {
 				"attachment": [
-					{ "time": 0.9333, "name": "Walk_Cape_Frame15" }
+					{ "time": 0.9333, "name": "Walk_Cape_Frame15" },
+					{ "time": 1, "name": "Walk_Cape_Frame15" }
 				]
 			}
 		},

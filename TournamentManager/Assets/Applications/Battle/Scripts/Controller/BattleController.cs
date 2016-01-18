@@ -175,6 +175,7 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 			
 			targetUnit.OnReceiveAttack (attackData);
 		}
+		SoundManager.instance.PlayAttackSFX();
 	}
 	
 	public void OnRangedAttack(Attack attackData)
