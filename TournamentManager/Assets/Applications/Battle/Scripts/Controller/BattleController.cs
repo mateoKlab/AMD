@@ -30,6 +30,7 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
     void Start()
     {
         Messenger.AddListener(EventTags.FIGHTER_KILLED, FighterKilled);
+		Messenger.AddListener(EventTags.FIGHTER_DEATH, DestroyFighter);
         Messenger.AddListener(EventTags.END_SCREEN_EXP, OnEndScreenExp);
 
 		prefabs.Add (Class.Warrior, meleeFighterPrefab);
@@ -40,6 +41,7 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
     void OnDestroy()
     {
         Messenger.RemoveListener(EventTags.FIGHTER_KILLED, FighterKilled);
+		Messenger.RemoveListener(EventTags.FIGHTER_DEATH, DestroyFighter);
         Messenger.RemoveListener(EventTags.END_SCREEN_EXP, OnEndScreenExp);
     }
 
@@ -96,13 +98,26 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
         GameObject defender = (GameObject) args[0];
         GameObject attacker = (GameObject) args[1];
 
+		defender.GetComponent<BoxCollider2D> ().enabled = false;
+		defender.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeAll;
+
         if (defender.GetComponent<FighterModel>().allegiance == FighterAlliegiance.Ally)
         {
             model.allies.Remove(defender);
+
+			foreach (GameObject enemy in model.enemies) {
+				FighterController enemyController = enemy.GetComponent<FighterController> ();
+				enemyController.RemoveFromRange (defender);
+			}
         }
         else
         {
             model.enemies.Remove(defender);
+
+			foreach (GameObject ally in model.allies) {
+				FighterController allyController = ally.GetComponent<FighterController> ();
+				allyController.RemoveFromRange (defender);
+			}
         }
 
         // TODO: Give XP to attacker.
@@ -126,8 +141,13 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
         }
 
         // TODO: pooling
-        Destroy(defender);
+//        Destroy(defender);
     }
+
+	void DestroyFighter (params object[] args)
+	{
+		Destroy ((GameObject)args [0]);
+	}
 
 	public void OnProjectileHit (Attack attackData, GameObject defender)
 	{

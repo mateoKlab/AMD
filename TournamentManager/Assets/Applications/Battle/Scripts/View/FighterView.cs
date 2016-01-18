@@ -12,7 +12,6 @@ public class FighterView : View {
 	public Action<GameObject> OnEnemyInRange;
 	public Action<GameObject> OnEnemyExitRange;
 
-
 	private Animator animator;
 
 	void Awake ()
@@ -46,9 +45,7 @@ public class FighterView : View {
 			renderer.color = Color.white;
 		}
 	}
-
-
-
+	
 	// Target Detection collider is set as trigger. 
 	// Physics layering prevents triggering for allied units.
 	void OnTriggerEnter2D (Collider2D other)
@@ -68,27 +65,19 @@ public class FighterView : View {
 
 	void OnCollisionEnter2D (Collision2D coll)
 	{
-		// TEST. TODO: use Tags.
 		if (coll.gameObject.name == "Ground") 
 		{
-			// Enable Movement.
+			// Set GroundState. Enable Movement.
 			((FighterController)controller).OnGroundEnter();
 		}
-
-//		if (coll.gameObject.tag == Tags.Units) {
-//			OnCollideWithEnemy(coll.gameObject);
-//		}
-
 	}
 
 	void OnCollisionExit2D (Collision2D coll)
 	{
-		// TEST. TODO: use Tags.
 		if (coll.gameObject.name == "Ground") 
 		{
-			// Disable Movement.
+			// Set GroundState. Disable Movement.
 			((FighterController)controller).OnGroundExit();
 		}
-		
 	}
 }

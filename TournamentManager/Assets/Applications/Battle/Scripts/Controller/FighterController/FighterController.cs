@@ -13,6 +13,7 @@ public class FighterController : Controller
 		state = new FighterStateContext (this.gameObject);
 		state.OnCooldownEnded += OnCooldownEnded;
 		state.OnAttackEnded   += OnAttack;
+		state.OnDeath 		  += OnDeath;
 
 		(model as FighterModel).OnFighterDataSet += OnFighterDataSet;
 		(view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
@@ -23,6 +24,7 @@ public class FighterController : Controller
 	void OnDestroy () {
 		state.OnCooldownEnded -= OnCooldownEnded;
 		state.OnAttackEnded   -= OnAttack;
+		state.OnDeath 		  -= OnDeath;
 
 		(model as FighterModel).OnFighterDataSet -= OnFighterDataSet;
 		(view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
@@ -38,12 +40,13 @@ public class FighterController : Controller
 	#region TEMPORARY
 	public void OnGroundEnter ()
 	{
-		((FighterModel)model).onGround = true;
+//		state.groundState
+//		((FighterModel)model).onGround = true;
 	}
 	
 	public void OnGroundExit ()
 	{
-		((FighterModel)model).onGround = false;
+//		((FighterModel)model).onGround = false;
 	}
 	#endregion
 
@@ -54,6 +57,11 @@ public class FighterController : Controller
         ReceiveDamage(attack);
 //        ReceiveKnockback(attack.knockback);
     }
+
+	public void RemoveFromRange (GameObject enemy)
+	{
+		(model as FighterModel).RemoveEnemyInRange (enemy);
+	}
 
 	#region View Delegates
 
@@ -100,18 +108,24 @@ public class FighterController : Controller
 	{
 		// OVERRIDE ME.
 	}
+
+	// Callback for end of death animation/timer.
+	void OnDeath ()
+	{
+		Messenger.Send (EventTags.FIGHTER_DEATH, this.gameObject);
+	}
 	
 	#endregion
 
 	#region Private Methods
 
 	private void Attack ()
-	{
+	{	
 		GameObject enemyInRange = (model as FighterModel).GetEnemyInRange ();
 		if (enemyInRange != null) {
 
 			// TODO: Use attackspeed for cooldown.
-			float tempCooldown = UnityEngine.Random.Range (0.75f, 1.25f);
+			float tempCooldown = UnityEngine.Random.Range (0.75f, 2.00f);
 			state.Attack (GetAttackData (enemyInRange), tempCooldown);
 		}
 	}
@@ -123,13 +137,14 @@ public class FighterController : Controller
 
 	private void ReceiveDamage (Attack attack)
 	{
-		// TODO: Apply armor/damage reduction effects.
+		// TODO: Apply armor/damage reduction effects.e
 		(model as FighterModel).fighterData.HP -= attack.damage;
 
 		Messenger.Send (EventTags.FIGHTER_RECEIVED_DAMAGE, attack.damage, this.gameObject);
 
 		// TODO: Move to model. Use delegate.
 		if ((model as FighterModel).fighterData.HP <= 0) {
+			state.actionState.Death ();
 			Messenger.Send (EventTags.FIGHTER_KILLED, this.gameObject, attack.attackOrigin);
 		}
 

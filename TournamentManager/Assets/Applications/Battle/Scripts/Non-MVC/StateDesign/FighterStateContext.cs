@@ -12,6 +12,8 @@ public class FighterStateContext {
 
 	// Called when the attack animation finishes.
 	public Action<Attack> OnAttackEnded;
+
+	public Action OnDeath;
 	#endregion
 
 	private ActionState _actionState; 		// The current action. Walking, Attacking, etc.
