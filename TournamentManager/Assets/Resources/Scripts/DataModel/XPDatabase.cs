@@ -8,7 +8,6 @@ using FileHelpers;
 public class XPDatabase : Dictionary<Class, Dictionary<int, int>>
 
 {
-
 	public void Load ()
 	{
 		string filePath = Application.dataPath + "/Resources/Data/";
@@ -28,6 +27,26 @@ public class XPDatabase : Dictionary<Class, Dictionary<int, int>>
 		}
 	}
 
+
+	public bool CheckLevelup (int currentlevel, int currentExp)
+	{
+		// IF: Already at max level.
+		if (currentlevel >= this.Keys.Count) {
+			return false;
+		}
+
+		int expRequired = this [currentlevel + 1];
+		if (currentExp >= expRequired) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public static int GetLevel (Class c, int exp)
+	{
+
+	}
 
 }
 
