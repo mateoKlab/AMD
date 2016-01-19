@@ -35,19 +35,13 @@ public class XPDatabase : Dictionary<Class, Dictionary<int, int>>
 			return false;
 		}
 
-		int expRequired = this [currentlevel + 1];
+		int expRequired = this [Class.Warrior][currentlevel + 1];
 		if (currentExp >= expRequired) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
-	public static int GetLevel (Class c, int exp)
-	{
-
-	}
-
 }
 
 // Record Definition
