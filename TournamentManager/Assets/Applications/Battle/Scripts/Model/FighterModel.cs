@@ -99,6 +99,14 @@ public class FighterModel : Model {
 		}
 	}
 
+	public int xp
+	{
+		get
+		{
+			return fighterData.xp;
+		}
+	}
+
     public FighterSkinData skindData
     {
         get

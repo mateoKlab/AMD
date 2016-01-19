@@ -26,8 +26,7 @@ public class XPDatabase : Dictionary<Class, Dictionary<int, int>>
 			}
 		}
 	}
-
-
+	
 	public bool CheckLevelup (int currentlevel, int currentExp)
 	{
 		// IF: Already at max level.
