@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class SpriteTest {
@@ -42,9 +43,20 @@ public class FighterSpriteController : MonoBehaviour {
 			Debug.Log ("KEY: " + spritePair.Key + " VALUE: " + spritePair.Value);
 			newSprite = Resources.Load ("Sprites/UnitSpritesUpdated/" + spritePair.Key + "/" + spritePair.Value, typeof(Sprite)) as Sprite;
 
-			attachmentDictionary [spritePair.Key].GetComponent <SpriteRenderer> ().sprite = newSprite;
+			if (attachmentDictionary.ContainsKey (spritePair.Key)) {
+				if (attachmentDictionary [spritePair.Key].GetComponent <SpriteRenderer> () != null) 
+				{
+					attachmentDictionary [spritePair.Key].GetComponent <SpriteRenderer> ().sprite = newSprite;
+				} 
+				else if (attachmentDictionary [spritePair.Key].GetComponent <Image> () != null) 
+				{
+					attachmentDictionary [spritePair.Key].GetComponent <Image> ().sprite = newSprite;
+				}
+
 //			attachment.GetComponent <SpriteRenderer> ().sprite = newSprite;
+			}
 
 		}
 	}
+	
 }

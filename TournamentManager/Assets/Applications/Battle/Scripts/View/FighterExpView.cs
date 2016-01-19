@@ -5,53 +5,59 @@ using Bingo;
 
 public class FighterExpView : View<MainMenu, FighterModel, FighterExpController>
 {
-    private RawImage levelupBanner;
-    private FighterSpriteController troopSprite;
-    private Text nameText;
-    private Text levelText;
-    private Text expGainedText;
-    private Slider expSlider;
-    
-    public override void Awake ()
-    {
-        base.Awake ();
-
-        levelupBanner = transform.Find("Banner").GetComponent<RawImage>();
-        troopSprite = transform.Find("TroopSprite").GetComponent<FighterSpriteController>();
-        nameText = transform.Find("Name").GetComponent<Text>();
-        levelText = transform.Find("Level").GetComponent<Text>();
-        expGainedText = transform.Find("ExpGained").GetComponent<Text>();
-        expSlider = transform.Find("ExpSlider").GetComponent<Slider>();
-    }
+    //private RawImage levelupBanner;
+    //private FighterSpriteController troopSprite;
+    public Text nameLabel;
+	public Text levelText;
+	//public Text expGainedText;
+	public Image expMeter;
 
     public void EnableLevelupBanner(bool enabled)
     {
-        levelupBanner.gameObject.SetActive(enabled);
+        //levelupBanner.gameObject.SetActive(enabled);
     }
 
     public void SetSprite(FighterSkinData skinData)
     {
-        troopSprite.SetFighterSkin(skinData);
+        //troopSprite.SetFighterSkin(skinData);
     }
 
     public void SetName(string name)
     {
-        nameText.text = name;
+        nameLabel.text = name;
     }
 
     public void SetLevel(int level)
     {
-        levelText.text = "LEVEL " + level;
+        levelText.text = level.ToString();
     }
 
     public void SetExpGained(float expGained)
     {
-        expGainedText.text = "EXP GAINED " + Mathf.RoundToInt(expGained);
+        //expGainedText.text = "EXP Gained: " + Mathf.RoundToInt(expGained);
+		Debug.LogError ("ExP: " +  expGained); 
     }
 
-    public void SetSliderValue(float value)
+    public void SetSliderValue(int amount)
     {
-        expSlider.value = value;
+		int expRequiredToLevel = 500; // Test value
+		int previousExp = 0;
+
+		Debug.LogError ("Amount" + amount);
+
+		if (amount > expRequiredToLevel) 
+		{
+			controller.LevelUp();
+			previousExp = expRequiredToLevel;
+			expRequiredToLevel = 1000;
+			expMeter.fillAmount = ((float)(amount - previousExp)/expRequiredToLevel);
+			SetLevel(2); 
+			GetComponent<Animator>().SetTrigger("LevelUp");
+
+		} else {
+			expMeter.fillAmount = (float)amount/expRequiredToLevel;
+		}
+
     }
 
 }
