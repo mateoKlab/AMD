@@ -21,11 +21,11 @@ public class MeleeFighterController : FighterController
 
 	public void OnGroundEnter ()
 	{
-		((FighterModel)model).onGround = true;
+//		((FighterModel)model).onGround = true;
 	}
 	
 	public void OnGroundExit ()
 	{
-		((FighterModel)model).onGround = false;
+//		((FighterModel)model).onGround = false;
 	}
 }

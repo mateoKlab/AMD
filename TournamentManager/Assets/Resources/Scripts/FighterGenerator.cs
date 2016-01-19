@@ -63,30 +63,4 @@ public static class FighterGenerator {
 			}
 		}
 	}
-
-
-//	// TODO: Change to "RandomizeEquipment" ().
-//	// TODO: Add chance to  accesssories/cape/wing. 
-//	public static void RandomizeSkin (FighterData fighterData)
-//	{
-//		// If no sprites for this class exist, return.
-//		if (!GameDatabase.spriteDatabase.ContainsKey (fighterData.fighterClass)) {
-//			return;
-//		}
-//
-//		// List of possible sprites for this class.
-//		SerializableDictionary<FighterSpriteAttachment.AttachmentType, List<string>> spritePool = GameDatabase.spriteDatabase [fighterData.fighterClass];
-//
-//		foreach (FighterSpriteAttachment.AttachmentType attachment in spritePool.Keys) {
-//			if (!spritePool.ContainsKey (attachment)) {
-//				continue;
-//			}
-//
-//			List<string> attachmentPool = spritePool[attachment];
-//
-//			int randomAttachment = UnityEngine.Random.Range (0, attachmentPool.Count);
-//
-//			fighterData.skinData.Add (attachment, attachmentPool[randomAttachment]);
-//		}
-//	}
 }

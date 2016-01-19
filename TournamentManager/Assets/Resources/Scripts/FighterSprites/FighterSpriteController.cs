@@ -35,12 +35,10 @@ public class FighterSpriteController : MonoBehaviour {
 
 	public void SetFighterSkin (FighterSkinData skinData)
 	{
-		Debug.Log ("SET");
 		Sprite newSprite;
 
 		foreach (SerializableKVP<string, string> spritePair in skinData) {
 
-			Debug.Log ("KEY: " + spritePair.Key + " VALUE: " + spritePair.Value);
 			newSprite = Resources.Load ("Sprites/UnitSpritesUpdated/" + spritePair.Key + "/" + spritePair.Value, typeof(Sprite)) as Sprite;
 
 			if (attachmentDictionary.ContainsKey (spritePair.Key)) {

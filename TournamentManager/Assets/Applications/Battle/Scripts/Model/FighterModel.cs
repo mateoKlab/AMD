@@ -12,21 +12,16 @@ public enum FighterAlliegiance {
 public class FighterModel : Model {
 
 	public Action OnFighterDataSet;
-
-	// TODO: Deprecate.
-	public bool onGround;
-	// TODO: Deprecate.
-	public bool isRanged;
-
+	
 	private FighterData _fighterData;
 
 	public FighterData fighterData {
-		get { return _fighterData; }
+		get { 
+			return _fighterData; }
 		set {
 
 			_fighterData = value;
 
-			isRanged = _fighterData.isRanged;
 			if (OnFighterDataSet != null) {
 				OnFighterDataSet ();
 			}

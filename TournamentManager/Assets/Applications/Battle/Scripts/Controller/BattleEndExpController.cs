@@ -12,8 +12,8 @@ public class BattleEndExpController : Controller<Battle, BattleEndExpModel, Batt
 
         gameData = GameData.instance;
 
-        FighterExpController[] fighters = GetComponentsInChildren<FighterExpController>(true);
-        model.fighters = new System.Collections.Generic.List<FighterExpController>(fighters);
+//        FighterExpController[] fighters = GetComponentsInChildren<FighterExpController>(true);
+//        model.fighters = new System.Collections.Generic.List<FighterExpController>(fighters);
         Messenger.AddListener(EventTags.RETURN_TO_MAIN_MENU, OnReturnToMainMenu);
     }
 

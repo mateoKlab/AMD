@@ -70,12 +70,6 @@ public class FighterData
 
 	[XmlElement ("SkinData")]
 	public FighterSkinData skinData = new FighterSkinData ();
-	// TODO: Put initializations into constructor.
-//	public FighterSkinData skinData = new FighterSkinData ();
-
-//	[XmlArray ("SkinData")]
-//	[XmlArrayItem ("SpriteAttachment")]
-//	public FighterSkinData skinData;
 
     [XmlIgnore]
     public Sprite normalIcon

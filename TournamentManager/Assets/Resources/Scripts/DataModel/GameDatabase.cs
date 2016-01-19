@@ -24,6 +24,8 @@ public static class GameDatabase {
 
 	private static ClassDatabase _classDatabase;
 
+	private static XPDatabase _xpDatabase;
+
 	#region Getters
 	public static SpriteDatabase spriteDatabase 
 	{
@@ -77,6 +79,18 @@ public static class GameDatabase {
 			}
 			
 			return _classDatabase; 
+		}
+	}
+
+	public static XPDatabase xpDatabase 
+	{
+		get {
+			if (_xpDatabase == null) {
+				_xpDatabase = new XPDatabase ();
+				_xpDatabase.Load ();
+			}
+			
+			return _xpDatabase; 
 		}
 	}
 	#endregion

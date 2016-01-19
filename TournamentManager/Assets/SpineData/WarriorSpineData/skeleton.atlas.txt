@@ -421,23 +421,16 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Axe1
-  rotate: false
-  xy: 657, 470
-  size: 236, 466
-  orig: 236, 466
-  offset: 0, 0
-  index: -1
 Block Collide Frame 4
   rotate: false
-  xy: 2, 93
+  xy: 2, 2
   size: 653, 843
   orig: 653, 843
   offset: 0, 0
   index: -1
 Sword
   rotate: false
-  xy: 657, 2
+  xy: 657, 379
   size: 236, 466
   orig: 236, 466
   offset: 0, 0
@@ -696,14 +689,14 @@ Idle_Cape_Frame10F
   orig: 560, 615
   offset: 0, 0
   index: -1
-Idle_Cape_Frame12F
+Idle_Cape_Frame9F
   rotate: false
   xy: 2, 2
   size: 560, 615
   orig: 560, 615
   offset: 0, 0
   index: -1
-Idle_Cape_Frame9F
+Idle_Cape_Frame12F
   rotate: false
   xy: 2, 2
   size: 560, 615
