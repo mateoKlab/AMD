@@ -64,6 +64,9 @@ public class FighterData
     [XmlElement ("Cost")]
     public int cost = 2;
 
+	[XmlElement ("XP")]
+	public int xp = 0;
+
 	[XmlElement ("EquipmentData")]
 //	public SerializableDictionary<Equipment.Type, Equipment> equipmentData = new SerializableDictionary<Equipment.Type, Equipment> ();
 	public SerializableDictionary<string, Equipment> equipmentData = new SerializableDictionary<string, Equipment> ();

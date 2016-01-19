@@ -6,6 +6,7 @@ public class FighterExpController : Controller
 {
     private bool isActive;
 	public FighterSpriteController fsController;
+	public FighterData fData;
 
     void Start()
     {
@@ -26,11 +27,16 @@ public class FighterExpController : Controller
         ((FighterExpView)view).SetLevel(fd.level);
         ((FighterExpView)view).SetExpGained(GameData.instance.currentStage.xpReward);
 		fsController.SetFighterSkin(fd.skinData);
+		fData = fd;
         //((FighterExpView)view).SetSliderValue(Random.value);
     }
+	
 
-	public void UpdateExpMeter(int amount) {
-		((FighterExpView)view).SetSliderValue(amount);
+	public void AddExp(int amount) {
+		fData.xp += amount;
+
+		((FighterExpView)view).SetSliderValue((float)fData.xp/3000);
+
 	}
 
 	public void LevelUp() {

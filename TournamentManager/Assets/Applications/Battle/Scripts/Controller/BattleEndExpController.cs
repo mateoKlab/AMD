@@ -67,8 +67,8 @@ public class BattleEndExpController : Controller<Battle, BattleEndExpModel, Batt
 			exp -= 10;
 			view.expLabel.text = exp.ToString();
 
-			for(int i = 0; i < model.fighters.Count; i++) {
-				model.fighters[i].UpdateExpMeter(expEarned - exp);
+			for(int i = 0; i <GameData.instance.GetActiveParty().Count; i++) {
+				model.fighters[i].AddExp(10);
 			}
 
 			yield return new WaitForEndOfFrame();
