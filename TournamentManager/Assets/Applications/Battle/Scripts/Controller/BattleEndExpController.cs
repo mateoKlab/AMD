@@ -62,15 +62,26 @@ public class BattleEndExpController : Controller<Battle, BattleEndExpModel, Batt
 
 	IEnumerator AddExpToFighters(int expEarned) {
 		int exp = expEarned;
+		int expUnit = 50;
 		while (exp > 0) 
 		{
-			exp -= 10;
+			exp -= expUnit;
 			view.expLabel.text = exp.ToString();
 
 			for(int i = 0; i <GameData.instance.GetActiveParty().Count; i++) {
-				model.fighters[i].AddExp(10);
+				model.fighters[i].AddExp(expUnit);
 			}
 
+			if (exp < expEarned * 0.05f)
+			{
+				expUnit = 5;
+			}
+			else if (exp < expEarned * 0.2f) 
+			{
+				expUnit = 10;
+			}
+
+			SoundManager.instance.PlayUISFX("Audio/SFX/Meter");
 			yield return new WaitForEndOfFrame();
 		}
 

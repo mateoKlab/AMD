@@ -35,30 +35,12 @@ public class FighterExpView : View<MainMenu, FighterModel, FighterExpController>
     public void SetExpGained(float expGained)
     {
         //expGainedText.text = "EXP Gained: " + Mathf.RoundToInt(expGained);
-		Debug.LogError ("ExP: " +  expGained); 
+		//Debug.LogError ("ExP: " +  expGained); 
     }
 
     public void SetSliderValue(float expPercentage)
     {
 		expMeter.fillAmount = expPercentage;
-		return;
-
-//		int expRequiredToLevel = 500; // Test value
-//		int previousExp = 0;
-//
-//		if (amount > expRequiredToLevel) 
-//		{
-//			controller.LevelUp();
-//			previousExp = expRequiredToLevel;
-//			expRequiredToLevel = 1000;
-//			expMeter.fillAmount = ((float)(amount - previousExp)/expRequiredToLevel);
-//			SetLevel(2); 
-//			GetComponent<Animator>().SetTrigger("LevelUp");
-//
-//		} else {
-//			expMeter.fillAmount = (float)amount/expRequiredToLevel;
-//		}
-
     }
 
 }
