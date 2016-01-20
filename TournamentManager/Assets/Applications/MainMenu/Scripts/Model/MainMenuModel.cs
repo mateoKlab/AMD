@@ -7,13 +7,16 @@ public class MainMenuModel : Model<MainMenu>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
-    public ArmoryModel armoryModel { get; private set; }
+    public EditEquipmentModel editEquipmentModel { get; private set; }
     
     [Inject]
     public EditTeamModel editTeamModel { get; private set; }
     
     [Inject]
     public TournamentModel tournamentModel { get; private set; }
+    
+    [Inject]
+    public ArmoryModel armoryModel { get; private set; }
     
     [Inject]
     public GachaModel gachaModel { get; private set; }

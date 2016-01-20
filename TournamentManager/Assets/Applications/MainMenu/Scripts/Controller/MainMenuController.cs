@@ -10,7 +10,7 @@ public class MainMenuController : Controller<MainMenu>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
-    public TroopDetailsController troopDetailsController { get; private set; }
+    public EditEquipmentController editEquipmentController { get; private set; }
     
     [Inject]
     public EditTeamController editTeamController { get; private set; }

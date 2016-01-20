@@ -16,6 +16,7 @@ public class ArmoryView : View
 	}
 
 	public void OnClickCloseButton() {
+		SoundManager.instance.PlayUISFX("Audio/SFX/Button1");
 		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
 
 		if(app.GetComponent<MainMenuView>().isShowingGachaPopUp) 

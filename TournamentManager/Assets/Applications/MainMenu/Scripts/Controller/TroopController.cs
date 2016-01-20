@@ -30,6 +30,7 @@ public class TroopController : Controller<MainMenu, TroopModel, TroopView>
         model.fighterData = fighterData;
 		view.nameLabel.text = fighterData.name;
 		view.classIcon.texture = Resources.Load("Sprites/ClassIcons/" + fighterData.fighterClass) as Texture;
+		GetComponentInChildren<FighterSpriteController>().SetFighterSkin(fighterData.skinData);
     }
 
     public FighterData GetFighter()
@@ -48,18 +49,14 @@ public class TroopController : Controller<MainMenu, TroopModel, TroopView>
     }
 	
 	public void ToggleState() {
-		if (!GameData.instance.playerData.currentParty.fighters.Contains (model.fighterData.id) && (model.fighterData.cost < GameData.instance.playerData.partyCapacity - editTeamController.GetPartyCost()) && editTeamController.model.activeTroops.Count < GameData.MAX_ACTIVE_FIGHTERS)
+
+		if (!GameData.instance.playerData.currentParty.fighters.Contains (model.fighterData.id) && (model.fighterData.cost < GameData.instance.playerData.partyCapacity - editTeamController.GetPartyCost()) && GameData.instance.playerData.currentParty.fighters.Count < GameData.MAX_ACTIVE_FIGHTERS)
 		{
 			editTeamController.AddTroopOnTeam(model.fighterData);
-
-
 		} else if (GameData.instance.playerData.currentParty.fighters.Contains (model.fighterData.id)) {
-			//editTeamController.model.activeTroops.Remove(model.fighterData);
 			editTeamController.RemoveTroopOnTeam(model.fighterData);
-
 		}
-		editTeamController.view.SetCost(editTeamController.GetPartyCost(), GameData.instance.playerData.partyCapacity);
-		Debug.Log ("TOGGLE: " + GameData.instance.playerData.currentParty.currentCost + " / " + GameData.instance.playerData.partyCapacity);
+		editTeamController.view.SetCost(GameData.instance.playerData.currentParty.currentCost/*editTeamController.GetPartyCost()*/, GameData.instance.playerData.partyCapacity);
 
 		CheckState();
 	}
@@ -72,6 +69,7 @@ public class TroopController : Controller<MainMenu, TroopModel, TroopView>
 	}
 
 	public void DisplayTroopDetails() {
+		//editTeamController.SetSelectedTroop(model.fighterData);
 		editTeamController.ShowTroopDetails(model.fighterData);
 	}
 
