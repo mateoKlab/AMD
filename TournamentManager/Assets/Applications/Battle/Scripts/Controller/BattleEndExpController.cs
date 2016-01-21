@@ -72,11 +72,11 @@ public class BattleEndExpController : Controller<Battle, BattleEndExpModel, Batt
 				model.fighters[i].AddExp(expUnit);
 			}
 
-			if (exp < expEarned * 0.05f)
+			if (exp < 100)
 			{
 				expUnit = 5;
 			}
-			else if (exp < expEarned * 0.2f) 
+			else if (exp < 250) 
 			{
 				expUnit = 10;
 			}
