@@ -27,15 +27,15 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 	}
 	
 	public void OnEnable() {
-		ClearEquipmentDisplay();
-		LoadEquipment();
+	
+		LoadEquipment("EquipmentType+Weapon+Sword");
 	}
 
-	public void OnClickCell (Type type)
-	{
-		LoadEquipment ();
-		currentType = type;
-	}
+//	public void OnClickCell (Type type)
+//	{
+//		LoadEquipment ();
+//		currentType = type;
+//	}
 
 	public void OnClickCell (Equipment equipment)
 	{
@@ -50,28 +50,30 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 		}
 	}
 
-	public void LoadEquipment() {
-		equipmentPrefab = Resources.Load("Prefabs/Equipment") as GameObject;
+	public void LoadEquipment(string type) {
+		ClearEquipmentDisplay();
+		equipmentPrefab = Resources.Load("Prefabs/EquipmentItemCell") as GameObject;
 	
 
 //		foreach (Type type in GameDatabase.equipmentDatabase.GetSubTypes) {
 //
 //			//Instantiate.
 //		}
-//		foreach (Equipment eq in GameDatabase.equipmentDatabase.GetItems) {
-//			// INstantiate.
-//		}
+		foreach (Equipment eq in GameDatabase.equipmentDatabase.GetItems(Type.GetType(type))) {
+			// INstantiate.
 
-
-		for (int i = 0 ; i < 8; i++) // 8 = number of branches
-		{
 			GameObject go = Instantiate(equipmentPrefab);
-
+				
 			go.transform.SetParent(equipmentPanel.transform, false);
-			
-			EquipmentCellController eCon = go.GetComponent<EquipmentCellController>();
+				
+			EquipmentItemCellController eCon = go.GetComponent<EquipmentItemCellController>();
 			model.equipmentList.Add (eCon);
+			eCon.SetItemDetails(eq);
+
 		}
+
+
+	
 		
 		// Resize scrollable background based on number of elements
 		float elementHeight = equipmentPrefab.GetComponent<LayoutElement>().preferredHeight + equipmentPanel.spacing.y;
