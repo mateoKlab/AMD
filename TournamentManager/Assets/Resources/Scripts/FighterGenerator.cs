@@ -35,18 +35,19 @@ public static class FighterGenerator {
 
 		foreach (string equipmentType in classData.equipmentAllowed) 
 		{
-//			List<Equipment> equipmentPool = GameDatabase.equipmentDatabase [equipmentType].Values.ToList ();
-//
-//			if (equipmentPool != null) {
-//
-//				Equipment randomEquipment = equipmentPool[UnityEngine.Random.Range (0, equipmentPool.Count)];
-//				fighterData.equipmentData.Add (equipmentType, randomEquipment);
-//
-//				// Save sprites for this equip in FighterData.
-//				foreach (EquipmentSprite sprite in randomEquipment.sprites) {
-//					fighterData.skinData.AddSkin (sprite.attachmentType, sprite.spriteName);
-//				}
-//			}
+			List<Equipment> equipmentPool = GameDatabase.equipmentDatabase.GetItems (Type.GetType(equipmentType));
+
+			if (equipmentPool.Count > 0) {
+
+				Equipment randomEquipment = equipmentPool[UnityEngine.Random.Range (0, equipmentPool.Count)];
+				fighterData.equipmentData.Add (equipmentType, randomEquipment);
+
+
+				// Save sprites for this equip in FighterData.
+				foreach (EquipmentSprite sprite in randomEquipment.sprites) {
+					fighterData.skinData.AddSkin (sprite.attachmentType, sprite.spriteName);
+				}
+			}
 		}
 	}
 }

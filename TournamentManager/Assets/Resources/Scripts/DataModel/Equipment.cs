@@ -61,7 +61,8 @@ public class EquipmentType
 	public class Armor : EquipmentType {
 
 		// Armor subtypes.
-		public class Body : Armor { }		
+		public class Body : Armor { }
+		public class Helm : Armor { }
 		public class Shoulder : Armor { }		
 		public class Gauntlet : Armor { }
 	}

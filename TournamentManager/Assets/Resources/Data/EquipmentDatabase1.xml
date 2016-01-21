@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EquipmentDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Weapons>
+    <Item>
+      <EquipmentType>EquipmentType+Weapon+Sword</EquipmentType>
+      <ID>Sword1</ID>
+      <Name>Nice Sword1</Name>
+      <Attack>20</Attack>
+      <Defense>0</Defense>
+      <HP>0</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Sword</AttachmentType>
+          <SpriteName>Sword1</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Item>
+    <Item>
+      <EquipmentType>EquipmentType+Weapon+Sword</EquipmentType>
+      <ID>Sword2</ID>
+      <Name>Nice Sword2</Name>
+      <Attack>20</Attack>
+      <Defense>0</Defense>
+      <HP>0</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Sword</AttachmentType>
+          <SpriteName>Sword2</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Item>
+    <Item>
+      <EquipmentType>EquipmentType+Weapon+Sword</EquipmentType>
+      <ID>Sword3</ID>
+      <Name>Nice Sword3</Name>
+      <Attack>20</Attack>
+      <Defense>0</Defense>
+      <HP>0</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Sword</AttachmentType>
+          <SpriteName>Sword3</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Item>
+    <Item>
+      <EquipmentType>EquipmentType+Weapon+Sword</EquipmentType>
+      <ID>Sword4</ID>
+      <Name>Nice Sword4</Name>
+      <Attack>20</Attack>
+      <Defense>0</Defense>
+      <HP>0</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Sword</AttachmentType>
+          <SpriteName>Sword4</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Item>
+    <Item>
+      <EquipmentType>EquipmentType+Weapon+Sword</EquipmentType>
+      <ID>Sword5</ID>
+      <Name>Nice Sword5</Name>
+      <Attack>20</Attack>
+      <Defense>0</Defense>
+      <HP>0</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Sword</AttachmentType>
+          <SpriteName>Sword5</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Item>
+    <Item>
+      <EquipmentType>EquipmentType+Weapon+Sword</EquipmentType>
+      <ID>Sword6</ID>
+      <Name>Nice Sword6</Name>
+      <Attack>20</Attack>
+      <Defense>0</Defense>
+      <HP>0</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Sword</AttachmentType>
+          <SpriteName>Sword6</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Item>
+    <Item>
+      <EquipmentType>EquipmentType+Weapon+Sword</EquipmentType>
+      <ID>Sword7</ID>
+      <Name>Nice Sword7</Name>
+      <Attack>20</Attack>
+      <Defense>0</Defense>
+      <HP>0</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Sword</AttachmentType>
+          <SpriteName>Sword7</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Item>
+    <Item>
+      <EquipmentType>EquipmentType+Weapon+Sword</EquipmentType>
+      <ID>Sword8</ID>
+      <Name>Nice Sword8</Name>
+      <Attack>20</Attack>
+      <Defense>0</Defense>
+      <HP>0</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Sword</AttachmentType>
+          <SpriteName>Sword8</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Item>
+    <Item>
+      <EquipmentType>EquipmentType+Weapon+Sword</EquipmentType>
+      <ID>Sword9</ID>
+      <Name>Nice Sword9</Name>
+      <Attack>20</Attack>
+      <Defense>0</Defense>
+      <HP>0</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Sword</AttachmentType>
+          <SpriteName>Sword9</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Item>
+    <Item>
+      <EquipmentType>EquipmentType+Weapon+Sword</EquipmentType>
+      <ID>Sword10</ID>
+      <Name>Nice Sword10</Name>
+      <Attack>20</Attack>
+      <Defense>0</Defense>
+      <HP>0</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Sword</AttachmentType>
+          <SpriteName>Sword10</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Item>
+  </Weapons>
+</EquipmentDatabase>
