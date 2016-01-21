@@ -2,7 +2,7 @@
 using System.Collections;
 using Bingo;
 
-public class EquipmentCellModel : Model
+public class EquipmentItemCellController : Controller
 {
 
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using Bingo;
 using UnityEngine.UI;
@@ -15,6 +16,9 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 	public GridLayoutGroup equipmentPanel;
 	private GameObject equipmentPrefab;
 
+	// Current Displayed EquipmentType;
+	private Type currentType = typeof (EquipmentType);
+
 	public void SetFighterToEdit(FighterData fData) 
 	{
 		gameObject.SetActive(true);
@@ -25,6 +29,17 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 	public void OnEnable() {
 		ClearEquipmentDisplay();
 		LoadEquipment();
+	}
+
+	public void OnClickCell (Type type)
+	{
+		LoadEquipment ();
+		currentType = type;
+	}
+
+	public void OnClickCell (Equipment equipment)
+	{
+		//Equip.
 	}
 
 	private void ClearEquipmentDisplay()
@@ -38,6 +53,16 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 	public void LoadEquipment() {
 		equipmentPrefab = Resources.Load("Prefabs/Equipment") as GameObject;
 	
+
+//		foreach (Type type in GameDatabase.equipmentDatabase.GetSubTypes) {
+//
+//			//Instantiate.
+//		}
+//		foreach (Equipment eq in GameDatabase.equipmentDatabase.GetItems) {
+//			// INstantiate.
+//		}
+
+
 		for (int i = 0 ; i < 8; i++) // 8 = number of branches
 		{
 			GameObject go = Instantiate(equipmentPrefab);
