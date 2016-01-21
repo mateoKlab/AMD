@@ -47,44 +47,23 @@ public class EquipmentType
 	public class Weapon : EquipmentType {
 
 		#region Weapon Types
-		public class Sword : Weapon 
-		{
-
-		}
-		public class Staff : Weapon 
-		{ 
-		
-		}
+		public class Sword : Weapon { }
+		public class Staff : Weapon { }
 		#endregion
-
 	}
 
 	public class Offhand : EquipmentType {
 
-	
 		// Offhand subtypes.
-		public class Shield : Offhand 
-		{ 
-		
-		}
+		public class Shield : Offhand { }
 	}
 	
 	public class Armor : EquipmentType {
 
-	
 		// Armor subtypes.
-		public class Body : Armor 
-		{ 
-		
-		}		
-		public class Shoulder : Armor 
-		{ 
-
-		}		
-		public class Gauntlet : Armor 
-		{ 
-		
-		}		
+		public class Body : Armor { }		
+		public class Shoulder : Armor { }		
+		public class Gauntlet : Armor { }
 	}
 	#endregion
 }
