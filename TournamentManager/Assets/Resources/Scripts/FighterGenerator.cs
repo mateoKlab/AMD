@@ -21,20 +21,10 @@ public static class FighterGenerator {
 		newFighter.fighterClass = classData.fighterClass;
 
 		newFighter.ATK = classData.baseATK;
-		newFighter.HP = classData.baseHP;
+		newFighter.maxHP = classData.baseHP;
 		newFighter.fighterElement = gachaDatabase.GetRandomElement ();
 
-
-		// TEMP. TODO: Must define isRanged in Data.
-		if (newFighter.fighterClass == Class.Warrior) {
-			newFighter.isRanged = false;
-		} else {
-			newFighter.isRanged = true;
-		}
-
-
 		RandomizeEquipment (newFighter);
-//		RandomizeSkin (newFighter);
 
 		return newFighter;
 	}
@@ -45,22 +35,18 @@ public static class FighterGenerator {
 
 		foreach (string equipmentType in classData.equipmentAllowed) 
 		{
-			Debug.Log ("GET EQUIP POOL: " + equipmentType);
-			List<Equipment> equipmentPool = GameDatabase.equipmentDatabase [equipmentType].Values.ToList ();
-
-			if (equipmentPool != null) {
-//				Equipment.Type.Weapon.Sword = new Equipment.Type.Weapon ();
-
-				Debug.Log ("GET: " + equipmentType.ToString ());
-
-				Equipment randomEquipment = equipmentPool[UnityEngine.Random.Range (0, equipmentPool.Count)];
-				fighterData.equipmentData.Add (equipmentType, randomEquipment);
-
-				// Save sprites for this equip in FighterData.
-				foreach (EquipmentSprite sprite in randomEquipment.sprites) {
-					fighterData.skinData.AddSkin (sprite.attachmentType, sprite.spriteName);
-				}
-			}
+//			List<Equipment> equipmentPool = GameDatabase.equipmentDatabase [equipmentType].Values.ToList ();
+//
+//			if (equipmentPool != null) {
+//
+//				Equipment randomEquipment = equipmentPool[UnityEngine.Random.Range (0, equipmentPool.Count)];
+//				fighterData.equipmentData.Add (equipmentType, randomEquipment);
+//
+//				// Save sprites for this equip in FighterData.
+//				foreach (EquipmentSprite sprite in randomEquipment.sprites) {
+//					fighterData.skinData.AddSkin (sprite.attachmentType, sprite.spriteName);
+//				}
+//			}
 		}
 	}
 }

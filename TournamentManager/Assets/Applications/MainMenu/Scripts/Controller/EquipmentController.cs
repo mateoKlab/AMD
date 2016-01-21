@@ -2,7 +2,7 @@
 using System.Collections;
 using Bingo;
 
-public class EquipmentController : Controller
+public class EquipmentControllerTEMP : Controller
 {
 
 }

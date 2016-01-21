@@ -1,28 +1,23 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
-using System.IO;
-
 
 [XmlRoot ("Equipment")]
-public struct Equipment {
+public struct Equipment : IDatabaseItem {
 
 	#region Class members
 	[XmlElement ("EquipmentType")]
-	public Type type; //Type.Weapon.sword;
+	public string type; //Type.Weapon.sword;
 
 	[XmlElement ("ID")]
 	public string id;// = "Default ID";
 
 	[XmlElement ("Name")]
 	public string name;// = "Default weapon";
-
-	[XmlArray ("Sprites")]
-	[XmlArrayItem ("Sprite")]
-	public List<EquipmentSprite> sprites;// = "default filename";
-
+	
 	[XmlElement ("Attack")]
 	public float attack;// = 100.0f;
 
@@ -31,61 +26,46 @@ public struct Equipment {
 
 	[XmlElement ("HP")]
 	public int hp;// = 200;
+
+	[XmlArray ("Sprites")]
+	[XmlArrayItem ("Sprite")]
+	public List<EquipmentSprite> sprites;// = "default filename";
 	#endregion
 
-	
-	// Nested "Type" classes used as a hierarchical ID system. (C# does not support struct inheritance/nested enums.)
-	// Usage: someEquip.type = Equipment.Type.Weapon.Sword;
-	// Inherits from ItemType<T> to be enabled for use with the Inventory system.
-	[XmlInclude(typeof(Weapon))]
-	[XmlInclude(typeof(Offhand))]
-	[XmlInclude(typeof(Armor))]
-	public class Type : ItemType<Equipment>
-	{
-		// Subtype static members. Allows use of Equipment.Type.<Subtype> "abstract" type.
-		// "Type" suffix added to prevent hiding of nested subclasses.
-		public static Type WeaponType  = new Type { typeName = "Weapon" };
-		public static Type OffhandType = new Type { typeName = "Offhand" };
-		public static Type ArmorType   = new Type { typeName = "Armor" };
-		
-		
-		// Equipment Types determine attachment type to sprite.
-		#region Equipment Types
-		public class Weapon : Type {
-			
-			// All weapon subtypes are of type: WeaponType.
-			public override ItemType<Equipment> parentType {
-				get { return Type.WeaponType; }
-			}
-			
-			// Weapon subtypes.
-			public static Weapon Sword = new Weapon { typeName = "Sword" };
-			public static Weapon Staff = new Weapon { typeName = "Staff" };
-		}
-		
-		public class Offhand : Type {
-			
-			// All Offhand subtypes are of type: OffhandType.
-			public override ItemType<Equipment> parentType {
-				get { return Type.OffhandType; }
-			}
-			
-			// Offhand subtypes.
-			public static Offhand Shield = new Offhand { typeName = "Shield" };
-		}
-		
-		public class Armor : Type {
-			
-			// All Body subtypes are of type: BodyType.
-			public override ItemType<Equipment> parentType {
-				get { return Type.ArmorType; }
-			}
-			
-			// Body subtypes.
-			public static Armor Helm = new Armor { typeName = "Helm" };
-		}
+	// Implement IDatabaseItem property.
+	string IDatabaseItem.itemId {
+		get { return this.id; }
+		set { this.id = value; }
+	}
+}
+
+// Nested "Type" classes used as a hierarchical ID system. (C# does not support struct inheritance/nested enums.)
+// Usage: someEquip.type = Equipment.Type.Weapon.Sword;
+public class EquipmentType
+{
+	#region Equipment Types
+	public class Weapon : EquipmentType {
+
+		#region Weapon Types
+		public class Sword : Weapon { }
+		public class Staff : Weapon { }
 		#endregion
 	}
+
+	public class Offhand : EquipmentType {
+
+		// Offhand subtypes.
+		public class Shield : Offhand { }
+	}
+	
+	public class Armor : EquipmentType {
+
+		// Armor subtypes.
+		public class Body : Armor { }		
+		public class Shoulder : Armor { }		
+		public class Gauntlet : Armor { }
+	}
+	#endregion
 }
 
 [XmlRoot ("EquipmentSprite")]
@@ -93,7 +73,7 @@ public struct EquipmentSprite
 {
 	[XmlElement ("AttachmentType")]
 	public string attachmentType;
-
+	
 	[XmlElement ("SpriteName")]
 	public string spriteName;
 }
