@@ -52,7 +52,7 @@ public class FighterData
     public bool isRanged = false;
 
 	[XmlElement ("Level")]
-	public int level = 0;
+	public int level = 1;
 
 	[XmlElement ("XP")]
 	public int exp = 0;
