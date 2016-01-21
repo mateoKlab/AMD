@@ -15,7 +15,7 @@ public struct SerializableKVP<K, V>
 	public V Value 
 	{ get; set; }
 
-	public SerializableKVP (K key, V value)
+	public SerializableKVP (K key, V value) : this()
 	{
 		Key = key;
 		Value = value;

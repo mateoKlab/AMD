@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour {
 
 	private List<AudioSource> sfxAudioSourceBank = new List<AudioSource>();
 	private List<AudioSource> uiSFXAudioSourceBank = new List<AudioSource>();
-	private int sfxBankSize = 10;
+	private int sfxBankSize = 15;
 	public AudioMixer masterMixer;
 	public AudioMixerGroup bgmGroup;
 	public AudioMixerGroup sfxGroup;

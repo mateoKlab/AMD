@@ -168,6 +168,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 
     public void ShowTroopDetails(FighterData fighter)
     {
+		model.selectedTroop = fighter;
         troopDetailsController.SetTroopDetails(fighter);
     }
 
@@ -216,19 +217,31 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 
     public int GetPartyCost()
     {
-        int cost = 0;
-        for (int i = 0; i < model.activeTroops.Count; i++)
-        {
-            if (model.activeTroops[i] != null)
-            {
-                cost += model.activeTroops[i].cost;
-            }
-        }
-        return cost;
+		return GameData.instance.playerData.currentParty.currentCost;
+
+//		int cost = GameData.instance.playerData.currentParty.currentCost;
+//        for (int i = 0; i < model.activeTroops.Count; i++)
+//        {
+//            if (model.activeTroops[i] != null)
+//            {
+//                cost += model.activeTroops[i].cost;
+//            }
+//        }
+//        return cost;
     }
 
     public bool IsWithinPartyCapacity(int troopCost)
     {
 		return ((gameData.playerData.currentParty.currentCost + troopCost) <= gameData.playerData.fighterCapacity);
     }
+
+	public void ShowEditEquipmentScreen() {
+		gameObject.SetActive(false);
+
+		app.controller.editEquipmentController.SetFighterToEdit(model.selectedTroop);
+	}
+
+//	public void SetSelectedTroop(FighterData fData) {
+//		model.selectedTroop = fData;
+//	}
 }
