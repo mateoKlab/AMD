@@ -12,7 +12,7 @@ public class FighterSpriteAttachment {
 		Hind_Upper_Leg,
 		Hind_Lower_Leg,
 		Hind_Ankle,
-		Upper_Body,
+		Body,
 		Front_Upper_Arm,
 		Front_Lower_Arm,
 		Front_Fist,
@@ -23,7 +23,6 @@ public class FighterSpriteAttachment {
 		Hind_Lower_Arm,
 		Hind_Fist,
 		Shield,
-		Body,
 		Weapon
 
 	}

@@ -11,12 +11,12 @@
         <baseHP>1000</baseHP>
         <baseDEF>10</baseDEF>
         <EquipmentAllowed>
-          <Equip>Sword</Equip>
-          <Equip>Helm</Equip>
-          <Equip>Shoulder</Equip>
-          <Equip>Upper_Body</Equip>
-          <Equip>Gauntlet</Equip>
-          <Equip>Shield</Equip>
+          <Equip>EquipmentType+Weapon+Sword</Equip>
+          <Equip>EquipmentType+Armor+Helm</Equip>
+          <Equip>EquipmentType+Armor+Shoulder</Equip>
+          <Equip>EquipmentType+Armor+Body</Equip>
+          <Equip>EquipmentType+Armor+Gauntlet</Equip>
+          <Equip>EquipmentType+Offhand+Shield</Equip>
         </EquipmentAllowed>
       </ClassData>
     </value>

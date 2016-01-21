@@ -367,5 +367,89 @@
         </Sprite>
       </Sprites>
     </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Body</EquipmentType>
+      <ID>Body1</ID>
+      <Name>Nice Body1</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Body</AttachmentType>
+          <SpriteName>Body1</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Body</EquipmentType>
+      <ID>Body2</ID>
+      <Name>Nice Body2</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Body</AttachmentType>
+          <SpriteName>Body2</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Body</EquipmentType>
+      <ID>Body4</ID>
+      <Name>Nice Body4</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Body</AttachmentType>
+          <SpriteName>Body4</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Body</EquipmentType>
+      <ID>Body5</ID>
+      <Name>Nice Body5</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Body</AttachmentType>
+          <SpriteName>Body5</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Body</EquipmentType>
+      <ID>Body6</ID>
+      <Name>Nice Body6</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Body</AttachmentType>
+          <SpriteName>Body6</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+      <Equipment>
+      <EquipmentType>EquipmentType+Armor+Body</EquipmentType>
+      <ID>Body7</ID>
+      <Name>Nice Body7</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Body</AttachmentType>
+          <SpriteName>Body7</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
   </EquipmentList>
 </EquipmentDatabase>

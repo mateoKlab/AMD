@@ -58,7 +58,7 @@ public class Database<T> where T : IDatabaseItem {
 		
 		Stack<Type> typeStack = new Stack<Type> ();
 		
-		while (currentType.IsNested) {
+		while (currentType.IsNested && currentType != null) {
 			
 			typeStack.Push (currentType);
 			currentType = currentType.BaseType;
