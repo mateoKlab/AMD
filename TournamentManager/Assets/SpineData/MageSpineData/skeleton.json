@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "A1aG8bgopYc1DTU2L62s5+jqo3Q", "spine": "2.1.27", "width": 496.78, "height": 694.94, "images": "" },
+"skeleton": { "hash": "n952I9gwU0rBYfTTCXO4DcOwtD4", "spine": "2.1.27", "width": 496.78, "height": 694.94, "images": "" },
 "bones": [
 	{ "name": "root", "x": -0.84, "y": 0.84 },
 	{ "name": "Body_Lower_Body1", "parent": "root", "x": 45.21, "y": 234 },
@@ -1214,14 +1214,19 @@
 				"attachment": [
 					{ "time": 0, "name": "Mage_Lowerbody_Idle1" },
 					{ "time": 0.2333, "name": null },
+					{ "time": 0.4666, "name": null },
 					{ "time": 0.6666, "name": "Mage_Lowerbody_Idle1" },
-					{ "time": 0.9, "name": null }
+					{ "time": 0.9, "name": null },
+					{ "time": 1.1333, "name": null },
+					{ "time": 1.3333, "name": "Mage_Lowerbody_Idle1" }
 				]
 			},
 			"Mage_Lowerbody_Idle2": {
 				"attachment": [
+					{ "time": 0, "name": null },
 					{ "time": 0.2333, "name": "Mage_Lowerbody_Idle2" },
 					{ "time": 0.4666, "name": null },
+					{ "time": 0.6666, "name": null },
 					{ "time": 0.9, "name": "Mage_Lowerbody_Idle2" },
 					{ "time": 1.1333, "name": null },
 					{ "time": 1.3333, "name": null }
@@ -1229,10 +1234,13 @@
 			},
 			"Mage_Lowerbody_Idle3": {
 				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.2333, "name": null },
 					{ "time": 0.4666, "name": "Mage_Lowerbody_Idle3" },
 					{ "time": 0.6666, "name": null },
+					{ "time": 0.9, "name": null },
 					{ "time": 1.1333, "name": "Mage_Lowerbody_Idle3" },
-					{ "time": 1.3333, "name": "Mage_Lowerbody_Idle3" }
+					{ "time": 1.3333, "name": null }
 				]
 			}
 		},
@@ -1340,22 +1348,36 @@
 				"attachment": [
 					{ "time": 0, "name": "Mage_Lowerbody_Motion1" },
 					{ "time": 0.1666, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.5, "name": null },
 					{ "time": 0.6666, "name": "Mage_Lowerbody_Motion1" },
-					{ "time": 0.8333, "name": null }
+					{ "time": 0.8333, "name": null },
+					{ "time": 1, "name": null },
+					{ "time": 1.1666, "name": null },
+					{ "time": 1.3333, "name": "Mage_Lowerbody_Motion1" }
 				]
 			},
 			"Mage_Lowerbody_Motion2": {
 				"attachment": [
+					{ "time": 0, "name": null },
 					{ "time": 0.1666, "name": "Mage_Lowerbody_Motion2" },
 					{ "time": 0.3333, "name": null },
+					{ "time": 0.5, "name": null },
+					{ "time": 0.6666, "name": null },
 					{ "time": 0.8333, "name": "Mage_Lowerbody_Motion2" },
-					{ "time": 1, "name": null }
+					{ "time": 1, "name": null },
+					{ "time": 1.1666, "name": null },
+					{ "time": 1.3333, "name": null }
 				]
 			},
 			"Mage_Lowerbody_Motion3": {
 				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.1666, "name": null },
 					{ "time": 0.3333, "name": "Mage_Lowerbody_Motion3" },
 					{ "time": 0.5, "name": null },
+					{ "time": 0.6666, "name": null },
+					{ "time": 0.8333, "name": null },
 					{ "time": 1, "name": "Mage_Lowerbody_Motion3" },
 					{ "time": 1.1666, "name": null },
 					{ "time": 1.3333, "name": null }
@@ -1363,10 +1385,15 @@
 			},
 			"Mage_Lowerbody_Motion4": {
 				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.3333, "name": null },
 					{ "time": 0.5, "name": "Mage_Lowerbody_Motion4" },
 					{ "time": 0.6666, "name": null },
+					{ "time": 0.8333, "name": null },
+					{ "time": 1, "name": null },
 					{ "time": 1.1666, "name": "Mage_Lowerbody_Motion4" },
-					{ "time": 1.3333, "name": "Mage_Lowerbody_Motion4" }
+					{ "time": 1.3333, "name": null }
 				]
 			}
 		},
