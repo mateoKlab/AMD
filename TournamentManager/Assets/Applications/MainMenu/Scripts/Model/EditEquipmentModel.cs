@@ -6,5 +6,6 @@ using System.Collections.Generic;
 public class EditEquipmentModel : Model
 {
 	public FighterData fighterToEdit;
-	public List<GameObject> equipmentPrefabs = new List<GameObject>();
+	public List<EquipmentCellController> equipmentList = new List<EquipmentCellController>();
+
 }
