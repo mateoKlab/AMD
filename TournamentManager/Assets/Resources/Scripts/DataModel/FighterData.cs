@@ -37,9 +37,6 @@ public class FighterData
     [XmlElement ("SpriteName")]
     public string spriteName = "knight_fire";
 
-    [XmlElement ("Level")]
-    public int level = 1;
-
     [XmlElement]
     public int HP = 1000;
 
@@ -49,8 +46,16 @@ public class FighterData
     [XmlElement]
     public int ATK = 100;
 
+	public int DEF = 0;
+
     [XmlElement]
     public bool isRanged = false;
+
+	[XmlElement ("Level")]
+	public int level = 0;
+
+	[XmlElement ("XP")]
+	public int exp = 0;
 
     [XmlElement ("Name")]
     public string name = "Juan";
@@ -63,24 +68,13 @@ public class FighterData
 
     [XmlElement ("Cost")]
     public int cost = 2;
-
-	[XmlElement ("XP")]
-	public int xp = 0;
-
+	
 	[XmlElement ("EquipmentData")]
-//	public SerializableDictionary<Equipment.Type, Equipment> equipmentData = new SerializableDictionary<Equipment.Type, Equipment> ();
 	public SerializableDictionary<string, Equipment> equipmentData = new SerializableDictionary<string, Equipment> ();
 
 	[XmlElement ("SkinData")]
 	public FighterSkinData skinData = new FighterSkinData ();
 
-    [XmlIgnore]
-    public Sprite normalIcon
-    {
-        get
-        {
-            //return sprites[0];
-            return Resources.Load<Sprite>("Sprites/" + spriteName);
-        }
-    }
+
+
 }

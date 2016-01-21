@@ -22,9 +22,11 @@ public static class GameDatabase {
 
 	private static GachaDatabase _gachaDatabase;
 
+
 	private static ClassDatabase _classDatabase;
 
 	private static XPDatabase _xpDatabase;
+
 
 	#region Getters
 	public static SpriteDatabase spriteDatabase 
@@ -103,35 +105,34 @@ public static class GameDatabase {
 		_equipmentDatabase = LoadDatabase<EquipmentDatabase> ();
 		_classDatabase 	   = LoadDatabase<ClassDatabase> ();
 
-//		Equipment gauntlet = new Equipment ();
-//		gauntlet.defense = 5;
-//		gauntlet.hp = 50;
-//		gauntlet.id = "Gauntlet";
-//		gauntlet.name = "Gauntlet Name";
-//		gauntlet.sprites = new List<EquipmentSprite> ();
-//		gauntlet.sprites.Add (new EquipmentSprite () { attachmentType = "Hind_Lower_Arm", spriteName = "Hind_Lower_Arm" });
-//		gauntlet.sprites.Add (new EquipmentSprite () { attachmentType = "Hind_Fist", spriteName = "Hind_Fist" });
-//		gauntlet.sprites.Add (new EquipmentSprite () { attachmentType = "Front_Lower_Arm", spriteName = "Front_Lower_Arm" });
-//		gauntlet.sprites.Add (new EquipmentSprite () { attachmentType = "Front_Fist", spriteName = "Front_Fist" });
+
+		_equipmentDatabase.Load ();
+
+//		Equipment Shield1 = new Equipment ();
+//		Shield1.type = typeof(EquipmentType.Offhand.Shield).FullName;
+//		Shield1.id = "Shield1";
+//		Shield1.name = "Nice Shield1";
+//		Shield1.defense = 20;
+//		Shield1.sprites = new List<EquipmentSprite> ();
+//		Shield1.sprites.Add (new EquipmentSprite () { attachmentType = FighterSpriteAttachment.AttachmentType.Shield.ToString (), spriteName = "Shield1" });
 //
-//		Equipment gauntlet6 = new Equipment ();
-//		gauntlet6.defense = 5;
-//		gauntlet6.hp = 50;
-//		gauntlet6.id = "Gauntlet6";
-//		gauntlet6.name = "Gauntlet Name6";
-//		gauntlet6.sprites = new List<EquipmentSprite> ();
-//		gauntlet6.sprites.Add (new EquipmentSprite () { attachmentType = "Hind_Lower_Arm", spriteName = "Hind_Lower_Arm6" });
-//		gauntlet6.sprites.Add (new EquipmentSprite () { attachmentType = "Hind_Fist", spriteName = "Hind_Fist6" });
-//		gauntlet6.sprites.Add (new EquipmentSprite () { attachmentType = "Front_Lower_Arm", spriteName = "Front_Lower_Arm6" });
-//		gauntlet6.sprites.Add (new EquipmentSprite () { attachmentType = "Front_Fist", spriteName = "Front_Fist6" });
-//		
-//		SerializableDictionary<string, Equipment> gauntletDic = new SerializableDictionary<string, Equipment> ();
-//		gauntletDic.Add (gauntlet.id, gauntlet);
-//		gauntletDic.Add (gauntlet6.id, gauntlet6);
-//	
-//		_equipmentDatabase.Add ("Gauntlet", gauntletDic);
-//
+//		_equipmentDatabase.offhand.Add (Shield1);
+
+
+//		_equipmentDatabase.Load ();
+
 //		XmlHelper.Save<EquipmentDatabase> (_equipmentDatabase, "EquipmentDatabase");
+
+
+//		_equipmentDatabase.AddItem<EquipmentType.Weapon.Sword> (testEquip);
+
+		//		Debug.Log (typeof(EquipmentType.WeaponType.SwordType).BaseType.ToString ());
+
+
+
+
+
+
 	}
 	
 	private static T LoadDatabase<T> ()

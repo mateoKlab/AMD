@@ -1,90 +1,180 @@
 
 skeleton.png
-size: 512,512
+size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-body
+Body_Lower_Body1
   rotate: false
-  xy: 98, 133
-  size: 112, 153
-  orig: 112, 153
+  xy: 370, 306
+  size: 285, 365
+  orig: 285, 365
   offset: 0, 0
   index: -1
-eyes
+Body_Robe1
   rotate: false
-  xy: 375, 332
-  size: 84, 48
-  orig: 84, 48
+  xy: 370, 673
+  size: 324, 335
+  orig: 324, 335
   offset: 0, 0
   index: -1
-eyes_blink
+Body_Shawl1
+  rotate: false
+  xy: 696, 476
+  size: 278, 238
+  orig: 278, 238
+  offset: 0, 0
+  index: -1
+Front_Fist_Atk1
+  rotate: false
+  xy: 825, 317
+  size: 191, 157
+  orig: 191, 157
+  offset: 0, 0
+  index: -1
+Front_Upper_Arm1
+  rotate: false
+  xy: 686, 38
+  size: 195, 266
+  orig: 195, 266
+  offset: 0, 0
+  index: -1
+Head_Head1
+  rotate: false
+  xy: 657, 306
+  size: 166, 168
+  orig: 166, 168
+  offset: 0, 0
+  index: -1
+Head_Hood1
   rotate: false
   xy: 2, 2
-  size: 37, 28
-  orig: 37, 28
+  size: 340, 309
+  orig: 340, 309
   offset: 0, 0
   index: -1
-eyes_dead
+Hind_thumb1
   rotate: false
-  xy: 212, 190
-  size: 35, 43
-  orig: 35, 43
+  xy: 883, 227
+  size: 99, 88
+  orig: 99, 88
   offset: 0, 0
   index: -1
-face
+Mage_Lowerbody_Idle1
   rotate: false
-  xy: 218, 333
-  size: 155, 166
-  orig: 155, 166
+  xy: 344, 25
+  size: 340, 279
+  orig: 340, 279
   offset: 0, 0
   index: -1
-hair
+Orb1
   rotate: false
-  xy: 2, 288
-  size: 214, 211
-  orig: 214, 211
+  xy: 696, 716
+  size: 298, 292
+  orig: 298, 292
   offset: 0, 0
   index: -1
-hair_tail
+Staff1
   rotate: false
-  xy: 375, 382
-  size: 101, 117
-  orig: 101, 117
+  xy: 2, 313
+  size: 366, 695
+  orig: 366, 695
   offset: 0, 0
   index: -1
-left_arm
+
+skeleton2.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body_Upper_Body1
   rotate: false
-  xy: 98, 18
-  size: 87, 113
-  orig: 87, 113
+  xy: 686, 734
+  size: 235, 243
+  orig: 235, 243
   offset: 0, 0
   index: -1
-left_foot
+Front_Fist1
   rotate: false
-  xy: 294, 243
-  size: 53, 88
-  orig: 53, 88
+  xy: 178, 3
+  size: 151, 131
+  orig: 151, 131
   offset: 0, 0
   index: -1
-right_arm
+Front_Lower_Arm1
   rotate: false
-  xy: 187, 16
-  size: 73, 115
-  orig: 73, 115
+  xy: 2, 2
+  size: 174, 132
+  orig: 174, 132
   offset: 0, 0
   index: -1
-right_foot
+Head_Hood_Inner1
   rotate: false
-  xy: 218, 235
-  size: 74, 96
-  orig: 74, 96
+  xy: 686, 283
+  size: 185, 200
+  orig: 185, 200
   offset: 0, 0
   index: -1
-staff
+Hind_Fist
   rotate: false
-  xy: 2, 32
-  size: 94, 254
-  orig: 94, 254
+  xy: 686, 143
+  size: 154, 138
+  orig: 154, 138
+  offset: 0, 0
+  index: -1
+Hind_Lower_Arm1
+  rotate: false
+  xy: 331, 20
+  size: 153, 114
+  orig: 153, 114
+  offset: 0, 0
+  index: -1
+Hind_Upper_Arm1
+  rotate: false
+  xy: 686, 485
+  size: 175, 247
+  orig: 175, 247
+  offset: 0, 0
+  index: -1
+Mage_Lowerbody_Idle2
+  rotate: false
+  xy: 2, 698
+  size: 340, 279
+  orig: 340, 279
+  offset: 0, 0
+  index: -1
+Mage_Lowerbody_Idle3
+  rotate: false
+  xy: 2, 417
+  size: 340, 279
+  orig: 340, 279
+  offset: 0, 0
+  index: -1
+Mage_Lowerbody_Motion1
+  rotate: false
+  xy: 344, 698
+  size: 340, 279
+  orig: 340, 279
+  offset: 0, 0
+  index: -1
+Mage_Lowerbody_Motion2
+  rotate: false
+  xy: 2, 136
+  size: 340, 279
+  orig: 340, 279
+  offset: 0, 0
+  index: -1
+Mage_Lowerbody_Motion3
+  rotate: false
+  xy: 344, 417
+  size: 340, 279
+  orig: 340, 279
+  offset: 0, 0
+  index: -1
+Mage_Lowerbody_Motion4
+  rotate: false
+  xy: 344, 136
+  size: 340, 279
+  orig: 340, 279
   offset: 0, 0
   index: -1
