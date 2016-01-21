@@ -105,6 +105,7 @@ public static class GameDatabase {
 		_equipmentDatabase = LoadDatabase<EquipmentDatabase> ();
 		_classDatabase 	   = LoadDatabase<ClassDatabase> ();
 
+
 		_equipmentDatabase.Load ();
 
 //		Equipment Shield1 = new Equipment ();

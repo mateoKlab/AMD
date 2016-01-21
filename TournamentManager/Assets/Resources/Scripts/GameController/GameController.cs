@@ -7,9 +7,9 @@ public class GameController : MonoBehaviour {
 	// DO game related stuff here. Gacha. Equip unlock. etc.
 	// Access/Set data from here.. TODO: GameDatabase should be readonly.
 
-	private static LevelUpController levelUpController;
+	public static LevelUpController levelUpController;
 	private static EquipmentController equipmentController;
-
+	
 
 	void Start () {
 	

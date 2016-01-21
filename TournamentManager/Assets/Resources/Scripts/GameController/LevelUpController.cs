@@ -16,7 +16,7 @@ public class LevelUpController
 	public bool CheckLevelUp (FighterData fighterData)
 	{
 		int currentLevel = fighterData.level;
-		int currentExp   = fighterData.exp;
+		int currentExp = fighterData.exp;
 
 		// IF: Already at max level.
 		if (currentLevel >= xpDatabase [Class.Warrior].Keys.Count) {
@@ -30,6 +30,24 @@ public class LevelUpController
 			return false;
 		}
 
+	}
+
+	public float GetNextLevelProgress (FighterData fighterData)
+	{
+		int currentLevelReq = xpDatabase [fighterData.fighterClass] [fighterData.level].requiredXP;
+		int currentProgress = fighterData.exp - currentLevelReq;
+
+		return (float)currentProgress / (float)GetXpToNextLevel (fighterData);
+	}
+
+	public int GetXpToNextLevel (FighterData fighterData)
+	{
+		int currentLevel = fighterData.level;
+
+		int currentLevelReq = xpDatabase [fighterData.fighterClass][currentLevel].requiredXP;
+		int nextLevelReq = xpDatabase [fighterData.fighterClass][currentLevel + 1].requiredXP;
+
+		return nextLevelReq - currentLevelReq;
 	}
 	
 	public void LevelUp (FighterData fighterData)

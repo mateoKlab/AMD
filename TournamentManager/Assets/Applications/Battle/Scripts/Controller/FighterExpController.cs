@@ -23,7 +23,7 @@ public class FighterExpController : Controller
     public void SetFighterDetails(FighterData fd)
     {
 		fData = fd;
-		
+
 		((FighterExpView)view).SetSprite(fData.skinData);
 		((FighterExpView)view).SetName(fData.name);
 		((FighterExpView)view).SetLevel(fData.level);
@@ -35,17 +35,17 @@ public class FighterExpController : Controller
 	
 
 	public void AddExp(int amount) {
-		fData.xp += amount;
+		fData.exp += amount;
 
-		if ((fData.xp - GameDatabase.xpDatabase[fData.fighterClass][fData.level]) >= (GameDatabase.xpDatabase[fData.fighterClass][fData.level + 1] - GameDatabase.xpDatabase[fData.fighterClass][fData.level])) // Level Up
-		{
+		if (GameController.levelUpController.CheckLevelUp (fData)) {
 			SoundManager.instance.PlayUISFX("Audio/SFX/LevelUp");
 			GetComponent<Animator>().SetTrigger("LevelUp");
-			fData.level += 1;
+
+			GameController.levelUpController.LevelUp (fData);
 			((FighterExpView)view).SetLevel(fData.level);
 		}
 
-		((FighterExpView)view).SetSliderValue((float) (fData.xp - GameDatabase.xpDatabase[fData.fighterClass][fData.level]) / (GameDatabase.xpDatabase[fData.fighterClass][fData.level + 1] - GameDatabase.xpDatabase[fData.fighterClass][fData.level]) );
+		((FighterExpView)view).SetSliderValue (GameController.levelUpController.GetNextLevelProgress (fData));
 
 	}
 
