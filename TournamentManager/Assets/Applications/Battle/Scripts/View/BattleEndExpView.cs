@@ -5,7 +5,8 @@ using Bingo;
 
 public class BattleEndExpView : View
 {
-    private Button mainMenuButton;
+	public Text expLabel;
+	private Button mainMenuButton;
 
     public override void Awake()
     {

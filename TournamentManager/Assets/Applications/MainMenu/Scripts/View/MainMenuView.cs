@@ -8,19 +8,16 @@ public class MainMenuView : View<MainMenu>
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
     [Inject]
-    public ArmoryView armoryView { get; private set; }
-    
-    [Inject]
-    public TroopDetailsView troopDetailsView { get; private set; }
-    
-    [Inject]
-    public EditTeamCloseButtonView editTeamCloseButtonView { get; private set; }
+    public EditEquipmentView editEquipmentView { get; private set; }
     
     [Inject]
     public EditTeamView editTeamView { get; private set; }
     
     [Inject]
     public TournamentView tournamentView { get; private set; }
+    
+    [Inject]
+    public ArmoryView armoryView { get; private set; }
     
     [Inject]
     public GachaView gachaView { get; private set; }

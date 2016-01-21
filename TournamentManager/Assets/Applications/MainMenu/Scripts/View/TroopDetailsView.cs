@@ -5,46 +5,51 @@ using Bingo;
 
 public class TroopDetailsView : View
 {
-    private Text nameText;
-    private Text atkText;
-    private Text hpText;
-    private Text costText;
+	public Text nameText;
+	public Text atkText;
+	public Text hpText;
+	public Text costText;
     public FighterSpriteController troopSprite;
-
-    public override void Awake()
-    {
-        base.Awake();
-        nameText = transform.FindChild("Name").GetComponent<Text>();
-        atkText = transform.FindChild("Attack").GetComponent<Text>();
-        hpText = transform.FindChild("HP").GetComponent<Text>();
-        costText = transform.FindChild("Cost").GetComponent<Text>();
-        troopSprite = transform.FindChild("TroopIconBorder/TroopSprite").GetComponent<FighterSpriteController>();
-    }
 
     public void SetName(string name)
     {
-        nameText.text = name;
+       	if (nameText != null)
+		{
+			nameText.text = name;
+		}
     }
 
     public void SetAtk(float atk)
     {
-        atkText.text = Mathf.RoundToInt(atk).ToString("n0");
+		if (atkText != null) 
+		{
+			atkText.text = Mathf.RoundToInt(atk).ToString("n0");
+		}
+
     }
 
     public void SetHP(float hp)
     {
-        hpText.text = Mathf.RoundToInt(hp).ToString("n0");
+		if (hpText != null) {
+			hpText.text = Mathf.RoundToInt(hp).ToString("n0");
+		}       
     }
 
     public void SetCost(int cost)
     {
-        costText.text = cost.ToString("n0");
+		if (costText != null) 
+		{
+			costText.text = cost.ToString("n0");
+		}
     }
 
     public void SetSprite(FighterSkinData skinData)
     {
-        // TODO building sprite everytime feels really slow, refactor later
-        troopSprite.SetFighterSkin(skinData);
+		if (troopSprite != null) {
+			// TODO building sprite everytime feels really slow, refactor later
+			troopSprite.SetFighterSkin(skinData);
+			// 9162166868
+		}
     }
 
 }
