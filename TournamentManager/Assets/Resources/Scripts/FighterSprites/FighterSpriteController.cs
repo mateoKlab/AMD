@@ -2,15 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[System.Serializable]
-public class SpriteTest {
-
-	public FighterSpriteAttachment.AttachmentType attachmentType;
-	public GameObject spriteRenderer;
-
-
-
-}
 
 [SerializeField]
 public class FighterSpriteController : MonoBehaviour {
@@ -30,19 +21,17 @@ public class FighterSpriteController : MonoBehaviour {
 
 			attachmentDictionary.Add (spriteAttachment.type.ToString (), spriteAttachment.gameObject);
 		}
+
 	}
 
 	public void SetFighterSkin (FighterSkinData skinData)
 	{
 		Sprite newSprite;
-
-		foreach (SerializableKVP<string, string> spritePair in skinData) {
+		foreach (KeyValuePair<string, string> spritePair in skinData) {
 
 			newSprite = Resources.Load ("Sprites/UnitSpritesUpdated/" + spritePair.Key + "/" + spritePair.Value, typeof(Sprite)) as Sprite;
 
 			attachmentDictionary [spritePair.Key].GetComponent <SpriteRenderer> ().sprite = newSprite;
-//			attachment.GetComponent <SpriteRenderer> ().sprite = newSprite;
-
 		}
 	}
 }
