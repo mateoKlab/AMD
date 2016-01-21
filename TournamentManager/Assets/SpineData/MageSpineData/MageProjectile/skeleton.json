@@ -1,0 +1,440 @@
+{
+"skeleton": { "hash": "rD/rnqAFmG7y8GxJHKmC4uq30PA", "spine": "2.1.27", "width": 0, "height": 0, "images": "" },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "Fireball1", "bone": "root" },
+	{ "name": "Fireball2", "bone": "root" },
+	{ "name": "Fireball3", "bone": "root" },
+	{ "name": "Fireball4", "bone": "root" },
+	{ "name": "Fireball5", "bone": "root" },
+	{ "name": "Fireball6", "bone": "root" },
+	{ "name": "Fireball7", "bone": "root" },
+	{ "name": "Fireball8", "bone": "root" },
+	{ "name": "Fireball9", "bone": "root" },
+	{ "name": "Fireball10", "bone": "root" },
+	{ "name": "Fireball11", "bone": "root" },
+	{ "name": "Fireball12", "bone": "root" },
+	{ "name": "Fireball13", "bone": "root" },
+	{ "name": "Fireball14", "bone": "root" },
+	{ "name": "Fireball15", "bone": "root" },
+	{ "name": "Fireball16", "bone": "root" },
+	{ "name": "Fireball17", "bone": "root" }
+],
+"skins": {
+	"default": {
+		"Fireball1": {
+			"Fireball1": { "width": 216, "height": 209 }
+		},
+		"Fireball10": {
+			"Fireball10": { "width": 216, "height": 209 }
+		},
+		"Fireball11": {
+			"Fireball11": { "width": 216, "height": 209 }
+		},
+		"Fireball12": {
+			"Fireball12": { "width": 216, "height": 209 }
+		},
+		"Fireball13": {
+			"Fireball13": { "width": 216, "height": 209 }
+		},
+		"Fireball14": {
+			"Fireball14": { "width": 216, "height": 209 }
+		},
+		"Fireball15": {
+			"Fireball15": { "width": 216, "height": 209 }
+		},
+		"Fireball16": {
+			"Fireball16": { "width": 216, "height": 209 }
+		},
+		"Fireball17": {
+			"Fireball17": { "width": 216, "height": 209 }
+		},
+		"Fireball2": {
+			"Fireball2": { "width": 216, "height": 209 }
+		},
+		"Fireball3": {
+			"Fireball3": { "width": 216, "height": 209 }
+		},
+		"Fireball4": {
+			"Fireball4": { "width": 216, "height": 209 }
+		},
+		"Fireball5": {
+			"Fireball5": { "width": 216, "height": 209 }
+		},
+		"Fireball6": {
+			"Fireball6": { "width": 216, "height": 209 }
+		},
+		"Fireball7": {
+			"Fireball7": { "width": 216, "height": 209 }
+		},
+		"Fireball8": {
+			"Fireball8": { "width": 216, "height": 209 }
+		},
+		"Fireball9": {
+			"Fireball9": { "width": 216, "height": 209 }
+		}
+	}
+},
+"animations": {
+	"Fire": {
+		"slots": {
+			"Fireball1": {
+				"attachment": [
+					{ "time": 0, "name": "Fireball1" },
+					{ "time": 0.0333, "name": "Fireball1" },
+					{ "time": 0.0666, "name": "Fireball1" },
+					{ "time": 0.1, "name": "Fireball1" },
+					{ "time": 0.1333, "name": "Fireball1" },
+					{ "time": 0.1666, "name": "Fireball1" },
+					{ "time": 0.2, "name": "Fireball1" },
+					{ "time": 0.2333, "name": "Fireball1" },
+					{ "time": 0.2666, "name": "Fireball1" },
+					{ "time": 0.3, "name": "Fireball1" },
+					{ "time": 0.3333, "name": "Fireball1" },
+					{ "time": 0.3666, "name": "Fireball1" },
+					{ "time": 0.4, "name": "Fireball1" },
+					{ "time": 0.4333, "name": "Fireball1" },
+					{ "time": 0.4666, "name": "Fireball1" },
+					{ "time": 0.5, "name": "Fireball1" }
+				]
+			},
+			"Fireball2": {
+				"attachment": [
+					{ "time": 0, "name": "Fireball2" },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": "Fireball2" }
+				]
+			},
+			"Fireball3": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": "Fireball3" },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Fireball4": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": "Fireball4" },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Fireball5": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": "Fireball5" },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Fireball6": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": "Fireball6" },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Fireball7": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": "Fireball7" },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Fireball8": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": "Fireball8" },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Fireball9": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": "Fireball9" },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Fireball10": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": "Fireball10" },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Fireball11": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": "Fireball11" },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Fireball12": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": "Fireball12" },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Fireball13": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": "Fireball13" },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Fireball14": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": "Fireball14" },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Fireball15": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": "Fireball15" },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Fireball16": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": "Fireball16" },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Fireball17": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 90, "curve": "stepped" },
+					{ "time": 0.5, "angle": 90 }
+				],
+				"scale": [
+					{ "time": 0.0333, "x": 1, "y": 1 },
+					{ "time": 0.1666, "x": 0.79, "y": 0.79 },
+					{ "time": 0.3333, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.5, "x": 1, "y": 1 }
+				]
+			}
+		}
+	}
+}
+}
