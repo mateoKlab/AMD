@@ -5,50 +5,37 @@ using System.Collections.Generic;
 using FileHelpers;
 
 
-public class XPDatabase : Dictionary<Class, Dictionary<int, int>>
-
+public class XPDatabase : Dictionary<Class, Dictionary<int, LevelData>>
 {
 	public void Load ()
 	{
-		string filePath = Application.dataPath + "/Resources/Data/";
+		string filePath = Application.dataPath + "/Resources/Data/XpData/";
 
 		foreach (Class c in Enum.GetValues(typeof(Class))) {
 
-			this.Add (c, new Dictionary<int, int> ());
+			this.Add (c, new Dictionary<int, LevelData> ());
 
 			string newPath = filePath + c.ToString () + "XP.csv";
 
-			var engine = new FileHelperEngine<XPrecord> ();
+			var engine = new FileHelperEngine<LevelData> ();
 			var records = engine.ReadFile (newPath);
 			
 			foreach (var record in records) {
-				this [c].Add (record.level, record.requiredXP);
+				this [c].Add (record.level, record);
 			}
-		}
-	}
-
-
-	public bool CheckLevelup (int currentlevel, int currentExp)
-	{
-		// IF: Already at max level.
-		if (currentlevel >= this.Keys.Count) {
-			return false;
-		}
-
-		int expRequired = this [Class.Warrior][currentlevel + 1];
-		if (currentExp >= expRequired) {
-			return true;
-		} else {
-			return false;
 		}
 	}
 }
 
 // Record Definition
 [DelimitedRecord(",")]
-public class XPrecord
+[IgnoreFirst]
+public class LevelData
 {
 	public int level;
 	public int requiredXP;
+	public decimal atkGrowth;
+	public decimal hpGrowth;
+	public decimal defGrowth;
 
 }
