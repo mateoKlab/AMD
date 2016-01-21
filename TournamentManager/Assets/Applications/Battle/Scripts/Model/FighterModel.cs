@@ -11,13 +11,17 @@ public enum FighterAlliegiance {
 
 public class FighterModel : Model {
 
-	public Action OnFighterDataSet;
-	
-	private FighterData _fighterData;
 
+	public FighterAlliegiance allegiance;
+	
+	#region FighterData
+	public Action OnFighterDataSet;
+
+	private FighterData _fighterData;
 	public FighterData fighterData {
 		get { 
-			return _fighterData; }
+			return _fighterData; 
+		}
 		set {
 
 			_fighterData = value;
@@ -27,10 +31,10 @@ public class FighterModel : Model {
 			}
 		}
 	}
+	#endregion
 
+	#region Enemy Detection
 	private List<GameObject> enemiesInRange = new List<GameObject> ();
-
-	public FighterAlliegiance allegiance;
 	 
 	public GameObject GetEnemyInRange ()
 	{
@@ -66,44 +70,6 @@ public class FighterModel : Model {
 			enemiesInRange.Remove (enemy);
 		}
 	}
+	#endregion
 
-	public string name 
-	{
-		get 
-		{
-			return fighterData.name;
-		}
-	}
-	
-	public int healthPoints 
-	{
-		get
-		{
-			return fighterData.HP;
-		}
-	}
-	
-	public int attack
-	{
-		get
-		{
-			return fighterData.ATK;
-		}
-	}
-
-	public int cost
-	{
-		get
-		{
-			return fighterData.cost;
-		}
-	}
-
-    public FighterSkinData skindData
-    {
-        get
-        {
-            return fighterData.skinData;
-        }
-    }
 }

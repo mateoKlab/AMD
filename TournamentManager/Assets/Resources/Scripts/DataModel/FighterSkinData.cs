@@ -23,17 +23,20 @@ public struct SerializableKVP<K, V>
 }
 
 [XmlRoot ("FighterSkin")]
-public class FighterSkinData : List<SerializableKVP<string, string>>
+public class FighterSkinData : SerializableDictionary<string, string>
 {
 	public void AddSkin (string attachmentType, string spriteName)
 	{
-		this.Add (new SerializableKVP<string, string> (attachmentType, spriteName));
+		if (!this.ContainsKey (attachmentType)) {
+			this.Add (attachmentType, spriteName);
+		}
 	}
-}
 
-[System.Serializable]
-[XmlRoot]
-public struct SpriteKVP
-{
-
+	public void ReplaceSkin (string attachmentType, string spriteName)
+	{
+		if (this.ContainsKey (attachmentType)) {
+			this.Remove (attachmentType);
+			this.Add (attachmentType, spriteName);
+		}
+	}
 }
