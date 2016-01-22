@@ -178,10 +178,10 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 		SoundManager.instance.PlayAttackSFX();
 	}
 	
-	public void OnRangedAttack(Attack attackData)
+	public void OnRangedAttack(Attack attackData, Vector3 spawnPosition)
 	{
 		GameObject newProjectile = ProjectileManager.instance.GetProjectile(attackData, ProjectileType.Fireball); // Type = Temporary.
-		newProjectile.transform.position = attackData.attackOrigin.transform.position;
+		newProjectile.transform.position = spawnPosition;
 	}
 	
 	public void OnBackButtonClicked()
@@ -244,7 +244,6 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 
 	private void SetStartingPosition (GameObject fighter)
 	{
-	
 		FighterAlliegiance allegiance = fighter.GetComponent<FighterModel> ().allegiance;
 
 		if (allegiance == FighterAlliegiance.Ally) {

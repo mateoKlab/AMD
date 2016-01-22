@@ -56,6 +56,7 @@ public class EquipmentType
 
 		// Offhand subtypes.
 		public class Shield : Offhand { }
+		public class Orb    : Offhand { }
 	}
 	
 	public class Armor : EquipmentType {
@@ -65,6 +66,10 @@ public class EquipmentType
 		public class Helm : Armor { }
 		public class Shoulder : Armor { }		
 		public class Gauntlet : Armor { }
+
+		public class Hood  : Armor { }
+		public class Robe  : Armor { }
+		public class Shawl : Armor { }
 	}
 	#endregion
 }

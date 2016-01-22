@@ -47,8 +47,25 @@ public class FighterStateContext {
 
 	public void Attack (Attack attackData, float cooldownDuration)
 	{
+		// TEST
+		if (fighter.GetComponent<FighterModel> ().fighterData.fighterClass == Class.Mage) {
+			Debug.Log ("ATTACK");
+		}
+
 		_actionState.Attack (attackData);
-		_cooldownState.Cooldown (this, cooldownDuration);
+
+		// cooldown moved to after attack.
+//		_cooldownState.Cooldown (this, cooldownDuration);
+	}
+
+	// TEMP.
+	public void AttackEnded (Attack attackData)
+	{
+		OnAttackEnded (attackData);
+
+		float testCooldown = UnityEngine.Random.Range (1.25f, 2.5f);
+
+		_cooldownState.Cooldown (this, testCooldown);
 	}
 
 	public void Walk ()

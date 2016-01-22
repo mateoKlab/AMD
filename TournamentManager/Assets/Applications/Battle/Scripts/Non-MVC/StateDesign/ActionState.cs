@@ -85,10 +85,10 @@ public abstract class ActionState {
 			animator = stateContext.fighter.GetComponentInChildren<Animator> ();
 
 			// SetTrigger for attack animation.
-			string attackString = "Attack";
-			int randomAttack = UnityEngine.Random.Range (1, 4);
+			string attackString = "Attack1";
+//			int randomAttack = UnityEngine.Random.Range (1, 4);
 
-			animator.SetTrigger (attackString + randomAttack.ToString ());
+			animator.SetTrigger (attackString); // + randomAttack.ToString ());
 		}
 		
 		public override void Update ()
@@ -98,8 +98,13 @@ public abstract class ActionState {
 			   || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack2") 
 			    || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack3")) && animator.IsInTransition (0)) {
 
+				if (stateContext.fighter.GetComponent<FighterModel> ().fighterData.fighterClass == Class.Mage) {
+					Debug.Log ("ATTACK ENDED");
+				}
+
 				if (stateContext.OnAttackEnded != null) {
-					stateContext.OnAttackEnded (attackData);
+//					stateContext.OnAttackEnded (attackData);
+					stateContext.AttackEnded (attackData);
 				}
 
 				Idle ();

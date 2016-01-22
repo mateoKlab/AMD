@@ -19,7 +19,7 @@ public class FighterSpriteController : MonoBehaviour {
 		attachmentDictionary = new Dictionary<string, GameObject> ();
 
 		foreach (FighterSpriteAttachment spriteAttachment in spriteAttachments) {
-
+			Debug.Log (spriteAttachment.type.ToString ());
 			attachmentDictionary.Add (spriteAttachment.type.ToString (), spriteAttachment.gameObject);
 		}
 

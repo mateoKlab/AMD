@@ -294,7 +294,10 @@ namespace BingoEditor
                         }
                         else
                         {
-                            queriedItems.Add(string.Empty, lines[i + 1].Trim());
+							// TEMP FIX. duplicate key check.
+							if (!queriedItems.ContainsKey (string.Empty)) {
+								queriedItems.Add(string.Empty, lines[i + 1].Trim());
+							}
                         }
 
                         i++;

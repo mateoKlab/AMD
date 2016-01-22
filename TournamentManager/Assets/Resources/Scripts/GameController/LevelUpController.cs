@@ -32,6 +32,23 @@ public class LevelUpController
 
 	}
 
+	public void LevelUp (FighterData fighterData)
+	{
+		fighterData.level += 1;
+
+
+		// reset current exp.
+		// 
+
+		
+		LevelData levelData = xpDatabase [fighterData.fighterClass] [fighterData.level];
+		ClassData classData = classDatabase [fighterData.fighterClass];
+		
+		fighterData.HP  += (int)(levelData.hpGrowth * classData.baseHP);
+		fighterData.ATK += (int)(levelData.atkGrowth * classData.baseATK);
+		fighterData.DEF += (int)(levelData.defGrowth * classData.baseDEF);
+	}
+
 	public float GetNextLevelProgress (FighterData fighterData)
 	{
 		int currentLevelReq = xpDatabase [fighterData.fighterClass] [fighterData.level].requiredXP;
@@ -50,17 +67,7 @@ public class LevelUpController
 		return nextLevelReq - currentLevelReq;
 	}
 	
-	public void LevelUp (FighterData fighterData)
-	{
-		fighterData.level += 1;
 
-		LevelData levelData = xpDatabase [fighterData.fighterClass] [fighterData.level];
-		ClassData classData = classDatabase [fighterData.fighterClass];
-
-		fighterData.HP  += (int)(levelData.hpGrowth * classData.baseHP);
-		fighterData.ATK += (int)(levelData.atkGrowth * classData.baseATK);
-		fighterData.DEF += (int)(levelData.defGrowth * classData.baseDEF);
-	}
 			
 
 }
