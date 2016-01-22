@@ -19,7 +19,7 @@ public class FighterSpriteController : MonoBehaviour {
 		attachmentDictionary = new Dictionary<string, GameObject> ();
 
 		foreach (FighterSpriteAttachment spriteAttachment in spriteAttachments) {
-
+			Debug.Log (spriteAttachment.type.ToString ());
 			attachmentDictionary.Add (spriteAttachment.type.ToString (), spriteAttachment.gameObject);
 		}
 
@@ -30,7 +30,7 @@ public class FighterSpriteController : MonoBehaviour {
 		Sprite newSprite;
 		foreach (KeyValuePair<string, string> spritePair in skinData) {
 
-			newSprite = Resources.Load ("Sprites/UnitSpritesUpdated/" + fighterClass.ToString () + "/" + spritePair.Key + "/" + spritePair.Value, typeof(Sprite)) as Sprite;
+			newSprite = Resources.Load ("Sprites/UnitSprites/" + fighterClass.ToString () + "/" + spritePair.Key + "/" + spritePair.Value, typeof(Sprite)) as Sprite;
 
 			if (attachmentDictionary.ContainsKey (spritePair.Key)) {
 				if (attachmentDictionary [spritePair.Key].GetComponent <SpriteRenderer> () != null) 
