@@ -13,7 +13,11 @@ public class EditEquipmentView : View <MainMenu, EditEquipmentModel, EditEquipme
     
 	public void OnClickCloseButton() {
 		SoundManager.instance.PlayUISFX("Audio/SFX/Button1");
-		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
-		app.GetComponent<MainMenuView>().editTeamView.gameObject.SetActive(true);
+		controller.CancelChangesToEquipment();
+	}
+
+	public void OnClickSaveButton() {
+		SoundManager.instance.PlayUISFX("Audio/SFX/Button1");
+		controller.SaveChangesToEquipment();
 	}
 }

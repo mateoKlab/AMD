@@ -239,6 +239,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 		gameObject.SetActive(false);
 
 		app.controller.editEquipmentController.SetFighterToEdit(model.selectedTroop);
+
 	}
 
 //	public void SetSelectedTroop(FighterData fData) {

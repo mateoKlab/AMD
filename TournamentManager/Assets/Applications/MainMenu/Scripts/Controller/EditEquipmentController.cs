@@ -12,7 +12,8 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
     public TroopDetailsController troopDetailsController { get; private set; }
     
     //////// END MVCCodeEditor GENERATED CODE ////////
-
+	/// 
+	public FighterSpriteController fSpriteController;
 	public GridLayoutGroup equipmentPanel;
 	private GameObject equipmentPrefab;
 
@@ -26,20 +27,9 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 		troopDetailsController.SetTroopDetails(fData);
 	}
 	
-	public void OnEnable() {
-	
-		LoadEquipment("EquipmentType+Weapon+Sword");
-	}
-
-//	public void OnClickCell (Type type)
-//	{
-//		LoadEquipment ();
-//		currentType = type;
-//	}
-
-	public void OnClickCell (Equipment equipment)
+	public void OnEnable() 
 	{
-		//Equip.
+		LoadEquipment("EquipmentType+Weapon+Sword");
 	}
 
 	private void ClearEquipmentDisplay()
@@ -50,7 +40,8 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 		}
 	}
 
-	public void LoadEquipment(string type) {
+	public void LoadEquipment(string type) 
+	{
 		ClearEquipmentDisplay();
 		equipmentPrefab = Resources.Load("Prefabs/EquipmentItemCell") as GameObject;
 	
@@ -59,9 +50,9 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 //
 //			//Instantiate.
 //		}
-		foreach (Equipment eq in GameDatabase.equipmentDatabase.GetItems(Type.GetType(type))) {
-			// INstantiate.
 
+		foreach (Equipment eq in GameDatabase.equipmentDatabase.GetItems(Type.GetType(type))) 
+		{
 			GameObject go = Instantiate(equipmentPrefab);
 				
 			go.transform.SetParent(equipmentPanel.transform, false);
@@ -69,16 +60,27 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 			EquipmentItemCellController eCon = go.GetComponent<EquipmentItemCellController>();
 			model.equipmentList.Add (eCon);
 			eCon.SetItemDetails(eq);
-
 		}
 
-
-	
-		
 		// Resize scrollable background based on number of elements
 		float elementHeight = equipmentPrefab.GetComponent<LayoutElement>().preferredHeight + equipmentPanel.spacing.y;
 		RectTransform rt = equipmentPanel.GetComponent<RectTransform>();
 		rt.sizeDelta = new Vector2(rt.rect.width, elementHeight * Mathf.Ceil((float)model.equipmentList.Count/3) + equipmentPanel.padding.top + equipmentPanel.padding.bottom);
 	
 	}
+
+	public void CancelChangesToEquipment() 
+	{
+		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
+		app.view.editTeamView.gameObject.SetActive(true);
+		app.controller.editTeamController.ShowTroopDetails(model.fighterToEdit);
+	}
+
+	public void SaveChangesToEquipment() 
+	{
+		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
+		app.view.editTeamView.gameObject.SetActive(true);
+		app.controller.editTeamController.ShowTroopDetails(model.fighterToEdit);
+	}
+
 }
