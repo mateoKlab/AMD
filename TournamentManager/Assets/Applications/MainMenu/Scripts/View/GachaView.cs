@@ -41,6 +41,10 @@ public class GachaView : View
 	}
 
 	public void DisplayGachaCharacter(FighterData fData) {
+		foreach (GachaSpriteMap sprite in gachaSprites) {
+			sprite.characterSprite.SetActive (false);
+		}
+
 		nameLabel.text = "Name: " + fData.name;
 		hpLabel.text = "HP: " + fData.HP;
 		atkLabel.text = "ATK: " + fData.ATK;

@@ -10,7 +10,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Sword</AttachmentType>
+          <AttachmentType>Weapon</AttachmentType>
           <SpriteName>Sword1</SpriteName>
         </Sprite>
       </Sprites>
@@ -24,7 +24,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Sword</AttachmentType>
+          <AttachmentType>Weapon</AttachmentType>
           <SpriteName>Sword2</SpriteName>
         </Sprite>
       </Sprites>
@@ -38,7 +38,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Sword</AttachmentType>
+          <AttachmentType>Weapon</AttachmentType>
           <SpriteName>Sword3</SpriteName>
         </Sprite>
       </Sprites>
@@ -52,7 +52,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Sword</AttachmentType>
+          <AttachmentType>Weapon</AttachmentType>
           <SpriteName>Sword4</SpriteName>
         </Sprite>
       </Sprites>
@@ -66,7 +66,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Sword</AttachmentType>
+          <AttachmentType>Weapon</AttachmentType>
           <SpriteName>Sword5</SpriteName>
         </Sprite>
       </Sprites>
@@ -80,7 +80,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Sword</AttachmentType>
+          <AttachmentType>Weapon</AttachmentType>
           <SpriteName>Sword6</SpriteName>
         </Sprite>
       </Sprites>
@@ -94,7 +94,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Sword</AttachmentType>
+          <AttachmentType>Weapon</AttachmentType>
           <SpriteName>Sword7</SpriteName>
         </Sprite>
       </Sprites>
@@ -108,7 +108,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Sword</AttachmentType>
+          <AttachmentType>Weapon</AttachmentType>
           <SpriteName>Sword8</SpriteName>
         </Sprite>
       </Sprites>
@@ -122,7 +122,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Sword</AttachmentType>
+          <AttachmentType>Weapon</AttachmentType>
           <SpriteName>Sword9</SpriteName>
         </Sprite>
       </Sprites>
@@ -136,7 +136,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Sword</AttachmentType>
+          <AttachmentType>Weapon</AttachmentType>
           <SpriteName>Sword10</SpriteName>
         </Sprite>
       </Sprites>
@@ -306,7 +306,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Shield</AttachmentType>
+          <AttachmentType>Offhand</AttachmentType>
           <SpriteName>Shield1</SpriteName>
         </Sprite>
       </Sprites>
@@ -320,7 +320,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Shield</AttachmentType>
+          <AttachmentType>Offhand</AttachmentType>
           <SpriteName>Shield3</SpriteName>
         </Sprite>
       </Sprites>
@@ -334,7 +334,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Shield</AttachmentType>
+          <AttachmentType>Offhand</AttachmentType>
           <SpriteName>Shield6</SpriteName>
         </Sprite>
       </Sprites>
@@ -348,7 +348,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Shield</AttachmentType>
+          <AttachmentType>Offhand</AttachmentType>
           <SpriteName>Shield7</SpriteName>
         </Sprite>
       </Sprites>
@@ -362,7 +362,7 @@
       <HP>0</HP>
       <Sprites>
         <Sprite>
-          <AttachmentType>Shield</AttachmentType>
+          <AttachmentType>Offhand</AttachmentType>
           <SpriteName>Shield8</SpriteName>
         </Sprite>
       </Sprites>
@@ -437,7 +437,7 @@
         </Sprite>
       </Sprites>
     </Equipment>
-      <Equipment>
+    <Equipment>
       <EquipmentType>EquipmentType+Armor+Body</EquipmentType>
       <ID>Body7</ID>
       <Name>Nice Body7</Name>
@@ -448,6 +448,264 @@
         <Sprite>
           <AttachmentType>Body</AttachmentType>
           <SpriteName>Body7</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Helm</EquipmentType>
+      <ID>Helm1</ID>
+      <Name>Nice Helm1</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Helm</AttachmentType>
+          <SpriteName>Head_Helm1</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Helm</EquipmentType>
+      <ID>Helm2</ID>
+      <Name>Nice Helm2</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Helm</AttachmentType>
+          <SpriteName>Head_Helm2</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Head</AttachmentType>
+          <SpriteName>Head_Head2</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+        <Equipment>
+      <EquipmentType>EquipmentType+Armor+Helm</EquipmentType>
+      <ID>Helm4</ID>
+      <Name>Nice Helm4</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Helm</AttachmentType>
+          <SpriteName>Head_Helm4</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Head</AttachmentType>
+          <SpriteName>Head_Head2</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+        <Equipment>
+      <EquipmentType>EquipmentType+Armor+Helm</EquipmentType>
+      <ID>Helm5</ID>
+      <Name>Nice Helm5</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Helm</AttachmentType>
+          <SpriteName>Head_Helm5</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Head</AttachmentType>
+          <SpriteName>Head_Head2</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+        <Equipment>
+      <EquipmentType>EquipmentType+Armor+Helm</EquipmentType>
+      <ID>Helm6</ID>
+      <Name>Nice Helm6</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Helm</AttachmentType>
+          <SpriteName>Head_Helm6</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Head</AttachmentType>
+          <SpriteName>Head_Head6</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+        <Equipment>
+      <EquipmentType>EquipmentType+Armor+Helm</EquipmentType>
+      <ID>Helm7</ID>
+      <Name>Nice Helm7</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Helm</AttachmentType>
+          <SpriteName>Head_Helm7</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Head</AttachmentType>
+          <SpriteName>Head_Head7</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Hood</EquipmentType>
+      <ID>Hood1</ID>
+      <Name>Nice Hood1</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Hood</AttachmentType>
+          <SpriteName>Head_Hood1</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Hood_Inner</AttachmentType>
+          <SpriteName>Head_Hood_Inner1</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Head</AttachmentType>
+          <SpriteName>Head_Head1</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Hood</EquipmentType>
+      <ID>Hood2</ID>
+      <Name>Nice Hood2</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Hood</AttachmentType>
+          <SpriteName>Head_Hood2</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Hood_Inner</AttachmentType>
+          <SpriteName>Head_Hood_Inner2</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Head</AttachmentType>
+          <SpriteName>Head_Head2</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Robe</EquipmentType>
+      <ID>Robe1</ID>
+      <Name>Nice Robe1</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Robe</AttachmentType>
+          <SpriteName>Robe_Robe1</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Shawl</AttachmentType>
+          <SpriteName>Robe_Shawl1</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Body</AttachmentType>
+          <SpriteName>Robe_Body1</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Robe</EquipmentType>
+      <ID>Robe2</ID>
+      <Name>Nice Robe2</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Robe</AttachmentType>
+          <SpriteName>Robe_Robe2</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Shawl</AttachmentType>
+          <SpriteName>Robe_Shawl2</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Body</AttachmentType>
+          <SpriteName>Robe_Body2</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Robe</EquipmentType>
+      <ID>Robe3</ID>
+      <Name>Nice Robe3</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Robe</AttachmentType>
+          <SpriteName>Robe_Robe3</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Shawl</AttachmentType>
+          <SpriteName>Robe_Shawl3</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Body</AttachmentType>
+          <SpriteName>Robe_Body3</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Robe</EquipmentType>
+      <ID>Robe4</ID>
+      <Name>Nice Robe4</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Robe</AttachmentType>
+          <SpriteName>Robe_Robe4</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Shawl</AttachmentType>
+          <SpriteName>Robe_Shawl4</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Body</AttachmentType>
+          <SpriteName>Robe_Body4</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Robe</EquipmentType>
+      <ID>Robe5</ID>
+      <Name>Nice Robe5</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Robe</AttachmentType>
+          <SpriteName>Robe_Robe5</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Shawl</AttachmentType>
+          <SpriteName>Robe_Shawl5</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Body</AttachmentType>
+          <SpriteName>Robe_Body5</SpriteName>
         </Sprite>
       </Sprites>
     </Equipment>

@@ -21,4 +21,21 @@
       </ClassData>
     </value>
   </item>
+  <item>
+    <key>
+      <Class>Mage</Class>
+    </key>
+    <value>
+      <ClassData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <Class>Mage</Class>
+        <baseATK>120</baseATK>
+        <baseHP>600</baseHP>
+        <baseDEF>0</baseDEF>
+        <EquipmentAllowed>
+       	 <Equip>EquipmentType+Armor+Hood</Equip>
+       	 <Equip>EquipmentType+Armor+Robe</Equip>
+        </EquipmentAllowed>
+      </ClassData>
+    </value>
+  </item>
 </ClassDatabase>

@@ -54,6 +54,7 @@ public class FighterData
 	[XmlElement ("Level")]
 	public int level = 1;
 
+	// TODO: Revise XP system, add totalexp, currentexp.
 	[XmlElement ("XP")]
 	public int exp = 0;
 
