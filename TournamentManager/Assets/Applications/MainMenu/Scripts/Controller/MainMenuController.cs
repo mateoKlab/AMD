@@ -37,7 +37,7 @@ public class MainMenuController : Controller<MainMenu>
     public HeaderController headerController { get; private set; }
     
     //////// END MVCCodeEditor GENERATED CODE ////////
-
+	
 	private bool menuOn = false;
 
     public override void Awake()

@@ -4,5 +4,5 @@ using Bingo;
 
 public class EquipmentCellModel : Model
 {
-
+	public Equipment equipment;
 }
