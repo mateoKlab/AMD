@@ -52,8 +52,10 @@ public class TroopController : Controller<MainMenu, TroopModel, TroopView>
 
 		if (!GameData.instance.playerData.currentParty.fighters.Contains (model.fighterData.id) && (model.fighterData.cost < GameData.instance.playerData.partyCapacity - editTeamController.GetPartyCost()) && GameData.instance.playerData.currentParty.fighters.Count < GameData.MAX_ACTIVE_FIGHTERS)
 		{
+			SoundManager.instance.PlayUISFX("Audio/SFX/Add Character");
 			editTeamController.AddTroopOnTeam(model.fighterData);
 		} else if (GameData.instance.playerData.currentParty.fighters.Contains (model.fighterData.id)) {
+			SoundManager.instance.PlayUISFX("Audio/SFX/Remove Character");
 			editTeamController.RemoveTroopOnTeam(model.fighterData);
 		}
 		editTeamController.view.SetCost(GameData.instance.playerData.currentParty.currentCost/*editTeamController.GetPartyCost()*/, GameData.instance.playerData.partyCapacity);

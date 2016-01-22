@@ -9,6 +9,7 @@ public class EditTeamCloseButtonView : View<MainMenu>, IPointerClickHandler
 
 	public void OnPointerClick (PointerEventData eventData)
 	{
+		SoundManager.instance.PlayUISFX("Audio/SFX/Button1");
 		app.controller.editTeamController.HideEditTeam();
 	}
 
