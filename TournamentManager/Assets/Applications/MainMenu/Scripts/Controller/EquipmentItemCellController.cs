@@ -8,7 +8,11 @@ public class EquipmentItemCellController : EquipmentCellController
 
 	public void SetItemDetails(Equipment equipment) {
 		model.equipment = equipment;
-		Texture spriteTexture = Resources.Load("Sprites/UnitSpritesUpdated/" + equipment.sprites[0].attachmentType + "/" + equipment.sprites[0].spriteName) as Texture;
+		if (app.model.editEquipmentModel.fighterToEdit == null) 
+			Debug.LogError("NO");
+		else
+			Debug.LogError(app.model.editEquipmentModel.fighterToEdit.fighterClass.ToString());
+		Texture spriteTexture = Resources.Load("Sprites/UnitSprites/" + app.model.editEquipmentModel.fighterToEdit.fighterClass.ToString() + "/" + equipment.sprites[0].attachmentType + "/" + equipment.sprites[0].spriteName) as Texture;
 		view.itemSprite.texture = spriteTexture;
 		view.itemSprite.GetComponent<RawImage>().rectTransform.sizeDelta = new Vector2(spriteTexture.width * .3f,spriteTexture.height * .3f);
 	}

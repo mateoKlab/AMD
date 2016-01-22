@@ -25,10 +25,6 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 		gameObject.SetActive(true);
 		model.fighterToEdit = fData;
 		troopDetailsController.SetTroopDetails(fData);
-	}
-	
-	public void OnEnable() 
-	{
 		LoadEquipment("EquipmentType+Weapon+Sword");
 	}
 
