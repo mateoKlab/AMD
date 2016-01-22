@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameController : MonoBehaviour {
+public class GameController {
 
 
 	// DO game related stuff here. Gacha. Equip unlock. etc.
@@ -9,9 +9,10 @@ public class GameController : MonoBehaviour {
 
 	public static LevelUpController levelUpController;
 	private static EquipmentController equipmentController;
-	
 
-	void Start () {
+
+	// TEMP.
+	public static void Initialize () {
 	
 		// Do dependency injection here.
 		levelUpController = new LevelUpController (GameDatabase.xpDatabase, GameDatabase.classDatabase);

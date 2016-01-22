@@ -108,6 +108,10 @@ public static class GameDatabase {
 
 		_equipmentDatabase.Load ();
 
+
+		// TEMPORARY.
+		GameController.Initialize ();
+
 //		Equipment Shield1 = new Equipment ();
 //		Shield1.type = typeof(EquipmentType.Offhand.Shield).FullName;
 //		Shield1.id = "Shield1";
