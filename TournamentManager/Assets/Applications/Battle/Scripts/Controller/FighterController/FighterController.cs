@@ -96,11 +96,6 @@ public class FighterController : Controller
 	// Callback for end of cooldown.
 	void OnCooldownEnded ()
 	{
-		//TEST
-		if ((model as FighterModel).fighterData.fighterClass == Class.Mage) {
-			Debug.Log ("COOLDOWN ENDED");
-		}
-
 		if ((model as FighterModel).GetEnemyInRange () != null) {
 			Attack ();
 		} else {

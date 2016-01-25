@@ -66,6 +66,7 @@ public class EquipmentType
 		public class Helm : Armor { }
 		public class Shoulder : Armor { }		
 		public class Gauntlet : Armor { }
+		public class Leg      : Armor { }
 
 		public class Hood  : Armor { }
 		public class Robe  : Armor { }

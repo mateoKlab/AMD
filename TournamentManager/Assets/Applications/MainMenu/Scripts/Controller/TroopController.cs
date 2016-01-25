@@ -12,6 +12,9 @@ public class TroopController : Controller<MainMenu, TroopModel, TroopView>
     private EditTeamController editTeamController;
     private int siblingIndex;
 
+	public FighterSpriteController warriorPortrait;
+	public FighterSpriteController magePortrait;
+
     public override void Awake()
     {
         base.Awake();
@@ -30,7 +33,10 @@ public class TroopController : Controller<MainMenu, TroopModel, TroopView>
         model.fighterData = fighterData;
 		view.nameLabel.text = fighterData.name;
 		view.classIcon.texture = Resources.Load("Sprites/ClassIcons/" + fighterData.fighterClass) as Texture;
-		GetComponentInChildren<FighterSpriteController>().SetFighterSkin(fighterData.skinData);
+
+//		GetComponentInChildren<FighterSpriteController>().SetFighterSkin(fighterData.skinData);
+
+		SetPortrait (fighterData.fighterClass, fighterData.skinData);
     }
 
     public FighterData GetFighter()
@@ -73,6 +79,30 @@ public class TroopController : Controller<MainMenu, TroopModel, TroopView>
 	public void DisplayTroopDetails() {
 		//editTeamController.SetSelectedTroop(model.fighterData);
 		editTeamController.ShowTroopDetails(model.fighterData);
+	}
+
+	private void SetPortrait (Class fighterClass, FighterSkinData skinData)
+	{
+		warriorPortrait.gameObject.SetActive (false);
+		magePortrait.gameObject.SetActive (false);
+
+		switch (fighterClass) {
+		case Class.Warrior:
+		{
+			warriorPortrait.SetFighterSkin (skinData);
+			warriorPortrait.gameObject.SetActive (true);
+			break;
+		}
+			
+		case Class.Mage:
+		{
+
+			magePortrait.SetFighterSkin (skinData);
+			magePortrait.gameObject.SetActive (true);
+			break;
+		}
+			
+		}
 	}
 
 }

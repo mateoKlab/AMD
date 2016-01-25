@@ -15,18 +15,17 @@ public class FighterSpriteController : MonoBehaviour {
 
 	void Awake ()
 	{
-		// Build attachmentDictionary for faster access to sprite objects.
-		attachmentDictionary = new Dictionary<string, GameObject> ();
-
-		foreach (FighterSpriteAttachment spriteAttachment in spriteAttachments) {
-			Debug.Log (spriteAttachment.type.ToString ());
-			attachmentDictionary.Add (spriteAttachment.type.ToString (), spriteAttachment.gameObject);
-		}
-
+		Initialize ();
 	}
+
+
 
 	public void SetFighterSkin (FighterSkinData skinData)
 	{
+		if (attachmentDictionary == null) {
+			Initialize ();
+		}
+
 		Sprite newSprite;
 		foreach (KeyValuePair<string, string> spritePair in skinData) {
 
@@ -36,14 +35,25 @@ public class FighterSpriteController : MonoBehaviour {
 				if (attachmentDictionary [spritePair.Key].GetComponent <SpriteRenderer> () != null) 
 				{
 					attachmentDictionary [spritePair.Key].GetComponent <SpriteRenderer> ().sprite = newSprite;
-				} 
+				}
+
+				// Temporary. For UI sprites.
 				else if (attachmentDictionary [spritePair.Key].GetComponent <Image> () != null) 
 				{
 					attachmentDictionary [spritePair.Key].GetComponent <Image> ().sprite = newSprite;
 				}
-
-//			attachment.GetComponent <SpriteRenderer> ().sprite = newSprite;
 			}
+		}
+	}
+
+
+	private void Initialize ()
+	{
+		// Build attachmentDictionary for faster access to sprite objects.
+		attachmentDictionary = new Dictionary<string, GameObject> ();
+		
+		foreach (FighterSpriteAttachment spriteAttachment in spriteAttachments) {
+			attachmentDictionary.Add (spriteAttachment.type.ToString (), spriteAttachment.gameObject);
 		}
 	}
 	

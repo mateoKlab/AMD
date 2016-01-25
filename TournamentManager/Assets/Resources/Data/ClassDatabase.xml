@@ -14,6 +14,7 @@
           <Equip>EquipmentType+Weapon+Sword</Equip>
           <Equip>EquipmentType+Armor+Helm</Equip>
           <Equip>EquipmentType+Armor+Shoulder</Equip>
+          <Equip>EquipmentType+Armor+Leg</Equip>
           <Equip>EquipmentType+Armor+Body</Equip>
           <Equip>EquipmentType+Armor+Gauntlet</Equip>
           <Equip>EquipmentType+Offhand+Shield</Equip>

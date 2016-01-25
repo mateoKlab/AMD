@@ -98,10 +98,6 @@ public abstract class ActionState {
 			   || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack2") 
 			    || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack3")) && animator.IsInTransition (0)) {
 
-				if (stateContext.fighter.GetComponent<FighterModel> ().fighterData.fighterClass == Class.Mage) {
-					Debug.Log ("ATTACK ENDED");
-				}
-
 				if (stateContext.OnAttackEnded != null) {
 //					stateContext.OnAttackEnded (attackData);
 					stateContext.AttackEnded (attackData);

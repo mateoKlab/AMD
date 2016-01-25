@@ -27,8 +27,6 @@ public class RangedFighterController : FighterController
 
 	void RangedAttack (Attack attackData)
 	{
-		Debug.Log ("ON RANGED ATTACK");
-		//(app.controller as BattleController).OnRangedAttack (gameObject);
 		((BattleController)app.controller).OnRangedAttack (attackData, projectileSource.transform.position);
 	}
 }

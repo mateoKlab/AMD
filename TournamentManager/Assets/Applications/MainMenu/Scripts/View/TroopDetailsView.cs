@@ -9,7 +9,10 @@ public class TroopDetailsView : View
 	public Text atkText;
 	public Text hpText;
 	public Text costText;
-    public FighterSpriteController troopSprite;
+
+	// TODO: Load appropriate prefab from resources.
+    public FighterSpriteController warriorSprite;
+	public FighterSpriteController mageSprite;
 
     public void SetName(string name)
     {
@@ -43,13 +46,45 @@ public class TroopDetailsView : View
 		}
     }
 
-    public void SetSprite(FighterSkinData skinData)
-    {
-		if (troopSprite != null) {
-			// TODO building sprite everytime feels really slow, refactor later
-			troopSprite.SetFighterSkin(skinData);
-			// 9162166868
+    public void SetSprite(Class fighterClass, FighterSkinData skinData)
+	{
+		mageSprite.gameObject.SetActive (false);
+		warriorSprite.gameObject.SetActive (false);
+
+		switch (fighterClass) {
+		case Class.Warrior:
+		{
+			warriorSprite.SetFighterSkin (skinData);
+			warriorSprite.gameObject.SetActive (true);
+			break;
 		}
+
+		case Class.Mage:
+		{
+			mageSprite.SetFighterSkin (skinData);
+			mageSprite.gameObject.SetActive (true);
+			break;
+		}
+
+		default:
+		{
+			warriorSprite.SetFighterSkin (skinData);
+			warriorSprite.gameObject.SetActive (true);
+			break;
+		}
+
+		}
+
+
+
+//		if (troopSprite != null) {
+//
+//			// TODO building sprite everytime feels really slow, refactor later
+//			troopSprite.SetFighterSkin(skinData);
+//			// 9162166868
+//		}
     }
+
+	
 
 }

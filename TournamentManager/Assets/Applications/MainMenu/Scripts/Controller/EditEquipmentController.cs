@@ -13,7 +13,13 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
     
     //////// END MVCCodeEditor GENERATED CODE ////////
 	/// 
-	public FighterSpriteController fSpriteController;
+//	public FighterSpriteController fSpriteController;
+
+	public FighterSpriteController mageSprite;
+	public FighterSpriteController warriorSprite;
+
+	private Class currentFighterClass;
+
 	public GridLayoutGroup equipmentPanel;
 	private GameObject equipmentPrefab;
 
@@ -26,6 +32,8 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 		model.fighterToEdit = fData;
 		troopDetailsController.SetTroopDetails(fData);
 		LoadEquipment("EquipmentType+Weapon+Sword");
+
+		currentFighterClass = fData.fighterClass;
 	}
 
 	private void ClearEquipmentDisplay()
@@ -33,6 +41,30 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 		for (int i = 0; i < model.equipmentList.Count; i++)
 		{
 			DestroyObject(model.equipmentList[i].gameObject);
+		}
+	}
+
+	public void SetFighterSkin (FighterSkinData skinData)
+	{
+		warriorSprite.gameObject.SetActive (false);
+		mageSprite.gameObject.SetActive (false);
+
+		switch (currentFighterClass) {
+		case Class.Warrior:
+		{
+			warriorSprite.SetFighterSkin (skinData);
+			warriorSprite.gameObject.SetActive (true);
+			break;
+		}
+
+		case Class.Mage:
+		{
+			mageSprite.SetFighterSkin (skinData);
+			mageSprite.gameObject.SetActive (true);
+			break;
+		}
+		
+
 		}
 	}
 
