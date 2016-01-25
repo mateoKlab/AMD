@@ -46,5 +46,9 @@ public class FighterSpriteController : MonoBehaviour {
 			}
 		}
 	}
+
+	public void Fire() {
+		Debug.Log("Fire");
+	}
 	
 }

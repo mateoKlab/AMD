@@ -4,127 +4,266 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Fireball1
-  rotate: false
-  xy: 2, 635
-  size: 216, 209
-  orig: 216, 209
-  offset: 0, 0
-  index: -1
-Fireball10
-  rotate: false
-  xy: 656, 635
-  size: 216, 209
-  orig: 216, 209
-  offset: 0, 0
-  index: -1
-Fireball11
-  rotate: false
-  xy: 220, 2
-  size: 216, 209
-  orig: 216, 209
-  offset: 0, 0
-  index: -1
-Fireball12
-  rotate: false
-  xy: 438, 213
-  size: 216, 209
-  orig: 216, 209
-  offset: 0, 0
-  index: -1
-Fireball13
-  rotate: false
-  xy: 656, 424
-  size: 216, 209
-  orig: 216, 209
-  offset: 0, 0
-  index: -1
-Fireball14
-  rotate: false
-  xy: 438, 2
-  size: 216, 209
-  orig: 216, 209
-  offset: 0, 0
-  index: -1
-Fireball15
-  rotate: false
-  xy: 656, 213
-  size: 216, 209
-  orig: 216, 209
-  offset: 0, 0
-  index: -1
-Fireball16
-  rotate: false
-  xy: 656, 2
-  size: 216, 209
-  orig: 216, 209
-  offset: 0, 0
-  index: -1
-Fireball2
+2Orb1
   rotate: false
   xy: 2, 424
   size: 216, 209
   orig: 216, 209
   offset: 0, 0
   index: -1
-Fireball3
+2Orb10
   rotate: false
-  xy: 220, 635
+  xy: 220, 296
   size: 216, 209
   orig: 216, 209
   offset: 0, 0
   index: -1
-Fireball4
+2Orb11
+  rotate: false
+  xy: 220, 85
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+2Orb12
+  rotate: false
+  xy: 438, 296
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+2Orb13
+  rotate: false
+  xy: 438, 85
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+2Orb14
+  rotate: false
+  xy: 656, 296
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+2Orb15
+  rotate: false
+  xy: 656, 85
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+2Orb2
+  rotate: false
+  xy: 302, 718
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+2Orb3
   rotate: false
   xy: 2, 213
   size: 216, 209
   orig: 216, 209
   offset: 0, 0
   index: -1
-Fireball5
+2Orb4
+  rotate: false
+  xy: 520, 718
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+2Orb5
+  rotate: false
+  xy: 2, 2
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+2Orb6
+  rotate: false
+  xy: 738, 718
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+2Orb7
+  rotate: false
+  xy: 302, 507
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+2Orb8
+  rotate: false
+  xy: 520, 507
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+2Orb9
+  rotate: false
+  xy: 738, 507
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+Orb1
+  rotate: false
+  xy: 2, 635
+  size: 298, 292
+  orig: 298, 292
+  offset: 0, 0
+  index: -1
+
+skeleton2.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+2Orb16
+  rotate: false
+  xy: 2, 635
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+2Orb17
+  rotate: false
+  xy: 2, 424
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+3Orb1
+  rotate: false
+  xy: 220, 635
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+3Orb2
+  rotate: false
+  xy: 2, 213
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+3Orb3
   rotate: false
   xy: 220, 424
   size: 216, 209
   orig: 216, 209
   offset: 0, 0
   index: -1
-Fireball6
+3Orb4
   rotate: false
   xy: 438, 635
   size: 216, 209
   orig: 216, 209
   offset: 0, 0
   index: -1
-Fireball7
+3Orb5
   rotate: false
   xy: 2, 2
   size: 216, 209
   orig: 216, 209
   offset: 0, 0
   index: -1
-Fireball8
+3Orb6
   rotate: false
   xy: 220, 213
   size: 216, 209
   orig: 216, 209
   offset: 0, 0
   index: -1
-Fireball9
+3Orb7
   rotate: false
   xy: 438, 424
   size: 216, 209
   orig: 216, 209
   offset: 0, 0
   index: -1
+4Orb1
+  rotate: false
+  xy: 656, 635
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+4Orb2
+  rotate: false
+  xy: 220, 2
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+4Orb3
+  rotate: false
+  xy: 438, 213
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+4Orb4
+  rotate: false
+  xy: 656, 424
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+4Orb5
+  rotate: false
+  xy: 438, 2
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+4Orb6
+  rotate: false
+  xy: 656, 213
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+4Orb7
+  rotate: false
+  xy: 656, 2
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
 
-skeleton2.png
-size: 256,256
+skeleton3.png
+size: 1024,256
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Fireball17
+5Orb1
   rotate: false
   xy: 2, 2
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+5Orb2
+  rotate: false
+  xy: 220, 2
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+5Orb3
+  rotate: false
+  xy: 438, 2
+  size: 216, 209
+  orig: 216, 209
+  offset: 0, 0
+  index: -1
+5Orb4
+  rotate: false
+  xy: 656, 2
   size: 216, 209
   orig: 216, 209
   offset: 0, 0

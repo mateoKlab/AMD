@@ -1,108 +1,223 @@
 {
-"skeleton": { "hash": "rD/rnqAFmG7y8GxJHKmC4uq30PA", "spine": "2.1.27", "width": 0, "height": 0, "images": "" },
+"skeleton": { "hash": "DU2g8DIoC7p/YyJdmJzwQ/Yl3lA", "spine": "2.1.27", "width": 0, "height": 0, "images": "" },
 "bones": [
-	{ "name": "root" }
+	{ "name": "root", "y": -2 },
+	{ "name": "1Orb1", "parent": "root" },
+	{ "name": "2Orb1", "parent": "root" },
+	{ "name": "3Orb1", "parent": "root" },
+	{ "name": "4Orb1", "parent": "root" },
+	{ "name": "5Orb1", "parent": "root" },
+	{ "name": "3Orb2", "parent": "3Orb1" },
+	{ "name": "3Orb3", "parent": "3Orb1" },
+	{ "name": "3Orb4", "parent": "3Orb1" },
+	{ "name": "3Orb5", "parent": "3Orb1" },
+	{ "name": "3Orb6", "parent": "3Orb1" },
+	{ "name": "3Orb7", "parent": "3Orb1" },
+	{ "name": "4Orb2", "parent": "4Orb1" },
+	{ "name": "4Orb3", "parent": "4Orb1" },
+	{ "name": "4Orb4", "parent": "4Orb1" },
+	{ "name": "4Orb5", "parent": "4Orb1" },
+	{ "name": "4Orb6", "parent": "4Orb1" },
+	{ "name": "4Orb7", "parent": "4Orb1" },
+	{ "name": "5Orb2", "parent": "5Orb1" },
+	{ "name": "5Orb3", "parent": "5Orb2" },
+	{ "name": "5Orb4", "parent": "5Orb3" }
 ],
 "slots": [
-	{ "name": "Fireball1", "bone": "root" },
-	{ "name": "Fireball2", "bone": "root" },
-	{ "name": "Fireball3", "bone": "root" },
-	{ "name": "Fireball4", "bone": "root" },
-	{ "name": "Fireball5", "bone": "root" },
-	{ "name": "Fireball6", "bone": "root" },
-	{ "name": "Fireball7", "bone": "root" },
-	{ "name": "Fireball8", "bone": "root" },
-	{ "name": "Fireball9", "bone": "root" },
-	{ "name": "Fireball10", "bone": "root" },
-	{ "name": "Fireball11", "bone": "root" },
-	{ "name": "Fireball12", "bone": "root" },
-	{ "name": "Fireball13", "bone": "root" },
-	{ "name": "Fireball14", "bone": "root" },
-	{ "name": "Fireball15", "bone": "root" },
-	{ "name": "Fireball16", "bone": "root" },
-	{ "name": "Fireball17", "bone": "root" }
+	{ "name": "2Orb1", "bone": "2Orb1" },
+	{ "name": "2Orb2", "bone": "2Orb1" },
+	{ "name": "2Orb3", "bone": "2Orb1" },
+	{ "name": "2Orb4", "bone": "2Orb1" },
+	{ "name": "2Orb5", "bone": "2Orb1" },
+	{ "name": "2Orb6", "bone": "2Orb1" },
+	{ "name": "2Orb7", "bone": "2Orb1" },
+	{ "name": "2Orb8", "bone": "2Orb1" },
+	{ "name": "2Orb9", "bone": "2Orb1" },
+	{ "name": "2Orb10", "bone": "2Orb1" },
+	{ "name": "2Orb11", "bone": "2Orb1" },
+	{ "name": "2Orb12", "bone": "2Orb1" },
+	{ "name": "2Orb13", "bone": "2Orb1" },
+	{ "name": "2Orb14", "bone": "2Orb1" },
+	{ "name": "2Orb15", "bone": "2Orb1" },
+	{ "name": "2Orb16", "bone": "2Orb1" },
+	{ "name": "2Orb17", "bone": "2Orb1" },
+	{ "name": "3Orb7", "bone": "3Orb7" },
+	{ "name": "3Orb6", "bone": "3Orb6" },
+	{ "name": "3Orb5", "bone": "3Orb5" },
+	{ "name": "3Orb4", "bone": "3Orb4" },
+	{ "name": "3Orb3", "bone": "3Orb3" },
+	{ "name": "3Orb2", "bone": "3Orb2" },
+	{ "name": "3Orb1", "bone": "3Orb1" },
+	{ "name": "4Orb7", "bone": "4Orb7" },
+	{ "name": "4Orb6", "bone": "4Orb6" },
+	{ "name": "4Orb5", "bone": "4Orb5" },
+	{ "name": "4Orb4", "bone": "4Orb4" },
+	{ "name": "4Orb3", "bone": "4Orb3" },
+	{ "name": "4Orb2", "bone": "4Orb2" },
+	{ "name": "4Orb1", "bone": "4Orb1" },
+	{ "name": "5Orb4", "bone": "5Orb4" },
+	{ "name": "5Orb3", "bone": "5Orb3" },
+	{ "name": "5Orb2", "bone": "5Orb2" },
+	{ "name": "5Orb1", "bone": "5Orb1" },
+	{ "name": "Orb1", "bone": "1Orb1" }
 ],
 "skins": {
 	"default": {
-		"Fireball1": {
-			"Fireball1": { "width": 216, "height": 209 }
+		"2Orb1": {
+			"2Orb1": { "width": 216, "height": 209 }
 		},
-		"Fireball10": {
-			"Fireball10": { "width": 216, "height": 209 }
+		"2Orb10": {
+			"2Orb10": { "width": 216, "height": 209 }
 		},
-		"Fireball11": {
-			"Fireball11": { "width": 216, "height": 209 }
+		"2Orb11": {
+			"2Orb11": { "width": 216, "height": 209 }
 		},
-		"Fireball12": {
-			"Fireball12": { "width": 216, "height": 209 }
+		"2Orb12": {
+			"2Orb12": { "width": 216, "height": 209 }
 		},
-		"Fireball13": {
-			"Fireball13": { "width": 216, "height": 209 }
+		"2Orb13": {
+			"2Orb13": { "width": 216, "height": 209 }
 		},
-		"Fireball14": {
-			"Fireball14": { "width": 216, "height": 209 }
+		"2Orb14": {
+			"2Orb14": { "width": 216, "height": 209 }
 		},
-		"Fireball15": {
-			"Fireball15": { "width": 216, "height": 209 }
+		"2Orb15": {
+			"2Orb15": { "width": 216, "height": 209 }
 		},
-		"Fireball16": {
-			"Fireball16": { "width": 216, "height": 209 }
+		"2Orb16": {
+			"2Orb16": { "width": 216, "height": 209 }
 		},
-		"Fireball17": {
-			"Fireball17": { "width": 216, "height": 209 }
+		"2Orb17": {
+			"2Orb17": { "width": 216, "height": 209 }
 		},
-		"Fireball2": {
-			"Fireball2": { "width": 216, "height": 209 }
+		"2Orb2": {
+			"2Orb2": { "width": 216, "height": 209 }
 		},
-		"Fireball3": {
-			"Fireball3": { "width": 216, "height": 209 }
+		"2Orb3": {
+			"2Orb3": { "width": 216, "height": 209 }
 		},
-		"Fireball4": {
-			"Fireball4": { "width": 216, "height": 209 }
+		"2Orb4": {
+			"2Orb4": { "width": 216, "height": 209 }
 		},
-		"Fireball5": {
-			"Fireball5": { "width": 216, "height": 209 }
+		"2Orb5": {
+			"2Orb5": { "width": 216, "height": 209 }
 		},
-		"Fireball6": {
-			"Fireball6": { "width": 216, "height": 209 }
+		"2Orb6": {
+			"2Orb6": { "width": 216, "height": 209 }
 		},
-		"Fireball7": {
-			"Fireball7": { "width": 216, "height": 209 }
+		"2Orb7": {
+			"2Orb7": { "width": 216, "height": 209 }
 		},
-		"Fireball8": {
-			"Fireball8": { "width": 216, "height": 209 }
+		"2Orb8": {
+			"2Orb8": { "width": 216, "height": 209 }
 		},
-		"Fireball9": {
-			"Fireball9": { "width": 216, "height": 209 }
+		"2Orb9": {
+			"2Orb9": { "width": 216, "height": 209 }
+		},
+		"3Orb1": {
+			"3Orb1": { "x": -6.93, "y": 3.26, "width": 216, "height": 209 }
+		},
+		"3Orb2": {
+			"3Orb2": { "x": -6.93, "y": 3.26, "width": 216, "height": 209 }
+		},
+		"3Orb3": {
+			"3Orb3": { "x": -6.93, "y": 3.26, "width": 216, "height": 209 }
+		},
+		"3Orb4": {
+			"3Orb4": { "x": -6.93, "y": 3.26, "width": 216, "height": 209 }
+		},
+		"3Orb5": {
+			"3Orb5": { "x": -6.93, "y": 3.26, "width": 216, "height": 209 }
+		},
+		"3Orb6": {
+			"3Orb6": { "x": -6.93, "y": 3.26, "width": 216, "height": 209 }
+		},
+		"3Orb7": {
+			"3Orb7": { "x": -7.53, "y": -1.29, "width": 216, "height": 209 }
+		},
+		"4Orb1": {
+			"4Orb1": { "x": -6.93, "y": 3.26, "width": 216, "height": 209 }
+		},
+		"4Orb2": {
+			"4Orb2": { "x": -6.93, "y": 3.26, "width": 216, "height": 209 }
+		},
+		"4Orb3": {
+			"4Orb3": { "x": -6.93, "y": 3.26, "width": 216, "height": 209 }
+		},
+		"4Orb4": {
+			"4Orb4": { "x": -6.93, "y": 3.26, "width": 216, "height": 209 }
+		},
+		"4Orb5": {
+			"4Orb5": { "x": -6.93, "y": 3.26, "width": 216, "height": 209 }
+		},
+		"4Orb6": {
+			"4Orb6": { "x": -6.93, "y": 3.26, "width": 216, "height": 209 }
+		},
+		"4Orb7": {
+			"4Orb7": { "x": -6.93, "y": 3.26, "width": 216, "height": 209 }
+		},
+		"5Orb1": {
+			"5Orb1": { "y": -2, "width": 216, "height": 209 }
+		},
+		"5Orb2": {
+			"5Orb2": { "y": -2, "width": 216, "height": 209 }
+		},
+		"5Orb3": {
+			"5Orb3": { "y": -2, "width": 216, "height": 209 }
+		},
+		"5Orb4": {
+			"5Orb4": { "y": -2, "width": 216, "height": 209 }
+		},
+		"Orb1": {
+			"Orb1": { "x": 1.75, "y": 5.6, "width": 298, "height": 292 }
 		}
 	}
 },
 "animations": {
-	"Fire": {
+	"Orb1Projectile": {
 		"slots": {
-			"Fireball1": {
+			"Orb1": {
 				"attachment": [
-					{ "time": 0, "name": "Fireball1" },
-					{ "time": 0.0333, "name": "Fireball1" },
-					{ "time": 0.0666, "name": "Fireball1" },
-					{ "time": 0.1, "name": "Fireball1" },
-					{ "time": 0.1333, "name": "Fireball1" },
-					{ "time": 0.1666, "name": "Fireball1" },
-					{ "time": 0.2, "name": "Fireball1" },
-					{ "time": 0.2333, "name": "Fireball1" },
-					{ "time": 0.2666, "name": "Fireball1" },
-					{ "time": 0.3, "name": "Fireball1" },
-					{ "time": 0.3333, "name": "Fireball1" },
-					{ "time": 0.3666, "name": "Fireball1" },
-					{ "time": 0.4, "name": "Fireball1" },
-					{ "time": 0.4333, "name": "Fireball1" },
-					{ "time": 0.4666, "name": "Fireball1" },
-					{ "time": 0.5, "name": "Fireball1" }
+					{ "time": 0, "name": "Orb1" },
+					{ "time": 0.6666, "name": "Orb1" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"scale": [
+					{ "time": 0, "x": 2, "y": 2 },
+					{ "time": 0.3333, "x": 1.5, "y": 1.5 },
+					{ "time": 0.6666, "x": 2, "y": 2 }
+				]
+			}
+		}
+	},
+	"Orb2Projectile": {
+		"slots": {
+			"2Orb1": {
+				"attachment": [
+					{ "time": 0, "name": "2Orb1" },
+					{ "time": 0.0333, "name": "2Orb1" },
+					{ "time": 0.0666, "name": "2Orb1" },
+					{ "time": 0.1, "name": "2Orb1" },
+					{ "time": 0.1333, "name": "2Orb1" },
+					{ "time": 0.1666, "name": "2Orb1" },
+					{ "time": 0.2, "name": "2Orb1" },
+					{ "time": 0.2333, "name": "2Orb1" },
+					{ "time": 0.2666, "name": "2Orb1" },
+					{ "time": 0.3, "name": "2Orb1" },
+					{ "time": 0.3333, "name": "2Orb1" },
+					{ "time": 0.3666, "name": "2Orb1" },
+					{ "time": 0.4, "name": "2Orb1" },
+					{ "time": 0.4333, "name": "2Orb1" },
+					{ "time": 0.4666, "name": "2Orb1" },
+					{ "time": 0.5, "name": "2Orb1" }
 				]
 			},
-			"Fireball2": {
+			"2Orb2": {
 				"attachment": [
-					{ "time": 0, "name": "Fireball2" },
+					{ "time": 0, "name": "2Orb2" },
 					{ "time": 0.0333, "name": null },
 					{ "time": 0.0666, "name": null },
 					{ "time": 0.1, "name": null },
@@ -117,13 +232,13 @@
 					{ "time": 0.4, "name": null },
 					{ "time": 0.4333, "name": null },
 					{ "time": 0.4666, "name": null },
-					{ "time": 0.5, "name": "Fireball2" }
+					{ "time": 0.5, "name": "2Orb2" }
 				]
 			},
-			"Fireball3": {
+			"2Orb3": {
 				"attachment": [
 					{ "time": 0, "name": null },
-					{ "time": 0.0333, "name": "Fireball3" },
+					{ "time": 0.0333, "name": "2Orb3" },
 					{ "time": 0.0666, "name": null },
 					{ "time": 0.1, "name": null },
 					{ "time": 0.1333, "name": null },
@@ -140,11 +255,11 @@
 					{ "time": 0.5, "name": null }
 				]
 			},
-			"Fireball4": {
+			"2Orb4": {
 				"attachment": [
 					{ "time": 0, "name": null },
 					{ "time": 0.0333, "name": null },
-					{ "time": 0.0666, "name": "Fireball4" },
+					{ "time": 0.0666, "name": "2Orb4" },
 					{ "time": 0.1, "name": null },
 					{ "time": 0.1333, "name": null },
 					{ "time": 0.1666, "name": null },
@@ -160,12 +275,12 @@
 					{ "time": 0.5, "name": null }
 				]
 			},
-			"Fireball5": {
+			"2Orb5": {
 				"attachment": [
 					{ "time": 0, "name": null },
 					{ "time": 0.0333, "name": null },
 					{ "time": 0.0666, "name": null },
-					{ "time": 0.1, "name": "Fireball5" },
+					{ "time": 0.1, "name": "2Orb5" },
 					{ "time": 0.1333, "name": null },
 					{ "time": 0.1666, "name": null },
 					{ "time": 0.2, "name": null },
@@ -180,13 +295,13 @@
 					{ "time": 0.5, "name": null }
 				]
 			},
-			"Fireball6": {
+			"2Orb6": {
 				"attachment": [
 					{ "time": 0, "name": null },
 					{ "time": 0.0333, "name": null },
 					{ "time": 0.0666, "name": null },
 					{ "time": 0.1, "name": null },
-					{ "time": 0.1333, "name": "Fireball6" },
+					{ "time": 0.1333, "name": "2Orb6" },
 					{ "time": 0.1666, "name": null },
 					{ "time": 0.2, "name": null },
 					{ "time": 0.2333, "name": null },
@@ -200,14 +315,14 @@
 					{ "time": 0.5, "name": null }
 				]
 			},
-			"Fireball7": {
+			"2Orb7": {
 				"attachment": [
 					{ "time": 0, "name": null },
 					{ "time": 0.0333, "name": null },
 					{ "time": 0.0666, "name": null },
 					{ "time": 0.1, "name": null },
 					{ "time": 0.1333, "name": null },
-					{ "time": 0.1666, "name": "Fireball7" },
+					{ "time": 0.1666, "name": "2Orb7" },
 					{ "time": 0.2, "name": null },
 					{ "time": 0.2333, "name": null },
 					{ "time": 0.2666, "name": null },
@@ -220,7 +335,7 @@
 					{ "time": 0.5, "name": null }
 				]
 			},
-			"Fireball8": {
+			"2Orb8": {
 				"attachment": [
 					{ "time": 0, "name": null },
 					{ "time": 0.0333, "name": null },
@@ -228,7 +343,7 @@
 					{ "time": 0.1, "name": null },
 					{ "time": 0.1333, "name": null },
 					{ "time": 0.1666, "name": null },
-					{ "time": 0.2, "name": "Fireball8" },
+					{ "time": 0.2, "name": "2Orb8" },
 					{ "time": 0.2333, "name": null },
 					{ "time": 0.2666, "name": null },
 					{ "time": 0.3, "name": null },
@@ -240,7 +355,7 @@
 					{ "time": 0.5, "name": null }
 				]
 			},
-			"Fireball9": {
+			"2Orb9": {
 				"attachment": [
 					{ "time": 0, "name": null },
 					{ "time": 0.0333, "name": null },
@@ -249,7 +364,7 @@
 					{ "time": 0.1333, "name": null },
 					{ "time": 0.1666, "name": null },
 					{ "time": 0.2, "name": null },
-					{ "time": 0.2333, "name": "Fireball9" },
+					{ "time": 0.2333, "name": "2Orb9" },
 					{ "time": 0.2666, "name": null },
 					{ "time": 0.3, "name": null },
 					{ "time": 0.3333, "name": null },
@@ -260,7 +375,7 @@
 					{ "time": 0.5, "name": null }
 				]
 			},
-			"Fireball10": {
+			"2Orb10": {
 				"attachment": [
 					{ "time": 0, "name": null },
 					{ "time": 0.0333, "name": null },
@@ -270,7 +385,7 @@
 					{ "time": 0.1666, "name": null },
 					{ "time": 0.2, "name": null },
 					{ "time": 0.2333, "name": null },
-					{ "time": 0.2666, "name": "Fireball10" },
+					{ "time": 0.2666, "name": "2Orb10" },
 					{ "time": 0.3, "name": null },
 					{ "time": 0.3333, "name": null },
 					{ "time": 0.3666, "name": null },
@@ -280,7 +395,7 @@
 					{ "time": 0.5, "name": null }
 				]
 			},
-			"Fireball11": {
+			"2Orb11": {
 				"attachment": [
 					{ "time": 0, "name": null },
 					{ "time": 0.0333, "name": null },
@@ -291,7 +406,7 @@
 					{ "time": 0.2, "name": null },
 					{ "time": 0.2333, "name": null },
 					{ "time": 0.2666, "name": null },
-					{ "time": 0.3, "name": "Fireball11" },
+					{ "time": 0.3, "name": "2Orb11" },
 					{ "time": 0.3333, "name": null },
 					{ "time": 0.3666, "name": null },
 					{ "time": 0.4, "name": null },
@@ -300,27 +415,7 @@
 					{ "time": 0.5, "name": null }
 				]
 			},
-			"Fireball12": {
-				"attachment": [
-					{ "time": 0, "name": null },
-					{ "time": 0.0333, "name": null },
-					{ "time": 0.0666, "name": null },
-					{ "time": 0.1, "name": null },
-					{ "time": 0.1333, "name": null },
-					{ "time": 0.1666, "name": null },
-					{ "time": 0.2, "name": null },
-					{ "time": 0.2333, "name": null },
-					{ "time": 0.2666, "name": null },
-					{ "time": 0.3, "name": null },
-					{ "time": 0.3333, "name": "Fireball12" },
-					{ "time": 0.3666, "name": null },
-					{ "time": 0.4, "name": null },
-					{ "time": 0.4333, "name": null },
-					{ "time": 0.4666, "name": null },
-					{ "time": 0.5, "name": null }
-				]
-			},
-			"Fireball13": {
+			"2Orb12": {
 				"attachment": [
 					{ "time": 0, "name": null },
 					{ "time": 0.0333, "name": null },
@@ -332,15 +427,15 @@
 					{ "time": 0.2333, "name": null },
 					{ "time": 0.2666, "name": null },
 					{ "time": 0.3, "name": null },
-					{ "time": 0.3333, "name": null },
-					{ "time": 0.3666, "name": "Fireball13" },
+					{ "time": 0.3333, "name": "2Orb12" },
+					{ "time": 0.3666, "name": null },
 					{ "time": 0.4, "name": null },
 					{ "time": 0.4333, "name": null },
 					{ "time": 0.4666, "name": null },
 					{ "time": 0.5, "name": null }
 				]
 			},
-			"Fireball14": {
+			"2Orb13": {
 				"attachment": [
 					{ "time": 0, "name": null },
 					{ "time": 0.0333, "name": null },
@@ -353,14 +448,14 @@
 					{ "time": 0.2666, "name": null },
 					{ "time": 0.3, "name": null },
 					{ "time": 0.3333, "name": null },
-					{ "time": 0.3666, "name": null },
-					{ "time": 0.4, "name": "Fireball14" },
+					{ "time": 0.3666, "name": "2Orb13" },
+					{ "time": 0.4, "name": null },
 					{ "time": 0.4333, "name": null },
 					{ "time": 0.4666, "name": null },
 					{ "time": 0.5, "name": null }
 				]
 			},
-			"Fireball15": {
+			"2Orb14": {
 				"attachment": [
 					{ "time": 0, "name": null },
 					{ "time": 0.0333, "name": null },
@@ -374,13 +469,13 @@
 					{ "time": 0.3, "name": null },
 					{ "time": 0.3333, "name": null },
 					{ "time": 0.3666, "name": null },
-					{ "time": 0.4, "name": null },
-					{ "time": 0.4333, "name": "Fireball15" },
+					{ "time": 0.4, "name": "2Orb14" },
+					{ "time": 0.4333, "name": null },
 					{ "time": 0.4666, "name": null },
 					{ "time": 0.5, "name": null }
 				]
 			},
-			"Fireball16": {
+			"2Orb15": {
 				"attachment": [
 					{ "time": 0, "name": null },
 					{ "time": 0.0333, "name": null },
@@ -395,12 +490,32 @@
 					{ "time": 0.3333, "name": null },
 					{ "time": 0.3666, "name": null },
 					{ "time": 0.4, "name": null },
-					{ "time": 0.4333, "name": null },
-					{ "time": 0.4666, "name": "Fireball16" },
+					{ "time": 0.4333, "name": "2Orb15" },
+					{ "time": 0.4666, "name": null },
 					{ "time": 0.5, "name": null }
 				]
 			},
-			"Fireball17": {
+			"2Orb16": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": null },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1333, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.2666, "name": null },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4, "name": null },
+					{ "time": 0.4333, "name": null },
+					{ "time": 0.4666, "name": "2Orb16" },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"2Orb17": {
 				"attachment": [
 					{ "time": 0, "name": null },
 					{ "time": 0.0333, "name": null },
@@ -424,14 +539,304 @@
 		"bones": {
 			"root": {
 				"rotate": [
-					{ "time": 0, "angle": 90, "curve": "stepped" },
-					{ "time": 0.5, "angle": 90 }
+					{ "time": 0, "angle": 90 }
 				],
 				"scale": [
+					{ "time": 0, "x": 0.3, "y": 0.3 },
+					{ "time": 0.2333, "x": 0.25, "y": 0.25 },
+					{ "time": 0.5, "x": 0.3, "y": 0.3 }
+				]
+			}
+		}
+	},
+	"Orb3Projectile": {
+		"slots": {
+			"3Orb1": {
+				"attachment": [
+					{ "time": 0, "name": "3Orb1" },
+					{ "time": 1.1333, "name": "3Orb1" }
+				]
+			},
+			"3Orb2": {
+				"attachment": [
+					{ "time": 0, "name": "3Orb2" },
+					{ "time": 1.1333, "name": "3Orb2" }
+				]
+			},
+			"3Orb3": {
+				"attachment": [
+					{ "time": 0, "name": "3Orb3" },
+					{ "time": 1.1333, "name": "3Orb3" }
+				]
+			},
+			"3Orb4": {
+				"attachment": [
+					{ "time": 0, "name": "3Orb4" },
+					{ "time": 1.1333, "name": "3Orb4" }
+				]
+			},
+			"3Orb5": {
+				"attachment": [
+					{ "time": 0, "name": "3Orb5" },
+					{ "time": 1.1333, "name": "3Orb5" }
+				]
+			},
+			"3Orb6": {
+				"attachment": [
+					{ "time": 0, "name": "3Orb6" },
+					{ "time": 1.1333, "name": "3Orb6" }
+				]
+			},
+			"3Orb7": {
+				"attachment": [
+					{ "time": 0, "name": "3Orb7" },
+					{ "time": 1.1333, "name": "3Orb7" }
+				]
+			}
+		},
+		"bones": {
+			"3Orb7": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"3Orb6": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.3, "angle": 270 },
+					{ "time": 0.5666, "angle": 180 },
+					{ "time": 0.8666, "angle": 90 },
+					{ "time": 1.1333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0.0333, "x": 1, "y": 1, "curve": "stepped" },
+					{
+						"time": 0.6333,
+						"x": 1,
+						"y": 1,
+						"curve": [ 1, 0, 0.515, 0.56 ]
+					},
+					{ "time": 0.7333, "x": 1.4, "y": 1.4 },
+					{ "time": 1.1333, "x": 1, "y": 1 }
+				]
+			},
+			"3Orb5": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.3, "angle": 90 },
+					{ "time": 0.5666, "angle": 180 },
+					{ "time": 0.8666, "angle": 270 },
+					{ "time": 1.1333, "angle": 360 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0.0333, "x": 1, "y": 1, "curve": "stepped" },
+					{
+						"time": 0.8666,
+						"x": 1,
+						"y": 1,
+						"curve": [ 0.817, 0.32, 1, 0.01 ]
+					},
+					{ "time": 0.9666, "x": 1.4, "y": 1.4 },
+					{ "time": 1.1333, "x": 1, "y": 1 }
+				]
+			},
+			"3Orb4": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.3, "angle": -90 },
+					{ "time": 0.5666, "angle": -180 },
+					{ "time": 0.8666, "angle": 90 },
+					{ "time": 1.1333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{
+						"time": 0.0666,
+						"x": 1,
+						"y": 1,
+						"curve": [ 0.458, 0.72, 0.765, 0.87 ]
+					},
+					{ "time": 0.1666, "x": 1.4, "y": 1.4 },
+					{ "time": 1.1333, "x": 1, "y": 1 }
+				]
+			},
+			"3Orb3": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.3, "angle": 90 },
+					{ "time": 0.5666, "angle": 180 },
+					{ "time": 0.8666, "angle": 270 },
+					{ "time": 1.1333, "angle": 360 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0.0666, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.3, "x": 1, "y": 1 },
+					{ "time": 0.4, "x": 1.4, "y": 1.4 },
+					{ "time": 1.1333, "x": 1, "y": 1 }
+				]
+			},
+			"3Orb2": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"3Orb1": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"Orb4Projectile": {
+		"slots": {
+			"4Orb1": {
+				"attachment": [
+					{ "time": 0, "name": "4Orb1" },
+					{ "time": 0.6666, "name": "4Orb1" }
+				]
+			},
+			"4Orb2": {
+				"attachment": [
+					{ "time": 0, "name": "4Orb2" },
+					{ "time": 0.6666, "name": "4Orb2" }
+				]
+			},
+			"4Orb3": {
+				"attachment": [
+					{ "time": 0, "name": "4Orb3" },
+					{ "time": 0.6666, "name": "4Orb3" }
+				]
+			},
+			"4Orb4": {
+				"attachment": [
+					{ "time": 0, "name": "4Orb4" },
+					{ "time": 0.6666, "name": "4Orb4" }
+				]
+			},
+			"4Orb5": {
+				"attachment": [
+					{ "time": 0, "name": "4Orb5" },
+					{ "time": 0.6666, "name": "4Orb5" }
+				]
+			},
+			"4Orb6": {
+				"attachment": [
+					{ "time": 0, "name": "4Orb6" },
+					{ "time": 0.6666, "name": "4Orb6" }
+				]
+			},
+			"4Orb7": {
+				"attachment": [
+					{ "time": 0, "name": "4Orb7" },
+					{ "time": 0.6666, "name": "4Orb7" }
+				]
+			}
+		},
+		"bones": {
+			"4Orb1": {
+				"scale": [
 					{ "time": 0.0333, "x": 1, "y": 1 },
-					{ "time": 0.1666, "x": 0.79, "y": 0.79 },
-					{ "time": 0.3333, "x": 1, "y": 1, "curve": "stepped" },
-					{ "time": 0.5, "x": 1, "y": 1 }
+					{ "time": 0.3333, "x": 0.8, "y": 0.8 },
+					{ "time": 0.6666, "x": 1, "y": 1 }
+				]
+			},
+			"4Orb2": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1666, "angle": 270 },
+					{ "time": 0.3333, "angle": 180 },
+					{ "time": 0.5, "angle": 90 },
+					{ "time": 0.6666, "angle": 360 }
+				]
+			},
+			"4Orb3": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1666, "angle": 270 },
+					{ "time": 0.3333, "angle": 180 },
+					{ "time": 0.5, "angle": 90 },
+					{ "time": 0.6666, "angle": 360 }
+				]
+			},
+			"4Orb4": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1666, "angle": 270 },
+					{ "time": 0.3333, "angle": 180 },
+					{ "time": 0.5, "angle": 90 },
+					{ "time": 0.6666, "angle": 360 }
+				]
+			},
+			"4Orb5": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1666, "angle": 270 },
+					{ "time": 0.3333, "angle": 180 },
+					{ "time": 0.5, "angle": 90 },
+					{ "time": 0.6666, "angle": 360 }
+				]
+			}
+		}
+	},
+	"Orb5Projectile": {
+		"slots": {
+			"5Orb1": {
+				"attachment": [
+					{ "time": 0, "name": "5Orb1" },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.5, "name": "5Orb1" }
+				]
+			},
+			"5Orb2": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.1666, "name": "5Orb2" },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"5Orb3": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.1666, "name": null },
+					{ "time": 0.3333, "name": "5Orb3" },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"5Orb4": {
+				"attachment": [
+					{ "time": 0, "name": "5Orb4" },
+					{ "time": 0.1666, "name": "5Orb4" },
+					{ "time": 0.3333, "name": "5Orb4" },
+					{ "time": 0.5, "name": "5Orb4" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 270 }
 				]
 			}
 		}
