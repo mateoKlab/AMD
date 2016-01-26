@@ -5,7 +5,8 @@ using Bingo;
 public class FighterExpController : Controller
 {
     private bool isActive;
-	public FighterSpriteController fsController;
+	public FighterSpriteController warriorFSController;
+	public FighterSpriteController mageFSController;
 	public FighterData fData;
 
     void Start()
@@ -28,7 +29,22 @@ public class FighterExpController : Controller
 		((FighterExpView)view).SetName(fData.name);
 		((FighterExpView)view).SetLevel(fData.level);
         ((FighterExpView)view).SetExpGained(GameData.instance.currentStage.xpReward);
-		fsController.SetFighterSkin(fData.skinData);
+
+		if (fData.fighterClass == Class.Warrior) 
+		{
+			mageFSController.gameObject.SetActive(false);
+		
+			warriorFSController.gameObject.SetActive(true);
+			warriorFSController.SetFighterSkin(fData.skinData);
+		}
+		else
+		{
+			warriorFSController.gameObject.SetActive(false);
+
+			mageFSController.gameObject.SetActive(true);
+			mageFSController.SetFighterSkin(fData.skinData);
+		}
+
 
         //((FighterExpView)view).SetSliderValue(Random.value);
     }

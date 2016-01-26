@@ -23,6 +23,14 @@ public class TroopController : Controller<MainMenu, TroopModel, TroopView>
       
     }
 
+	public void OnEnable() {
+		if (model.fighterData != null) 
+		{
+			SetPortrait (model.fighterData.fighterClass, model.fighterData.skinData);
+		}
+
+	}
+
     void Start()
     {
         transform.localScale = Vector3.one;
