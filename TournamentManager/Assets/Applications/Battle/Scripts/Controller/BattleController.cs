@@ -22,7 +22,8 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 	public GameObject archerFighterPrefab;
 	public GameObject mageFighterPrefab;
 
-	public List<GameObject> spawnPos;
+	public List<GameObject> allySpawnPos;
+	public List<GameObject> enemySpawnPos;
 
 	private Dictionary<Class, GameObject> prefabs = new Dictionary<Class, GameObject> ();
 
@@ -79,7 +80,10 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 		}
 
 		battleMenuController.SetFighters(model.allies);
-		SetBackgroundImage(currentStage);
+
+
+		// TEST. Disable.
+//		SetBackgroundImage(currentStage);
 	}
 
 	public void SetBackgroundImage (StageData sData)
@@ -252,13 +256,14 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 			int index = model.allies.IndexOf (fighter);
 
 			// TEMPORARY SPAWN POSITIONING.
-			fighter.transform.position = spawnPos[0].transform.position;//new Vector3 (alliedStartingPos.x + (0.8f * index), -1f, fighter.transform.position.z);
-			spawnPos.RemoveAt (0);
+			fighter.transform.position = allySpawnPos[0].transform.position; //new Vector3 (alliedStartingPos.x + (0.8f * index), -1f, fighter.transform.position.z);
+			allySpawnPos.RemoveAt (0);
 
 		} else {
 			int index = model.enemies.IndexOf (fighter);
 
-			fighter.transform.position = new Vector3 (enemyStartingPos.x - (0.8f * index), -1f, fighter.transform.position.z);
+			fighter.transform.position = enemySpawnPos[0].transform.position; //new Vector3 (enemyStartingPos.x - (0.8f * index), -1f, fighter.transform.position.z);
+			enemySpawnPos.RemoveAt (0);
 		}
 	}
 
