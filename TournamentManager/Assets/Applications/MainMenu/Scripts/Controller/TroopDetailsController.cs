@@ -2,14 +2,15 @@
 using System.Collections;
 using Bingo;
 
-public class TroopDetailsController : Controller
+public class TroopDetailsController : Controller <MainMenu, TroopDetailsModel, TroopDetailsView>
 {
     public void SetTroopDetails(FighterData fighterData)
     {
-        ((TroopDetailsView) view).SetName(fighterData.name);
-        ((TroopDetailsView) view).SetAtk(fighterData.ATK);
-        ((TroopDetailsView) view).SetHP(fighterData.HP);
-        ((TroopDetailsView) view).SetCost(fighterData.cost);
-        ((TroopDetailsView) view).SetSprite(fighterData.fighterClass, fighterData.skinData);
+        view.SetName(fighterData.name);
+		view.SetClass(fighterData.fighterClass.ToString());
+		view.SetAtk(fighterData.ATK);
+		view.SetHP(fighterData.HP);
+		view.SetCost(fighterData.cost);
+		view.SetSprite(fighterData.fighterClass, fighterData.skinData);
     }
 }

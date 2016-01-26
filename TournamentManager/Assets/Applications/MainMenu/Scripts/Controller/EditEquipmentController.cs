@@ -15,12 +15,14 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 	/// 
 //	public FighterSpriteController fSpriteController;
 
-	public FighterSpriteController mageSprite;
-	public FighterSpriteController warriorSprite;
+	//private FighterSpriteController mageSprite;
+	//private FighterSpriteController warriorSprite;
 
 	private Class currentFighterClass;
 
 	public GridLayoutGroup equipmentPanel;
+	public GameObject warriorTabs;
+	public GameObject mageTabs;
 	private GameObject equipmentPrefab;
 
 	// Current Displayed EquipmentType;
@@ -31,8 +33,18 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 		gameObject.SetActive(true);
 		model.fighterToEdit = fData;
 		troopDetailsController.SetTroopDetails(fData);
-		LoadEquipment("EquipmentType+Weapon+Sword");
-
+		if (fData.fighterClass == Class.Warrior) 
+		{
+			warriorTabs.SetActive(true);
+			mageTabs.SetActive(false);
+			LoadEquipment("EquipmentType+Weapon+Sword");
+		}
+		else 
+		{
+			mageTabs.SetActive(true);
+			warriorTabs.SetActive(false);
+			LoadEquipment("EquipmentType+Armor+Hood");
+		}
 		currentFighterClass = fData.fighterClass;
 	}
 
@@ -46,21 +58,21 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 
 	public void SetFighterSkin (FighterSkinData skinData)
 	{
-		warriorSprite.gameObject.SetActive (false);
-		mageSprite.gameObject.SetActive (false);
+		troopDetailsController.view.warriorSprite.gameObject.SetActive (false);
+		troopDetailsController.view.mageSprite.gameObject.SetActive (false);
 
 		switch (currentFighterClass) {
 		case Class.Warrior:
 		{
-			warriorSprite.SetFighterSkin (skinData);
-			warriorSprite.gameObject.SetActive (true);
+			troopDetailsController.view.warriorSprite.SetFighterSkin (skinData);
+			troopDetailsController.view.warriorSprite.gameObject.SetActive (true);
 			break;
 		}
 
 		case Class.Mage:
 		{
-			mageSprite.SetFighterSkin (skinData);
-			mageSprite.gameObject.SetActive (true);
+			troopDetailsController.view.mageSprite.SetFighterSkin (skinData);
+			troopDetailsController.view.mageSprite.gameObject.SetActive (true);
 			break;
 		}
 		
