@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
+// Constraint: IDatabaseItem interface: items must return an id for the hash table.
 public class Database<T> where T : IDatabaseItem {
 
 	public DatabaseNode<T> rootNode = new DatabaseNode<T> ();
@@ -16,8 +17,10 @@ public class Database<T> where T : IDatabaseItem {
 
 		// Search for the node to put this item into.
 		DatabaseNode<T> itemNode = GetNode (itemType);
-		
-		itemNode.items.Add (item.itemId, item);
+
+		if (!itemNode.items.ContainsKey (item.itemId)) {
+			itemNode.items.Add (item.itemId, item);
+		}
 	}
 
 	public List<T> GetItems (Type itemType)
@@ -77,6 +80,7 @@ public class DatabaseNode<T>
 
 }
 
+// Item must have an id.
 public interface IDatabaseItem
 {	
 	string itemId { get; set; }

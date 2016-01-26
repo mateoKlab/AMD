@@ -16,14 +16,23 @@ public class FighterSpriteAttachment {
 		Front_Upper_Arm,
 		Front_Lower_Arm,
 		Front_Fist,
-		Sword,
 		Head,
 		Helm,
 		Hind_Upper_Arm,
 		Hind_Lower_Arm,
 		Hind_Fist,
 		Shield,
-		Weapon
+		Weapon,
+		Offhand,
+
+		Hood,
+		Hood_Inner,
+
+		Robe,
+		Shawl
+
+
+
 
 	}
 

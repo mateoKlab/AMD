@@ -21,7 +21,6 @@ public class PlayerData
 		}
 		set {
 			_gold = value;
-//			 Save ();
 		}
 	}
 	
@@ -33,7 +32,6 @@ public class PlayerData
 		}
 		set {
 			_diamonds = value;
-//			Save ();
 		}
 	}
 	#endregion
@@ -119,7 +117,6 @@ public class PlayerData
 	#region Save/Load
     public void Save()
     {
-		Debug.Log ("Saving...");
 		XmlHelper.Save<PlayerData> (this, "PlayerData");
     }
 

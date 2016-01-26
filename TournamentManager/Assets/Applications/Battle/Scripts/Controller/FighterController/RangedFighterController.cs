@@ -5,14 +5,17 @@ using Bingo;
 public class RangedFighterController : FighterController
 {
 	public float cooldown = 1.5f;
-	public float nextAttackAllowed;
 
 	private bool isOnCooldown = true;
+
+	// TEMP.
+	// The sprite/object where the projectile should spawn.s
+	public GameObject projectileSource;
+
 
 	void Awake ()
 	{
 		base.Awake ();
-		nextAttackAllowed = Time.time;
 	}
 
 	public override void OnAttack (Attack attackData)
@@ -24,7 +27,6 @@ public class RangedFighterController : FighterController
 
 	void RangedAttack (Attack attackData)
 	{
-		//(app.controller as BattleController).OnRangedAttack (gameObject);
-		((BattleController)app.controller).OnRangedAttack (attackData);
+		((BattleController)app.controller).OnRangedAttack (attackData, projectileSource.transform.position);
 	}
 }

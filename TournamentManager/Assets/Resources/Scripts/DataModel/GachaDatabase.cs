@@ -24,12 +24,17 @@ public class GachaDatabase {
 	public ClassData GetRandomClass ()
 	{
 //		Class randomClass = classPool [UnityEngine.Random.Range (0, classPool.Count)];
+		Class randomClass;
+		int random = UnityEngine.Random.Range (0, 11);
+		if (random > 5) {
+			randomClass = Class.Warrior;
+		} else {
+			randomClass = Class.Mage;
+		}
 
 		// TEST.
-		Class randomClass = Class.Warrior;
-
-		Debug.Log (randomClass.ToString ());
-
+		randomClass = Class.Warrior;
+	
 		return GameDatabase.classDatabase [randomClass];
 	}
 
