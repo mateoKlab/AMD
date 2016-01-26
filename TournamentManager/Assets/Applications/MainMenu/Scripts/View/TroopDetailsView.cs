@@ -6,6 +6,7 @@ using Bingo;
 public class TroopDetailsView : View
 {
 	public Text nameText;
+	public Text classText;
 	public Text atkText;
 	public Text hpText;
 	public Text costText;
@@ -21,6 +22,14 @@ public class TroopDetailsView : View
 			nameText.text = name;
 		}
     }
+
+	public void SetClass(string className)
+	{
+		if (classText != null)
+		{
+			classText.text = className;
+		}
+	}
 
     public void SetAtk(float atk)
     {

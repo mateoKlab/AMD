@@ -33,7 +33,7 @@ public class GachaDatabase {
 		}
 
 		// TEST.
-		randomClass = Class.Warrior;
+//		randomClass = Class.Warrior;
 	
 		return GameDatabase.classDatabase [randomClass];
 	}
