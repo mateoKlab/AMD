@@ -22,6 +22,8 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 	public GameObject archerFighterPrefab;
 	public GameObject mageFighterPrefab;
 
+	public List<GameObject> spawnPos;
+
 	private Dictionary<Class, GameObject> prefabs = new Dictionary<Class, GameObject> ();
 
 	private Vector3 alliedStartingPos = new Vector3 (-7f, -1f, -1f);
@@ -249,7 +251,9 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 		if (allegiance == FighterAlliegiance.Ally) {
 			int index = model.allies.IndexOf (fighter);
 
-			fighter.transform.position = new Vector3 (alliedStartingPos.x + (0.8f * index), -1f, fighter.transform.position.z);
+			// TEMPORARY SPAWN POSITIONING.
+			fighter.transform.position = spawnPos[0].transform.position;//new Vector3 (alliedStartingPos.x + (0.8f * index), -1f, fighter.transform.position.z);
+			spawnPos.RemoveAt (0);
 
 		} else {
 			int index = model.enemies.IndexOf (fighter);
