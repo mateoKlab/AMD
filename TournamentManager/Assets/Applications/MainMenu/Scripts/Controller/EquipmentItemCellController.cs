@@ -19,6 +19,6 @@ public class EquipmentItemCellController : EquipmentCellController
 			app.model.editEquipmentModel.fighterToEdit.skinData.ReplaceSkin(eSprite.attachmentType, eSprite.spriteName);
 		}
 
-		app.controller.editEquipmentController.fSpriteController.SetFighterSkin(app.model.editEquipmentModel.fighterToEdit.skinData);
+		app.controller.editEquipmentController.SetFighterSkin(app.model.editEquipmentModel.fighterToEdit.skinData);
 	}
 }

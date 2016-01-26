@@ -33,10 +33,8 @@ public class GachaDatabase {
 		}
 
 		// TEST.
-//		Class randomClass = Class.Mage;
-
-		Debug.Log (randomClass.ToString ());
-
+		randomClass = Class.Warrior;
+	
 		return GameDatabase.classDatabase [randomClass];
 	}
 
