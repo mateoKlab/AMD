@@ -141,6 +141,62 @@
         </Sprite>
       </Sprites>
     </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Weapon+Sword</EquipmentType>
+      <ID>Sword11</ID>
+      <Name>Axe1</Name>
+      <Attack>20</Attack>
+      <Defense>0</Defense>
+      <HP>0</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Weapon</AttachmentType>
+          <SpriteName>Axe1</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Weapon+Sword</EquipmentType>
+      <ID>Sword12</ID>
+      <Name>Axe2</Name>
+      <Attack>20</Attack>
+      <Defense>0</Defense>
+      <HP>0</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Weapon</AttachmentType>
+          <SpriteName>Axe2</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Weapon+Sword</EquipmentType>
+      <ID>Sword13</ID>
+      <Name>Axe3</Name>
+      <Attack>20</Attack>
+      <Defense>0</Defense>
+      <HP>0</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Weapon</AttachmentType>
+          <SpriteName>Axe3</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+        <Equipment>
+      <EquipmentType>EquipmentType+Weapon+Sword</EquipmentType>
+      <ID>Sword14</ID>
+      <Name>Heavy Sword1</Name>
+      <Attack>20</Attack>
+      <Defense>0</Defense>
+      <HP>0</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Weapon</AttachmentType>
+          <SpriteName>Heavy_Sword1</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
      <Equipment>
       <EquipmentType>EquipmentType+Armor+Shoulder</EquipmentType>
       <ID>Shoulder1</ID>
@@ -246,6 +302,24 @@
         <Sprite>
           <AttachmentType>Hind_Upper_Arm</AttachmentType>
           <SpriteName>Shoulder_Hind_Upper_Arm7</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+     <Equipment>
+      <EquipmentType>EquipmentType+Armor+Shoulder</EquipmentType>
+      <ID>Shoulder8</ID>
+      <Name>Nice Shoulder8</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>100</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Front_Upper_Arm</AttachmentType>
+          <SpriteName>Shoulder_Front_Upper_Arm8</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Hind_Upper_Arm</AttachmentType>
+          <SpriteName>Shoulder_Hind_Upper_Arm8</SpriteName>
         </Sprite>
       </Sprites>
     </Equipment>
@@ -453,6 +527,40 @@
         </Sprite>
       </Sprites>
     </Equipment>
+     <Equipment>
+      <EquipmentType>EquipmentType+Armor+Leg</EquipmentType>
+      <ID>Leg8</ID>
+      <Name>Nice Legs8</Name>
+      <Attack>0</Attack>
+      <Defense>5</Defense>
+      <HP>50</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Front_Upper_Leg</AttachmentType>
+          <SpriteName>Leg_Front_Upper_Leg8</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Front_Lower_Leg</AttachmentType>
+          <SpriteName>Leg_Front_Lower_Leg8</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Front_Ankle</AttachmentType>
+          <SpriteName>Leg_Front_Ankle8</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Hind_Upper_Leg</AttachmentType>
+          <SpriteName>Leg_Hind_Upper_Leg8</SpriteName>
+        </Sprite>
+          <Sprite>
+          <AttachmentType>Hind_Lower_Leg</AttachmentType>
+          <SpriteName>Leg_Hind_Lower_Leg8</SpriteName>
+        </Sprite>
+          <Sprite>
+          <AttachmentType>Hind_Ankle</AttachmentType>
+          <SpriteName>Leg_Hind_Ankle8</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
     <Equipment>
       <EquipmentType>EquipmentType+Armor+Gauntlet</EquipmentType>
       <ID>Gauntlet1</ID>
@@ -606,6 +714,32 @@
         <Sprite>
           <AttachmentType>Front_Fist</AttachmentType>
           <SpriteName>Gauntlet_Front_Fist7</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+     <Equipment>
+      <EquipmentType>EquipmentType+Armor+Gauntlet</EquipmentType>
+      <ID>Gauntlet8</ID>
+      <Name>Nice Gauntlet8</Name>
+      <Attack>0</Attack>
+      <Defense>5</Defense>
+      <HP>50</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Hind_Lower_Arm</AttachmentType>
+          <SpriteName>Gauntlet_Hind_Lower_Arm8</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Hind_Fist</AttachmentType>
+          <SpriteName>Gauntlet_Hind_Fist8</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Front_Lower_Arm</AttachmentType>
+          <SpriteName>Gauntlet_Front_Lower_Arm8</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Front_Fist</AttachmentType>
+          <SpriteName>Gauntlet_Front_Fist8</SpriteName>
         </Sprite>
       </Sprites>
     </Equipment>
@@ -763,6 +897,20 @@
         </Sprite>
       </Sprites>
     </Equipment>
+     <Equipment>
+      <EquipmentType>EquipmentType+Armor+Body</EquipmentType>
+      <ID>Body8</ID>
+      <Name>Nice Body8</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Body</AttachmentType>
+          <SpriteName>Body8</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
     <Equipment>
       <EquipmentType>EquipmentType+Armor+Helm</EquipmentType>
       <ID>Helm1</ID>
@@ -849,7 +997,7 @@
         </Sprite>
       </Sprites>
     </Equipment>
-        <Equipment>
+     <Equipment>
       <EquipmentType>EquipmentType+Armor+Helm</EquipmentType>
       <ID>Helm7</ID>
       <Name>Nice Helm7</Name>
@@ -864,6 +1012,24 @@
         <Sprite>
           <AttachmentType>Head</AttachmentType>
           <SpriteName>Head_Head7</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Armor+Helm</EquipmentType>
+      <ID>Helm8</ID>
+      <Name>Nice Helm8</Name>
+      <Attack>0</Attack>
+      <Defense>10</Defense>
+      <HP>200</HP>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Helm</AttachmentType>
+          <SpriteName>Head_Helm8</SpriteName>
+        </Sprite>
+        <Sprite>
+          <AttachmentType>Head</AttachmentType>
+          <SpriteName>Head_Head8</SpriteName>
         </Sprite>
       </Sprites>
     </Equipment>
