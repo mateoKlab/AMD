@@ -10,6 +10,8 @@ public class GachaView : View
 	private Text classLabel;
 	private Text hpLabel;
 	private Text atkLabel;
+	private Text defLabel;
+	private Text costLabel;
 	private Text elementLabel;
 	private RawImage classIcon;
 	public Button rollButton;
@@ -26,6 +28,8 @@ public class GachaView : View
 		classLabel = transform.FindChild("ClassLabel").GetComponent<Text>();
 		hpLabel = transform.FindChild("HPLabel").GetComponent<Text>();
 		atkLabel = transform.FindChild("ATKLabel").GetComponent<Text>();
+		defLabel = transform.FindChild("DEFLabel").GetComponent<Text>();
+		costLabel = transform.FindChild("CostLabel").GetComponent<Text>();
 		elementLabel = transform.FindChild("ElementLabel").GetComponent<Text>();
 		rollButton = transform.FindChild("RollButton").GetComponent<Button>();
 		classIcon = transform.FindChild("ClassIcon").GetComponent<RawImage>();
@@ -48,6 +52,8 @@ public class GachaView : View
 		nameLabel.text = "Name: " + fData.name;
 		hpLabel.text = "HP: " + fData.HP;
 		atkLabel.text = "ATK: " + fData.ATK;
+		defLabel.text = "DEF: " + fData.DEF;
+		costLabel.text = "Cost: " + fData.cost;
 		classLabel.text = "Class: " + fData.fighterClass;
 		elementLabel.text = "Element: " + fData.fighterElement;
 

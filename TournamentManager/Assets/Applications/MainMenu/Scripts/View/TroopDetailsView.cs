@@ -9,6 +9,7 @@ public class TroopDetailsView : View
 	public Text classText;
 	public Text atkText;
 	public Text hpText;
+	public Text defText;
 	public Text costText;
 
 	// TODO: Load appropriate prefab from resources.
@@ -40,7 +41,16 @@ public class TroopDetailsView : View
 
     }
 
-    public void SetHP(float hp)
+	public void SetDef(float atk)
+	{
+		if (defText != null) 
+		{
+			defText.text = Mathf.RoundToInt(atk).ToString("n0");
+		}
+		
+	}
+	
+	public void SetHP(float hp)
     {
 		if (hpText != null) {
 			hpText.text = Mathf.RoundToInt(hp).ToString("n0");
