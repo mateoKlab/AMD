@@ -50,17 +50,26 @@ public class FighterController : Controller
 	}
 	#endregion
 
+	public void StartBattle ()
+	{
+		Attack ();
+	}
+
     public void OnReceiveAttack(Attack attack)
     {
-        // TODO: Calculate skill effects, evade, block, etc.
+        // TODO: Calculate skill effects, evade, block, etc. here.
 
         ReceiveDamage(attack);
-//        ReceiveKnockback(attack.knockback);
     }
 
 	public void RemoveFromRange (GameObject enemy)
 	{
 		(model as FighterModel).RemoveEnemyInRange (enemy);
+	}
+
+	public void CheckRange ()
+	{
+		// check for enemy in range.
 	}
 
 	#region View Delegates
@@ -127,6 +136,8 @@ public class FighterController : Controller
 			// TODO: Use attackspeed for cooldown.
 			float tempCooldown = UnityEngine.Random.Range (0.75f, 2.00f);
 			state.Attack (GetAttackData (enemyInRange), tempCooldown);
+		} else {
+			Walk ();
 		}
 	}
 

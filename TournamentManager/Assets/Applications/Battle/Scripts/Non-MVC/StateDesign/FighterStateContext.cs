@@ -27,7 +27,7 @@ public class FighterStateContext {
 		Initialize ();
 	}
 	
-	// Update States here. Call this from your MonoBehaviour's Update method.ac
+	// Update States here. Call this from your MonoBehaviour's Update method.
 	public void Update ()
 	{
 		_actionState.Update ();
@@ -38,7 +38,7 @@ public class FighterStateContext {
 	{
 		// Set initial states.
 		_groundState   = new GroundState.OnGroundState (this);
-		_actionState   = new ActionState.IdleState (this);
+		_actionState   = new ActionState.WalkState (this);
 		_cooldownState = new CooldownState.ReadyState (this);
 	}
 	
@@ -47,18 +47,10 @@ public class FighterStateContext {
 
 	public void Attack (Attack attackData, float cooldownDuration)
 	{
-		// TEST
-		if (fighter.GetComponent<FighterModel> ().fighterData.fighterClass == Class.Mage) {
-			Debug.Log ("ATTACK");
-		}
-
 		_actionState.Attack (attackData);
-
-		// cooldown moved to after attack.
-//		_cooldownState.Cooldown (this, cooldownDuration);
 	}
 
-	// TEMP.
+
 	public void AttackEnded (Attack attackData)
 	{
 		OnAttackEnded (attackData);

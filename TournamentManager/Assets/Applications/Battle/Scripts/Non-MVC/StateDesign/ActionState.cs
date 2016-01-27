@@ -45,6 +45,7 @@ public abstract class ActionState {
 			fighterTransform.position = new Vector3 (fighterTransform.position.x + (0.05f * moveDirection),
 			                                         fighterTransform.position.y,
 			                                         fighterTransform.position.z);
+
 		}
 
 		public override void Attack (Attack attackData)
@@ -98,10 +99,7 @@ public abstract class ActionState {
 			   || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack2") 
 			    || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack3")) && animator.IsInTransition (0)) {
 
-				if (stateContext.OnAttackEnded != null) {
-//					stateContext.OnAttackEnded (attackData);
 					stateContext.AttackEnded (attackData);
-				}
 
 				Idle ();
 			}

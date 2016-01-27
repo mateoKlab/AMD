@@ -26,10 +26,7 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 	public List<GameObject> enemySpawnPos;
 
 	private Dictionary<Class, GameObject> prefabs = new Dictionary<Class, GameObject> ();
-
-	private Vector3 alliedStartingPos = new Vector3 (-7f, -1f, -1f);
-	private Vector3 enemyStartingPos = new Vector3 (7f, -1f, -1f);
-
+	
     void Start()
     {
         Messenger.AddListener(EventTags.FIGHTER_KILLED, FighterKilled);
@@ -52,15 +49,11 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 	public void StartBattle ()
 	{
 		foreach (GameObject fighter in model.allies) {
-			FighterStateContext state = fighter.GetComponent<FighterController> ().state;
-
-			state.Walk ();
+			fighter.GetComponent<FighterController> ().StartBattle ();
 		}
 
 		foreach (GameObject fighter in model.enemies) {
-			FighterStateContext state = fighter.GetComponent<FighterController> ().state;
-			
-			state.Walk ();
+			fighter.GetComponent<FighterController> ().StartBattle ();
 		}
 	}
 
@@ -235,10 +228,7 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 			newFighter.transform.localScale = tempScale;
         }
 
-		// TEMP. Increase/Decrease box collider height to offset sprite positions.
-		SetOffset (newFighter);
 		SetStartingPosition (newFighter);
-
 
         newFighter.SetActive(true);
 
@@ -267,16 +257,6 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 		}
 	}
 
-	private void SetOffset (GameObject fighter)
-	{
-		float randomOffset = Mathf.Round((UnityEngine.Random.Range (0.5f, 1.7f)) * 100f) / 100f; // Random float round off to 2 decimal place.
-		
-		BoxCollider2D collider = fighter.GetComponent <BoxCollider2D> ();
-		collider.size = new Vector2 (collider.size.x, randomOffset);
-		
-		Vector3 tempPosition = fighter.transform.position;
-		tempPosition.z = randomOffset * 10f;
-		fighter.transform.position = tempPosition;
-	}
+
 }
 
