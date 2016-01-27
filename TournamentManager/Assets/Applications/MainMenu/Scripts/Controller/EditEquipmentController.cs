@@ -45,7 +45,7 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 		{
 			mageTabs.SetActive(true);
 			warriorTabs.SetActive(false);
-			LoadEquipment("EquipmentType+Armor+Hood");
+			LoadEquipment("EquipmentType+Weapon+Staff");
 		}
 		currentFighterClass = fData.fighterClass;
 	}
