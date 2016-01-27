@@ -84,8 +84,6 @@ public class TroopDetailsView : View
 
 		}
 
-
-
 //		if (troopSprite != null) {
 //
 //			// TODO building sprite everytime feels really slow, refactor later
@@ -94,6 +92,9 @@ public class TroopDetailsView : View
 //		}
     }
 
+	public void HideSprites() {
+		mageSprite.gameObject.SetActive (false);
+		warriorSprite.gameObject.SetActive (false);
+	}
 	
-
 }
