@@ -31,6 +31,8 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 	public void SetFighterToEdit(FighterData fData) 
 	{
 		gameObject.SetActive(true);
+		GetComponent<Animator>().SetTrigger("TransitionIn");
+
 		model.fighterToEdit = fData;
 		troopDetailsController.SetTroopDetails(fData);
 		if (fData.fighterClass == Class.Warrior) 
@@ -111,15 +113,22 @@ public class EditEquipmentController : Controller <MainMenu, EditEquipmentModel,
 
 	public void CancelChangesToEquipment() 
 	{
-		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
-		app.view.editTeamView.gameObject.SetActive(true);
-		app.controller.editTeamController.ShowTroopDetails(model.fighterToEdit);
+		// Add function to revert changes
+		StartCoroutine(TransitionToEditTeam());
 	}
 
 	public void SaveChangesToEquipment() 
 	{
+		StartCoroutine(TransitionToEditTeam());
+	}
+
+	IEnumerator TransitionToEditTeam() {
+		GetComponent<Animator>().SetTrigger("TransitionOut");
+		yield return new WaitForSeconds(0.5f);
 		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
 		app.view.editTeamView.gameObject.SetActive(true);
+		GetComponent<Animator>().ResetTrigger("TransitionOut");
+		app.view.editTeamView.gameObject.GetComponent<Animator>().SetTrigger("TransitionFromEquips");
 		app.controller.editTeamController.ShowTroopDetails(model.fighterToEdit);
 	}
 

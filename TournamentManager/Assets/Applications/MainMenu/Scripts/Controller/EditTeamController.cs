@@ -14,7 +14,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
     //////// END MVCCodeEditor GENERATED CODE ////////
     
 	public VerticalLayoutGroup content;
-    private Transform teamPanel;
+    public Transform teamPanel;
     private GameObject troopPrefab;
 
     private GameData _gameData;
@@ -29,7 +29,7 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
     public override void Awake()
     {
 		base.Awake();
-        teamPanel = transform.Find("TeamPanelScrollView/TeamPanel");
+
         //model.activeTeamSlots = activeTeamPanel.GetComponentsInChildren<ActiveTeamSlotController>();
 
 		for (int i = 0; i < gameData.playerData.partyCapacity; i++)
@@ -48,11 +48,21 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 
     public void ShowEditTeam()
     {
-        Input.multiTouchEnabled = false;
-        gameObject.SetActive(true);
+		Input.multiTouchEnabled = false;
+		gameObject.SetActive(true);
+		GetComponent<Animator>().SetTrigger("TransitionIn");
+		ShowTroopDetails(model.selectedTroop);
+		//StartCoroutine(ShowEditTeamCoroutine());
     }
 
-    public void HideEditTeam()
+	IEnumerator ShowEditTeamCoroutine() 
+	{
+
+		yield return new WaitForSeconds(1);
+
+	}
+	
+	public void HideEditTeam()
     {
         // There were no active troops, do not allow player to leave edit team screen
         // TODO Add popup here or disable close button
@@ -62,14 +72,20 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
             return;
         }
 
-        SaveTeam();
-        Input.multiTouchEnabled = true;
-        app.controller.EnableMainMenuItems(true);
-        gameObject.SetActive(false);
-
+		StartCoroutine(HideEditTeamCoroutine());
     }
 
-    private void SaveTeam()
+	IEnumerator HideEditTeamCoroutine() {
+		SaveTeam();
+		troopDetailsController.view.HideSprites();
+		GetComponent<Animator>().SetTrigger("TransitionOut");
+		yield return new WaitForSeconds(1);
+		Input.multiTouchEnabled = true;
+		app.controller.EnableMainMenuItems(true);
+		gameObject.SetActive(false);
+	}
+	
+	private void SaveTeam()
     {
         gameData.SavePlayerData();
     }
@@ -130,9 +146,9 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 		// Resize scrollable background based on number of elements
 		float elementHeight = troopPrefab.GetComponent<LayoutElement>().minHeight + content.spacing;
 		RectTransform rt = content.GetComponent<RectTransform>();
-		rt.sizeDelta = new Vector2(rt.rect.width, elementHeight * fighters.Count + 1 + content.padding.right + content.padding.bottom);
+		rt.sizeDelta = new Vector2(rt.rect.width, elementHeight * fighters.Count + 1 + content.padding.top + content.padding.bottom);
 
-        yield return new WaitForEndOfFrame();
+		yield return new WaitForEndOfFrame();
         ShowTroopDetails(fighters[0]);
     }
 
@@ -168,6 +184,10 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
 
     public void ShowTroopDetails(FighterData fighter)
     {
+		if (fighter == null)
+		{
+			return;
+		}
 		model.selectedTroop = fighter;
         troopDetailsController.SetTroopDetails(fighter);
     }
@@ -236,8 +256,13 @@ public class EditTeamController : Controller<MainMenu, EditTeamModel, EditTeamVi
     }
 
 	public void ShowEditEquipmentScreen() {
-		gameObject.SetActive(false);
+		StartCoroutine(ShowEditEquipmentScreenCoroutine());
+	}
 
+	IEnumerator ShowEditEquipmentScreenCoroutine() {
+		GetComponent<Animator>().SetTrigger("TransitionToEquips");
+		yield return new WaitForSeconds(0.5f);
+		gameObject.SetActive(false);
 		app.controller.editEquipmentController.SetFighterToEdit(model.selectedTroop);
 
 	}
