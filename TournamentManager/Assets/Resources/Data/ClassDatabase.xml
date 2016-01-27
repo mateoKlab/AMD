@@ -33,6 +33,7 @@
         <baseHP>600</baseHP>
         <baseDEF>0</baseDEF>
         <EquipmentAllowed>
+         <Equip>EquipmentType+Weapon+Staff</Equip>
        	 <Equip>EquipmentType+Armor+Hood</Equip>
        	 <Equip>EquipmentType+Armor+Robe</Equip>
         </EquipmentAllowed>

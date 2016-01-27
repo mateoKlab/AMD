@@ -1187,5 +1187,77 @@
         </Sprite>
       </Sprites>
     </Equipment>
+    <Equipment>
+      <EquipmentType>EquipmentType+Weapon+Staff</EquipmentType>
+      <ID>Staff1</ID>
+      <Name>Nice Staff1</Name>
+      <Attack>25</Attack>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Weapon</AttachmentType>
+          <SpriteName>Staff1</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+     <Equipment>
+      <EquipmentType>EquipmentType+Weapon+Staff</EquipmentType>
+      <ID>Staff2</ID>
+      <Name>Nice Staff2</Name>
+      <Attack>25</Attack>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Weapon</AttachmentType>
+          <SpriteName>Staff2</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+     <Equipment>
+      <EquipmentType>EquipmentType+Weapon+Staff</EquipmentType>
+      <ID>Staff3</ID>
+      <Name>Nice Staff3</Name>
+      <Attack>25</Attack>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Weapon</AttachmentType>
+          <SpriteName>Staff3</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+     <Equipment>
+      <EquipmentType>EquipmentType+Weapon+Staff</EquipmentType>
+      <ID>Staff4</ID>
+      <Name>Nice Staff4</Name>
+      <Attack>25</Attack>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Weapon</AttachmentType>
+          <SpriteName>Staff4</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+     <Equipment>
+      <EquipmentType>EquipmentType+Weapon+Staff</EquipmentType>
+      <ID>Staff5</ID>
+      <Name>Nice Staff5</Name>
+      <Attack>25</Attack>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Weapon</AttachmentType>
+          <SpriteName>Staff5</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
+     <Equipment>
+      <EquipmentType>EquipmentType+Weapon+Staff</EquipmentType>
+      <ID>Staff6</ID>
+      <Name>Nice Staff6</Name>
+      <Attack>25</Attack>
+      <Sprites>
+        <Sprite>
+          <AttachmentType>Weapon</AttachmentType>
+          <SpriteName>Staff6</SpriteName>
+        </Sprite>
+      </Sprites>
+    </Equipment>
   </EquipmentList>
 </EquipmentDatabase>
