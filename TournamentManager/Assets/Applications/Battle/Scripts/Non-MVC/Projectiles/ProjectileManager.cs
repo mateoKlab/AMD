@@ -12,6 +12,7 @@ public enum ProjectileType {
 public class ProjectileManager : MonoBehaviour {
 
 	public GameObject projectilePrefab;
+	public GameObject cacheContainer;
 
 	public int cacheSize;
 
@@ -53,7 +54,9 @@ public class ProjectileManager : MonoBehaviour {
 		for (int i = 0; i < cacheSize ; i++) {
 			GameObject newProjectile = GameObject.Instantiate (projectilePrefab);
 
+			newProjectile.transform.parent = cacheContainer.transform;
 			projectileCache.Add (newProjectile);
+
 		}
 	}
 	
