@@ -9,6 +9,7 @@ public class TroopDetailsController : Controller <MainMenu, TroopDetailsModel, T
         view.SetName(fighterData.name);
 		view.SetClass(fighterData.fighterClass.ToString());
 		view.SetAtk(fighterData.ATK);
+		view.SetDef(fighterData.DEF);
 		view.SetHP(fighterData.HP);
 		view.SetCost(fighterData.cost);
 		view.SetSprite(fighterData.fighterClass, fighterData.skinData);
