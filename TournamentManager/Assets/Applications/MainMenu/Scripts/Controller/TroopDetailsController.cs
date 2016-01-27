@@ -13,4 +13,5 @@ public class TroopDetailsController : Controller <MainMenu, TroopDetailsModel, T
 		view.SetCost(fighterData.cost);
 		view.SetSprite(fighterData.fighterClass, fighterData.skinData);
     }
+
 }
