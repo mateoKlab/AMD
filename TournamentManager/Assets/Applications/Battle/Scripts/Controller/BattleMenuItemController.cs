@@ -3,17 +3,17 @@ using UnityEngine.UI;
 using System.Collections;
 using Bingo;
 
-public class BattleMenuItemController : Controller
+public class BattleMenuItemController : Controller <Battle, BattleMenuItemModel, BattleMenuItemView>
 {
 
 	void Awake ()
 	{
-		(model as BattleMenuItemModel).OnFighterSet += OnFighterSet;
+		model.OnFighterSet += OnFighterSet;
 	}
 
 	public void SetFighter (GameObject fighter)
 	{
-		(model as BattleMenuItemModel).fighter = fighter;
+		model.fighter = fighter;
 
 //		(model as BattleMenuItemModel).fighterData = fighter;
 //		(model as BattleMenuItemModel).fighterData.HP = (model as BattleMenuItemModel).fighterData.maxHP;
@@ -25,20 +25,20 @@ public class BattleMenuItemController : Controller
 		gameObject.SetActive (active);
 	}
 
-	public void UpdateValues ()
+	public void UpdateHP ()
 	{
-		(view as BattleMenuItemView).UpdateValues ();
+		view.UpdateHP ();
 	}
 
 	public void ShowDeathIcon (bool enabled)
 	{
-		(view as BattleMenuItemView).ShowDeathIcon (enabled);
+		view.ShowDeathIcon (enabled);
 	}
 
 	void OnFighterSet ()
 	{
 		gameObject.SetActive (true);
-		(view as BattleMenuItemView).UpdateValues ();
+		view.InitializeValues ();
 	}
 
 

@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: fcf742709a8d047e7aaf5bf1893f564f
+timeCreated: 1453949292
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 2
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 1
+  characterPadding: 0
+  includeFontData: 1
+  use2xBehaviour: 0
+  fontNames:
+  - Rockwell Bold
+  customCharacters: 
+  fontRenderingMode: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

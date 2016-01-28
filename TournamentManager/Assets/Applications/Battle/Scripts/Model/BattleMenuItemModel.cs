@@ -6,6 +6,7 @@ using Bingo;
 public class BattleMenuItemModel : Model
 {
 	public Action OnFighterSet;
+	public FighterData fData;
 
 	private GameObject _fighter;
 

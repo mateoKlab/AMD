@@ -50,15 +50,14 @@ public class FighterView : View {
 	// Physics layering prevents triggering for allied units.
 	void OnTriggerEnter2D (Collider2D other)
 	{
-		if (other.gameObject.tag == Tags.Units) {
-
+		if ((other.gameObject.tag == Tags.Units) && OnEnemyInRange != null) {
 			OnEnemyInRange (other.gameObject);
 		}
 	}
 
 	void OnTriggerExit2D (Collider2D other)
 	{
-		if (other.gameObject.tag == Tags.Units) {
+		if (other.gameObject.tag == Tags.Units && OnEnemyExitRange != null) {
 			OnEnemyExitRange (other.gameObject);
 		}
 	}

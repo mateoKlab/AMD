@@ -18,8 +18,6 @@ public class FighterSpriteController : MonoBehaviour {
 		Initialize ();
 	}
 
-
-
 	public void SetFighterSkin (FighterSkinData skinData)
 	{
 		if (attachmentDictionary == null) {
@@ -45,7 +43,6 @@ public class FighterSpriteController : MonoBehaviour {
 			}
 		}
 	}
-
 
 	private void Initialize ()
 	{

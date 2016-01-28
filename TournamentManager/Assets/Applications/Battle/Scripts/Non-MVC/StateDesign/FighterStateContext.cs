@@ -11,7 +11,7 @@ public class FighterStateContext {
 	public Action OnCooldownEnded;
 
 	// Called when the attack animation finishes.
-	public Action<Attack> OnAttackEnded;
+	public Action OnAttackEnded;
 
 	public Action OnDeath;
 	#endregion
@@ -27,7 +27,7 @@ public class FighterStateContext {
 		Initialize ();
 	}
 	
-	// Update States here. Call this from your MonoBehaviour's Update method.ac
+	// Update States here. Call this from your MonoBehaviour's Update method.
 	public void Update ()
 	{
 		_actionState.Update ();
@@ -38,39 +38,32 @@ public class FighterStateContext {
 	{
 		// Set initial states.
 		_groundState   = new GroundState.OnGroundState (this);
-		_actionState   = new ActionState.IdleState (this);
+		_actionState   = new ActionState.WalkState (this);
 		_cooldownState = new CooldownState.ReadyState (this);
 	}
 	
 	// Handle commands and state changes here.
 	#region Public Methods
 
-	public void Attack (Attack attackData, float cooldownDuration)
+	public void Attack ()
 	{
-		// TEST
-		if (fighter.GetComponent<FighterModel> ().fighterData.fighterClass == Class.Mage) {
-			Debug.Log ("ATTACK");
-		}
-
-		_actionState.Attack (attackData);
-
-		// cooldown moved to after attack.
-//		_cooldownState.Cooldown (this, cooldownDuration);
+		_actionState.Attack ();
 	}
 
-	// TEMP.
-	public void AttackEnded (Attack attackData)
+
+	public void AttackEnded ()
 	{
-		OnAttackEnded (attackData);
-
-		float testCooldown = UnityEngine.Random.Range (1.25f, 2.5f);
-
-		_cooldownState.Cooldown (this, testCooldown);
+		OnAttackEnded ();
 	}
 
 	public void Walk ()
 	{
 		_actionState.Walk ();
+	}
+
+	public void StartCooldown (float cooldownDuration)
+	{
+		_cooldownState.Cooldown (this, cooldownDuration);
 	}
 
 	#endregion

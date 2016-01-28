@@ -4,40 +4,23 @@ using Bingo;
 using UnityEngine.UI;
 using Spine;
 
-public class GachaView : View
+public class GachaView : View <MainMenu, GachaModel, GachaController>
 {
-	private Text nameLabel;
-	private Text classLabel;
-	private Text hpLabel;
-	private Text atkLabel;
-	private Text defLabel;
-	private Text costLabel;
-	private Text elementLabel;
-	private RawImage classIcon;
+	public Text nameLabel;
+	public Text classLabel;
+	public Text hpLabel;
+	public Text atkLabel;
+	public Text defLabel;
+	public Text costLabel;
+	public Text elementLabel;
+	public RawImage classIcon;
 	public Button rollButton;
 	public List <GachaSpriteMap> gachaSprites =  new List<GachaSpriteMap>();
 
-	public override void Awake() {
-		base.Awake();
-		InitializeGachaInterface();
-	}
-
-	private void InitializeGachaInterface() 
-	{
-		nameLabel = transform.FindChild("NameLabel").GetComponent<Text>();
-		classLabel = transform.FindChild("ClassLabel").GetComponent<Text>();
-		hpLabel = transform.FindChild("HPLabel").GetComponent<Text>();
-		atkLabel = transform.FindChild("ATKLabel").GetComponent<Text>();
-		defLabel = transform.FindChild("DEFLabel").GetComponent<Text>();
-		costLabel = transform.FindChild("CostLabel").GetComponent<Text>();
-		elementLabel = transform.FindChild("ElementLabel").GetComponent<Text>();
-		rollButton = transform.FindChild("RollButton").GetComponent<Button>();
-		classIcon = transform.FindChild("ClassIcon").GetComponent<RawImage>();
-	}
-
 	public void OnClickCloseButton() {
 		ResetDisplayValues();
-		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
+		controller.CloseGachaScreen();
+
 	}
 
 	public void OnClickRollButton() {
