@@ -18,12 +18,6 @@ public class FighterSpriteController : MonoBehaviour {
 		Initialize ();
 	}
 
-	// TEMPORARY.. move to own script.
-	void AttackEvent ()
-	{
-		// Called during attack animation at the point where the fighter strikes the enemy.
-	}
-
 	public void SetFighterSkin (FighterSkinData skinData)
 	{
 		if (attachmentDictionary == null) {
@@ -49,7 +43,6 @@ public class FighterSpriteController : MonoBehaviour {
 			}
 		}
 	}
-
 
 	private void Initialize ()
 	{
