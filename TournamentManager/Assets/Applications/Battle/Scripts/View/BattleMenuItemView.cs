@@ -71,11 +71,11 @@ public class BattleMenuItemView : View <Battle, BattleMenuItemModel, BattleMenuI
 	public void ShakePortrait() {
 		if(warriorPortrait.gameObject.activeSelf) 
 		{
-			iTween.ShakePosition(warriorPortrait.gameObject, Vector3.one * 1.05f, 0.5f);
+			iTween.ShakePosition(warriorPortrait.gameObject, new Vector3 (.2f, 0, 0), 0.2f);
 		}
 		else if (magePortrait.gameObject.activeSelf) 
 		{
-			iTween.ShakePosition(magePortrait.gameObject, Vector3.one * 1.05f, 0.5f);
+			iTween.ShakePosition(magePortrait.gameObject, new Vector3 (.2f, 0, 0), 0.2f);
 		}
 	}
 

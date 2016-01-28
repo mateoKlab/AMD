@@ -20,21 +20,20 @@ public class RangedFighterController : FighterController
 		base.Awake ();
 	}
 
+	protected override void StartAttack ()
+	{
+		base.StartAttack ();
+	}
+
 	public override void OnAttack (Attack attackData)
 	{
 		base.OnAttack (attackData);
 
 		RangedAttack (attackData);
-	}
 
-	protected override void Attack ()
-	{
-		base.Attack ();
-
-		// Turn off orb.
 		orb.SetActive (false);
 	}
-
+	
 	protected override void OnAttackEnded ()
 	{
 		base.OnAttackEnded ();

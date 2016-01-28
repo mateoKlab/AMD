@@ -57,7 +57,7 @@ public class FighterController : Controller
 
 	public void StartBattle ()
 	{
-		Attack ();
+		StartAttack ();
 	}
 
     public void OnReceiveAttack(Attack attack)
@@ -82,7 +82,7 @@ public class FighterController : Controller
 	private void OnEnemyInRange (GameObject enemy)
 	{
 		(model as FighterModel).AddEnemyInRange (enemy);
-		Attack (); // Trigger attack state if not in cooldown.
+		StartAttack (); // Trigger attack state if not in cooldown.
 	}
 	
 	private void OnEnemyExitRange (GameObject enemy)
@@ -111,7 +111,7 @@ public class FighterController : Controller
 	void OnCooldownEnded ()
 	{
 		if ((model as FighterModel).GetEnemyInRange () != null) {
-			Attack ();
+			StartAttack ();
 		} else {
 			Walk ();
 		}
@@ -142,7 +142,7 @@ public class FighterController : Controller
 
 	#region Private Methods
 	// Called at the start of an attack.
-	protected virtual void Attack ()
+	protected virtual void StartAttack ()
 	{	
 		GameObject enemyInRange = (model as FighterModel).GetEnemyInRange ();
 		if (enemyInRange != null) {
