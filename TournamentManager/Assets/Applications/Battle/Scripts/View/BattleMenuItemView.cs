@@ -24,7 +24,9 @@ public class BattleMenuItemView : View <Battle, BattleMenuItemModel, BattleMenuI
 		fighterName.text = model.fData.name;
 		classIcon.texture = classIcon.texture = Resources.Load("Sprites/ClassIcons/" + model.fData.fighterClass) as Texture;
 
-		UpdateHP();
+		float hpFill = (float)model.fData.HP / (float)model.fData.maxHP;
+		hpSlider.fillAmount = hpFill;
+
 		SetPortrait(model.fData.fighterClass, model.fData.skinData);
 	}
 
@@ -33,6 +35,8 @@ public class BattleMenuItemView : View <Battle, BattleMenuItemModel, BattleMenuI
 		
 		// TODO: Animate.. Gradually decrease fill amount.
 		hpSlider.fillAmount = hpFill;
+		ShakePortrait();
+
 	}
 
 	public void ShowDeathIcon (bool enabled)
@@ -63,4 +67,16 @@ public class BattleMenuItemView : View <Battle, BattleMenuItemModel, BattleMenuI
 			
 		}
 	}
+
+	public void ShakePortrait() {
+		if(warriorPortrait.gameObject.activeSelf) 
+		{
+			iTween.ShakePosition(warriorPortrait.gameObject, Vector3.one * 1.05f, 0.5f);
+		}
+		else if (magePortrait.gameObject.activeSelf) 
+		{
+			iTween.ShakePosition(magePortrait.gameObject, Vector3.one * 1.05f, 0.5f);
+		}
+	}
+
 }
