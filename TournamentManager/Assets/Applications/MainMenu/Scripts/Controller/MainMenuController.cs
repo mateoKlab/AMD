@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class MainMenuController : Controller<MainMenu>
+public class MainMenuController : Controller<MainMenu, MainMenuModel, MainMenuView>
 {
     // MVCCodeEditor GENERATED CODE - DO NOT MODIFY //
     
@@ -82,7 +82,7 @@ public class MainMenuController : Controller<MainMenu>
 	IEnumerator TransitionToBattleSceneCoroutine() {
 		SoundManager.instance.FadeOutBGM(0.1f);
 		SoundManager.instance.PlaySFX("Audio/SFX/Drums/Drum3");
-		((MainMenuView)view).fadeMask.gameObject.SetActive(true);
+		view.fadeMask.gameObject.SetActive(true);
 		yield return new WaitForSeconds(1f);
 		GetComponentInChildren<Animator>().SetTrigger("TransitionOut");
 		yield return new WaitForSeconds(1f);
@@ -123,37 +123,37 @@ public class MainMenuController : Controller<MainMenu>
     {
         //footerController.DisableButtons();
 		SoundManager.instance.PlayUISFX("Audio/SFX/Button2");
-        GetComponent<MainMenuView>().tournamentView.gameObject.SetActive(true);
-		app.controller.tournamentController.GetComponent<Animator>().SetTrigger("TransitionIn");
+        view.tournamentView.gameObject.SetActive(true);
+		tournamentController.GetComponent<Animator>().SetTrigger("TransitionIn");
     }
 
     public void ShowTownPopUp(params object[] args)
     {
         //footerController.DisableButtons();
 		HideMenu();
-        GetComponent<MainMenuView>().townView.gameObject.SetActive(true);
+        view.townView.gameObject.SetActive(true);
     }
 
     public void ShowGachaPopUp(params object[] args)
     {
         //footerController.DisableButtons();
 		HideMenu();
-        GetComponent<MainMenuView>().gachaView.gameObject.SetActive(true);
+		gachaController.TransitionToGachaScreen();
     }
 
 	public void ShowArmoryPopUp(params object[] args)
 	{
 		//footerController.DisableButtons();
 		HideMenu();
-		if (GetComponent<MainMenuView>().gachaView.gameObject.activeSelf)
+		if (view.gachaView.gameObject.activeSelf)
 		{
 			app.view.isShowingGachaPopUp = true;
-			GetComponent<MainMenuView>().gachaView.gameObject.SetActive(false);
+			view.gachaView.gameObject.SetActive(false);
 		} else {
-			app.view.isShowingGachaPopUp = false;
+			view.isShowingGachaPopUp = false;
 		}
 
-		GetComponent<MainMenuView>().armoryView.gameObject.SetActive(true);
+		view.armoryView.gameObject.SetActive(true);
 	}
 
     public void EnableMainMenuItems(bool enabled)

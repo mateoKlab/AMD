@@ -40,7 +40,7 @@ public class BattleMenuController : Controller
 		FighterModel fighter = ((GameObject)args [1]).GetComponent<FighterModel> ();
 
 		if (fighter.allegiance == FighterAlliegiance.Ally) {
-			menuItemDictionary [fighter.gameObject].UpdateValues ();
+			menuItemDictionary [fighter.gameObject].UpdateHP ();
 		}
 	}
 

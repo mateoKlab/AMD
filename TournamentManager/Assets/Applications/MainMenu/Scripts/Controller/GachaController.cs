@@ -37,5 +37,20 @@ public class GachaController : Controller <MainMenu, GachaModel, GachaView>
 			view.rollButton.interactable = false;
 		}
 	}
+
+	public void TransitionToGachaScreen() {
+		gameObject.SetActive(true);
+		GetComponent<Animator>().SetTrigger("TransitionIn");
+	}
+
+	public void CloseGachaScreen() {
+		StartCoroutine(CloseGachaScreenCoroutine());
+	}
+
+	IEnumerator CloseGachaScreenCoroutine() {
+		GetComponent<Animator>().SetTrigger("TransitionOut");
+		yield return new WaitForSeconds(1);
+		Messenger.Send(MainMenuEvents.CLOSE_POPUP, this.gameObject);
+	}
 }
 
