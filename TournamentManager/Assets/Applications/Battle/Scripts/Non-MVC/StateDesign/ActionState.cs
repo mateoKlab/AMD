@@ -11,7 +11,7 @@ public abstract class ActionState {
 	public abstract void Update (); 			// Check for animations/cooldowns here.
 	
 	public abstract void Walk ();
-	public abstract void Attack (Attack attackData);
+	public abstract void Attack ();
 	public abstract void Hit ();
 	public abstract void Idle ();
 	public abstract void Death ();
@@ -48,10 +48,10 @@ public abstract class ActionState {
 
 		}
 
-		public override void Attack (Attack attackData)
+		public override void Attack ()
 		{
 			if (stateContext.cooldownState is CooldownState.ReadyState) {
-				stateContext.actionState = new AttackState (stateContext, attackData);
+				stateContext.actionState = new AttackState (stateContext);
 			}
 		}
 
@@ -74,13 +74,10 @@ public abstract class ActionState {
 	#region AttackState
 	public class AttackState : ActionState
 	{
-		public Attack attackData;
-
 		// Constructor.
-		public AttackState (FighterStateContext context, Attack attack)
+		public AttackState (FighterStateContext context)
 		{
 			stateContext = context;
-			attackData = attack;
 
 			// Store reference to animator.
 			animator = stateContext.fighter.GetComponentInChildren<Animator> ();
@@ -99,7 +96,7 @@ public abstract class ActionState {
 			   || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack2") 
 			    || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack3")) && animator.IsInTransition (0)) {
 
-					stateContext.AttackEnded (attackData);
+					stateContext.AttackEnded ();
 
 				Idle ();
 			}
@@ -115,7 +112,7 @@ public abstract class ActionState {
 			stateContext.actionState = new HitState (stateContext);
 		}
 
-		public override void Attack (Attack attack) { } // Already Attacking. Do nothing.
+		public override void Attack () { } // Already Attacking. Do nothing.
 
 		public override void Idle ()
 		{
@@ -140,10 +137,10 @@ public abstract class ActionState {
 			animator.SetTrigger ("Idle");
 		}
 
-		public override void Attack (Attack attackData)
+		public override void Attack ()
 		{
 			if (stateContext.cooldownState is CooldownState.ReadyState) {
-				stateContext.actionState = new AttackState (stateContext, attackData);
+				stateContext.actionState = new AttackState (stateContext);
 			}
 		}
 
@@ -181,7 +178,7 @@ public abstract class ActionState {
 		
 		public override void Walk () { }
 		
-		public override void Attack (Attack attack) { }
+		public override void Attack () { }
 		
 		public override void Hit () { }
 		
@@ -221,7 +218,7 @@ public abstract class ActionState {
 		
 		public override void Walk () { }
 		
-		public override void Attack (Attack attack) { }
+		public override void Attack () { }
 		
 		public override void Hit () { }
 		

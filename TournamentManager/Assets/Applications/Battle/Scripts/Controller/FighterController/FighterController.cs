@@ -8,22 +8,27 @@ public class FighterController : Controller
 {
 	public FighterStateContext state;
 
+	// Receives animation events and sends callbacks.
+	private AnimationEventHelper eventHelper;
+
 	// Use this for initialization
 	public virtual void Start () {
 		state = new FighterStateContext (this.gameObject);
 		state.OnCooldownEnded += OnCooldownEnded;
-		state.OnAttackEnded   += OnAttack;
+		state.OnAttackEnded   += OnAttackEnded;
 		state.OnDeath 		  += OnDeath;
 
 		(model as FighterModel).OnFighterDataSet += OnFighterDataSet;
 		(view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
 		(view as FighterView).OnEnemyInRange	 += OnEnemyInRange;
 		(view as FighterView).OnEnemyExitRange 	 += OnEnemyExitRange;
+
+		eventHelper = GetComponentInChildren<AnimationEventHelper> ();
 	}
 
 	void OnDestroy () {
 		state.OnCooldownEnded -= OnCooldownEnded;
-		state.OnAttackEnded   -= OnAttack;
+		state.OnAttackEnded   -= OnAttackEnded;
 		state.OnDeath 		  -= OnDeath;
 
 		(model as FighterModel).OnFighterDataSet -= OnFighterDataSet;
@@ -111,11 +116,20 @@ public class FighterController : Controller
 			Walk ();
 		}
 	}
-	
-	// Callback for end of attack animation.
-	public virtual void OnAttack (Attack attack)
+
+	// Called at the point of attack during the attack animation.
+	public virtual void OnAttack (Attack attackData)
 	{
 		// OVERRIDE ME.
+	}
+
+	// Called at the end of the attack animation.
+	protected virtual void OnAttackEnded ()
+	{
+		// TODO: Use attackspeed for cooldown.
+		float tempCooldown = UnityEngine.Random.Range (0.75f, 2.00f);
+
+		state.StartCooldown (tempCooldown);
 	}
 
 	// Callback for end of death animation/timer.
@@ -127,26 +141,28 @@ public class FighterController : Controller
 	#endregion
 
 	#region Private Methods
-
-	private void Attack ()
+	// Called at the start of an attack.
+	protected virtual void Attack ()
 	{	
 		GameObject enemyInRange = (model as FighterModel).GetEnemyInRange ();
 		if (enemyInRange != null) {
 
-			// TODO: Use attackspeed for cooldown.
-			float tempCooldown = UnityEngine.Random.Range (0.75f, 2.00f);
-			state.Attack (GetAttackData (enemyInRange), tempCooldown);
+			Attack attack = GetAttackData (enemyInRange);
+
+			state.Attack ();
+			eventHelper.AttackStart (attack);
+
 		} else {
 			Walk ();
 		}
 	}
 
-	private void Walk ()
+	protected void Walk ()
 	{
 		state.Walk ();
 	}
 
-	private void ReceiveDamage (Attack attack)
+	protected void ReceiveDamage (Attack attack)
 	{
 		// TODO: Apply armor/damage reduction effects.e
 		(model as FighterModel).fighterData.HP -= attack.damage;
@@ -169,7 +185,7 @@ public class FighterController : Controller
 		}
 	}
 
-	private void ReceiveKnockback (float knockback)
+	protected void ReceiveKnockback (float knockback)
 	{
 		// TODO: Apply knockback resistance/amount.
 		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
@@ -181,14 +197,14 @@ public class FighterController : Controller
 		}
 	}
 
-	private Attack GetAttackData (GameObject attackTarget)
+	protected Attack GetAttackData (GameObject attackTarget)
 	{
 		FighterData fighter = ((FighterModel) GetComponent<Model>()).fighterData;
 		
 		return new Attack(fighter.ATK, 1.0f, AttackType.Melee, gameObject, attackTarget);
 	}
 
-	private void SetFighterSkin ()
+	protected void SetFighterSkin ()
 	{
 		(view as FighterView).SetFighterSkin ((model as FighterModel).fighterData.skinData);
 	}

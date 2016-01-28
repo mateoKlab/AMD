@@ -11,7 +11,7 @@ public class FighterStateContext {
 	public Action OnCooldownEnded;
 
 	// Called when the attack animation finishes.
-	public Action<Attack> OnAttackEnded;
+	public Action OnAttackEnded;
 
 	public Action OnDeath;
 	#endregion
@@ -45,24 +45,25 @@ public class FighterStateContext {
 	// Handle commands and state changes here.
 	#region Public Methods
 
-	public void Attack (Attack attackData, float cooldownDuration)
+	public void Attack ()
 	{
-		_actionState.Attack (attackData);
+		_actionState.Attack ();
 	}
 
 
-	public void AttackEnded (Attack attackData)
+	public void AttackEnded ()
 	{
-		OnAttackEnded (attackData);
-
-		float testCooldown = UnityEngine.Random.Range (1.25f, 2.5f);
-
-		_cooldownState.Cooldown (this, testCooldown);
+		OnAttackEnded ();
 	}
 
 	public void Walk ()
 	{
 		_actionState.Walk ();
+	}
+
+	public void StartCooldown (float cooldownDuration)
+	{
+		_cooldownState.Cooldown (this, cooldownDuration);
 	}
 
 	#endregion
