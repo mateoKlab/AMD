@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "czJmAYLGDrHUTkpfBJlFn8MrM18", "spine": "2.1.27", "width": 496.78, "height": 694.94, "images": "" },
+"skeleton": { "hash": "jf8aVfJHk/3YMZSlUFlpCN8U1AA", "spine": "2.1.27", "width": 496.78, "height": 694.94, "images": "" },
 "bones": [
 	{ "name": "root", "x": -0.84, "y": 0.84 },
 	{ "name": "Body_Lower_Body1", "parent": "root", "x": 45.21, "y": 234 },
@@ -586,7 +586,8 @@
 					{ "time": 0, "name": "Mage_Lowerbody_Motion1" },
 					{ "time": 0.1666, "name": null },
 					{ "time": 0.6666, "name": "Mage_Lowerbody_Motion1" },
-					{ "time": 0.8333, "name": null }
+					{ "time": 0.8333, "name": null },
+					{ "time": 1.5, "name": "Mage_Lowerbody_Motion1" }
 				]
 			},
 			"Mage_Lowerbody_Motion2": {
@@ -624,39 +625,47 @@
 		"bones": {
 			"Body_Lower_Frames": {
 				"rotate": [
-					{ "time": 0, "angle": 0 }
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.5, "angle": 0 }
 				],
 				"translate": [
-					{ "time": 0, "x": 0, "y": 0 }
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.5, "x": 0, "y": 0 }
 				]
 			},
 			"Body_Upper_Body1": {
 				"rotate": [
-					{ "time": 0, "angle": -8.74 }
+					{ "time": 0, "angle": -8.74, "curve": "stepped" },
+					{ "time": 1.5, "angle": -8.74 }
 				],
 				"translate": [
-					{ "time": 0, "x": 6.22, "y": 0 }
+					{ "time": 0, "x": 6.22, "y": 0, "curve": "stepped" },
+					{ "time": 1.5, "x": 6.22, "y": 0 }
 				]
 			},
 			"Front_Lower_Arm1": {
 				"rotate": [
 					{ "time": 0, "angle": 1.26, "curve": "stepped" },
-					{ "time": 0.6666, "angle": -60.79 }
+					{ "time": 0.6666, "angle": -60.79, "curve": "stepped" },
+					{ "time": 1.5, "angle": 1.26 }
 				],
 				"translate": [
 					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
 					{ "time": 0.6, "x": -1.17, "y": 0.78 },
-					{ "time": 0.6666, "x": -11.75, "y": 8.42 }
+					{ "time": 0.6666, "x": -11.75, "y": 8.42, "curve": "stepped" },
+					{ "time": 1.5, "x": 0, "y": 0 }
 				]
 			},
 			"Front_Upper_Arm1": {
 				"rotate": [
 					{ "time": 0, "angle": 13.79, "curve": "stepped" },
-					{ "time": 0.6666, "angle": 75.36 }
+					{ "time": 0.6666, "angle": 75.36, "curve": "stepped" },
+					{ "time": 1.5, "angle": 13.79 }
 				],
 				"translate": [
 					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
-					{ "time": 0.6666, "x": 27.29, "y": 5.08 }
+					{ "time": 0.6666, "x": 27.29, "y": 5.08, "curve": "stepped" },
+					{ "time": 1.5, "x": 0, "y": 0 }
 				]
 			},
 			"Orb1": {
@@ -665,13 +674,18 @@
 				],
 				"translate": [
 					{ "time": 0, "x": 16.7, "y": 28.42, "curve": "stepped" },
-					{ "time": 0.6666, "x": 92.56, "y": 40.99 }
+					{ "time": 0.6666, "x": 92.56, "y": 40.99, "curve": "stepped" },
+					{ "time": 1.5, "x": 16.7, "y": 28.42 }
 				]
 			},
 			"Front_Fist1": {
 				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
 					{ "time": 0.6, "angle": 0 },
 					{ "time": 0.6666, "angle": 86.76 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
 				],
 				"scale": [
 					{
@@ -686,29 +700,47 @@
 			"Body_Shawl1": {
 				"rotate": [
 					{ "time": 0, "angle": 7.19, "curve": "stepped" },
-					{ "time": 0.3333, "angle": 7.19 }
+					{ "time": 0.3333, "angle": 7.19, "curve": "stepped" },
+					{ "time": 1.5, "angle": 7.19 }
 				],
 				"translate": [
 					{ "time": 0, "x": 2.28, "y": 2.59, "curve": "stepped" },
-					{ "time": 0.3333, "x": 2.28, "y": 2.59 }
+					{ "time": 0.3333, "x": 2.28, "y": 2.59, "curve": "stepped" },
+					{ "time": 1.5, "x": 2.28, "y": 2.59 }
 				]
 			},
 			"Hind_Upper_Arm1": {
 				"rotate": [
-					{ "time": 0.6666, "angle": -16.41 }
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.6666, "angle": -16.41, "curve": "stepped" },
+					{ "time": 1.5, "angle": 0 }
 				],
 				"translate": [
-					{ "time": 0.6666, "x": 12.29, "y": -12.27 }
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.6666, "x": 12.29, "y": -12.27, "curve": "stepped" },
+					{ "time": 1.5, "x": 0, "y": 0 }
 				]
 			},
 			"Hind_Lower_Arm1": {
 				"rotate": [
-					{ "time": 0.6666, "angle": -23.65 }
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.6666, "angle": -23.65, "curve": "stepped" },
+					{ "time": 1.5, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.5, "x": 0, "y": 0 }
 				]
 			},
 			"Hind_Fist": {
 				"rotate": [
-					{ "time": 0.6666, "angle": -16.41 }
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.6666, "angle": -16.41, "curve": "stepped" },
+					{ "time": 1.5, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.5, "x": 0, "y": 0 }
 				]
 			},
 			"Body_Robe1": {
@@ -720,7 +752,8 @@
 					{ "time": 0.8666, "angle": -23.11 },
 					{ "time": 1, "angle": 0 },
 					{ "time": 1.1666, "angle": 356.79 },
-					{ "time": 1.3333, "angle": 360 }
+					{ "time": 1.3333, "angle": 360, "curve": "stepped" },
+					{ "time": 1.5, "angle": 359.79 }
 				],
 				"translate": [
 					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
@@ -729,7 +762,8 @@
 					{ "time": 0.8666, "x": -2.59, "y": 3.97 },
 					{ "time": 1, "x": 0.16, "y": 2.12, "curve": "stepped" },
 					{ "time": 1.1666, "x": 0.16, "y": 2.12, "curve": "stepped" },
-					{ "time": 1.3333, "x": 0.16, "y": 2.12 }
+					{ "time": 1.3333, "x": 0.16, "y": 2.12, "curve": "stepped" },
+					{ "time": 1.5, "x": 0, "y": 0 }
 				]
 			}
 		},
@@ -952,7 +986,8 @@
 		"slots": {
 			"Head_Head1": {
 				"attachment": [
-					{ "time": 0, "name": null }
+					{ "time": 0, "name": null },
+					{ "time": 1.6666, "name": null }
 				]
 			},
 			"Mage_Lowerbody_Idle1": {
@@ -1263,6 +1298,98 @@
 					{ "time": 0.8333, "angle": -30.21 },
 					{ "time": 1, "angle": -15.73, "curve": "stepped" },
 					{ "time": 1.3333, "angle": -15.73 }
+				]
+			}
+		}
+	},
+	"DeathStill": {
+		"slots": {
+			"Head_Head1": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"Mage_Lowerbody_Idle1": {
+				"attachment": [
+					{ "time": 0, "name": "Mage_Lowerbody_Idle1" }
+				]
+			}
+		},
+		"bones": {
+			"Body_Lower_Body1": {
+				"rotate": [
+					{ "time": 0, "angle": -90.57 }
+				],
+				"translate": [
+					{ "time": 0, "x": 102.49, "y": -193.28 }
+				]
+			},
+			"Body_Upper_Body1": {
+				"rotate": [
+					{ "time": 0, "angle": -78.51 }
+				],
+				"translate": [
+					{ "time": 0, "x": 167.8, "y": -255.13 }
+				]
+			},
+			"Body_Robe1": {
+				"rotate": [
+					{ "time": 0, "angle": 27.65 }
+				],
+				"translate": [
+					{ "time": 0, "x": 23.06, "y": -2.47 }
+				]
+			},
+			"Body_Shawl1": {
+				"translate": [
+					{ "time": 0, "x": 7.89, "y": 7.77 }
+				]
+			},
+			"Front_Upper_Arm1": {
+				"translate": [
+					{ "time": 0, "x": 25.65, "y": 61.48 }
+				]
+			},
+			"Head_Hood1": {
+				"rotate": [
+					{ "time": 0, "angle": -0.62 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0.31, "y": 11.07 }
+				]
+			},
+			"Hind_Upper_Arm1": {
+				"rotate": [
+					{ "time": 0, "angle": -42.1 }
+				]
+			},
+			"Front_Lower_Arm1": {
+				"rotate": [
+					{ "time": 0, "angle": -78.38 }
+				],
+				"translate": [
+					{ "time": 0, "x": -22.63, "y": 18.19 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": -1 }
+				]
+			},
+			"Hind_Lower_Arm1": {
+				"rotate": [
+					{ "time": 0, "angle": -65.25 }
+				],
+				"translate": [
+					{ "time": 0, "x": -6.41, "y": -8.59 }
+				]
+			},
+			"Front_Fist1": {
+				"rotate": [
+					{ "time": 0, "angle": -15.73 }
+				]
+			},
+			"Staff1": {
+				"rotate": [
+					{ "time": 0, "angle": 115.84 }
 				]
 			}
 		}
