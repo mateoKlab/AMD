@@ -22,6 +22,8 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 	public GameObject archerFighterPrefab;
 	public GameObject mageFighterPrefab;
 
+	public GameObject enemyHPBarPrefab;
+
 	public List<GameObject> allySpawnPos;
 	public List<GameObject> enemySpawnPos;
 
@@ -73,7 +75,7 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 		}
 
 		battleMenuController.SetFighters(model.allies);
-
+		battleMenuController.SetEnemies(model.enemies);
 
 		// TEST. Disable.
 //		SetBackgroundImage(currentStage);
@@ -226,6 +228,13 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 			Vector3 tempScale = newFighter.transform.localScale;
 			tempScale.x *= -1;
 			newFighter.transform.localScale = tempScale;
+
+			GameObject go = GameObject.Instantiate(enemyHPBarPrefab);
+			battleMenuController.enemyHPItems.Add(go.GetComponent<EnemyHPBarScript>());
+			//transform.root.GetComponent<Battle>().controller.battleMenuController.enemyHPItems.AttachToFighter(transform.root.GetComponent<BattleModel>().enemies[i]);
+			go.transform.SetParent(battleMenuController.transform.parent, false);
+
+
         }
 
 		SetStartingPosition (newFighter);

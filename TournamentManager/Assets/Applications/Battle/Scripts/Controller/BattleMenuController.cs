@@ -7,8 +7,10 @@ using Bingo;
 public class BattleMenuController : Controller
 {
 	public List<BattleMenuItemController> menuItems;
+	public List<EnemyHPBarScript> enemyHPItems;
 
 	private Dictionary<GameObject, BattleMenuItemController> menuItemDictionary;
+	private Dictionary<GameObject, EnemyHPBarScript> enemyHPBarDictionary;
 
 	void Start ()
 	{
@@ -35,12 +37,24 @@ public class BattleMenuController : Controller
 		}
 	}
 
+	public void SetEnemies (List<GameObject> fighters)
+	{
+		enemyHPBarDictionary = new Dictionary<GameObject, EnemyHPBarScript> ();
+
+		for (int i = 0; i < fighters.Count; i++) {
+			enemyHPBarDictionary.Add (fighters[i], enemyHPItems[i]);
+		}
+	}
+
+
 	void OnFighterReceivedDamage (params object[] args)
 	{	
 		FighterModel fighter = ((GameObject)args [1]).GetComponent<FighterModel> ();
 
 		if (fighter.allegiance == FighterAlliegiance.Ally) {
 			menuItemDictionary [fighter.gameObject].UpdateHP ();
+		} else {
+			enemyHPBarDictionary[fighter.gameObject].UpdateHP (fighter.gameObject, fighter.fighterData);
 		}
 	}
 
