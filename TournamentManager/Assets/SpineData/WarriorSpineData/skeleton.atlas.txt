@@ -696,14 +696,14 @@ Idle_Cape_Frame12F
   orig: 560, 615
   offset: 0, 0
   index: -1
-Idle_Cape_Frame13F
+Idle_Cape_Frame9F
   rotate: false
   xy: 2, 2
   size: 560, 615
   orig: 560, 615
   offset: 0, 0
   index: -1
-Idle_Cape_Frame9F
+Idle_Cape_Frame13F
   rotate: false
   xy: 2, 2
   size: 560, 615
