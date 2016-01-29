@@ -40,6 +40,7 @@ public class TroopController : Controller<MainMenu, TroopModel, TroopView>
     {
         model.fighterData = fighterData;
 		view.nameLabel.text = fighterData.name;
+		view.lvlLabel.text = "Lvl " + fighterData.level;
 		view.classIcon.texture = Resources.Load("Sprites/ClassIcons/" + fighterData.fighterClass) as Texture;
 
 //		GetComponentInChildren<FighterSpriteController>().SetFighterSkin(fighterData.skinData);
@@ -75,13 +76,14 @@ public class TroopController : Controller<MainMenu, TroopModel, TroopView>
 		editTeamController.view.SetCost(GameData.instance.playerData.currentParty.currentCost/*editTeamController.GetPartyCost()*/, GameData.instance.playerData.partyCapacity);
 
 		CheckState();
+		DisplayTroopDetails();
 	}
 
 	public void CheckState() {
 		if (GameData.instance.playerData.currentParty.fighters.Contains (model.fighterData.id))
-			view.stateLabel.text = "ACTIVE";
+			view.stateLabel.text = "Active";
 		else
-			view.stateLabel.text = "IDLE";
+			view.stateLabel.text = "Idle";
 	}
 
 	public void DisplayTroopDetails() {
