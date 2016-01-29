@@ -37,7 +37,7 @@ public class RangedFighterController : FighterController
 	protected override void OnAttackEnded ()
 	{
 		base.OnAttackEnded ();
-
+	
 		// Turn on orb.
 		orb.SetActive (true);
 	}
@@ -45,7 +45,7 @@ public class RangedFighterController : FighterController
 	void RangedAttack (Attack attackData)
 	{
 		Vector3 position = projectileSource.transform.position;
-//		position.x += 2.0f;
+		position.z = transform.localPosition.z;
 
 		((BattleController)app.controller).OnRangedAttack (attackData, position);
 	}
