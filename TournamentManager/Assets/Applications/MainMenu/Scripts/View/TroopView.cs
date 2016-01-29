@@ -7,6 +7,7 @@ using Bingo;
 public class TroopView : View<MainMenu> //, IPointerEnterHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
 	public Text nameLabel;
+	public Text lvlLabel;
 	public RawImage classIcon;
 	public Text stateLabel;
     private FighterSpriteController troopSprite;
