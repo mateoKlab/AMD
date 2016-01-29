@@ -6,15 +6,25 @@ using Bingo;
 public class TroopDetailsView : View
 {
 	public Text nameText;
+	public Text lvlText;
 	public Text classText;
 	public Text atkText;
 	public Text hpText;
 	public Text defText;
 	public Text costText;
+	public RawImage classIcon;
+	private Texture warriorIconTexture;
+	private Texture mageIconTexture;
 
 	// TODO: Load appropriate prefab from resources.
     public FighterSpriteController warriorSprite;
 	public FighterSpriteController mageSprite;
+
+	public void Awake() {
+		base.Awake();
+		warriorIconTexture = Resources.Load("Sprites/ClassIcons/Warrior") as Texture;
+		mageIconTexture = Resources.Load("Sprites/ClassIcons/Mage") as Texture;
+	}
 
     public void SetName(string name)
     {
@@ -23,6 +33,29 @@ public class TroopDetailsView : View
 			nameText.text = name;
 		}
     }
+
+	public void SetLevel(int lvl)
+	{
+		if (lvlText != null)
+		{
+			lvlText.text = "Lvl " + lvl.ToString();
+		}
+	}
+
+	public void SetIcon(string fighterClass)
+	{
+		if (classIcon != null)
+		{
+			if (fighterClass == "Warrior") 
+			{
+				classIcon.texture = warriorIconTexture;
+			}
+			else if (fighterClass == "Mage") {
+				classIcon.texture = mageIconTexture;
+			}
+
+		}
+	}
 
 	public void SetClass(string className)
 	{
