@@ -153,6 +153,7 @@ public class FighterController : Controller
 			eventHelper.AttackStart (attack);
 
 		} else {
+
 			Walk ();
 		}
 	}

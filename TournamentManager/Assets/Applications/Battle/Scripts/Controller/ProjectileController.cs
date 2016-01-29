@@ -9,6 +9,9 @@ public class ProjectileController : Controller
 
 	private int moveDirection;
 
+	// temp.
+	private float projectileSpeed = 0.15f;
+
 	void Awake ()
 	{
 		(model as ProjectileModel).OnAttackDataSet += OnAttackDataSet;
@@ -22,7 +25,7 @@ public class ProjectileController : Controller
 
 	void FixedUpdate ()
 	{
-		transform.position = new Vector3 (transform.position.x + (0.1f * moveDirection) , transform.position.y, transform.position.z);
+		transform.position = new Vector3 (transform.position.x + (projectileSpeed * moveDirection) , transform.position.y, transform.position.z);
 	}
 
 	void OnAttackDataSet (Attack attackData)

@@ -7,7 +7,10 @@ using Bingo;
 public class FighterView : View {
 
 	public FighterSpriteController fighterSprite;
-	
+
+	// Temp. Give cape its own controller to avoid clutter in main controller.
+	public FighterSpriteController capeSprite;
+
 	public Action<GameObject> OnCollideWithEnemy;
 	public Action<GameObject> OnEnemyInRange;
 	public Action<GameObject> OnEnemyExitRange;
