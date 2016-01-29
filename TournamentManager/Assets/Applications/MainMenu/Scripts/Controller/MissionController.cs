@@ -14,7 +14,7 @@ public class MissionController : Controller <MainMenu, MissionModel, MissionView
 	public void SetMissionData(MissionPointModel mPointModel) {
 		currentMissionPoint = mPointModel;
 		view.missionImage.texture = Resources.Load(mPointModel.imagePath + mPointModel.missionPointData.name.Split(' ')[0]) as Texture;
-		view.missionName.text = mPointModel.missionPointData.name.ToUpper();
+		view.missionName.text = mPointModel.missionPointData.name;
 		view.enemyCountLabel.text = "Number of Enemies: " + mPointModel.missionPointData.enemies.Count;
 		view.goldRewardLabel.text = "Gold Reward: " + mPointModel.missionPointData.goldReward;
 		view.expRewardLabel.text = "Exp Reward: " + mPointModel.missionPointData.xpReward;
