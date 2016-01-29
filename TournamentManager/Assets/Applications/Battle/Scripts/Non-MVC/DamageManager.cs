@@ -6,7 +6,9 @@ using Bingo;
 public class DamageManager : BaseApplication <DamageUIModel, DamageUIView, DamageUIController> {
 
 	public GameObject damagePrefab;
+
 	public List<GameObject> damagePool;
+	//public List<EnemyHPBarScript> hpBarPool;
 	public int poolSize; 
 
 	private static DamageManager _instance = null; //PROBLEM ON COPYING THE CAMERA OF FIX CAMERA FOLLOW. REMEMBER MEN
@@ -31,6 +33,10 @@ public class DamageManager : BaseApplication <DamageUIModel, DamageUIView, Damag
 			GameObject go = GameObject.Instantiate(damagePrefab);
 			damagePool.Add(go);
 			go.transform.SetParent(transform, false);
+		}
+
+		for (int i = 0; i < transform.root.GetComponent<BattleModel>().enemies.Count; i++) {
+		
 		}
 	}
 	

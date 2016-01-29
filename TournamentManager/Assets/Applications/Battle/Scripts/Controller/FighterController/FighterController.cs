@@ -153,6 +153,7 @@ public class FighterController : Controller
 			eventHelper.AttackStart (attack);
 
 		} else {
+
 			Walk ();
 		}
 	}
@@ -178,7 +179,9 @@ public class FighterController : Controller
 		(view as FighterView).SetSpriteColor ();
 		// Edit: AJ (Test)
 		DamageManager.instance.ActivateDamageElement(transform.position, attack.damage, (model as FighterModel).allegiance == FighterAlliegiance.Ally);
+
 		SoundManager.instance.PlayHitSFX();
+
 		if (UnityEngine.Random.value < 0.1f) 
 		{
 			SoundManager.instance.PlayGruntSFX();

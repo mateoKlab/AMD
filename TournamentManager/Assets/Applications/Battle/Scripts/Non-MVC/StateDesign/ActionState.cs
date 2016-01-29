@@ -83,10 +83,10 @@ public abstract class ActionState {
 			animator = stateContext.fighter.GetComponentInChildren<Animator> ();
 
 			// SetTrigger for attack animation.
-			string attackString = "Attack1";
-//			int randomAttack = UnityEngine.Random.Range (1, 4);
+			string attackString = "Attack";
+			int randomAttack = UnityEngine.Random.Range (1, 4);
 
-			animator.SetTrigger (attackString); // + randomAttack.ToString ());
+			animator.SetTrigger (attackString + randomAttack.ToString ());
 		}
 		
 		public override void Update ()
@@ -194,7 +194,7 @@ public abstract class ActionState {
 	#region DeathState
 	public class DeathState : ActionState
 	{
-		private float deathTimer = 3.0f;
+		private float deathTimer = 2.5f;
 
 		// Constuctor.
 		public DeathState (FighterStateContext context)
