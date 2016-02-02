@@ -53,7 +53,7 @@ public class BattleMenuController : Controller
 
 		if (fighter.allegiance == FighterAlliegiance.Ally) {
 			menuItemDictionary [fighter.gameObject].UpdateHP ();
-		} else {
+		} else if (fighter.fighterData.HP > 0){
 			enemyHPBarDictionary[fighter.gameObject].UpdateHP (fighter.gameObject, fighter.fighterData);
 		}
 	}

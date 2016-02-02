@@ -232,7 +232,7 @@ public class BattleController : Controller<Battle, BattleModel, BattleView>
 			GameObject go = GameObject.Instantiate(enemyHPBarPrefab);
 			battleMenuController.enemyHPItems.Add(go.GetComponent<EnemyHPBarScript>());
 			//transform.root.GetComponent<Battle>().controller.battleMenuController.enemyHPItems.AttachToFighter(transform.root.GetComponent<BattleModel>().enemies[i]);
-			go.transform.SetParent(battleMenuController.transform.parent, false);
+			go.transform.SetParent(DamageManager.instance.transform, false);
 
 
         }

@@ -30,8 +30,10 @@ public class EnemyHPBarScript : MonoBehaviour {
 
 		hpSlider.fillAmount = hpFill;
 			
+
 		StopCoroutine("UpdateHPCoroutine");
 		StartCoroutine("UpdateHPCoroutine");
+		
 	}
 	
 	IEnumerator UpdateHPCoroutine() {
