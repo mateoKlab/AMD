@@ -111,7 +111,6 @@ public class FighterController : Controller
 	void OnCooldownEnded ()
 	{
 		if ((model as FighterModel).GetEnemyInRange () != null) {
-			Debug.Log("OnCooldownEnded : StartAttack");
 			StartAttack ();
 		} else {
 			Walk ();
@@ -128,7 +127,6 @@ public class FighterController : Controller
 	protected virtual void OnAttackEnded ()
 	{
 		// TODO: Use attackspeed for cooldown.
-		Debug.Log("OnAttackEnded");
 		float tempCooldown = UnityEngine.Random.Range (0.75f, 2.00f);
 
 		state.StartCooldown (tempCooldown);
@@ -168,9 +166,9 @@ public class FighterController : Controller
 	protected void ReceiveDamage (Attack attack)
 	{
 		// TODO: Apply armor/damage reduction effects.e
-		(model as FighterModel).fighterData.HP -= 25;//attack.damage;
+		(model as FighterModel).fighterData.HP -= attack.damage;
 
-		Messenger.Send (EventTags.FIGHTER_RECEIVED_DAMAGE, 25/*attack.damage*/, this.gameObject);
+		Messenger.Send (EventTags.FIGHTER_RECEIVED_DAMAGE, attack.damage, this.gameObject);
 
 		// TODO: Move to model. Use delegate.
 		if ((model as FighterModel).fighterData.HP <= 0) {
