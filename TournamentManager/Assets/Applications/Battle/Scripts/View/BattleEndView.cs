@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class BattleEndView : View
 {
-	public Text headerLabel;
+	public GameObject victoryBanner;
+	public GameObject defeatBanner;
 	public Text expValue;
 	public Text goldValue;
 	public GameObject continueButton;

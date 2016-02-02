@@ -25,7 +25,7 @@ public class FighterExpController : Controller
     {
 		fData = fd;
 
-		((FighterExpView)view).SetSprite(fData.skinData);
+		((FighterExpView)view).SetClassIcon(fData);
 		((FighterExpView)view).SetName(fData.name);
 		((FighterExpView)view).SetLevel(fData.level);
         ((FighterExpView)view).SetExpGained(GameData.instance.currentStage.xpReward);
