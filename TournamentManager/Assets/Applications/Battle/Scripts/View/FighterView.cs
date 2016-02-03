@@ -12,6 +12,8 @@ public class FighterView : View {
 	public FighterSpriteController capeSprite;
 
 	public Action<GameObject> OnCollideWithEnemy;
+	public Action<GameObject> OnCollideWithEnemyExit;
+
 	public Action<GameObject> OnEnemyInRange;
 	public Action<GameObject> OnEnemyExitRange;
 
@@ -67,19 +69,17 @@ public class FighterView : View {
 
 	void OnCollisionEnter2D (Collision2D coll)
 	{
-		if (coll.gameObject.name == "Ground") 
+		if (coll.gameObject.tag == "Units") 
 		{
-			// Set GroundState. Enable Movement.
-			((FighterController)controller).OnGroundEnter();
+			OnCollideWithEnemy (coll.gameObject);
 		}
 	}
 
 	void OnCollisionExit2D (Collision2D coll)
 	{
-		if (coll.gameObject.name == "Ground") 
+		if (coll.gameObject.tag == "Units") 
 		{
-			// Set GroundState. Disable Movement.
-			((FighterController)controller).OnGroundExit();
+			OnCollideWithEnemyExit (coll.gameObject);
 		}
 	}
 }

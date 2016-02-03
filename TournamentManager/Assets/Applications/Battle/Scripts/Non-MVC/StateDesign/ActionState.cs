@@ -11,7 +11,6 @@ public abstract class ActionState {
 	public abstract void Update (); 			// Check for animations/cooldowns here.
 	
 	public abstract void Walk ();
-	public abstract void Attack ();
 	public abstract void Hit ();
 	public abstract void Idle ();
 	public abstract void Death ();
@@ -42,16 +41,12 @@ public abstract class ActionState {
 		// Update position while in this state.
 		public override void Update () 
 		{
-			fighterTransform.position = new Vector3 (fighterTransform.position.x + (0.05f * moveDirection),
+			if (stateContext.knockbackState is KnockbackState.RecoveredState) {
+				fighterTransform.position = new Vector3 (fighterTransform.position.x + (0.05f * moveDirection),
 			                                         fighterTransform.position.y,
 			                                         fighterTransform.position.z);
-
-		}
-
-		public override void Attack ()
-		{
-			if (stateContext.cooldownState is CooldownState.ReadyState) {
-				stateContext.actionState = new AttackState (stateContext);
+			} else {
+				Debug.Log ("NOT RECOVERED");
 			}
 		}
 
@@ -121,8 +116,6 @@ public abstract class ActionState {
 			stateContext.actionState = new HitState (stateContext);
 		}
 
-		public override void Attack () { } // Already Attacking. Do nothing.
-
 		public override void Idle ()
 		{
 			stateContext.actionState = new ActionState.IdleState (stateContext);
@@ -144,13 +137,6 @@ public abstract class ActionState {
 			animator = stateContext.fighter.GetComponentInChildren<Animator> ();
 
 			animator.SetTrigger ("Idle");
-		}
-
-		public override void Attack ()
-		{
-			if (stateContext.cooldownState is CooldownState.ReadyState) {
-				stateContext.actionState = new AttackState (stateContext);
-			}
 		}
 
 		public override void Update ()
@@ -186,9 +172,7 @@ public abstract class ActionState {
 		public override void Update () { }
 		
 		public override void Walk () { }
-		
-		public override void Attack () { }
-		
+
 		public override void Hit () { }
 		
 		public override void Idle () { }
@@ -197,6 +181,41 @@ public abstract class ActionState {
 		{
 			stateContext.actionState = new DeathState (stateContext);
 		}
+	}
+	#endregion
+
+	#region BlockState
+	public class BlockState : ActionState
+	{
+		public BlockState (FighterStateContext context)
+		{
+			stateContext = context;
+			animator = stateContext.fighter.GetComponentInChildren<Animator> ();
+			
+			animator.SetTrigger ("Block");
+		}
+
+		public override void Update ()
+		{
+			if (animator.GetCurrentAnimatorStateInfo (0).IsName ("Block") && animator.IsInTransition (0)) {
+				
+				stateContext.AttackEnded ();
+				
+//				Idle ();
+			}
+		}
+		
+		public override void Walk () 
+		{ 
+			stateContext.actionState = new WalkState (stateContext);
+		}
+		
+		public override void Hit () { }
+		
+		public override void Idle () { }
+		
+		public override void Death () { }
+
 	}
 	#endregion
 
@@ -226,9 +245,7 @@ public abstract class ActionState {
 		}
 		
 		public override void Walk () { }
-		
-		public override void Attack () { }
-		
+
 		public override void Hit () { }
 		
 		public override void Idle () { }

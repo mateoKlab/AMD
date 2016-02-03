@@ -14,27 +14,32 @@ public class FighterController : Controller
 	// Use this for initialization
 	public virtual void Start () {
 		state = new FighterStateContext (this.gameObject);
-		state.OnCooldownEnded += OnCooldownEnded;
-		state.OnAttackEnded   += OnAttackEnded;
-		state.OnDeath 		  += OnDeath;
+		state.OnCooldownEnded  += OnCooldownEnded;
+		state.OnAttackEnded    += OnAttackEnded;
+		state.OnKnockbackEnded += OnKnockbackEnded;
+		state.OnDeath 		   += OnDeath;
 
-		(model as FighterModel).OnFighterDataSet += OnFighterDataSet;
-		(view as FighterView).OnCollideWithEnemy += OnCollideWithEnemy;
-		(view as FighterView).OnEnemyInRange	 += OnEnemyInRange;
-		(view as FighterView).OnEnemyExitRange 	 += OnEnemyExitRange;
+		(view as FighterView).OnCollideWithEnemyExit += OnCollideWithEnemyExit;
+		(model as FighterModel).OnFighterDataSet	 += OnFighterDataSet;
+		(view as FighterView).OnCollideWithEnemy	 += OnCollideWithEnemy;
+		(view as FighterView).OnEnemyInRange		 += OnEnemyInRange;
+		(view as FighterView).OnEnemyExitRange 		 += OnEnemyExitRange;
 
 		eventHelper = GetComponentInChildren<AnimationEventHelper> ();
 	}
 
 	void OnDestroy () {
-		state.OnCooldownEnded -= OnCooldownEnded;
-		state.OnAttackEnded   -= OnAttackEnded;
-		state.OnDeath 		  -= OnDeath;
+		state.OnCooldownEnded  -= OnCooldownEnded;
+		state.OnAttackEnded    -= OnAttackEnded;
+		state.OnKnockbackEnded -= OnKnockbackEnded;
+		state.OnDeath 		   -= OnDeath;
 
-		(model as FighterModel).OnFighterDataSet -= OnFighterDataSet;
-		(view as FighterView).OnCollideWithEnemy -= OnCollideWithEnemy;
-		(view as FighterView).OnEnemyInRange	 -= OnEnemyInRange;
-		(view as FighterView).OnEnemyExitRange 	 -= OnEnemyExitRange;
+		(view as FighterView).OnCollideWithEnemyExit -= OnCollideWithEnemyExit;
+		(model as FighterModel).OnFighterDataSet	 -= OnFighterDataSet;
+		(view as FighterView).OnCollideWithEnemy	 -= OnCollideWithEnemy;
+		(view as FighterView).OnEnemyInRange		 -= OnEnemyInRange;
+		(view as FighterView).OnEnemyExitRange 		 -= OnEnemyExitRange;
+
 	}
 
 	protected void FixedUpdate ()
@@ -64,12 +69,19 @@ public class FighterController : Controller
     {
         // TODO: Calculate skill effects, evade, block, etc. here.
 
-        ReceiveDamage(attack);
+        ReceiveDamage (attack);
+		ReceiveKnockback (attack);
     }
 
 	public void RemoveFromRange (GameObject enemy)
 	{
 		(model as FighterModel).RemoveEnemyInRange (enemy);
+
+		Debug.Log ("REMOVE FROM RANGE");
+
+		if ((model as FighterModel).GetEnemyInRange () != null) {
+			Walk ();	
+		}
 	}
 
 	public void CheckRange ()
@@ -87,13 +99,18 @@ public class FighterController : Controller
 	
 	private void OnEnemyExitRange (GameObject enemy)
 	{
-		(model as FighterModel).RemoveEnemyInRange (enemy);
+		RemoveFromRange (enemy);
 	}
 
 	
 	private void OnCollideWithEnemy (GameObject enemy)
 	{
-		
+
+	}
+
+	private void OnCollideWithEnemyExit (GameObject enemy)
+	{
+	
 	}
 
 	#endregion
@@ -110,12 +127,7 @@ public class FighterController : Controller
 	// Callback for end of cooldown.
 	void OnCooldownEnded ()
 	{
-		if ((model as FighterModel).GetEnemyInRange () != null) {
-			Debug.Log("OnCooldownEnded : StartAttack");
-			StartAttack ();
-		} else {
-			Walk ();
-		}
+		StartAttack ();
 	}
 
 	// Called at the point of attack during the attack animation.
@@ -128,10 +140,15 @@ public class FighterController : Controller
 	protected virtual void OnAttackEnded ()
 	{
 		// TODO: Use attackspeed for cooldown.
-		Debug.Log("OnAttackEnded");
 		float tempCooldown = UnityEngine.Random.Range (0.75f, 2.00f);
 
 		state.StartCooldown (tempCooldown);
+	}
+
+	protected virtual void OnKnockbackEnded ()
+	{
+		Debug.Log ("KNOCKBACK ENDED");
+		StartAttack ();
 	}
 
 	// Callback for end of death animation/timer.
@@ -153,9 +170,9 @@ public class FighterController : Controller
 
 			state.Attack ();
 			eventHelper.AttackStart (attack);
-
+		
 		} else {
-
+			Debug.Log ("WALK");
 			Walk ();
 		}
 	}
@@ -165,12 +182,17 @@ public class FighterController : Controller
 		state.Walk ();
 	}
 
+	protected void ReceiveAttack (Attack attack)
+	{
+
+	}
+
 	protected void ReceiveDamage (Attack attack)
 	{
 		// TODO: Apply armor/damage reduction effects.e
-		(model as FighterModel).fighterData.HP -= 25;//attack.damage;
+		(model as FighterModel).fighterData.HP -= 50; //attack.damage;
 
-		Messenger.Send (EventTags.FIGHTER_RECEIVED_DAMAGE, 25/*attack.damage*/, this.gameObject);
+		Messenger.Send (EventTags.FIGHTER_RECEIVED_DAMAGE, attack.damage, this.gameObject);
 
 		// TODO: Move to model. Use delegate.
 		if ((model as FighterModel).fighterData.HP <= 0) {
@@ -190,16 +212,18 @@ public class FighterController : Controller
 		}
 	}
 
-	protected void ReceiveKnockback (float knockback)
+	protected void ReceiveKnockback (Attack attack)
 	{
-		// TODO: Apply knockback resistance/amount.
-		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
+		state.Knockback (0.3f);
 
-		Rigidbody2D rigidBody = GetComponent<Rigidbody2D> ();
-
-		if (Math.Abs (rigidBody.velocity.x) < 1.0f) {
-			rigidBody.AddForce (new Vector2 (9.0f * -moveDirection, 1.0f), ForceMode2D.Impulse);
-		}
+//		// TODO: Apply knockback resistance/amount.
+//		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;
+//
+//		Rigidbody2D rigidBody = GetComponent<Rigidbody2D> ();
+//
+//		if (Math.Abs (rigidBody.velocity.x) < 1.0f) {
+//			rigidBody.AddForce (new Vector2 (1.0f * -moveDirection, 0.0f), ForceMode2D.Impulse);
+//		}
 	}
 
 	protected Attack GetAttackData (GameObject attackTarget)
