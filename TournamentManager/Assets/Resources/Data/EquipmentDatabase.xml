@@ -923,6 +923,10 @@
           <AttachmentType>Helm</AttachmentType>
           <SpriteName>Head_Helm1</SpriteName>
         </Sprite>
+          <Sprite>
+          <AttachmentType>Head</AttachmentType>
+          <SpriteName>Head_Head1</SpriteName>
+        </Sprite>
       </Sprites>
     </Equipment>
     <Equipment>
