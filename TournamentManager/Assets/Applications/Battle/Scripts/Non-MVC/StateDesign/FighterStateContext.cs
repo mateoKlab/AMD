@@ -13,12 +13,16 @@ public class FighterStateContext {
 	// Called when the attack animation finishes.
 	public Action OnAttackEnded;
 
+	// Called at the end of a knockback.
+	public Action OnKnockbackEnded;
+
 	public Action OnDeath;
 	#endregion
 
-	private ActionState _actionState; 		// The current action. Walking, Attacking, etc.
-	private GroundState _groundState;		// On the ground, in the air. Affects movement.
-	private CooldownState _cooldownState;	// Tells if fighter is ready to act.
+	private ActionState _actionState; 		  // The current action. Walking, Attacking, etc.
+	private KnockbackState _knockbackState;   // Flinched/Stunned state.
+	private EngagementState _engagementState; // Colliding with an enemy or not.
+	private CooldownState _cooldownState;	  // Tells if fighter is ready to act.
 	
 	// Constructor.
 	public FighterStateContext (GameObject fighter)
@@ -32,14 +36,16 @@ public class FighterStateContext {
 	{
 		_actionState.Update ();
 		_cooldownState.Update ();
+		_knockbackState.Update ();
 	}
 
 	private void Initialize ()
 	{
 		// Set initial states.
-		_groundState   = new GroundState.OnGroundState (this);
-		_actionState   = new ActionState.WalkState (this);
-		_cooldownState = new CooldownState.ReadyState (this);
+		_actionState     = new ActionState.WalkState (this);
+		_knockbackState  = new KnockbackState.RecoveredState (this);
+		_cooldownState   = new CooldownState.ReadyState (this);
+		_engagementState = new EngagementState.DisengagedState (this);
 	}
 	
 	// Handle commands and state changes here.
@@ -47,18 +53,43 @@ public class FighterStateContext {
 
 	public void Attack ()
 	{
-		_actionState.Attack ();
+		if (cooldownState is CooldownState.ReadyState) {
+			_actionState = new ActionState.AttackState (this);
+		}
 	}
-
 
 	public void AttackEnded ()
 	{
 		OnAttackEnded ();
 	}
 
+	public void BlockEnded ()
+	{
+
+	}
+
+	public void CollisionEnter ()
+	{
+		engagementState.Engage ();
+	}
+
+	public void CollisionExit ()
+	{
+		engagementState.Disengage ();
+	}
+
 	public void Walk ()
 	{
 		_actionState.Walk ();
+	}
+
+	public void Knockback (float knockbackDuration)
+	{
+		if (!(_actionState is ActionState.AttackState)) {
+			_actionState = new ActionState.BlockState (this);
+		}
+
+		_knockbackState.Knockback (this, knockbackDuration);
 	}
 
 	public void StartCooldown (float cooldownDuration)
@@ -91,13 +122,23 @@ public class FighterStateContext {
 		}
 	}
 
-	public GroundState groundState {
+	public KnockbackState knockbackState {
 		get {
-			return _groundState;
-		}	
+			return _knockbackState;
+		}
 		
 		set {
-			_groundState = value;
+			_knockbackState = value;
+		}
+	}
+
+	public EngagementState engagementState {
+		get {
+			return _engagementState;
+		}
+		
+		set {
+			_engagementState = value;
 		}
 	}
 
