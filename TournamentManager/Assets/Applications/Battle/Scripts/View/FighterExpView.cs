@@ -24,7 +24,7 @@ public class FighterExpView : View<MainMenu, FighterModel, FighterExpController>
 
     public void SetName(string name)
     {
-        nameLabel.text = name;
+        nameLabel.text = name.ToUpper();
     }
 
     public void SetLevel(int level)
