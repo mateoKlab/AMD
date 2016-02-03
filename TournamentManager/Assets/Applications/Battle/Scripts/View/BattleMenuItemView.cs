@@ -24,7 +24,7 @@ public class BattleMenuItemView : View <Battle, BattleMenuItemModel, BattleMenuI
 	public void InitializeValues ()
 	{
 		model.fData = model.fighter.GetComponent<FighterModel>().fighterData;
-		fighterName.text = model.fData.name;
+		fighterName.text = model.fData.name.ToUpper();
 		lvlLabel.text = "LVL  " + model.fData.level;
 		classIcon.texture = classIcon.texture = Resources.Load("Sprites/ClassIcons/" + model.fData.fighterClass) as Texture;
 
