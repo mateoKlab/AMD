@@ -15,6 +15,7 @@ public class BattleEndController : Controller <Battle, BattleEndModel, BattleEnd
 	}
 
 	public void ShowBattleEndPopUp(bool didWin) {
+		DamageManager.instance.gameObject.SetActive(false);
 		view.gameObject.SetActive(true);
 
 		if (didWin) 
@@ -23,7 +24,8 @@ public class BattleEndController : Controller <Battle, BattleEndModel, BattleEnd
 			SoundManager.instance.StopBGM();
 			//SoundManager.instance.PlayUISFX("Audio/SFX/Gong");
 
-			view.headerLabel.text = "VICTORY";
+			view.victoryBanner.SetActive(true);
+			view.defeatBanner.SetActive(false);
 			GetComponent<Animator>().SetTrigger("WinTransitionIn");
 			StartCoroutine(LerpRewardValuesCoroutine());
 		}
@@ -31,7 +33,8 @@ public class BattleEndController : Controller <Battle, BattleEndModel, BattleEnd
 		{
 			SoundManager.instance.FadeOutBGM(0.1f);
 			SoundManager.instance.PlayUISFX("Audio/SFX/Drums/Drum2");
-			view.headerLabel.text = "DEFEAT";
+			view.defeatBanner.SetActive(true);
+			view.victoryBanner.SetActive(false);
 			GetComponent<Animator>().SetTrigger("LoseTransitionIn");
 			model.gold = 0;
 			model.exp = 0;
@@ -81,7 +84,7 @@ public class BattleEndController : Controller <Battle, BattleEndModel, BattleEnd
 		view.goldValue.text = model.gold.ToString();
 		view.expValue.text = model.exp.ToString();
 		view.continueButton.SetActive(true);
-		iTween.PunchScale(view.continueButton, Vector3.one * 1.1f, 0.7f);
+		iTween.PunchScale(view.continueButton, Vector3.one * .2f, 0.7f);
 		yield return new WaitForSeconds(0.3f);
 		SoundManager.instance.PlayUISFX("Audio/SFX/Card_Flip");
 	

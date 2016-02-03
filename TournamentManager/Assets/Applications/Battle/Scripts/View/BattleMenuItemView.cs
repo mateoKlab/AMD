@@ -14,6 +14,7 @@ public class BattleMenuItemView : View <Battle, BattleMenuItemModel, BattleMenuI
 	public Image deathIcon;
 	public FighterSpriteController warriorPortrait;
 	public FighterSpriteController magePortrait;
+	private float initialSliderXPos;
 
 	void Start ()
 	{
@@ -23,7 +24,7 @@ public class BattleMenuItemView : View <Battle, BattleMenuItemModel, BattleMenuI
 	public void InitializeValues ()
 	{
 		model.fData = model.fighter.GetComponent<FighterModel>().fighterData;
-		fighterName.text = model.fData.name;
+		fighterName.text = model.fData.name.ToUpper();
 		lvlLabel.text = "LVL  " + model.fData.level;
 		classIcon.texture = classIcon.texture = Resources.Load("Sprites/ClassIcons/" + model.fData.fighterClass) as Texture;
 
@@ -31,12 +32,15 @@ public class BattleMenuItemView : View <Battle, BattleMenuItemModel, BattleMenuI
 		hpSlider.fillAmount = hpFill;
 
 		SetPortrait(model.fData.fighterClass, model.fData.skinData);
+		initialSliderXPos = hpSlider.rectTransform.anchoredPosition.x;
 	}
 
 	public void UpdateHP() {
 		float hpFill = (float)model.fData.HP / (float)model.fData.maxHP;
 
-		hpSlider.fillAmount = hpFill;
+		//hpSlider.fillAmount = hpFill;
+		hpSlider.rectTransform.anchoredPosition = new Vector2(initialSliderXPos - ((1 - hpFill) * 120), hpSlider.rectTransform.anchoredPosition.y);
+		
 		StopCoroutine("UpdateHPCoroutine");
 		StartCoroutine("UpdateHPCoroutine");
 
@@ -46,16 +50,11 @@ public class BattleMenuItemView : View <Battle, BattleMenuItemModel, BattleMenuI
 
 	IEnumerator UpdateHPCoroutine() {
 		yield return new WaitForSeconds(0.2f);
-		while (hpSliderTrail.fillAmount > hpSlider.fillAmount) {
-
-			if (hpSlider.fillAmount > 0) {
-				hpSliderTrail.fillAmount -= Time.fixedDeltaTime/2.5f;
-			}
-			else 
-			{
-				hpSliderTrail.fillAmount -= Time.fixedDeltaTime;
-			}
-			yield return new WaitForEndOfFrame();
+		while (hpSliderTrail.rectTransform.anchoredPosition.x > hpSlider.rectTransform.anchoredPosition.x) {
+		
+			hpSliderTrail.rectTransform.anchoredPosition = new Vector2 (hpSliderTrail.rectTransform.anchoredPosition.x - 2, hpSliderTrail.rectTransform.anchoredPosition.y);
+		
+			yield return new WaitForSeconds(Time.fixedDeltaTime);
 		}
 	}
 

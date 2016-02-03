@@ -87,14 +87,23 @@ public abstract class ActionState {
 		public override void Update ()
 		{
 			// Set state to Idle when attack animation is finished.
-			if ((animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack1")
-			   || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack2") 
-			    || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack3")) && animator.IsInTransition (0)) {
+//			if ((animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack1")
+//			   || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack2") 
+//			    || animator.GetCurrentAnimatorStateInfo (0).IsName ("Attack3")) && animator.IsInTransition (0)) {
+//
+//					stateContext.AttackEnded ();
+//
+//				Idle ();
+//			}
 
+			AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);	
+			if( (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3"))/* && animator.IsInTransition (0)*/) {
+				float playbackTime = currentState.normalizedTime % 1;
+				if(playbackTime>= .9f) {
 					stateContext.AttackEnded ();
-
-				Idle ();
-			}
+					Idle ();
+				}
+			} 
 		}
 		
 		public override void Walk ()
@@ -142,7 +151,7 @@ public abstract class ActionState {
 
 		public override void Hit () { }
 		
-		public override void Idle () { } // Already Idle. Do nothing.
+		public override void Idle () {} // Already Idle. Do nothing.
 
 		public override void Death ()
 		{

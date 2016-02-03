@@ -9,7 +9,7 @@ public class FighterExpView : View<MainMenu, FighterModel, FighterExpController>
     //private FighterSpriteController troopSprite;
     public Text nameLabel;
 	public Text levelText;
-	//public Text expGainedText;
+	public RawImage classIcon;
 	public Image expMeter;
 
     public void EnableLevelupBanner(bool enabled)
@@ -17,19 +17,19 @@ public class FighterExpView : View<MainMenu, FighterModel, FighterExpController>
         //levelupBanner.gameObject.SetActive(enabled);
     }
 
-    public void SetSprite(FighterSkinData skinData)
+    public void SetClassIcon(FighterData fData)
     {
-        //troopSprite.SetFighterSkin(skinData);
+		classIcon.texture = classIcon.texture = Resources.Load("Sprites/ClassIcons/" + fData.fighterClass) as Texture;
     }
 
     public void SetName(string name)
     {
-        nameLabel.text = name;
+        nameLabel.text = name.ToUpper();
     }
 
     public void SetLevel(int level)
     {
-        levelText.text = level.ToString();
+        levelText.text = "LVL " + level.ToString();
     }
 
     public void SetExpGained(float expGained)
