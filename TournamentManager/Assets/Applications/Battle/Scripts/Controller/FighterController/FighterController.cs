@@ -77,8 +77,6 @@ public class FighterController : Controller
 	{
 		(model as FighterModel).RemoveEnemyInRange (enemy);
 
-		Debug.Log ("REMOVE FROM RANGE");
-
 		if ((model as FighterModel).GetEnemyInRange () != null) {
 			Walk ();	
 		}
@@ -147,7 +145,6 @@ public class FighterController : Controller
 
 	protected virtual void OnKnockbackEnded ()
 	{
-		Debug.Log ("KNOCKBACK ENDED");
 		StartAttack ();
 	}
 
@@ -172,7 +169,6 @@ public class FighterController : Controller
 			eventHelper.AttackStart (attack);
 		
 		} else {
-			Debug.Log ("WALK");
 			Walk ();
 		}
 	}
