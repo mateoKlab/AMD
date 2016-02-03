@@ -32,11 +32,6 @@ public abstract class KnockbackState {
 		{
 			// Apply force.
 			if (duration > 0.0f) {
-			
-				// temp. apply force.
-				if (stateContext.fighter.GetComponent<FighterModel> ().allegiance == FighterAlliegiance.Ally) {
-					Debug.Log ("KB: " + duration * 10f);
-				}
 
 				rigidBody.velocity = Vector2.zero;
 				rigidBody.angularVelocity = 0.0f;
