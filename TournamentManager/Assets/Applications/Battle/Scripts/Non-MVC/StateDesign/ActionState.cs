@@ -45,9 +45,7 @@ public abstract class ActionState {
 				fighterTransform.position = new Vector3 (fighterTransform.position.x + (0.05f * moveDirection),
 			                                         fighterTransform.position.y,
 			                                         fighterTransform.position.z);
-			} else {
-				Debug.Log ("NOT RECOVERED");
-			}
+			} 
 		}
 
 		public override void Idle ()
