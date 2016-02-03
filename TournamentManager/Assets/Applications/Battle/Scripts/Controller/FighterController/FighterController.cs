@@ -214,7 +214,7 @@ public class FighterController : Controller
 
 	protected void ReceiveKnockback (Attack attack)
 	{
-		state.Knockback (0.3f);
+		state.Knockback (0.75f);
 
 //		// TODO: Apply knockback resistance/amount.
 //		int moveDirection = (int)((FighterModel)GetComponent<Model> ()).allegiance;

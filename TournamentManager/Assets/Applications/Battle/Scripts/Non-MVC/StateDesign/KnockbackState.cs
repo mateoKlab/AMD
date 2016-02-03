@@ -34,7 +34,7 @@ public abstract class KnockbackState {
 			if (duration > 0.0f) {
 			
 				// temp. apply force.
-				rigidBody.AddForce (new Vector2(25.0f * knockbackDirection, 0.0f), ForceMode2D.Force);
+				rigidBody.AddForce (new Vector2(5.0f * knockbackDirection, 0.0f), ForceMode2D.Force);
 				duration -= Time.deltaTime;
 			} else {
 
